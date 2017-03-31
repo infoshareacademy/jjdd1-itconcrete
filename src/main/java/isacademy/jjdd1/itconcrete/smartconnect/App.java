@@ -1,4 +1,4 @@
-package isacademy.jjdd1.itconcrete;
+package isacademy.jjdd1.itconcrete.smartconnect;
 
 /**
  * Hello world!
