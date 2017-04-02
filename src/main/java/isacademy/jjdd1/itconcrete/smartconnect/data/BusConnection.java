@@ -1,8 +1,5 @@
 package isacademy.jjdd1.itconcrete.smartconnect.data;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by katarzynadobrowolska on 01.04.2017.
  */
