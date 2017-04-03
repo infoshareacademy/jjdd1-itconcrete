@@ -4,7 +4,7 @@ package isacademy.jjdd1.itconcrete.smartconnect;
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.ConnectionSeeker;
 import isacademy.jjdd1.itconcrete.smartconnect.data.BusConnection;
 import isacademy.jjdd1.itconcrete.smartconnect.data.CalendarEvent;
-import isacademy.jjdd1.itconcrete.smartconnect.parser.CalendarParser;
+import isacademy.jjdd1.itconcrete.smartconnect.parser.CalendarParser.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.parser.ScheduleParser;
 
 public class App

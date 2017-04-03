@@ -1,10 +1,8 @@
-package isacademy.jjdd1.itconcrete.smartconnect.parser;
+package isacademy.jjdd1.itconcrete.smartconnect.parser.CalendarParser;
 
 import isacademy.jjdd1.itconcrete.smartconnect.data.CalendarEvent;
 
-/**
- * Created by katarzynadobrowolska on 01.04.2017.
- */
+
 public class CalendarParser {
 
 //---    Typical Event Values:
@@ -23,11 +21,6 @@ public class CalendarParser {
 //    TRANSP:OPAQUE
 //    END:VEVENT
 
-    //---values used by application
-    String dtstart;      //format yyyymmddT000000Z date and time of event start
-    String dtend;        //format yyyymmddT000000Z date and time of event end
-    String location;
-    String summary;
 
 
 
