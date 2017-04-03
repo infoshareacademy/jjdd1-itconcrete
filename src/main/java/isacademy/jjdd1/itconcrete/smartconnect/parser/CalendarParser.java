@@ -7,6 +7,8 @@ import isacademy.jjdd1.itconcrete.smartconnect.data.CalendarEvent;
  */
 public class CalendarParser {
 
+    int someInt = 1;
+
     public CalendarEvent[] parseDataFromPath(String calendarPath){
         //TODO logic here
         return new CalendarEvent[0];
