@@ -1,0 +1,22 @@
+200;Flagi;Gmina;Nazwa;X2(00:00-29:59);X3(00:00-29:59);X4(00:00-29:59);X5(00:00-29:59)
+1;B,P(1013);ZTM;Dworzec G³ówny;0;0;0;0
+2;P(1033);ZTM;Brama Wy¿ynna;2;2;2;2
+3;P(1207);ZTM;Sandomierska;4;4;4;4
+4;P(1211);ZTM;Goœcinna;2;2;2;2
+5;P(1217);ZTM;Lipce - Niegowska;3;3;4;4
+6;P(5225),S;ZTM;Pruszcz Gdañski Radunica (n/¿);4;4;4;4
+7;P(5600);ZTM;Pruszcz Gdañski Przemys³owa (n/¿);;3;3;3
+8;P(5840);ZTM;Pruszcz Gdañski Osiedle Piastowskie;;2;2;2
+9;P(5836);ZTM;Pruszcz Gdañski Obroñców Westerplatte;;1;1;1
+10;P(5870);ZTM;Pruszcz Gdañski Osiedle Kasprowicza;;1;1;1
+11;P(5868);ZTM;Pruszcz Gdañski Broniewskiego;;1;1;2
+12;P(5866);ZTM;Pruszcz Gdañski Wysockiego (n/¿);;1;1;1
+13;B,N,P(5820);ZTM;Pruszcz Gdañski Osiedle Wschód;;1;1;1
+14;P(5601),1,I;ZTM;Pruszcz Gdañski Przemys³owa (n/¿);2;;;
+15;P(5832),1,I;ZTM;Pruszcz Gdañski Wal¹ga;3;;;
+16;P(5871),1,I;ZTM;Pruszcz Gdañski ¯wirki i Wigury;2;;;
+17;P(5811),1,I;ZTM;Pruszcz Gdañski Drzyma³y;1;;;
+18;P(5813),1,I;ZTM;Pruszcz Gdañski Powstañców Warszawy (n/¿);1;;;
+19;P(5815),1,I;ZTM;Pruszcz Gdañski Emilii Plater;2;;;
+20;P(5817),1,I;ZTM;Pruszcz Gdañski Reymonta (n/¿);1;;;
+21;B,N,K,P(5819),1,I;ZTM;Pruszcz Gdañski Osiedle Wschód;1;;;

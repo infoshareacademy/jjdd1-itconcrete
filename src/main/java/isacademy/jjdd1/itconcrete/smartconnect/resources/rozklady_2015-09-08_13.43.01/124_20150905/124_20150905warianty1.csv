@@ -1,0 +1,10 @@
+124;Flagi;Gmina;Nazwa;X0(00:00-29:59);X1(00:00-29:59);X2(00:00-29:59);X3(00:00-29:59);X4(00:00-29:59);X5(00:00-29:59)
+1;B,P(1447);ZTM;Zaspa - Szpital;;0;0;0;0;0
+2;P(1448);ZTM;Czarny Dwór;;2;2;2;2;2
+3;P(1580);ZTM;al. Hallera (n/¿);;1;2;2;2;1
+4;P(1650),1,I,H;ZTM;Hallera - Baza ZKM;;;;1;;1
+5;P(1449);ZTM;Hallera - Baza ZKM;0;1;1;;1;
+6;P(1450);ZTM;Lwowska;1;1;2;;2;
+7;P(1451);ZTM;Mickiewicza;2;2;2;;2;
+8;P(1452);ZTM;Wyspiañskiego;3;3;3;;5;
+9;B,N,K0,P(314);ZTM;Wrzeszcz PKP;2;2;3;;3;

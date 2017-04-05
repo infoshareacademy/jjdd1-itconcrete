@@ -1,0 +1,24 @@
+207;Flagi;Gmina;Nazwa;X0(00:00-29:59);X1(00:00-29:59);X2(00:00-29:59);X3(00:00-29:59);X6(00:00-29:59);X7(00:00-29:59);X8(00:00-29:59)
+1;B,P(171);ZTM;Pruszcz Gdañski Komarowo;0;0;0;;0;0;
+2;P(5811);ZTM;Pruszcz Gdañski Drzyma³y;2;2;2;;2;2;
+3;P(5813);ZTM;Pruszcz Gdañski Powstañców Warszawy (n/¿);2;2;2;;2;2;
+4;P(5815);ZTM;Pruszcz Gdañski Emilii Plater;1;1;1;;1;1;
+5;P(5817);ZTM;Pruszcz Gdañski Reymonta (n/¿);1;2;1;;2;2;
+6;P(5819);ZTM;Pruszcz Gdañski Osiedle Wschód;1;2;1;;2;2;
+7;P(5865);ZTM;Pruszcz Gdañski Wysockiego (n/¿);1;1;1;;1;1;
+8;P(5867);ZTM;Pruszcz Gdañski Broniewskiego;1;1;1;;1;1;
+9;P(5869);ZTM;Pruszcz Gdañski Osiedle Kasprowicza;1;1;1;0;1;1;0
+10;P(5837);ZTM;Pruszcz Gdañski Obroñców Westerplatte;1;1;1;1;1;1;1
+11;P(5839);ZTM;Pruszcz Gdañski Wiœniewskiego;1;1;1;1;1;1;1
+12;P(5835);ZTM;Pruszcz Gdañski ¯wirki i Wigury;2;2;2;2;2;2;2
+13;P(5829);ZTM;Pruszcz Gdañski Niemcewicza;1;1;1;1;1;1;1
+14;P(5604);ZTM;Pruszcz Gdañski Chopina;3;4;2;3;2;3;2
+15;P(5602);ZTM;Pruszcz Gdañski Przemys³owa (n/¿);2;2;2;2;2;2;2
+16;P(5226),S;ZTM;Pruszcz Gdañski Radunica (n/¿);2;2;2;2;2;2;2
+17;P(175);ZTM;Œw. Wojciech;1;1;1;1;1;1;1
+18;P(1218);ZTM;Lipce - Niegowska;3;3;3;3;3;3;3
+19;P(1210);ZTM;Goœcinna;4;5;3;4;3;3;3
+20;P(1206);ZTM;Sandomierska;2;3;2;2;2;2;2
+21;P(1200);ZTM;Zaroœlak (n/¿);2;3;2;2;2;2;2
+22;P(1028);ZTM;Brama Wy¿ynna;2;3;2;2;2;2;2
+23;B,N,K0,P(1016);ZTM;Dworzec G³ówny;2;3;2;2;2;3;2

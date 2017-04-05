@@ -1,0 +1,24 @@
+171;Flagi;Gmina;Nazwa;X4(00:00-29:59);X5(00:00-29:59);X6(00:00-29:59);X7(00:00-29:59);X8(00:00-29:59)
+1;B,P(120);ZTM;Oliwa Pêtla Tramwajowa;0;0;0;0;0
+2;P(1503);ZTM;Cystersów;3;3;3;4;3
+3;P(1507);ZTM;Rynarzewo (n/¿);3;3;3;4;3
+4;P(1509);ZTM;Osowa - Obwodnica;4;4;5;6;4
+5;P(1511);ZTM;Sopocka;2;3;3;3;3
+6;P(1513);ZTM;Nowa;1;1;1;1;1
+7;P(1569);ZTM;Barniewicka;1;1;1;2;1
+8;P(1571);ZTM;I³awska;2;2;2;2;2
+9;P(1573),S;ZTM;Myœliborska;1;1;1;1;1
+10;P(7575);ZTM;Chwaszczyno - Oliwska;1;1;1;1;1
+11;P(7577);ZTM;Chwaszczyno - Szmaragdowa (n/¿);1;1;2;2;1
+12;P(8237);ZTM;Chwaszczyno;1;1;1;1;1
+13;P(8238);ZTM;Chwaszczyno - Gdyñska (n/¿);1;1;1;1;1
+14;P(8239),S;ZTM;Centrum Nadawcze RTV (n/¿);1;1;1;1;1
+15;P(8240);ZTM;Gdynia - Starochwaszczyñska (n/¿);1;1;1;1;1
+16;P(8243);ZTM;Gdynia - Rdestowa - Chwaszczyñska (n/¿);2;2;2;2;2
+17;P(8244);ZTM;Gdynia - Gie³da Towarowa;1;1;1;1;1
+18;P(8245);ZTM;Gdynia - Szafranowa;1;1;1;1;1
+19;P(8246);ZTM;Gdynia - Paprykowa;1;1;1;1;1
+20;P(8249);ZTM;Gdynia - Kameliowa;1;1;1;1;1
+21;P(8247);ZTM;Gdynia - D¹browa Centrum;1;1;1;1;1
+22;P(8248);ZTM;Gdynia - Any¿owa;1;1;1;1;1
+23;B,N,K0,P(8100);ZTM;Gdynia - Karwiny Tesco;1;2;2;2;1

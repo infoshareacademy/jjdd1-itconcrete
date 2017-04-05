@@ -1,0 +1,17 @@
+205;Flagi;Gmina;Nazwa;X4(00:00-29:59);X5(00:00-29:59);X6(00:00-29:59)
+1;B,P(1013);ZTM;Dworzec G³ówny;0;0;0
+2;P(1033);ZTM;Brama Wy¿ynna;2;3;2
+3;P(1207);ZTM;Sandomierska;4;4;4
+4;P(1211);ZTM;Goœcinna;2;2;2
+5;P(1217);ZTM;Lipce - Niegowska;3;4;3
+6;P(5225),S;ZTM;Pruszcz Gd. - Radunica (n/¿);3;3;3
+7;P(5601);ZTM;Pruszcz Gd. - Przemys³owa (n/¿);2;2;2
+8;P(5701),1,I;ZTM;Pruszcz Gd. - Raciborskiego;;4;2
+9;P(5704),1,I;ZTM;Pruszcz Gd. - Rondo Kaszubskie;;2;2
+10;P(5702),1,I;ZTM;Pruszcz Gd. - Wojska Polskiego;;3;2
+11;P(5832);ZTM;Pruszcz Gd. - Wal¹ga;3;3;3
+12;P(5830),1,I;ZTM;Pruszcz Gd. - Niemcewicza;;2;2
+13;P(5828),1,I;ZTM;Pruszcz Gd. - Sienkiewicza;;1;1
+14;P(5814),1,I;ZTM;Pruszcz Gd. - Powstañców Warszawy (n/¿);;2;2
+15;P(5812);ZTM;Pruszcz Gd. - D¹browskiego;3;2;2
+16;B,N,K0,P(171);ZTM;Pruszcz Gd. - Komarowo;2;2;2

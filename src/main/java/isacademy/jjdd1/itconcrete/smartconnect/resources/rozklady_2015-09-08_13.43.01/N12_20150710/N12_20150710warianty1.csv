@@ -1,0 +1,56 @@
+N12;Flagi;Gmina;Nazwa;X0(00:00-29:59);X1(00:00-29:59);X2(00:00-29:59)
+1;B,P(127);ZTM;Jasieñska;;0;0
+2;P(1872);ZTM;Staw Wróbla (n/¿);;1;1
+3;P(1850);ZTM;Zacna (n/¿);;1;1
+4;P(1848);ZTM;Wo³kowyska (n/¿);;1;1
+5;P(128);ZTM;Migowo (n/¿);;1;1
+6;P(1376);ZTM;Budapesztañska (n/¿);;1;1
+7;P(1374);ZTM;Warneñska (n/¿);;1;1
+8;P(1372);ZTM;Piecewska (n/¿);;1;1
+9;P(1370);ZTM;Dobrowolskiego (n/¿);;1;1
+10;P(1342);ZTM;Piecki Wileñska (n/¿);;1;1
+11;P(1367);ZTM;Dobrowolskiego (n/¿);;1;1
+12;P(1338);ZTM;Kurpiñskiego (n/¿);;2;2
+13;P(1336);ZTM;Otwarta (n/¿);;1;1
+14;P(1334);ZTM;Wagnera (n/¿);;1;1
+15;P(1332);ZTM;Cygañska Góra (n/¿);;1;1
+16;P(1880);ZTM;Focha (n/¿);;1;1
+17;P(1330);ZTM;P³owce (n/¿);;1;1
+18;P(1328);ZTM;Bema (n/¿);;1;1
+19;P(1260);ZTM;Urz¹d Miejski (n/¿);;2;2
+20;P(1030);ZTM;Brama Wy¿ynna;;3;3
+21;P(1020);ZTM;Dworzec G³ówny;;8;2
+22;P(1000);ZTM;Wa³y Piastowskie  (n/¿);;1;1
+23;P(1648);ZTM;Stocznia Pó³nocna (n/¿);;2;2
+24;P(1652),1,I,H;ZTM;Wyspiañskiego (n/¿);;;3
+25;P(1654),1,I,H;ZTM;Mickiewicza (n/¿);;;3
+26;P(1602),1,I,H;ZTM;Koœciuszki (n/¿);;;1
+27;P(1910),1,I,H;ZTM;Hallera - Baza ZKM (n/¿);;;2
+28;P(1646);ZTM;Swojska (n/¿);;2;
+29;P(1994);ZTM;¯aglowa - AmberExpo (n/¿);;1;
+30;P(1644);ZTM;PGE ARENA Gdañsk (n/¿);;2;
+31;P(1642);ZTM;Œnie¿na (n/¿);;1;
+32;P(1640);ZTM;Wyzwolenia - Mar. Polskiej (n/¿);;1;
+33;P(125);ZTM;Nowy Port Szaniec Zachodni (n/¿);;1;
+34;P(1502);ZTM;W³adys³awa IV (n/¿);;1;
+35;P(1592);ZTM;Pl. Wolnoœci (n/¿);;1;
+36;P(1500);ZTM;Wyzwolenia (n/¿);;1;
+37;P(1498);ZTM;Zespó³ Szkó³ Morskich (n/¿);;1;
+38;P(1590);ZTM;Krasickiego (n/¿);;2;
+39;P(1496);ZTM;BrzeŸno  (n/¿);;1;
+40;P(1494);ZTM;PCK (n/¿);;1;
+41;P(1492);ZTM;Dworska (n/¿);;2;
+42;P(1580);ZTM;al. Hallera (n/¿);;2;
+43;P(1449);ZTM;Hallera - Baza ZKM (n/¿);0;1;
+44;P(1445);ZTM;Drzewieckiego (n/¿);2;2;
+45;P(1446);ZTM;Korczaka (n/¿);1;1;
+46;P(1478);ZTM;Leszczyñskich (n/¿);0;0;
+47;P(1447);ZTM;Zaspa - Szpital (n/¿);1;1;
+48;P(1476);ZTM;Czarny Dwór (n/¿);2;2;
+49;P(1474);ZTM;Przymorze Wielkie (n/¿);2;2;
+50;P(1472);ZTM;Obroñców Wybrze¿a  (n/¿);1;1;
+51;P(1490);ZTM;Czerwony Dwór (n/¿);2;2;
+52;P(1488);ZTM;Piastowska (n/¿);1;1;
+53;P(1761);ZTM;Gospody  (n/¿);1;1;
+54;P(1603);ZTM;Subis³awa (n/¿);2;2;
+55;B,N,K0,P(321);ZTM;¯abianka SKM;1;1;

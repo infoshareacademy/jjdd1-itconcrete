@@ -1,0 +1,35 @@
+122;Flagi;Gmina;Nazwa;X0(00:00-29:59);X1(00:00-29:59);X2(00:00-29:59);X3(00:00-29:59);X4(00:00-29:59);X5(00:00-29:59);X6(00:00-29:59);X15(00:00-29:59);X16(00:00-29:59);X17(00:00-29:59);X18(00:00-29:59)
+1;B,P(4010);ZTM;Sopot Kamienny Potok SKM;0;0;0;0;0;0;0;0;0;0;0
+2;P(4075);ZTM;Sopot Wejherowska;2;2;2;2;2;2;2;2;2;2;2
+3;P(4076);ZTM;Sopot Malczewskiego;1;1;1;1;1;1;1;1;1;1;1
+4;P(4050);ZTM;Sopot Uniwersytet Gdañski;2;2;2;2;2;2;2;2;2;2;2
+5;P(4077);ZTM;Sopot Sikorskiego;1;1;1;1;1;1;1;1;1;1;1
+6;P(4078);ZTM;Sopot Wybickiego;1;1;1;1;1;1;1;1;1;1;1
+7;P(4079);ZTM;Sopot Kochanowskiego;1;1;1;1;1;1;1;1;1;1;1
+8;P(4041);ZTM;Sopot Reja;2;2;3;3;3;2;2;2;2;2;2
+9;P(4043);ZTM;Sopot 3 Maja;1;1;1;1;1;1;1;1;1;1;1
+10;P(4066);ZTM;Sopot W³adys³awa IV;2;2;2;2;2;2;2;1;1;1;1
+11;P(4017);ZTM;Sopot £okietka (n/¿);1;1;1;1;1;1;1;2;2;2;2
+12;P(4015),S;ZTM;Sopot Ergo Arena;2;2;2;2;2;2;2;1;1;1;1
+13;P(1669);ZTM;Nadwodna;3;3;3;3;3;3;3;2;2;2;2
+14;P(1667);ZTM;Górskiego;1;1;1;1;1;1;1;1;2;2;1
+15;P(1665);ZTM;Opacka (n/¿);1;1;1;1;1;1;1;1;2;2;1
+16;P(1779);ZTM;Oliwa Pêtla Tramwajowa;1;1;1;1;1;1;1;2;2;2;2
+17;P(1841);ZTM;Hala "Olivia";2;2;2;2;2;2;2;2;2;2;2
+18;P(1679);ZTM;Biblioteka G³ówna UG;2;2;2;3;2;1;1;1;1;1;1
+19;P(1793);ZTM;Abrahama;1;1;2;3;1;1;1;1;1;1;1
+20;P(1629);ZTM;Wojska Polskiego;2;2;2;2;2;2;2;2;2;2;2
+21;P(1631),1,I;ZTM;Galeria Ba³tycka;;;;;;;1;;;;1
+22;P(1593),1,I;ZTM;Jaœkowa Dolina;;;;;;;2;;;;2
+23;P(1383);ZTM;Galeria Ba³tycka;2;2;3;3;2;2;;1;1;2;
+24;P(1923);ZTM;Zabytkowa;1;1;1;2;1;1;;1;1;1;
+25;P(1925);ZTM;Srebrzysko;1;2;2;2;2;1;;1;1;1;
+26;P(1389);ZTM;Trawki (n/¿);1;1;1;2;1;1;;1;1;1;
+27;P(1391);ZTM;Potokowa;2;2;2;2;2;2;;1;1;1;
+28;P(1395);ZTM;S³owackiego - Dzia³ki (n/¿);1;1;1;1;1;1;;2;2;2;
+29;P(1397);ZTM;Z³ota Karczma;4;4;4;5;4;4;;3;3;4;
+30;P(1399);ZTM;Agrarna;2;2;2;2;2;2;;2;2;2;
+31;P(1401);ZTM;Astronautów;1;1;1;1;1;1;;1;1;1;
+32;P(1403);ZTM;Szybowcowa;2;2;2;2;2;2;;2;2;2;
+33;P(1733);ZTM;Firoga (n/¿);1;1;1;1;1;1;;1;1;1;
+34;B,N,K0,P(102);ZTM;Port Lotniczy;3;3;3;3;3;3;;3;3;3;

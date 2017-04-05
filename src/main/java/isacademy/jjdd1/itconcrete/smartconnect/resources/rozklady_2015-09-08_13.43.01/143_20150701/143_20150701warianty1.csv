@@ -1,0 +1,21 @@
+143;Flagi;Gmina;Nazwa;X0(00:00-29:59);X1(00:00-29:59);X2(00:00-29:59);X3(00:00-29:59);X4(00:00-29:59);X5(00:00-29:59);X10(00:00-29:59);X11(00:00-29:59);X12(00:00-29:59);X13(00:00-29:59)
+1;B,P(407);ZTM;Sopot Sanatorium "Leœnik";;0;;0;;0;;0;0;
+2;P(4056);ZTM;Sopot Os. Przylesie;;2;;2;;2;;2;2;
+3;P(406),1,I,B;ZTM;Sopot Os. Przylesie;0;;0;;0;;0;;;0
+4;P(4054);ZTM;Sopot 23 Marca (n/¿);1;1;1;1;1;1;1;1;1;1
+5;P(4052);ZTM;Sopot Okrê¿na (n/¿);1;1;1;1;1;1;1;1;1;1
+6;P(4050);ZTM;Sopot Uniwersytet Gdañski;2;2;2;2;2;2;2;2;2;2
+7;P(4048);ZTM;Sopot Sikorskiego;1;1;1;1;1;1;1;1;1;1
+8;P(4046);ZTM;Sopot PKP;3;3;3;3;3;3;3;3;3;3
+9;P(4066);ZTM;Sopot W³adys³awa IV;2;2;3;3;2;2;2;2;2;2
+10;P(4064);ZTM;Sopot Bitwy pod P³owcami;2;2;2;2;1;1;2;2;2;2
+11;P(4062);ZTM;Sopot Polna;1;1;1;1;1;1;2;2;2;2
+12;P(4060);ZTM;Sopot Hestii;1;1;1;1;1;1;1;1;1;1
+13;P(4058),S;ZTM;Sopot Hotel "Marina";1;1;1;1;1;1;1;1;1;1
+14;P(1714);ZTM;Bursztynowa (n/¿);1;1;1;1;1;1;1;1;1;1
+15;P(1556);ZTM;Pomorska - Kapliczna;1;1;1;1;1;1;1;1;1;1
+16;P(1554);ZTM;Jelitkowo Kapliczna;1;1;1;1;1;1;1;1;1;1
+17;P(1525);ZTM;Tysi¹clecia;2;2;2;2;2;2;2;2;2;2
+18;P(1527);ZTM;Piastowska;1;1;2;2;1;1;2;2;2;2
+19;P(1529);ZTM;Poznañska (n/¿);1;1;1;1;1;1;1;1;2;2
+20;B,N,K0,P(117);ZTM;Oliwa PKP;2;2;2;2;2;2;2;2;2;2

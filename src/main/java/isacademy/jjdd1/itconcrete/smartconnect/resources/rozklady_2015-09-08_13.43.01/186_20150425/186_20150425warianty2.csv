@@ -1,0 +1,31 @@
+186;Flagi;Gmina;Nazwa;X4(00:00-29:59);X5(00:00-29:59);X6(00:00-29:59);X7(00:00-29:59);X8(00:00-29:59)
+1;B,P(1017);ZTM;Dworzec G³ówny;0;0;0;0;0
+2;P(1031);ZTM;Brama Wy¿ynna;2;2;2;3;2
+3;P(1037);ZTM;¯abi Kruk;1;1;2;2;1
+4;P(1661);ZTM;Akademia Muzyczna;2;2;2;2;2
+5;P(1099);ZTM;Brama ¯u³awska;1;1;1;1;1
+6;P(1601);ZTM;Mostek;1;1;1;1;1
+7;P(1101);ZTM;Mia³ki Szlak;1;1;1;1;1
+8;P(1103);ZTM;Elbl¹ska - Wiadukt;1;1;1;1;1
+9;P(1105);ZTM;B³onia;1;1;1;1;1
+10;P(1107);ZTM;Tarcice;1;1;1;1;1
+11;P(1109);ZTM;Micha³ki Wiadukt (n/¿);1;2;2;2;1
+12;P(1111),S;ZTM;Rafineria;1;1;1;1;1
+13;P(1683);ZTM;Dobrowo;2;2;2;2;2
+14;P(1159),S;ZTM;Benzynowa (n/¿);2;2;2;2;2
+15;P(1161);ZTM;Oczyszczalnia (n/¿);1;1;1;1;1
+16;P(1163);ZTM;Naftowa;2;2;2;2;2
+17;P(1165);ZTM;P³oñska - Skrzy¿. (n/¿);1;1;1;1;1
+18;P(1167),S;ZTM;Zagroble (n/¿);1;2;2;2;2
+19;P(1169);ZTM;Wiœlinka Brzegowa (n/¿);1;1;1;1;1
+20;P(1171);ZTM;Wiœlinka Pocztowa;1;1;1;1;1
+21;P(1173);ZTM;Wiœlinka Sportowa (n/¿);1;1;1;1;1
+22;P(1127);ZTM;Wiœlinka Piaskowa (n/¿);2;2;2;2;2
+23;P(1129);ZTM;Sobieszewo Most (n/¿);1;1;1;1;1
+24;P(1131),S;ZTM;Sobieszewo Wyspa;2;2;2;2;2
+25;P(1175);ZTM;Jodowa;1;1;1;1;1
+26;P(1763);ZTM;Sobieszewska (n/¿);0;0;0;0;0
+27;P(1177);ZTM;Têczowa (n/¿);1;1;1;1;1
+28;P(1179);ZTM;Nadwiœlañska (n/¿);0;0;0;0;0
+29;P(1181);ZTM;Ornitologów (n/¿);1;1;1;1;1
+30;B,N,K0,P(342);ZTM;Górki Wschodnie;1;1;1;1;1

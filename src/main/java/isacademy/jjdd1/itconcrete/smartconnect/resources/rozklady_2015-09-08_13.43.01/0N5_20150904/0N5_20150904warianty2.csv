@@ -1,0 +1,20 @@
+N5;Flagi;Gmina;Nazwa;X1(00:00-29:59);X2(00:00-29:59)
+1;B,P(1013);ZTM;Dworzec G³ówny;0;0
+2;P(1033);ZTM;Brama Wy¿ynna;2;2
+3;P(1207);ZTM;Sandomierska  (n/¿);4;4
+4;P(1209);ZTM;Rejtana (n/¿);1;1
+5;P(1211);ZTM;Goœcinna (n/¿);1;1
+6;P(1213);ZTM;Nowiny (n/¿);1;1
+7;P(1215);ZTM;Ukoœna (n/¿);1;1
+8;P(1217);ZTM;Lipce - Niegowska (n/¿);1;1
+9;P(1219);ZTM;Wêze³ Lipce (n/¿);1;1
+10;P(1221);ZTM;Œw. Wojciech - Ostró¿ek (n/¿);2;2
+11;P(1223);ZTM;Œw. Wojciech (n/¿);1;1
+12;P(5225),S;ZTM;Pruszcz Gdañski Radunica (n/¿);1;1
+13;P(5600);ZTM;Pruszcz Gdañski Przemys³owa (n/¿);2;2
+14;P(5840);ZTM;Pruszcz Gdañski Osiedle Piastowskie (n/¿);2;2
+15;P(5836);ZTM;Pruszcz Gdañski Obroñców Westerplatte (n/¿);1;1
+16;P(5870);ZTM;Pruszcz Gdañski Osiedle Kasprowicza (n/¿);1;1
+17;P(5827);ZTM;Pruszcz Gdañski Sienkiewicza (n/¿);1;
+18;P(5829);ZTM;Pruszcz Gdañski Niemcewicza (n/¿);1;
+19;B,N,K0,P(5606);ZTM;Pruszcz Gdañski Matejki;4;

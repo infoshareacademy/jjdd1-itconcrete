@@ -1,0 +1,37 @@
+N2;Flagi;Gmina;Nazwa;X3(00:00-29:59);X4(00:00-29:59);X5(00:00-29:59)
+1;B,P(125);ZTM;Nowy Port Szaniec Zachodni;;0;0
+2;P(1502);ZTM;W³adys³awa IV (n/¿);;1;1
+3;P(1592);ZTM;Plac Wolnoœci (n/¿);;1;1
+4;P(1500);ZTM;Wyzwolenia (n/¿);;1;1
+5;P(1498);ZTM;Zespó³ Szkó³ Morskich (n/¿);;1;1
+6;P(1590);ZTM;Krasickiego (n/¿);;2;2
+7;P(1496);ZTM;BrzeŸno  (n/¿);;1;1
+8;P(1494);ZTM;PCK (n/¿);;1;1
+9;P(1492);ZTM;Dworska (n/¿);;2;2
+10;P(1580);ZTM;al. Hallera (n/¿);;2;2
+11;P(1650),H;ZTM;Hallera - Baza ZKM;;;1
+12;B,P(1449);ZTM;Hallera - Baza ZKM (n/¿);0;1;
+13;P(1620);ZTM;Koœciuszki (n/¿);2;2;
+14;P(1739);ZTM;Kiliñskiego (n/¿);3;3;
+15;P(115);ZTM;Wrzeszcz PKP;4;4;
+16;P(1345);ZTM;Jaœkowa Dolina (n/¿);2;2;
+17;P(1725);ZTM;Sobótki (n/¿);1;1;
+18;P(1361);ZTM;Na Wzgórzu (n/¿);2;2;
+19;P(1363);ZTM;Falista (n/¿);1;1;
+20;P(1365);ZTM;Strzelnica (n/¿);1;1;
+21;P(1367);ZTM;Dobrowolskiego (n/¿);1;1;
+22;P(1369);ZTM;Piecewska (n/¿);1;1;
+23;P(1371);ZTM;Warneñska (n/¿);0;0;
+24;P(1373);ZTM;Budapesztañska (n/¿);1;1;
+25;P(128);ZTM;Migowo (n/¿);1;1;
+26;P(1376);ZTM;Budapesztañska (n/¿);1;1;
+27;P(1374);ZTM;Warneñska (n/¿);1;1;
+28;P(1726);ZTM;Belgradzka (n/¿);1;1;
+29;P(1724);ZTM;Piekarnicza (n/¿);2;2;
+30;P(1346);ZTM;Nowolipie (n/¿);1;1;
+31;P(1309);ZTM;Emaus (n/¿);1;1;
+32;P(1311);ZTM;Cmentarz £ostowicki (n/¿);2;2;
+33;P(1979);ZTM;Wilanowska (n/¿);1;1;
+34;P(1315);ZTM;Przemyska (n/¿);1;1;
+35;P(1317);ZTM;P³ocka (n/¿);1;1;
+36;B,N,K0,P(390);ZTM;£ostowice Œwiêtokrzyska;2;2;

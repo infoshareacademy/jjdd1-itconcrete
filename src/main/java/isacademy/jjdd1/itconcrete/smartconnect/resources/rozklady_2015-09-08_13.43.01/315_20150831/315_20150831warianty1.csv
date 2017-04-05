@@ -1,0 +1,35 @@
+315;Flagi;Gmina;Nazwa;X0(00:00-29:59);X1(00:00-29:59);X7(00:00-29:59);X8(00:00-29:59);X9(00:00-29:59);X10(00:00-29:59)
+1;B,P(1257);ZTM;Dworzec PKS;0;;;0;0;0
+2;P(1259);ZTM;Nowe Ogrody;1;;;1;1;1
+3;P(1329);ZTM;Bema;2;;;2;2;2
+4;P(1331);ZTM;P³owce;2;;;1;1;1
+5;P(1881);ZTM;Focha (n/¿);1;;;1;1;1
+6;P(1333);ZTM;Cygañska Góra;1;;;1;1;1
+7;P(1846);ZTM;Nad Jarem - Zakosy;1;;;1;2;2
+8;P(1847);ZTM;Suchanino;2;;;1;1;1
+9;P(1337);ZTM;Otwarta;1;;;1;1;2
+10;P(1339);ZTM;Kurpiñskiego;1;;;1;1;1
+11;P(1360);ZTM;Schuberta;1;;;1;1;1
+12;P(1358);ZTM;Schumana;1;;;1;1;1
+13;P(1356);ZTM;Pomorskie Szko³y Rzemios³;1;;;1;1;1
+14;P(1354);ZTM;Jarowa;1;;;1;1;1
+15;P(1352);ZTM;Krêta;1;;;1;1;1
+16;P(1350);ZTM;Traugutta - Sobieskiego;1;;;1;1;1
+17;P(1348);ZTM;Uphagena;2;;;2;3;3
+18;P(116);ZTM;Wrzeszcz PKP;2;;0;3;3;4
+19;P(1636);ZTM;Galeria Ba³tycka;2;;1;1;2;2
+20;P(1796);ZTM;Wojska Polskiego;2;;2;2;2;2
+21;P(1794);ZTM;Abrahama;1;;1;1;1;1
+22;P(1678);ZTM;Biblioteka G³ówna UG;1;;1;1;1;2
+23;P(1792);ZTM;Przymorze SKM;2;0;2;2;2;2
+24;P(1470);ZTM;Krynicka;2;2;2;2;2;2
+25;P(1468);ZTM;Rzeczypospolitej - Ko³obrzeska;2;2;2;2;2;2
+26;P(1466);ZTM;Opolska;1;1;1;1;1;1
+27;P(1464);ZTM;Olsztyñska;1;1;1;1;1;1
+28;P(1462);ZTM;D¹browszczaków - Obroñców Wybrze¿a;1;1;1;1;1;1
+29;P(1460);ZTM;D¹browszczaków;1;;2;2;2;2
+30;P(1458);ZTM;Jagielloñska - Przychodnia;1;;1;1;1;1
+31;P(1456);ZTM;Czerwony Dwór;1;;1;1;1;1
+32;P(1454);ZTM;Bora Komorowskiego;1;;1;1;1;1
+33;P(1740);ZTM;Beniowskiego (n/¿);2;;1;1;1;1
+34;B,N,K0,P(118);ZTM;Oliwa PKP;1;;1;1;1;1

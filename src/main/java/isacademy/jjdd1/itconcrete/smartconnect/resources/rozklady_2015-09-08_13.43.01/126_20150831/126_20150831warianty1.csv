@@ -1,0 +1,31 @@
+126;Flagi;Gmina;Nazwa;X0(00:00-29:59);X1(00:00-29:59);X2(00:00-29:59);X3(00:00-29:59);X4(00:00-29:59);X5(00:00-29:59);X6(00:00-29:59);X7(00:00-29:59);X17(00:00-29:59)
+1;B,P(7998);ZTM;¯ukowo Urz¹d Gminy;;0;;0;;;;0;
+2;P(7994);ZTM;¯ukowo Dworcowa;;4;;4;;;;3;
+3;P(7992);ZTM;¯ukowo S³oneczna (n/¿);;2;;2;;;;2;
+4;P(7990);ZTM;Ma³kowo;;2;;2;;;;2;
+5;P(7988);ZTM;Pêpowo - Skrzy¿owanie (n/¿);;1;;1;;;;1;
+6;P(7986);ZTM;Miszewo;;1;;1;;;;1;
+7;P(7982);ZTM;Banino - Pszenna;;3;;3;;;;2;
+8;B,P(148),1,I,B;ZTM;Banino;0;;0;;0;;0;;0
+9;P(7432);ZTM;Banino - Szko³a;1;3;1;3;1;;1;3;1
+10;P(7430);ZTM;Rêbiechowo PKP (n/¿);1;1;1;1;1;;1;1;1
+11;P(7428);ZTM;Rêbiechowo;1;1;1;1;1;;1;1;1
+12;P(1426),S;ZTM;Przyrodników;1;1;1;1;1;;1;1;1
+13;P(1424);ZTM;POD - Lotnisko II (n/¿);2;2;2;2;2;;2;2;2
+14;P(1422);ZTM;POD - Lotnisko I (n/¿);1;1;1;1;1;;1;1;1
+15;P(1420);ZTM;Budowlanych (n/¿);1;1;1;1;1;;1;1;1
+16;P(1750);ZTM;POD - Lotnisko III (n/¿);1;1;1;1;1;;1;1;1
+17;P(1418);ZTM;Kosmonautów (n/¿);1;1;1;1;1;;1;1;1
+18;P(1416);ZTM;Rakietowa (n/¿);1;1;1;1;1;;1;1;1
+19;P(1414);ZTM;Nowatorów;2;3;3;2;2;;1;1;1
+20;P(1844);ZTM;S¹siedzka (n/¿);2;2;2;2;2;;1;1;2
+21;P(1412);ZTM;Matarnia PKM;1;1;1;1;1;;1;1;1
+22;P(1398);ZTM;Agrarna;1;1;1;1;1;0;1;1;1
+23;P(1396);ZTM;Z³ota Karczma;2;2;2;2;2;2;2;2;2
+24;P(1394);ZTM;S³owackiego - Dzia³ki (n/¿);3;3;3;3;3;3;3;3;3
+25;P(1390);ZTM;Potokowa;2;2;2;2;2;2;2;2;2
+26;P(1926);ZTM;Trawki (n/¿);1;1;1;1;1;1;1;1;1
+27;P(1924);ZTM;Srebrzysko;1;1;1;1;1;1;1;1;1
+28;P(1922);ZTM;Zabytkowa;1;1;1;1;1;1;1;1;1
+29;P(1382);ZTM;Galeria Ba³tycka;2;3;3;3;3;3;2;2;2
+30;B,N,K0,P(313);ZTM;Wrzeszcz PKP;1;1;1;2;2;2;1;1;1

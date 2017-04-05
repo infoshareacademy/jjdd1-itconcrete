@@ -1,0 +1,74 @@
+11;Flagi;Gmina;Nazwa;X5(00:00-29:59);X6(00:00-29:59);X7(00:00-29:59);X8(00:00-29:59);X9(00:00-29:59);X10(00:00-29:59);X11(00:00-29:59)
+1;B,P(203);ZTM;Zaspa;;;0;0;;;
+2;P(2091);ZTM;Ko³obrzeska;;;1;1;;;
+3;P(2093);ZTM;Ch³opska - Obroñców Wybrze¿a;;;2;2;;;
+4;P(2095);ZTM;Jagielloñska;;;2;2;;;
+5;P(2097);ZTM;Piastowska;;;1;1;;;
+6;P(2099);ZTM;Pomorska;;;2;2;;;
+7;P(2054);ZTM;Gospody;;;1;1;;;
+8;P(2052);ZTM;Pomorska - Osiedle;;;1;1;;;
+9;P(2033),1,I,H;ZTM;Strzy¿a PKM;;0;;;;;0
+10;P(2035),1,I,H;ZTM;Uniwersytet;;2;;;;;1
+11;P(2037),1,I,H;ZTM;Ba¿yñskiego;;1;;;;;1
+12;P(2039),1,I,H;ZTM;Tetmajera;;1;;;;;1
+13;P(2041),1,I,H;ZTM;Derdowskiego;;1;;;;;1
+14;P(2043),1,I,H;ZTM;Obroñców Westerplatte;;1;;;;;1
+15;P(2045),1,I,H;ZTM;Oliwa;;2;;;;;2
+16;P(2047),1,I,H;ZTM;Opacka;;2;;;;;2
+17;P(2049),1,I,H;ZTM;Subis³awa;;2;;;;;2
+18;P(2051),1,I,H;ZTM;Pomorska - Osiedle;;2;;;;;2
+19;P(2100),1,I,H;ZTM;Pomorska;;2;;;;;2
+20;P(2050);ZTM;Subis³awa;;;2;2;;;
+21;P(2048);ZTM;Opacka;;;2;2;;;
+22;P(2046);ZTM;Oliwa;;;2;2;;;
+23;P(2044);ZTM;Obroñców Westerplatte;;;1;1;;;
+24;P(2042);ZTM;Derdowskiego;;;1;1;;;
+25;P(2040);ZTM;Tetmajera;;;1;1;;;
+26;P(2038);ZTM;Ba¿yñskiego;;;1;1;;;
+27;P(2036);ZTM;Uniwersytet;;;1;1;;;
+28;P(2034);ZTM;Strzy¿a PKM;;;2;2;;;
+29;P(213),1,I,H;ZTM;Strzy¿a PKM;0;;;;;;
+30;P(2030);ZTM;Zajezdnia;1;;1;1;;;
+31;P(2028);ZTM;Zamenhofa;1;;1;1;;;
+32;P(2026);ZTM;Wojska Polskiego;1;;1;1;;;
+33;P(2024);ZTM;Galeria Ba³tycka;2;;2;2;;;
+34;P(2022);ZTM;Klonowa;1;;1;2;;;
+35;P(2020);ZTM;Jaœkowa Dolina;2;;2;2;;;
+36;P(2018);ZTM;Miszewskiego;2;;2;2;;;
+37;P(2016);ZTM;Politechnika;1;;1;1;;;
+38;P(2014);ZTM;Opera Ba³tycka;2;;2;2;;;
+39;P(2012);ZTM;Traugutta;2;;2;2;;;
+40;P(2010);ZTM;Uniwersytet Medyczny;1;;1;1;;;
+41;P(2008);ZTM;Chodowieckiego;1;;1;1;;;
+42;P(2006);ZTM;Brama Oliwska;1;;1;1;;;
+43;P(2002);ZTM;Dworzec G³ówny;2;;2;2;;;
+44;P(2101);ZTM;Brama Wy¿ynna;2;;2;2;;;
+45;P(2207);ZTM;Œródmieœcie SKM;2;;2;2;;;
+46;P(2211);ZTM;Pohulanka (Armii Krajowej);2;;2;2;;;
+47;P(2213);ZTM;Odrzañska;1;;1;1;;;
+48;P(2215);ZTM;Cha³ubiñskiego;2;;2;2;;;
+49;P(2217);ZTM;Sikorskiego;1;;1;1;;;
+50;B,N,K0,P(2219);ZTM;Che³m Witosa;1;;1;1;;;
+51;P(2098),1,I,H;ZTM;Piastowska;;1;;;;;1
+52;P(2096),1,I,H;ZTM;Jagielloñska;;2;;;;;2
+53;P(2094),1,I,H;ZTM;Ch³opska - Obroñców Wybrze¿a;;1;;;;;1
+54;P(2092),1,I,H;ZTM;Ko³obrzeska;;1;;;;;1
+55;P(204),1,I,H;ZTM;Zaspa;;2;;;0;0;2
+56;P(2088),1,I,H;ZTM;Startowa;;;;;1;1;
+57;P(2086),1,I,H;ZTM;Jana Paw³a II;;;;;1;1;
+58;P(2084),1,I,H;ZTM;¯wirki i Wigury;;;;;1;1;
+59;P(2082),1,I,H;ZTM;Bajana;;;;;1;1;
+60;P(2080),1,I,H;ZTM;Legionów;;;;;2;2;
+61;P(2078),1,I,H;ZTM;Plac Komorowskiego;;;;;1;1;
+62;P(2076),1,I,H;ZTM;Mickiewicza;;;;;1;1;
+63;P(2074),1,I,H;ZTM;Reja;;;;;1;1;
+64;P(2072),1,I,H;ZTM;Wyspiañskiego;;;;;2;2;
+65;P(2017),1,I,H;ZTM;Politechnika;;;;;2;2;
+66;P(2019),1,I,H;ZTM;Miszewskiego;;;;;1;1;
+67;P(2021),1,I,H;ZTM;Jaœkowa Dolina;;;;;2;1;
+68;P(2023),1,I,H;ZTM;Klonowa;;;;;1;1;
+69;P(2025),1,I,H;ZTM;Galeria Ba³tycka;;;;;2;2;
+70;P(2027),1,I,H;ZTM;Wojska Polskiego;;;;;2;2;
+71;P(2029),1,I,H;ZTM;Zamenhofa;;;;;1;1;
+72;P(2031),1,I,H;ZTM;Zajezdnia;;;;;1;1;
+73;B,N,K,P(213),1,I,H;ZTM;Strzy¿a PKM;;;;;1;1;
