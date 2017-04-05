@@ -1,4 +1,4 @@
-package isacademy.jjdd1.itconcrete.smartconnect.data;
+package isacademy.jjdd1.itconcrete.smartconnect.calendar;
 
 /**
  * Created by katarzynadobrowolska on 01.04.2017.

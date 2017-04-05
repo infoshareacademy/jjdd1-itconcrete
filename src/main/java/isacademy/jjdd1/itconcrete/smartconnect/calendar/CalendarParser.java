@@ -1,4 +1,4 @@
-package isacademy.jjdd1.itconcrete.smartconnect.parser.CalendarParser;
+package isacademy.jjdd1.itconcrete.smartconnect.calendar;
 
 import isacademy.jjdd1.itconcrete.smartconnect.data.CalendarEvent;
 

@@ -1,4 +1,4 @@
-package isacademy.jjdd1.itconcrete.smartconnect.parser;
+package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 
 import java.util.HashMap;
 

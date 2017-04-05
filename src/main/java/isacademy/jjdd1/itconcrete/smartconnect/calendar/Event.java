@@ -1,4 +1,4 @@
-package isacademy.jjdd1.itconcrete.smartconnect.parser.CalendarParser;
+package isacademy.jjdd1.itconcrete.smartconnect.calendar;
 
 /**
  * Created by rekinlukasz on 03.04.17.
