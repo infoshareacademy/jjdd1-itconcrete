@@ -1,0 +1,22 @@
+232;Flagi;Gmina;Nazwa;X5(00:00-29:59);X6(00:00-29:59);X7(00:00-29:59);X8(00:00-29:59);X9(00:00-29:59);X11(00:00-29:59);X12(00:00-29:59);X13(00:00-29:59)
+1;B,P(1013);ZTM;Dworzec G³ówny;0;0;0;0;0;0;0;0
+2;P(1033);ZTM;Brama Wy¿ynna;2;2;2;2;2;2;2;2
+3;P(1201);ZTM;Zaroœlak  (n/¿);2;2;3;3;2;2;2;2
+4;P(1207);ZTM;Sandomierska;2;2;2;2;2;2;2;2
+5;P(1209);ZTM;Rejtana (n/¿);1;1;2;2;1;1;1;1
+6;P(1211);ZTM;Goœcinna;1;1;1;1;1;1;1;1
+7;P(1215);ZTM;Ukoœna (n/¿);2;2;2;2;2;2;2;2
+8;P(1217);ZTM;Lipce - Niegowska;2;2;2;2;2;2;2;2
+9;P(1221);ZTM;Œw. Wojciech - Ostró¿ek (n/¿);2;2;2;2;2;2;2;2
+10;P(1223);ZTM;Œw. Wojciech;1;1;1;1;1;1;1;1
+11;P(5225),S;ZTM;Pruszcz Gd. - Radunica (n/¿);1;1;1;1;1;1;1;1
+12;P(5601);ZTM;Pruszcz Gd. - Przemys³owa (n/¿);2;2;2;2;2;2;2;2
+13;P(5603);ZTM;Pruszcz Gd. - Chopina;3;3;4;4;2;;;2
+14;P(5701),1,I;ZTM;Pruszcz Gd. - Raciborskiego;;;;;;2;2;
+15;P(5704),1,I;ZTM;Pruszcz Gd. - Rondo Kaszubskie;;;;;;2;2;
+16;P(5603),1,I;ZTM;Pruszcz Gd. - Chopina;;;;;;2;2;
+17;P(5605);ZTM;Pruszcz Gd. - Matejki;2;2;2;2;1;2;2;1
+18;P(5607);ZTM;Pruszcz Gd. - Nowowiejskiego;1;1;2;2;1;1;1;1
+19;P(5609),1,I;ZTM;Pruszcz Gd. - Urz¹d Skarbowy;;1;;1;;1;;1
+20;P(5873);ZTM;Pruszcz Gd. - Batalionów Ch³opskich;1;;1;;1;;1;
+21;B,N,K0,P(5831);ZTM;Pruszcz Gd. - CER;3;;3;;3;;3;

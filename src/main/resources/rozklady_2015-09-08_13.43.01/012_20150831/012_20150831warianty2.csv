@@ -1,0 +1,35 @@
+12;Flagi;Gmina;Nazwa;X7(00:00-29:59);X8(00:00-29:59);X9(00:00-29:59);X10(00:00-29:59);X11(00:00-29:59)
+1;B,P(2046);ZTM;Oliwa;;0;;0;0
+2;P(2044);ZTM;Obroñców Westerplatte;;1;;1;1
+3;P(2042);ZTM;Derdowskiego;;1;;1;1
+4;P(2040);ZTM;Tetmajera;;1;;1;1
+5;P(2038);ZTM;Ba¿yñskiego;;1;;1;1
+6;P(2036);ZTM;Uniwersytet;;1;;1;1
+7;P(2034);ZTM;Strzy¿a PKM;;2;;2;2
+8;P(213),1,I,H;ZTM;Strzy¿a PKM;0;;0;;
+9;P(2030);ZTM;Zajezdnia;1;1;1;1;
+10;P(2028);ZTM;Zamenhofa;1;1;1;1;
+11;P(2026);ZTM;Wojska Polskiego;1;1;1;1;
+12;P(2024);ZTM;Galeria Ba³tycka;2;2;2;2;
+13;P(2022);ZTM;Klonowa;1;1;2;2;
+14;P(2020);ZTM;Jaœkowa Dolina;2;2;2;2;
+15;P(2018);ZTM;Miszewskiego;2;2;2;2;
+16;P(2016);ZTM;Politechnika;1;1;1;1;
+17;P(2014);ZTM;Opera Ba³tycka;2;2;2;2;
+18;P(2012);ZTM;Traugutta;2;2;2;2;
+19;P(2010);ZTM;Uniwersytet Medyczny;1;1;1;1;
+20;P(2008);ZTM;Chodowieckiego;1;1;1;1;
+21;P(2006);ZTM;Brama Oliwska;1;1;1;1;
+22;P(2136);ZTM;Dworzec PKS;2;2;2;2;
+23;P(2132);ZTM;Nowe Ogrody;1;1;1;1;
+24;P(2139);ZTM;Powstañców Warszawskich;2;2;2;2;
+25;P(2141);ZTM;Paska;1;1;1;1;
+26;P(2143);ZTM;Ciasna;1;1;1;1;
+27;P(2145);ZTM;Zakopiañska;1;1;1;1;
+28;P(2147);ZTM;Skrajna;2;2;2;2;
+29;P(2149);ZTM;Siedlce;2;2;2;2;
+30;P(2273);ZTM;Piekarnicza;3;3;4;4;
+31;P(2271);ZTM;Belgradzka;1;1;1;1;
+32;P(2269);ZTM;Warneñska;2;2;2;2;
+33;P(2264);ZTM;Budapesztañska;2;2;2;2;
+34;B,N,K0,P(2263);ZTM;Migowo;1;1;1;1;

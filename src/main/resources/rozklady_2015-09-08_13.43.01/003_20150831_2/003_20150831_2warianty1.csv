@@ -1,0 +1,62 @@
+3;Flagi;Gmina;Nazwa;X0(00:00-29:59);X1(00:00-29:59);X2(00:00-29:59);X3(00:00-29:59);X4(00:00-29:59);X5(00:00-29:59);X6(00:00-29:59);X7(00:00-29:59);X8(00:00-29:59);X21(00:00-29:59);X22(00:00-29:59);X26(00:00-29:59)
+1;B,P(2130);ZTM;Stogi Pasanil;0;0;0;0;0;0;0;0;0;0;0;0
+2;P(2128);ZTM;Zimna;1;1;1;1;1;1;1;1;1;1;1;1
+3;P(2126);ZTM;Lessowa;1;1;1;1;1;1;1;1;1;1;1;1
+4;P(2124);ZTM;Kaczeñce;1;1;1;1;1;1;1;1;1;1;1;1
+5;P(2122);ZTM;Sucharskiego;2;2;2;2;2;2;2;1;1;2;1;2
+6;P(2120);ZTM;Lenartowicza;1;1;1;1;1;1;1;1;1;1;1;1
+7;P(2118);ZTM;Przeróbka;1;1;1;1;1;1;1;0;0;1;0;1
+8;P(2116);ZTM;G³êboka;3;3;3;3;3;3;3;3;3;3;3;3
+9;P(2114);ZTM;Brama ¯u³awska;2;2;2;2;2;2;2;2;2;2;2;2
+10;P(2110);ZTM;Akademia Muzyczna;1;1;1;1;1;1;1;1;1;1;1;1
+11;P(2108);ZTM;Chmielna;1;1;1;1;1;1;1;1;1;1;1;1
+12;P(2106);ZTM;¯abi Kruk;1;1;1;1;1;1;1;1;1;1;1;1
+13;P(2104);ZTM;Okopowa;2;2;2;2;2;2;2;1;1;2;1;2
+14;P(2102);ZTM;Brama Wy¿ynna;2;2;2;2;2;2;2;2;2;2;2;2
+15;P(2001);ZTM;Dworzec G³ówny;2;2;2;2;2;2;2;2;2;2;2;2
+16;P(2061),1,I,H;ZTM;Plac Solidarnoœci;;;;3;;;;;;;2;
+17;P(2063),1,I,H;ZTM;Stocznia SKM;;;;2;;;;;;;1;
+18;P(2065),1,I,H;ZTM;Stocznia Pó³nocna;;;;2;;;;;;;1;
+19;P(2067),1,I,H;ZTM;Twarda;;;;1;;;;;;;1;
+20;P(2153),1,I,H;ZTM;Wêze³ Kliniczna;;;;1;;;;;;;1;
+21;P(2155),1,I,H;ZTM;Swojska;;;;2;;;;;;;1;
+22;P(2157),1,I,H;ZTM;¯aglowa - AmberExpo;;;;2;;;;;;;2;
+23;P(2159),1,I,H;ZTM;Mostostal;;;;1;;;;;;;1;
+24;P(2161),1,I,H;ZTM;PGE ARENA Gdañsk;;;;2;;;;;;;1;
+25;P(2163),1,I,H;ZTM;Œnie¿na;;;;1;;;;;;;1;
+26;P(2165),1,I,H;ZTM;Wyzwolenia - Marynarki Polskiej;;;;2;;;;;;;2;
+27;P(2167),1,I,H;ZTM;Plac Wolnoœci;;;;1;;;;;;;1;
+28;P(2168),1,I,H;ZTM;Zajezdnia Nowy Port (dla wysiad.);;;;1;;;;;;;1;
+29;P(2005);ZTM;Brama Oliwska;2;2;2;;2;2;2;2;2;2;;2
+30;P(2007);ZTM;Chodowieckiego;1;1;1;;1;1;1;1;1;1;;1
+31;P(2009);ZTM;Uniwersytet Medyczny;1;1;1;;1;1;1;1;1;1;;1
+32;P(2011);ZTM;Traugutta;1;2;2;;1;1;1;1;1;1;;1
+33;P(2013);ZTM;Opera Ba³tycka;2;2;2;;2;2;2;;1;;;
+34;P(2015),1,I,H;ZTM;Opera Ba³tycka;;;;;;;;1;;2;;2
+35;P(2017),1,I,H;ZTM;Politechnika;;;;;;;;1;;1;;1
+36;P(2019),1,I,H;ZTM;Miszewskiego;;;;;;;;1;;1;;1
+37;P(2021),1,I,H;ZTM;Jaœkowa Dolina;;;;;;;;1;;2;;2
+38;P(2023),1,I,H;ZTM;Klonowa;;;;;;;;1;;2;;1
+39;P(2025),1,I,H;ZTM;Galeria Ba³tycka;;;;;;;;2;;2;;2
+40;P(2027),1,I,H;ZTM;Wojska Polskiego;;;;;;;;2;;2;;2
+41;P(2029),1,I,H;ZTM;Zamenhofa;;;;;;;;1;;1;;1
+42;P(2031),1,I,H;ZTM;Zajezdnia;;;;;;;;1;;1;;1
+43;P(213),1,I,H;ZTM;Strzy¿a PKM;;;;;;;;1;;1;;1
+44;P(2071);ZTM;Wyspiañskiego;3;3;3;;3;2;2;;2;;;
+45;P(2073);ZTM;Reja;1;1;1;;1;1;1;;1;;;
+46;P(2171);ZTM;Mickiewicza;2;2;2;;2;2;2;;1;;;
+47;P(2173);ZTM;Koœciuszki;2;2;2;;2;2;2;;2;;;
+48;P(2175);ZTM;Kolonia Uroda;1;1;1;;1;1;1;;1;;;
+49;P(2177);ZTM;Grudzi¹dzka;1;1;1;;1;1;1;;1;;;
+50;P(2179);ZTM;al. Hallera;2;2;2;;2;2;2;;2;;;
+51;P(2187);ZTM;Uczniowska;1;1;1;;1;1;1;;1;;;
+52;P(2181);ZTM;Gdañska;1;1;1;;1;1;1;;1;;;
+53;P(2183);ZTM;Sternicza;1;1;1;;1;1;1;;1;;;
+54;B,N,K0,P(210);ZTM;BrzeŸno;2;2;;;;1;;;;;;
+55;P(2189),1,I;ZTM;BrzeŸno;;;2;;2;;1;;1;;;
+56;P(2191),1,I;ZTM;Krasickiego;;;1;;1;;1;;1;;;
+57;P(2193),1,I;ZTM;Latarnia Morska;;;3;;3;;3;;3;;;
+58;P(2195),1,I;ZTM;Kasztanowa;;;1;;1;;1;;1;;;
+59;P(2197),1,I;ZTM;Rybo³owców;;;1;;1;;1;;1;;;
+60;P(2167),1,I;ZTM;Plac Wolnoœci;;;2;;2;;2;;2;;;
+61;B,N,P(2168),1,I;ZTM;Zajezdnia Nowy Port (dla wysiad.);;;1;;1;;1;;1;;;

@@ -1,0 +1,17 @@
+205;Flagi;Gmina;Nazwa;X0(00:00-29:59);X1(00:00-29:59);X2(00:00-29:59);X3(00:00-29:59)
+1;B,P(171);ZTM;Pruszcz Gd. - Komarowo;0;0;0;0
+2;P(5811),1,I;ZTM;Pruszcz Gd. - Drzyma³y;2;2;;
+3;P(5813),1,I;ZTM;Pruszcz Gd. - Powstañców Warszawy (n/¿);2;2;;
+4;P(5827),1,I;ZTM;Pruszcz Gd. - Sienkiewicza;2;2;;
+5;P(5835);ZTM;Pruszcz Gd. - ¯wirki i Wigury;;;2;2
+6;P(5829);ZTM;Pruszcz Gd. - Niemcewicza;2;2;1;1
+7;P(5604);ZTM;Pruszcz Gd. - Chopina;3;3;3;2
+8;P(5701),1,I;ZTM;Pruszcz Gd. - Raciborskiego;2;2;;
+9;P(5704),1,I;ZTM;Pruszcz Gd. - Rondo Kaszubskie;2;2;;
+10;P(5602);ZTM;Pruszcz Gd. - Przemys³owa (n/¿);3;4;2;1
+11;P(5226),S;ZTM;Pruszcz Gd. - Radunica (n/¿);2;2;2;2
+12;P(1218);ZTM;Lipce - Niegowska;3;3;3;3
+13;P(1210);ZTM;Goœcinna;5;5;3;3
+14;P(1206);ZTM;Sandomierska;3;3;2;2
+15;P(1028);ZTM;Brama Wy¿ynna;6;6;4;4
+16;B,N,K0,P(1016);ZTM;Dworzec G³ówny;3;3;3;2

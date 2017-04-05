@@ -1,0 +1,14 @@
+179;Flagi;Gmina;Nazwa;X6(00:00-29:59);X7(00:00-29:59);X8(00:00-29:59);X9(00:00-29:59);X10(00:00-29:59);X13(00:00-29:59);X14(00:00-29:59)
+1;B,P(120);ZTM;Oliwa Pêtla Tramwajowa;0;0;0;0;0;0;0
+2;P(1503);ZTM;Cystersów;3;3;3;3;4;3;3
+3;P(1505),1,I;ZTM;Spacerowa (n/¿);;;2;;;2;2
+4;P(154),1,I;ZTM;Oliwa ZOO;;;2;;;2;2
+5;P(1507);ZTM;Rynarzewo (n/¿);3;3;4;3;3;4;4
+6;P(1509);ZTM;Osowa - Obwodnica;4;4;4;5;5;4;5
+7;P(1729);ZTM;Odyseusza;3;3;3;3;3;;
+8;P(1581);ZTM;Sopocka;2;3;;3;3;;
+9;P(160);ZTM;Wysoka Galaktyczna;2;2;;2;2;;
+10;P(1637);ZTM;Sopocka;3;3;3;3;3;3;3
+11;P(1639);ZTM;Jednoro¿ca;1;1;1;1;1;1;1
+12;P(1883);ZTM;Marsa;1;1;1;1;1;1;1
+13;B,N,K0,P(1885);ZTM;Owczarnia;2;2;2;2;2;2;2

@@ -1,0 +1,39 @@
+11;Flagi;Gmina;Nazwa;X0(00:00-29:59);X1(00:00-29:59);X2(00:00-29:59);X3(00:00-29:59);X4(00:00-29:59)
+1;B,P(220);ZTM;Che³m Witosa;0;0;0;0;0
+2;P(2218);ZTM;Sikorskiego;1;1;1;1;0
+3;P(2216);ZTM;Cha³ubiñskiego;2;2;2;2;2
+4;P(2214);ZTM;Odrzañska;2;2;2;2;2
+5;P(2212);ZTM;Pohulanka (Armii Krajowej);1;1;1;1;1
+6;P(2208);ZTM;Œródmieœcie SKM;2;2;2;2;2
+7;P(2102);ZTM;Brama Wy¿ynna;2;2;2;2;2
+8;P(2001);ZTM;Dworzec G³ówny;2;2;2;2;2
+9;P(2005);ZTM;Brama Oliwska;2;2;2;2;2
+10;P(2007);ZTM;Chodowieckiego;1;1;1;1;1
+11;P(2009);ZTM;Uniwersytet Medyczny;1;1;1;1;1
+12;P(2011);ZTM;Traugutta;1;2;1;1;1
+13;P(2015);ZTM;Opera Ba³tycka;2;2;2;2;1
+14;P(2017);ZTM;Politechnika;1;1;1;1;1
+15;P(2019);ZTM;Miszewskiego;1;1;1;1;1
+16;P(2021);ZTM;Jaœkowa Dolina;2;2;2;2;1
+17;P(2023);ZTM;Klonowa;1;2;1;1;1
+18;P(2025);ZTM;Galeria Ba³tycka;2;2;2;2;2
+19;P(2027);ZTM;Wojska Polskiego;2;2;2;2;2
+20;P(2029);ZTM;Zamenhofa;1;1;1;1;1
+21;P(2031);ZTM;Zajezdnia;1;1;1;1;1
+22;P(213),1,I,H;ZTM;Strzy¿a PKM;;;;1;1
+23;P(2033);ZTM;Strzy¿a PKM;1;1;1;;
+24;P(2035);ZTM;Uniwersytet;2;2;1;;
+25;P(2037);ZTM;Ba¿yñskiego;1;1;1;;
+26;P(2039);ZTM;Tetmajera;1;1;1;;
+27;P(2041);ZTM;Derdowskiego;1;1;1;;
+28;P(2043);ZTM;Obroñców Westerplatte;1;1;1;;
+29;P(2045);ZTM;Oliwa;2;2;2;;
+30;P(2047);ZTM;Opacka;2;2;2;;
+31;P(2049);ZTM;Subis³awa;2;2;2;;
+32;P(2051);ZTM;Pomorska - Osiedle;2;2;2;;
+33;P(2100);ZTM;Pomorska;2;2;2;;
+34;P(2098);ZTM;Piastowska;1;1;1;;
+35;P(2096);ZTM;Jagielloñska;2;2;2;;
+36;P(2094);ZTM;Ch³opska - Obroñców Wybrze¿a;1;1;1;;
+37;P(2092);ZTM;Ko³obrzeska;1;1;1;;
+38;B,N,K0,P(204);ZTM;Zaspa;2;2;2;;

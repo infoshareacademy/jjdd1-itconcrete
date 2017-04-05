@@ -1,0 +1,23 @@
+111;Flagi;Gmina;Nazwa;X6(00:00-29:59);X7(00:00-29:59);X8(00:00-29:59);X9(00:00-29:59);X10(00:00-29:59)
+1;B,P(1017);ZTM;Dworzec G³ówny;0;0;0;0;0
+2;P(1031);ZTM;Brama Wy¿ynna;2;2;2;2;3
+3;P(1191);ZTM;RzeŸnicka;3;3;4;3;4
+4;P(1682);ZTM;Dobra (n/¿);1;2;2;2;2
+5;P(1193);ZTM;Wróbla;1;1;1;1;1
+6;P(1036);ZTM;Ch³odna;2;2;2;2;2
+7;P(1661);ZTM;Akademia Muzyczna;1;1;1;1;1
+8;P(1099);ZTM;Brama ¯u³awska;1;1;1;1;1
+9;P(1601);ZTM;Mostek;1;1;1;1;1
+10;P(1103);ZTM;Elbl¹ska - Wiadukt (n/¿);2;2;2;2;2
+11;P(1692);ZTM;Budzysza Elmont;4;4;5;5;5
+12;P(1047);ZTM;Kaczeñce - Sienna (n/¿);1;1;1;1;1
+13;P(1049);ZTM;Zimna;2;2;2;2;2
+14;P(1051);ZTM;Nowotna;1;2;2;2;2
+15;P(1053);ZTM;Sówki;2;2;2;2;2
+16;P(1055);ZTM;Steczka;1;1;1;1;1
+17;P(1057);ZTM;Kêpna (n/¿);1;1;1;1;1
+18;P(1429);ZTM;Górecka (n/¿);1;1;1;1;1
+19;P(1059);ZTM;Baza Manipulacyjna (n/¿);1;1;1;1;1
+20;P(1061);ZTM;£êczycka;1;1;1;1;1
+21;P(1063);ZTM;£owicka;1;1;1;1;1
+22;B,N,K0,P(139);ZTM;Górki Zachodnie;2;2;2;2;2

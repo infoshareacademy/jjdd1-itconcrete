@@ -1,0 +1,46 @@
+N1;Flagi;Gmina;Nazwa;X6(00:00-29:59);X7(00:00-29:59);X8(00:00-29:59);X9(00:00-29:59);X10(00:00-29:59);X11(00:00-29:59)
+1;B,P(161);ZTM;Osowa PKP;;;0;;0;0
+2;P(1522);ZTM;Osowa PKP (n/¿);;;0;;0;0
+3;P(1520);ZTM;Biwakowa (n/¿);;;1;;1;1
+4;P(1518);ZTM;Niedzia³kowskiego (n/¿);;;1;;1;1
+5;P(1516);ZTM;Barniewicka (n/¿);;;1;;1;1
+6;P(1514);ZTM;Nowa (n/¿);;;1;;1;1
+7;P(1512);ZTM;Sopocka (n/¿);;;1;;1;1
+8;P(1510);ZTM;Osowa - Obwodnica (n/¿);;;2;;2;2
+9;P(1508);ZTM;Rynarzewo (n/¿);;;4;;4;4
+10;P(1504);ZTM;Cystersów (n/¿);;;3;;3;3
+11;P(1534);ZTM;Oliwa Pêtla Tramwajowa (n/¿);;;1;;1;1
+12;P(118);ZTM;Oliwa PKP (n/¿);;0;3;0;3;3
+13;P(1741);ZTM;Beniowskiego (n/¿);;1;1;1;1;1
+14;P(1453);ZTM;Bora Komorowskiego (n/¿);;1;1;1;1;1
+15;P(1613);ZTM;Ko³obrzeska (n/¿);;2;2;2;2;2
+16;P(1615);ZTM;Jana Paw³a II (n/¿);;3;3;3;3;3
+17;P(1442);ZTM;Legionów (n/¿);;2;2;2;2;2
+18;P(1602),1,I;ZTM;Koœciuszki (n/¿);;2;;;;2
+19;P(1449),1,I;ZTM;Hallera - Baza ZKM (n/¿);;2;;;;
+20;P(1910),1,I,H;ZTM;Hallera - Baza ZKM (n/¿);;;;;;1
+21;P(1617);ZTM;Koœciuszki (n/¿);;1;2;2;2;
+22;P(1655);ZTM;Mickiewicza (n/¿);;1;1;1;1;
+23;P(1609);ZTM;Wyspiañskiego (n/¿);;2;2;2;2;
+24;P(1599);ZTM;Uniwersytet Medyczny (n/¿);;2;2;2;2;
+25;P(1015);ZTM;Dworzec G³ówny;0;10;10;10;10;
+26;P(1033);ZTM;Brama Wy¿ynna;2;2;2;2;2;
+27;P(1201);ZTM;Zaroœlak (n/¿);2;2;2;2;2;
+28;P(1203);ZTM;Elmet (n/¿);1;1;1;1;1;
+29;P(1205);ZTM;Zremb (n/¿);1;1;1;1;1;
+30;P(1207);ZTM;Sandomierska  (n/¿);1;1;1;1;1;
+31;P(1227);ZTM;Ptasia (n/¿);1;1;1;1;1;
+32;P(1229);ZTM;Ma³omiejska (n/¿);1;1;1;1;1;
+33;P(1231);ZTM;Platynowa (n/¿);1;1;1;1;1;
+34;P(1579);ZTM;Krzemowa (n/¿);1;1;1;1;1;
+35;P(1233);ZTM;Uranowa (n/¿);1;1;1;1;1;
+36;P(132);ZTM;Orunia Górna (n/¿);1;1;1;1;1;
+37;P(1734);ZTM;Platynowa (n/¿);1;1;1;1;1;
+38;P(1319);ZTM;£ódzka (n/¿);1;1;1;1;1;
+39;P(1321);ZTM;Niepo³omicka (n/¿);1;1;1;1;1;
+40;P(1789);ZTM;Wie¿ycka (n/¿);1;1;1;1;1;
+41;P(1932);ZTM;Porêbskiego (n/¿);1;1;1;;;
+42;P(194);ZTM;Zakoniczyn (n/¿);1;1;1;;;
+43;P(1958);ZTM;Osiedle Œwiêtokrzyskie (n/¿);4;4;4;2;2;
+44;P(1960);ZTM;Elfów (n/¿);1;1;1;1;1;
+45;B,N,K0,P(195);ZTM;Jaworzniaków;1;1;1;1;1;
