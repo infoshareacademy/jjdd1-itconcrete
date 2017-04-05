@@ -26,10 +26,7 @@ public class CalendarParser {
 //    TRANSP:OPAQUE
 //    END:VEVENT
 
-    public static void main(String[] args) throws Exception {
-        CalendarParser instance = new CalendarParser();
-        instance.loadDataFromFile();
-    }
+
 
     private void loadDataFromFile() throws Exception {
         URL resource = getClass().getResource("kalendarz.ics");             //TODO: import file from outer package
