@@ -6,11 +6,17 @@ import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarEvent;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusConnection;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
+import isacademy.jjdd1.itconcrete.smartconnect.calendar.Event;
 
 
 public class App
 {
     public static void main( String[] args )
+
+
+
+
+
     {
         String pathToBusConnections = "C:/aaa/bbb"; // change this to proper value
         String pathToCalendarEvents = "C:/aaa/bbb"; // change this to proper value
