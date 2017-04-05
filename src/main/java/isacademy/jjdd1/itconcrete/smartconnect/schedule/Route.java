@@ -11,6 +11,7 @@ public class Route {
     private HashMap<Integer, String> hashMapOfStops;
     private String variant;
 
+
     public Route(int direction, HashMap<Integer, String> hashMapOfStops, String variant) {
         this.direction = direction;
         this.hashMapOfStops = hashMapOfStops;

@@ -6,19 +6,31 @@ import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarEvent;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusConnection;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
-import isacademy.jjdd1.itconcrete.smartconnect.calendar.Event;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 
 public class App
 {
-    public static void main( String[] args )
+    public static void main( String[] args ) throws Exception {
+
+        ScheduleParser sp = new ScheduleParser();
+        ArrayList<String[]> al = sp.scheduleParser();
+
+        //System.out.println(sp);
+        //System.out.println(al);
+
+        System.out.println(sp.getTestCase());
 
 
+//        System.out.println(ll.size());
+//
+//        for (int i = 0; i < ll.size(); i++) {
+//            System.out.println(ll.get(i));
+//        }
 
-
-
-    {
-        String pathToBusConnections = "C:/aaa/bbb"; // change this to proper value
+        /*String pathToBusConnections = "C:/aaa/bbb"; // change this to proper value
         String pathToCalendarEvents = "C:/aaa/bbb"; // change this to proper value
 
         ScheduleParser scheduleParser = new ScheduleParser();
@@ -29,7 +41,7 @@ public class App
 
         ConnectionSeeker connectionSeeker = new ConnectionSeeker();
 
-        /*for(int i=0; i<calendarEvent.length; i++) {
+        for(int i=0; i<calendarEvent.length; i++) {
             CalendarEvent event = calendarEvent[i];
             int busNumber = connectionSeeker.seekConnection(event, busConnection);
         }*/
