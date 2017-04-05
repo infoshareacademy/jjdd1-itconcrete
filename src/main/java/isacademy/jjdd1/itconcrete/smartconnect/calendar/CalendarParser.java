@@ -1,9 +1,9 @@
 package isacademy.jjdd1.itconcrete.smartconnect.calendar;
 
-import isacademy.jjdd1.itconcrete.smartconnect.data.CalendarEvent;
-
+import java.io.File;
 import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
@@ -29,8 +29,9 @@ public class CalendarParser {
 
 
     private void loadDataFromFile() throws Exception {
-        URL resource = getClass().getResource("kalendarz.ics");             //TODO: import file from outer package
-        List<String> lines = Files.readAllLines(Paths.get(resource.toURI()));
+        Path path = Paths.get("src/main/resources", "kalendarz.ics");             //TODO: import file from outer package
+        List<String> lines = Files.readAllLines(path);
+
         for (String line: lines) {
             System.out.println(line);
         }
@@ -42,6 +43,11 @@ public class CalendarParser {
      */
     public CalendarEvent[] parseDataFromPath(String calendarPath){
         //TODO logic here
+        try {
+            loadDataFromFile();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return new CalendarEvent[0];
     }
 }
