@@ -14,7 +14,20 @@ public class Event {
     private String summary;
     private boolean confirmed;
 
-    Event(int startDate, int startTime, int endDate, int endTime, String location, String summary, boolean confirmed) {
+
+
+
+    Event(int startDate) {
+        this.startDate = startDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Event: " + startDate + " " + startTime + " " + endDate + " " + endTime + " " + location
+                + " " + summary + " " + confirmed;
+    }
+
+    public Event(int startDate, int startTime, int endDate, int endTime, String location, String summary, boolean confirmed) {
         this.startDate = startDate;
         this.startTime = startTime;
         this.endDate = endDate;
@@ -25,6 +38,8 @@ public class Event {
 
 
     }
+
+
 
     public int getStartDate() {
         return startDate;
