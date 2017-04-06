@@ -6,39 +6,27 @@ import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarEvent;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusConnection;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
+import isacademy.jjdd1.itconcrete.smartconnect.calendar.Event;
 
 
 public class App
 {
-    public static void main( String[] args ) throws Exception {
+    public static void main( String[] args ) throws Exception
+
+
+    {
 
         ScheduleParser sp = new ScheduleParser();
-        ArrayList<String[]> al = sp.scheduleParser();
-
-        //System.out.println(sp);
-        //System.out.println(al);
-
-        System.out.println(sp.getTestCase());
-
-
-//        System.out.println(ll.size());
-//
-//        for (int i = 0; i < ll.size(); i++) {
-//            System.out.println(ll.get(i));
-//        }
+        sp.scheduleParser();
 
         /*String pathToBusConnections = "C:/aaa/bbb"; // change this to proper value
         String pathToCalendarEvents = "C:/aaa/bbb"; // change this to proper value
 
-
         ScheduleParser scheduleParser = new ScheduleParser();
         //BusConnection busConnection[] = scheduleParser.parseDataFromPath(pathToBusConnections);
 
-       // CalendarParser calendarParser = new CalendarParser();
-       // CalendarEvent calendarEvent[] = calendarParser.parseDataFromPath(pathToCalendarEvents);
+        CalendarParser calendarParser = new CalendarParser();
+        CalendarEvent calendarEvent[] = calendarParser.parseDataFromPath(pathToCalendarEvents);
 
         ConnectionSeeker connectionSeeker = new ConnectionSeeker();
 
