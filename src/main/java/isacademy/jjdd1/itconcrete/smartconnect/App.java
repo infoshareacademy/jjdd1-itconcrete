@@ -21,11 +21,12 @@ public class App
         String pathToBusConnections = "C:/aaa/bbb"; // change this to proper value
         String pathToCalendarEvents = "C:/aaa/bbb"; // change this to proper value
 
+
         ScheduleParser scheduleParser = new ScheduleParser();
         //BusConnection busConnection[] = scheduleParser.parseDataFromPath(pathToBusConnections);
 
-        CalendarParser calendarParser = new CalendarParser();
-        CalendarEvent calendarEvent[] = calendarParser.parseDataFromPath(pathToCalendarEvents);
+       // CalendarParser calendarParser = new CalendarParser();
+       // CalendarEvent calendarEvent[] = calendarParser.parseDataFromPath(pathToCalendarEvents);
 
         ConnectionSeeker connectionSeeker = new ConnectionSeeker();
 

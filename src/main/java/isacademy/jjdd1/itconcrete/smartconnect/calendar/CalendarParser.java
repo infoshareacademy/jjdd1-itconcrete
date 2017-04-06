@@ -30,12 +30,7 @@ public class CalendarParser {
 //    END:VEVENT
 
 
-    // to comment-out each time before committing until prob(ekhm)challenge with running this method in App.main() is solved --->
-//    public static void main(String[] args) throws Exception {
-//        CalendarParser instance = new CalendarParser();
-//        instance.loadDataFromFile();
-//    }
-    //---> until here
+
 
         private void loadDataFromFile () throws Exception {
             Path path = Paths.get("src/main/resources", "kalendarz.ics");
@@ -48,7 +43,7 @@ public class CalendarParser {
                 }
             }
 
-            Event e = new Event(0, 0, 0, 0, "", "", false);
+
 
             Event[] DailyEvents = new Event[eventsNumber];  //this table stores all {events taking place during same day} separately
             //following loop declares each Event today
