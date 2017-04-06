@@ -3,15 +3,14 @@ package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 import org.joda.time.LocalTime;
 
 /**
- * Created by Ageee on 05.04.2017.
+ * Created by katarzynadobrowolska on 06.04.2017.
  */
-public class BusLine {
-
+public class KasiaBusLine {
     private int lineNumber;
-    private Route route;
+    private KasiaRoute route;
     private LocalTime departures[];
 
-    public BusLine(int lineNumber, Route route, LocalTime[] departures) {
+    public KasiaBusLine(int lineNumber, KasiaRoute route, LocalTime[] departures) {
         this.lineNumber = lineNumber;
         this.route = route;
         this.departures = departures;
@@ -21,7 +20,11 @@ public class BusLine {
         return lineNumber;
     }
 
-    public Route getRoute() {
+    public KasiaRoute getRoute() {
         return route;
+    }
+
+    public LocalTime[] getDepartures() {
+        return departures;
     }
 }
