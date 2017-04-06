@@ -1,5 +1,7 @@
 package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 
+
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -7,8 +9,8 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.net.URISyntaxException;
 import java.net.URL;
-//import java.nio.file.Files;
-//import java.nio.file.Paths;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,7 +22,11 @@ import java.util.List;
  */
 public class ScheduleParser {
 
-    //private String testCase = "5";
+    private ArrayList<String[]> listOfScheduleRows;
+    private ArrayList<String> route;
+    private ArrayList<String> variants;
+
+
 
     public ScheduleParser() {
     }
@@ -37,12 +43,12 @@ public class ScheduleParser {
         charset.setAccessible(true);
         charset.set(null,null);
 
-        ArrayList<String[]> listOfScheduleRows = new ArrayList<String[]>();
+        listOfScheduleRows = new ArrayList<String[]>();
 
-        String pathToSchedules = "C:\\Users\\Ageee\\IdeaProjects\\jjdd1-itconcrete\\src\\main\\resources\\rozklady_2015-09-08_13.43.01\\136_20140802\\136_20140802warianty1.csv";
+        String pathToSchedules = "/home/agatabereza/IdeaProjects/jjdd1-itconcrete/src/main/resources/rozklady_2015-09-08_13.43.01/131_20150718/131_20150718warianty1.csv";
         File file = new File(pathToSchedules);
         String busLineNumber = file.getName().toString().substring(0,3);
-        System.out.println("Current busline number is: " + busLineNumber);
+
         //URL resource = getClass().getResource(pathToSchedules);
         //List<String> listOfAllLines = null;
 
@@ -64,20 +70,29 @@ public class ScheduleParser {
             e.printStackTrace();
         }
 
+        variants = new ArrayList<String>();
+        String [] firstRowInCSV = listOfScheduleRows.get(0);
+        for (int i = 4; i < firstRowInCSV.length-1; i++){
+            String currentElementFromFirsRow = firstRowInCSV[i];
+            variants.add(currentElementFromFirsRow.substring(0,currentElementFromFirsRow.indexOf("(")));
+        }
 
-        ArrayList<String> route = new ArrayList<String>();
+
+        route = new ArrayList<String>();
         for (int i = 1; i < listOfScheduleRows.size() ; i++) {
             route.add(listOfScheduleRows.get(i)[3]);
         }
 
-        System.out.println("That's a route for busline "+busLineNumber + " direction of " + route.get(route.size()-1)+".");
+        System.out.println("Busline: "+busLineNumber + "\nDirection: " + route.get(route.size()-1)+"\nVariants: " + variants + "\n");
         for (int i = 0; i < route.size(); i++) {
             System.out.println(route.get(i));
 
         }
 
+
+
         /*try {
-            listOfAllLines = Files.readAllLines(Paths.get(resource.toURI()));
+            listOfScheduleRows = Files.readAllLines(Paths.get(resource.toURI()));
             System.out.println("probujemy");
         } catch (IOException e) {
             e.printStackTrace();

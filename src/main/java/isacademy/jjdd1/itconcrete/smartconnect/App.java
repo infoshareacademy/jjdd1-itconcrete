@@ -11,14 +11,15 @@ import isacademy.jjdd1.itconcrete.smartconnect.calendar.Event;
 
 public class App
 {
-    public static void main( String[] args )
-
-
-
+    public static void main( String[] args ) throws Exception
 
 
     {
-        String pathToBusConnections = "C:/aaa/bbb"; // change this to proper value
+
+        ScheduleParser sp = new ScheduleParser();
+        sp.scheduleParser();
+
+        /*String pathToBusConnections = "C:/aaa/bbb"; // change this to proper value
         String pathToCalendarEvents = "C:/aaa/bbb"; // change this to proper value
 
         ScheduleParser scheduleParser = new ScheduleParser();
@@ -29,7 +30,7 @@ public class App
 
         ConnectionSeeker connectionSeeker = new ConnectionSeeker();
 
-        /*for(int i=0; i<calendarEvent.length; i++) {
+        for(int i=0; i<calendarEvent.length; i++) {
             CalendarEvent event = calendarEvent[i];
             int busNumber = connectionSeeker.seekConnection(event, busConnection);
         }*/
