@@ -42,7 +42,7 @@ public class App
 
 
         //Dane z kalendarza
-        String startBusStop = "Potokowa";
+        String startBusStop = "Niedźwiednik";
         String endBusStop = "Zabytkowa";
 
 

@@ -36,11 +36,11 @@ public class ScheduleParser {
         return UTFCharsetString;
     }*/
 
-    private String charsetConverter (String windowsCharsetString) throws UnsupportedEncodingException {
-        byte ptext[] = windowsCharsetString.getBytes("windows-1250");
+    /*private String charsetConverter (String windowsCharsetString) throws UnsupportedEncodingException {
+        byte ptext[] = windowsCharsetString.getBytes("UTF-8");
         String UTFCharsetString = new String(ptext, "UTF-8");
         return UTFCharsetString;
-    }
+    }*/
 
     /*private String charsetConverter (String windowsCharsetString) throws UnsupportedEncodingException {
         byte[] byteText = windowsCharsetString.getBytes(Charset.forName("windows-1250"));
@@ -71,7 +71,7 @@ public class ScheduleParser {
     }*/
 
 
-        public HashMap<String, ArrayList> hashMapOfBusStops() {
+    public HashMap<String, ArrayList> hashMapOfBusStops() {
 
         hashMapOfBusStops = new HashMap<String, ArrayList>();
 
@@ -94,9 +94,8 @@ public class ScheduleParser {
                             String busLine = child.getName().substring(0,3);
                             while ((line = br.readLine()) != null) {
 
-                                line = charsetConverter(line);
                                 String[] oneRowInCSV = line.split(cvsSplitBy);
-                                String nameColumnInCSV = charsetConverter(oneRowInCSV[3]);
+                                String nameColumnInCSV = oneRowInCSV[3];
                                 System.out.println(oneRowInCSV[3]);
 
 
@@ -153,10 +152,9 @@ public class ScheduleParser {
 
                             try {
 
-                                br = new BufferedReader(new FileReader(pathToSchedules));
+                                br = new BufferedReader( new InputStreamReader(new FileInputStream(pathToSchedules),"windows-1250"));
                                 while ((line = br.readLine()) != null) {
 
-                                    line = charsetConverter(line);
                                     String[] oneRowInCSV = line.split(csvSplitBy);
                                     listOfScheduleRows.add(oneRowInCSV);
 
