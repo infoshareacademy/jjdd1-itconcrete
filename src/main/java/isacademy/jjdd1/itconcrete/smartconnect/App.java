@@ -12,6 +12,8 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.ISODateTimeFormat;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,10 +21,57 @@ import java.util.List;
 
 public class App
 {
+
+
     public static void main( String[] args ) throws Exception {
 
+
+
+        ScheduleParser sp = new ScheduleParser();
+        //HashMap<String,ArrayList> hashMapOfBusStops = new HashMap<String,ArrayList>();
+        HashMap<String, ArrayList> hashMapOfBusStops = sp.hashMapOfBusStops();
+
+        for (String key : hashMapOfBusStops.keySet()) {
+            System.out.println(key + hashMapOfBusStops.get(key));
+        }
+
+        ArrayList<String[]> oneSchedule = sp.scheduleParser("136");
+        String stop = oneSchedule.get(1)[3];
+        System.out.println("your stop:" + stop);
+
+
+
+        //Dane z kalendarza
+        String startBusStop = "Potokowa";
+        String endBusStop = "Zabytkowa";
+
+
+        //Dane z mapy
+        ArrayList<String> busesAvailableOnStartBusStop = hashMapOfBusStops.get(startBusStop);
+        System.out.println("start stops: " + busesAvailableOnStartBusStop);
+        ArrayList<String> busesAvailableOnEndBusStop = hashMapOfBusStops.get(endBusStop);
+        System.out.println("end stops: " + busesAvailableOnEndBusStop);
+
+        ArrayList<String> possibleConnections = new ArrayList<String>();
+
+        for (int i = 0; i < busesAvailableOnStartBusStop.size(); i++) {
+            String currentBusLine = busesAvailableOnStartBusStop.get(i);
+            if (busesAvailableOnEndBusStop.contains(currentBusLine)) {
+                possibleConnections.add(currentBusLine);
+            }
+        }
+
+        System.out.println("Possible connections: " + possibleConnections);
+    }
+}
+
+//        for (String bus : possibleConnections) {
+//            sp.scheduleParser(bus);
+//        }
+//        sp.scheduleParser("136");
+
         // data mock
-        DateTimeFormatter parser = DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss'Z'");
+        /*DateTimeFormatter parser = DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss'Z'");
         DateTime dateTime = parser.parseDateTime("20170408T090000Z");
 
         CalendarEvent[] calendarEvent = {new CalendarEvent("Cygańska Góra","Suchanino", dateTime),
@@ -62,23 +111,22 @@ public class App
 
 
         ScheduleParser sp = new ScheduleParser();
-        //sp.scheduleParser();
+        sp.scheduleParser();
 
-        /*String pathToBusConnections = "C:/aaa/bbb"; // change this to proper value
+        String pathToBusConnections = "C:/aaa/bbb"; // change this to proper value
         String pathToCalendarEvents = "C:/aaa/bbb"; // change this to proper value
 
 
         ScheduleParser scheduleParser = new ScheduleParser();
-        //BusConnection busConnection[] = scheduleParser.parseDataFromPath(pathToBusConnections);
+        BusConnection busConnection[] = scheduleParser.parseDataFromPath(pathToBusConnections);
 
-       // CalendarParser calendarParser = new CalendarParser();
-       // CalendarEvent calendarEvent[] = calendarParser.parseDataFromPath(pathToCalendarEvents);*/
+        CalendarParser calendarParser = new CalendarParser();
+        CalendarEvent calendarEvent[] = calendarParser.parseDataFromPath(pathToCalendarEvents);
 
         ConnectionSeeker connectionSeeker = new ConnectionSeeker();
 
         for(int i=0; i<calendarEvent.length; i++) {
             CalendarEvent event = calendarEvent[i];
             int busNumber = connectionSeeker.seekConnection(event, busLines);
-        }
-    }
-}
+        }*/
+
