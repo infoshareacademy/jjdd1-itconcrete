@@ -13,6 +13,5 @@ public class ContextMenu {
         this.welcomeText = welcomeText;
         this.priorityQuestion = priorityQuestion;
         this.resultText = resultText;
-
     }
 }
