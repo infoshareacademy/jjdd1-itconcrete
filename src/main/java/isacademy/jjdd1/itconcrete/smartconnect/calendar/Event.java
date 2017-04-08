@@ -1,76 +1,49 @@
 package isacademy.jjdd1.itconcrete.smartconnect.calendar;
 
+import org.joda.time.DateTime;
+
 /**
  * Created by rekinlukasz on 03.04.17.
  */
 public class Event {
 
 
-    private int startDate;      //format yyyymmdd
-    private int startTime;      //format 000000
-    private int endDate;        //format yyyymmdd
-    private int endTime;        //format 000000
+
     private String location;
     private String summary;
     private boolean confirmed;
-
-
-
-
-    Event(int startDate) {
-        this.startDate = startDate;
-    }
+    private DateTime startTimeYoda;
+    private DateTime endTimeYoda;
 
     @Override
     public String toString() {
-        return "Event: " + startDate + " " + startTime + " " + endDate + " " + endTime + " " + location
+        return "Event: "+ startTimeYoda + " " + endTimeYoda +  " " + location
                 + " " + summary + " " + confirmed;
     }
 
-    public Event(int startDate, int startTime, int endDate, int endTime, String location, String summary, boolean confirmed) {
-        this.startDate = startDate;
-        this.startTime = startTime;
-        this.endDate = endDate;
-        this.endTime = endTime;
+    public Event(DateTime startTimeYoda, DateTime endTimeYoda, String location, String summary, boolean confirmed) {
+        this.startTimeYoda = startTimeYoda;
+        this.endTimeYoda = endTimeYoda;
         this.location = location;
         this.summary = summary;
         this.confirmed = confirmed;
-
-
     }
 
 
-
-    public int getStartDate() {
-        return startDate;
+    public DateTime getStartTimeYoda() {
+        return startTimeYoda;
     }
 
-    public void setStartDate(int startDate) {
-        this.startDate = startDate;
+    public void setStartTimeYoda(DateTime startTimeYoda) {
+        this.startTimeYoda = startTimeYoda;
     }
 
-    public int getStartTime() {
-        return startTime;
+    public DateTime getEndTimeYoda() {
+        return endTimeYoda;
     }
 
-    public void setStartTime(int startTime) {
-        this.startTime = startTime;
-    }
-
-    public int getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(int endDate) {
-        this.endDate = endDate;
-    }
-
-    public int getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(int endTime) {
-        this.endTime = endTime;
+    public void setEndTimeYoda(DateTime endTimeYoda) {
+        this.endTimeYoda = endTimeYoda;
     }
 
     public String getLocation() {

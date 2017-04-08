@@ -25,8 +25,6 @@ public class App
 
     public static void main( String[] args ) throws Exception {
 
-
-
         ScheduleParser sp = new ScheduleParser();
         //HashMap<String,ArrayList> hashMapOfBusStops = new HashMap<String,ArrayList>();
         HashMap<String, ArrayList> hashMapOfBusStops = sp.hashMapOfBusStops();
@@ -62,6 +60,11 @@ public class App
         }
 
         System.out.println("Possible connections: " + possibleConnections);
+
+        CalendarParser cp = new CalendarParser();
+        cp.loadDataFromFile();
+
+
     }
 }
 

@@ -1,14 +1,13 @@
 package isacademy.jjdd1.itconcrete.smartconnect.calendar;
 
-import java.io.File;
-import java.lang.reflect.Array;
-import java.net.URL;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-import static java.lang.Integer.parseInt;
+
 
 
 public class CalendarParser {
@@ -29,78 +28,68 @@ public class CalendarParser {
 //    TRANSP:OPAQUE
 //    END:VEVENT
 
+    public CalendarEvent[] loadDataFromFile() throws Exception {
+        Path path = Paths.get("src/main/resources", "kalendarz.ics");
+        List<String> lines = Files.readAllLines(path);
+        int eventsNumber = 0;                                //this can be used by list of events for each day
 
-
-
-        private void loadDataFromFile () throws Exception {
-            Path path = Paths.get("src/main/resources", "kalendarz.ics");
-            List<String> lines = Files.readAllLines(path);
-
-            int eventsNumber = 0;                           //this can be used by list of events for each day
-            for (String line : lines) {                        // counting number of events today
-                if (line.equals("BEGIN:VEVENT")) {
-                    eventsNumber++;
-                }
+        for (String line : lines) {                          // counting number of events today
+            if (line.equals("BEGIN:VEVENT")) {
+                eventsNumber++;
             }
-
-
-
-            Event[] DailyEvents = new Event[eventsNumber];  //this table stores all {events taking place during same day} separately
-            //following loop declares each Event today
-            for (int i = 0; i < eventsNumber; i++) {
-                DailyEvents[i] = new Event(0, 0, 0, 0, "", "", false);
-            }
-            int eventOrder = -1; // used to tell iterator when to switch to next DailyEvents tab (DailyEvents[0]--->DailyEvents[1];
-
-            for (String line : lines) {         //main iteration through file
-                //System.out.println(line);
-
-                if (line.substring(0, 7).equals("DTSTART")) {
-                    eventOrder++;
-                    DailyEvents[eventOrder].setStartDate(parseInt(line.substring(8, 16)));
-                    DailyEvents[eventOrder].setStartTime(parseInt(line.substring(17, 23)));  //TODO: parseint is deleting first 0
-                }
-
-                if (line.substring(0, 5).equals("DTEND")) {
-                    DailyEvents[eventOrder].setEndDate(parseInt(line.substring(6, 14)));
-                    DailyEvents[eventOrder].setEndTime(parseInt(line.substring(15, 21)));
-                }
-
-                if (line.substring(0, 8).equals("LOCATION")) {
-                    DailyEvents[eventOrder].setLocation(line.substring(9, line.length()));
-                }
-                if (line.substring(0, 7).equals("SUMMARY")) {
-                    DailyEvents[eventOrder].setSummary(line.substring(8, line.length()));
-                }
-                if (line.substring(0, 6).equals("STATUS")) {
-                    if (line.substring(7, line.length()).equals("CONFIRMED")) {
-                        DailyEvents[eventOrder].setConfirmed(true);
-                    } else if (line.substring(7, line.length()).equals("UNCONFIRMED")) {       //TODO: check real STATUS of non-confirmed events
-                        DailyEvents[eventOrder].setConfirmed(false);
-                    } else {
-                        System.out.print("Niesprecyzowane");                          // May cause problems cause its not a boolean result
-                    }
-
-
-                }
-            }
-
-            for (int i = 0; i <eventsNumber ; i++) {
-                System.out.println(DailyEvents[i].toString());          // just to brag about code greatness
-            }
-
         }
 
-    /**
-     * Created by katarzynadobrowolska on 01.04.2017.
-     */
-    public CalendarEvent[] parseDataFromPath(String calendarPath){
-        //TODO logic here
-        try {
-            loadDataFromFile();
-        } catch (Exception e) {
-            e.printStackTrace();
+        Event[] DailyEvents = new Event[eventsNumber];      //this table stores all {events taking place during same day} separately
+        CalendarEvent[] StoresCalendarEventObjects = new CalendarEvent[eventsNumber - 1];
+
+        DateTime constructorDate0 = DateTime.parse("00000000T00");
+        DateTimeFormat.forPattern("yyyyMMdd'T'HH");
+
+// following loop declares each Event today
+        for (int i = 0; i < eventsNumber; i++) {
+            DailyEvents[i] = new Event(constructorDate0, constructorDate0, "", "", false);
         }
-        return new CalendarEvent[0];
+
+        for (int i = 0; i < eventsNumber; i++) {
+            StoresCalendarEventObjects[0] = new CalendarEvent(" ", " ", constructorDate0);
+            new CalendarEvent(" ", " ", constructorDate0);
+        }
+
+
+        int eventOrder = -1; // used to tell iterator when to switch to next DailyEvents tab (DailyEvents[0]--->DailyEvents[1];
+
+        for (String line : lines) {         //main iteration through file
+
+            if (line.substring(0, 7).equals("DTSTART")) {
+                eventOrder++;
+                DateTime date = DateTime.parse(line.substring(8, 23),
+                        DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss"));
+                DailyEvents[eventOrder].setStartTimeYoda(date);
+            }
+            if (line.substring(0, 5).equals("DTEND")) {
+                DateTime date = DateTime.parse(line.substring(6, 21),
+                        DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss"));
+                DailyEvents[eventOrder].setEndTimeYoda(date);
+            }
+            if (line.substring(0, 8).equals("LOCATION")) {
+                DailyEvents[eventOrder].setLocation(line.substring(9, line.length()));
+            }
+            if (line.substring(0, 7).equals("SUMMARY")) {
+                DailyEvents[eventOrder].setSummary(line.substring(8, line.length()));
+            }
+            if (line.substring(0, 6).equals("STATUS")) {
+                if (line.substring(7, line.length()).equals("CONFIRMED")) {
+                    DailyEvents[eventOrder].setConfirmed(true);
+                } else if (line.substring(7, line.length()).equals("UNCONFIRMED")) {       //TODO: check real STATUS of non-confirmed events
+                    DailyEvents[eventOrder].setConfirmed(false);
+                } else {
+                    System.out.print("Niesprecyzowane");                          // May cause problems cause its not a boolean result
+                }
+            }
+        }
+        for (int i = 0; i < eventsNumber - 2; i++) {
+            StoresCalendarEventObjects[i] = new CalendarEvent(DailyEvents[i].getLocation(), DailyEvents[i + 1].getLocation(), DailyEvents[i + 1].getStartTimeYoda());
+        }
+        return StoresCalendarEventObjects;
     }
 }
