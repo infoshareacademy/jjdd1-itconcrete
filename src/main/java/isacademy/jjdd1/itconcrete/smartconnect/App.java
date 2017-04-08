@@ -65,7 +65,15 @@ public class App
 //---------------------------------------How to use CalendarParser
         CalendarParser cp = new CalendarParser();
         cp.getConnectionData(1); // EventsConnectionNumber can be either 0 or 1, cause there are only 2 connections in a sampled Calendar file
-        System.out.print(cp.toString());              //
+
+        System.out.println(cp.getConnectionData(0).getFromBusStop());
+        System.out.println(cp.getConnectionData(0).getToBusStop());
+        System.out.println(cp.getConnectionData(0).getArrivalTime());
+
+        System.out.println(cp.getConnectionData(1).getFromBusStop());
+        System.out.println(cp.getConnectionData(1).getToBusStop());
+        System.out.println(cp.getConnectionData(1).getArrivalTime());
+
 //----------------------------------------
 
 
