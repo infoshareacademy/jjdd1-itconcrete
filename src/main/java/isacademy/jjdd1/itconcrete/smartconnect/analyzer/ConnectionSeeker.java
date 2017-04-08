@@ -1,31 +1,24 @@
 package isacademy.jjdd1.itconcrete.smartconnect.analyzer;
 
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarEvent;
-import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusConnection;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusStopDeltas;
-import isacademy.jjdd1.itconcrete.smartconnect.schedule.KasiaBusLine;
-import org.joda.time.DateTime;
-import org.joda.time.LocalTime;
 
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by katarzynadobrowolska on 01.04.2017.
  */
 public class ConnectionSeeker {
 
-    public int seekConnection(CalendarEvent calendarEvent, KasiaBusLine[] busConnections){
+    public int seekConnection(CalendarEvent calendarEvent, BusLine[] busConnections){
 
         String from = calendarEvent.getFromBusStop();
         String to = calendarEvent.getToBusStop();
 
-        KasiaBusLine foundBusLine = null;
+        BusLine foundBusLine = null;
 
-        for (KasiaBusLine busLine : busConnections) {
+        for (BusLine busLine : busConnections) {
             boolean foundFrom = false, foundTo = false;
             List<BusStopDeltas> deltasList = busLine.getRoute().getDeltasList();
             for (BusStopDeltas busStopDeltas : deltasList) {
@@ -53,10 +46,10 @@ public class ConnectionSeeker {
                     foundStationFrom = true;
                 }
                 if (foundStationFrom) {
-                    rideTime += busStopDeltas.getTime();
+                    rideTime += busStopDeltas.getTimeDifference();
                 }
                 if (busStopDeltas.getName().equals(to)) {
-                    rideTime += busStopDeltas.getTime();
+                    rideTime += busStopDeltas.getTimeDifference();
                     break;
                 }
             }

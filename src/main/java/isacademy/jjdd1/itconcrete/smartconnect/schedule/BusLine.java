@@ -3,10 +3,9 @@ package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 import org.joda.time.LocalTime;
 
 /**
- * Created by Ageee on 05.04.2017.
+ * Created by katarzynadobrowolska on 06.04.2017.
  */
 public class BusLine {
-
     private int lineNumber;
     private Route route;
     private LocalTime departures[];
@@ -23,5 +22,9 @@ public class BusLine {
 
     public Route getRoute() {
         return route;
+    }
+
+    public LocalTime[] getDepartures() {
+        return departures;
     }
 }

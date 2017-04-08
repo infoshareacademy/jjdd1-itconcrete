@@ -5,12 +5,12 @@ package isacademy.jjdd1.itconcrete.smartconnect.schedule;
  */
 public class BusConnection {
 
-    int number;
+    int busNumber;
     int direction;
     String departures[];
 
-    public BusConnection(int number, int direction, String departures[]){
-        this.number = number;
+    public BusConnection(int busNumber, int direction, String departures[]){
+        this.busNumber = busNumber;
         this.direction = direction;
         this.departures = departures;
     }

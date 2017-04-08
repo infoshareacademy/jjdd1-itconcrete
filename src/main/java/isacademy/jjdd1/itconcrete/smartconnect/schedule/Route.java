@@ -1,20 +1,19 @@
 package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
- * Created by Ageee on 05.04.2017.
+ * Created by katarzynadobrowolska on 06.04.2017.
  */
 public class Route {
-
     private int direction;
-    private HashMap<Integer, String> hashMapOfStops;
+    private List<BusStopDeltas> deltasList;
     private String variant;
 
-
-    public Route(int direction, HashMap<Integer, String> hashMapOfStops, String variant) {
+    public Route(int direction, List<BusStopDeltas> deltasList, String variant) {
         this.direction = direction;
-        this.hashMapOfStops = hashMapOfStops;
+        this.deltasList = deltasList;
         this.variant = variant;
     }
 
@@ -22,8 +21,8 @@ public class Route {
         return direction;
     }
 
-    public HashMap<Integer, String> getHashMapOfStops() {
-        return hashMapOfStops;
+    public List<BusStopDeltas> getDeltasList() {
+        return deltasList;
     }
 
     public String getVariant() {

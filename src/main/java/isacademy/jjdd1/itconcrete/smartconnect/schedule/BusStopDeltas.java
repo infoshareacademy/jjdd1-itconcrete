@@ -4,19 +4,19 @@ package isacademy.jjdd1.itconcrete.smartconnect.schedule;
  * Created by katarzynadobrowolska on 06.04.2017.
  */
 public class BusStopDeltas {
-    String name;
-    int time;
+    String busStopName;
+    int timeDifference;
 
-    public BusStopDeltas(String name, int time) {
-        this.name = name;
-        this.time = time;
+    public BusStopDeltas(String busStopName, int timeDifference) {
+        this.busStopName = busStopName;
+        this.timeDifference = timeDifference;
     }
 
     public String getName() {
-        return name;
+        return busStopName;
     }
 
-    public int getTime() {
-        return time;
+    public int getTimeDifference() {
+        return timeDifference;
     }
 }

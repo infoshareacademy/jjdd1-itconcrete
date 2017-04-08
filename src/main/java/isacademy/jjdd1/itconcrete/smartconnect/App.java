@@ -89,7 +89,7 @@ public class App
         deltasList.add(new BusStopDeltas("Kolumba", 2));
         deltasList.add(new BusStopDeltas("Brętowo PKM",1 ));
 
-        KasiaRoute route = new KasiaRoute(1, deltasList, null);
+        Route route = new Route(1, deltasList, null);
 
         LocalTime[] localTimes = {new LocalTime("08:12"),
                 new LocalTime("08:12"),
@@ -106,8 +106,8 @@ public class App
                 new LocalTime("12:38"),
                 new LocalTime("12:46")};
 
-        KasiaBusLine busLine = new KasiaBusLine(131, route, localTimes);
-        KasiaBusLine[] busLines = {busLine};
+        BusLine busLine = new BusLine(131, route, localTimes);
+        BusLine[] busLines = {busLine};
 
 
         ScheduleParser sp = new ScheduleParser();
