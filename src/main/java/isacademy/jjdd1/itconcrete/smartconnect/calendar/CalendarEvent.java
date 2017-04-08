@@ -9,9 +9,9 @@ import java.util.Date;
  */
 public class CalendarEvent {
 
-    String fromBusStop;
-    String toBusStop;
-    DateTime arrivalTime;
+    private String fromBusStop;
+    private String toBusStop;
+    private DateTime arrivalTime;
 
     public CalendarEvent(String fromBusStop, String toBusStop, DateTime arrivalTime){
         this.fromBusStop = fromBusStop;
@@ -29,5 +29,14 @@ public class CalendarEvent {
 
     public DateTime getArrivalTime() {
         return arrivalTime;
+    }
+
+    @Override
+    public String toString() {
+        return "CalendarEvent{" +
+                "fromBusStop='" + fromBusStop + '\'' +
+                ", toBusStop='" + toBusStop + '\'' +
+                ", arrivalTime=" + arrivalTime +
+                '}';
     }
 }

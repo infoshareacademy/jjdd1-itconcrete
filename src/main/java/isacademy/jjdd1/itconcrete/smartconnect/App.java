@@ -61,8 +61,15 @@ public class App
 
         System.out.println("Possible connections: " + possibleConnections);
 
+
+//---------------------------------------How to use CalendarParser
         CalendarParser cp = new CalendarParser();
-        cp.loadDataFromFile();
+        cp.getConnectionData(1); // EventsConnectionNumber can be either 0 or 1, cause there are only 2 connections in a sampled Calendar file
+        System.out.print(cp.toString());              //
+//----------------------------------------
+
+
+
 
 
     }

@@ -5,6 +5,7 @@ import org.joda.time.format.DateTimeFormat;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -28,30 +29,39 @@ public class CalendarParser {
 //    TRANSP:OPAQUE
 //    END:VEVENT
 
-    public CalendarEvent[] loadDataFromFile() throws Exception {
+
+    final static int WillILearnHowToUseArraysNope = 99;
+    CalendarEvent[] EventsConnection = new CalendarEvent[WillILearnHowToUseArraysNope];
+
+
+    @Override
+    public String toString() {
+        return EventsConnection[1].toString();         //this toString has [0]/[1] hardcoded and is for test only
+    }                                                  //EventsConnection[0] is the first connection between two stops and EventsConnection[1] is second one
+
+    public CalendarEvent getConnectionData(int EventsConnectionNumber) throws Exception {
         Path path = Paths.get("src/main/resources", "kalendarz.ics");
         List<String> lines = Files.readAllLines(path);
-        int eventsNumber = 0;                                //this can be used by list of events for each day
+        int eventsNumber = 0;                                       //this can be used by list of events for each day
+        DateTime constructorDate0 = DateTime.parse("00000000T00");
+        DateTimeFormat.forPattern("yyyyMMdd'T'HH");
 
-        for (String line : lines) {                          // counting number of events today
+        for (String line : lines) {                                 // counting number of events today
             if (line.equals("BEGIN:VEVENT")) {
                 eventsNumber++;
             }
         }
 
-        Event[] DailyEvents = new Event[eventsNumber];      //this table stores all {events taking place during same day} separately
-        CalendarEvent[] StoresCalendarEventObjects = new CalendarEvent[eventsNumber - 1];
+        Event[] DailyEvents = new Event[eventsNumber];               //this table stores all {events taking place during same day} separately
+        //CalendarEvent[] EventsConnection = new CalendarEvent[eventsNumber - 1];
 
-        DateTime constructorDate0 = DateTime.parse("00000000T00");
-        DateTimeFormat.forPattern("yyyyMMdd'T'HH");
 
-// following loop declares each Event today
+// following loops declares each Event today
         for (int i = 0; i < eventsNumber; i++) {
             DailyEvents[i] = new Event(constructorDate0, constructorDate0, "", "", false);
         }
-
         for (int i = 0; i < eventsNumber; i++) {
-            StoresCalendarEventObjects[0] = new CalendarEvent(" ", " ", constructorDate0);
+            EventsConnection[0] = new CalendarEvent(" ", " ", constructorDate0);
             new CalendarEvent(" ", " ", constructorDate0);
         }
 
@@ -82,14 +92,21 @@ public class CalendarParser {
                     DailyEvents[eventOrder].setConfirmed(true);
                 } else if (line.substring(7, line.length()).equals("UNCONFIRMED")) {       //TODO: check real STATUS of non-confirmed events
                     DailyEvents[eventOrder].setConfirmed(false);
-                } else {
-                    System.out.print("Niesprecyzowane");                          // May cause problems cause its not a boolean result
                 }
             }
+            for (int i = 0; i < eventsNumber - 1; i++) {
+                EventsConnection[i] = new CalendarEvent(DailyEvents[i].getLocation(), DailyEvents[i + 1].getLocation(), DailyEvents[i + 1].getStartTimeYoda());
+            }
+
+
         }
-        for (int i = 0; i < eventsNumber - 2; i++) {
-            StoresCalendarEventObjects[i] = new CalendarEvent(DailyEvents[i].getLocation(), DailyEvents[i + 1].getLocation(), DailyEvents[i + 1].getStartTimeYoda());
-        }
-        return StoresCalendarEventObjects;
+        return EventsConnection[EventsConnectionNumber];
+
     }
+
+    public void DrugaMetodaLOLNaCoToKomuKomuToPotrzebne() {
+    }
+
+
 }
+
