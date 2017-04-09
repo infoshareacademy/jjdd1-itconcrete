@@ -28,6 +28,22 @@ public class CalendarEvent {
         return arrivalTime;
     }
 
+    public void setFromBusStop(String fromBusStop) {
+        this.fromBusStop = fromBusStop;
+    }
+
+    public void setToBusStop(String toBusStop) {
+        this.toBusStop = toBusStop;
+    }
+
+    public void setArrivalTime(DateTime arrivalTime) {
+        this.arrivalTime = arrivalTime;
+    }
+
+    public CalendarEvent(){
+
+    }
+
     @Override
     public String toString() {
         return "CalendarEvent{" +

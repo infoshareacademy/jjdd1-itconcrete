@@ -2,6 +2,7 @@ package isacademy.jjdd1.itconcrete.smartconnect;
 
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.*;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarEvent;
+import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParserKasia;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.DisplayConnection;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.*;
 import org.joda.time.DateTime;
@@ -76,7 +77,7 @@ public class App {
         DateTimeFormatter parser = DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss'Z'");
         DateTime dateTime = parser.parseDateTime("20170408T090000Z");
 
-        CalendarEvent[] calendarEvent = {new CalendarEvent("Cygańska Góra", "Suchanino", dateTime),
+        CalendarEvent[] calendarEvent = {new CalendarEvent("Nad Jarem - Zakosy", "Suchanino", dateTime),
                 new CalendarEvent("Suchanino", "Brętowo PKM", dateTime.plusHours(2))};
 
         List<BusStopDeltas> deltasList = new ArrayList<BusStopDeltas>();
@@ -136,6 +137,30 @@ public class App {
 
             }
         }
+
+
+        // option for Calendar given as List by parser
+
+//        CalendarParserKasia calendarParserKasia = new CalendarParserKasia();
+//        List<CalendarEvent> calendarEventsList = calendarParserKasia.getEventList();
+//        System.out.println(calendarEventsList);
+//
+//        for (int i = 0; i < calendarEventsList.size(); i++) {
+//
+//            List<BusLine> busLineList = busLineSeeker.seekBusLine(calendarEventsList.get(i), busLines);
+//
+//            List<LineRideTime> lineRideTimes = minutesToBusStops.calculateMinutesToBusStops(busLineList,
+//                    calendarEventsList.get(i).getFromBusStop(), calendarEventsList.get(i).getToBusStop());
+//
+//            List<ResultConnection> resultConnections = connectionSeeker.seekConnection(lineRideTimes, calendarEventsList.get(i));
+//
+//            for (ResultConnection resultConnection : resultConnections) {
+//
+//                String textForEachResult = displayConnection.displayingConnection(resultConnection);
+//                System.out.println(textForEachResult);
+//
+//            }
+//        }
     }
 }
 
