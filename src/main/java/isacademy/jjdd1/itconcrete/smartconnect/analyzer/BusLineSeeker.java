@@ -26,7 +26,7 @@ public class BusLineSeeker {
                 if (currentlyCheckedBusStopDelta.getBusStopName().equals(fromBusStop)) {
                     foundBusStopFrom = true;
                 }
-                if (currentlyCheckedBusStopDelta.getBusStopName().equals(toBusStop)) {
+                if (foundBusStopFrom && currentlyCheckedBusStopDelta.getBusStopName().equals(toBusStop) ) {
                     foundBusStopTo = true;
                 }
             }

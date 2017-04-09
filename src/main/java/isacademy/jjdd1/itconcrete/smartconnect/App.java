@@ -20,21 +20,6 @@ public class App {
     public static void main(String[] args) throws Exception {
 
 
-
-//---------------------------------------How to use CalendarParser
-//        CalendarParser cp = new CalendarParser();
-//        cp.getConnectionData(1); // EventsConnectionNumber can be either 0 or 1, cause there are only 2 connections in a sampled Calendar file
-//
-//        System.out.println(cp.getConnectionData(0).getFromBusStop());
-//        System.out.println(cp.getConnectionData(0).getToBusStop());
-//        System.out.println(cp.getConnectionData(0).getArrivalTime());
-//
-//        System.out.println(cp.getConnectionData(1).getFromBusStop());
-//        System.out.println(cp.getConnectionData(1).getToBusStop());
-//        System.out.println(cp.getConnectionData(1).getArrivalTime());
-
-//----------------------------------------
-
         ScheduleParser sp = new ScheduleParser();
         sp.loadData();
 
@@ -43,6 +28,7 @@ public class App {
 
         ArrayList<BusLine> allBusLines = new ArrayList<BusLine>();
         allBusLines = sp.getArrayOfBusLines();
+
 //        for (BusLine bl : allBusLines){
 //            System.out.println("Departures for busline"+bl.getLineNumber()+"\n");
 //            System.out.println(bl.getDepartures());
@@ -60,55 +46,11 @@ public class App {
 //            }
 //        }
 
-        //data mock
-
-//        DateTimeFormatter parser = DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss'Z'");
-//        DateTime dateTime = parser.parseDateTime("20170408T090000Z");
-//
-//        CalendarEvent[] calendarEvent = {new CalendarEvent("Nad Jarem - Zakosy", "Suchanino", dateTime),
-//                new CalendarEvent("Suchanino", "Brętowo PKM", dateTime.plusHours(2))};
-//
-//        List<BusStopDeltas> deltasList = new ArrayList<BusStopDeltas>();
-//        deltasList.add(new BusStopDeltas("Cygańska Góra", 0));
-//        deltasList.add(new BusStopDeltas("Nad Jarem - Zakosy", 2));
-//        deltasList.add(new BusStopDeltas("Suchanino", 3));
-//        deltasList.add(new BusStopDeltas("Kurpińskiego", 2));
-//        deltasList.add(new BusStopDeltas("Piecewska", 3));
-//        deltasList.add(new BusStopDeltas("Warneńska", 1));
-//        deltasList.add(new BusStopDeltas("Kolumba", 2));
-//        deltasList.add(new BusStopDeltas("Brętowo PKM", 1));
-//
-//        Route route = new Route(1, null, 131, deltasList);
-//
-//        ArrayList<LocalTime> departuresByBus = new ArrayList<>();
-//        departuresByBus.add(new LocalTime("08:12"));
-//        departuresByBus.add(new LocalTime("08:42"));
-//        departuresByBus.add(new LocalTime("08:52"));
-//        departuresByBus.add(new LocalTime("09:12"));
-//        departuresByBus.add(new LocalTime("09:25"));
-//        departuresByBus.add(new LocalTime("09:38"));
-//        departuresByBus.add(new LocalTime("10:38"));
-//        departuresByBus.add(new LocalTime("10:46"));
-//        departuresByBus.add(new LocalTime("11:38"));
-//        departuresByBus.add(new LocalTime("11:46"));
-//        departuresByBus.add(new LocalTime("12:38"));
-//        departuresByBus.add(new LocalTime("12:46"));
-//
-//
-//        BusLine busLine1 = new BusLine(1, route, departuresByBus);
-//        BusLine busLine2 = new BusLine(1, route, departuresByBus);
-//        BusLine busLine3 = new BusLine(1, route, departuresByBus);
-//
-//        BusLine[] busLines = {busLine1, busLine2, busLine3};
-
-        // end of data mock
 
         BusLineSeeker busLineSeeker = new BusLineSeeker();
         MinutesToBusStops minutesToBusStops = new MinutesToBusStops();
         ConnectionSeeker connectionSeeker = new ConnectionSeeker();
         DisplayConnection displayConnection = new DisplayConnection();
-
-        // option for Calendar given as List by parser
 
         CalendarParserKasia calendarParserKasia = new CalendarParserKasia();
         List<CalendarEvent> calendarEventsList = calendarParserKasia.getEventList();
@@ -116,7 +58,7 @@ public class App {
 
         for (int i = 0; i < calendarEventsList.size(); i++) {
 
-            System.out.println( "List of connections for event number " + (i+1));
+            System.out.println( "Connections for event number " + (i+1) + ": ");
 
             List<BusLine> busLineList = busLineSeeker.seekBusLine(calendarEventsList.get(i), allBusLines);
 
@@ -131,7 +73,13 @@ public class App {
                 System.out.println(textForEachResult);
 
             }
+
+            if (resultConnections.size() == 0) {
+                System.out.println("Sorry, there is no direct connection for this event. \n");
+            }
         }
+
+
     }
 }
 

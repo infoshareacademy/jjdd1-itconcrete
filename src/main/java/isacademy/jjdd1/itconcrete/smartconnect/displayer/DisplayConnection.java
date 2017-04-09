@@ -17,9 +17,9 @@ public class DisplayConnection {
         String fromBusStop = resultConnections.getFromBusStop();
         String toBusStop = resultConnections.getToBusStop();
 
-        connectionResultText = "The best connection to: " + fromBusStop + " is line number: " + lineNumber +
+        connectionResultText = "To " + fromBusStop + " take line number: " + lineNumber +
                 ", start your journey at: " + prettyFormatTime(travelStartTime) + ", you will reach your destination " + toBusStop +
-                " at: " + prettyFormatTime(travelEndTime);
+                " at: " + prettyFormatTime(travelEndTime) + ".\n";
 
         return connectionResultText;
     }

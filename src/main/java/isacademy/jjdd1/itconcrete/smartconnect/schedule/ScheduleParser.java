@@ -195,13 +195,18 @@ public class ScheduleParser {
             helperArray.add(datesColumnInCSV);
         }
 
-
         ArrayList<LocalTime> weekDaysDepartures = new ArrayList<>();
         for (int i = 1; i < helperArray.size() ; i++) {
-            if (helperArray.get(i) != "99") {
-                weekDaysDepartures.add(new LocalTime(helperArray.get(i)));
+            if ( !helperArray.get(i).equals("99")) {
+
+                // temp bugfix
+                try {
+                    weekDaysDepartures.add(new LocalTime(helperArray.get(i)));
+                } catch (Exception e) {
+                }
+            } else {
+                break;
             }
-            break;
         }
 
         return weekDaysDepartures;
