@@ -3,9 +3,6 @@ package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Ageee on 05.04.2017.
- */
 public class Route {
 
     private int direction;

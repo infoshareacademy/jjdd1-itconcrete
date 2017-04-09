@@ -13,8 +13,8 @@ public class BusLineSeeker {
         List<BusLine> foundBusLines = new ArrayList<>();
         String fromBusStop = eventForSeeking.getFromBusStop();
         String toBusStop = eventForSeeking.getToBusStop();
-        boolean foundBusStopFrom = false;
-        boolean foundBusStopTo = false;
+        boolean foundBusStopFrom ;
+        boolean foundBusStopTo;
 
         for (BusLine currentlyChceckdBusLine : busForSeeking) {
 

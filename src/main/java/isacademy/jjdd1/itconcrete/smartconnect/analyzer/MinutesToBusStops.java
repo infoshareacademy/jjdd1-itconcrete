@@ -1,7 +1,6 @@
 package isacademy.jjdd1.itconcrete.smartconnect.analyzer;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusStopDeltas;
-import org.joda.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 

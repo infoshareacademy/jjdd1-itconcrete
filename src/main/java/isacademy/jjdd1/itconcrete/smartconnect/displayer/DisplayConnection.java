@@ -1,13 +1,12 @@
 package isacademy.jjdd1.itconcrete.smartconnect.displayer;
 
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.ResultConnection;
+import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarEvent;
 import org.joda.time.LocalTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 public class DisplayConnection {
-
-    private String connectionResultText;
 
     public String displayingConnection(ResultConnection resultConnections) {
 
@@ -17,9 +16,8 @@ public class DisplayConnection {
         String fromBusStop = resultConnections.getFromBusStop();
         String toBusStop = resultConnections.getToBusStop();
 
-        connectionResultText = "To " + fromBusStop + " take line number: " + lineNumber +
-                ", start your journey at: " + prettyFormatTime(travelStartTime) + ", you will reach your destination " + toBusStop +
-                " at: " + prettyFormatTime(travelEndTime) + ".\n";
+        String connectionResultText = lineNumber + " - start journey at: " + prettyFormatTime(travelStartTime) + ", you will reach destination "
+                 + prettyFormatTime(travelEndTime);
 
         return connectionResultText;
     }
@@ -28,5 +26,14 @@ public class DisplayConnection {
 
         DateTimeFormatter formatter = DateTimeFormat.forPattern("HH:mm");
         return formatter.print(time);
+    }
+
+    public String displayEventHeader(CalendarEvent calendarEvent) {
+
+        String fromBusStop = calendarEvent.getFromBusStop();
+        String toBusStop = calendarEvent.getToBusStop();
+        String eventHeaderText = "From bus stop " + fromBusStop + " to bus stop " + toBusStop + " you can take lines:";
+
+        return eventHeaderText;
     }
 }

@@ -18,8 +18,7 @@ public class CalendarParserKasia {
         String line;
         CalendarEvent calendarEvent = null;
         List<CalendarEvent> calendarEvents = new ArrayList<>();
-        final String HOME = "Cygańska Góra";
-
+        final String HOME = "Klonowa";
 
         while ((line = bufferedReader.readLine()) != null) {
 
@@ -35,7 +34,6 @@ public class CalendarParserKasia {
                 }
 
             } else if (line.startsWith("END:VEVENT")) {
-
                 calendarEvents.add(calendarEvent);
             }
 

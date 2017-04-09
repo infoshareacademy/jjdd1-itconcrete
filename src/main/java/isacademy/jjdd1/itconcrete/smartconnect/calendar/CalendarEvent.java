@@ -2,8 +2,6 @@ package isacademy.jjdd1.itconcrete.smartconnect.calendar;
 
 import org.joda.time.DateTime;
 
-import java.util.Date;
-
 public class CalendarEvent {
 
     private String fromBusStop;

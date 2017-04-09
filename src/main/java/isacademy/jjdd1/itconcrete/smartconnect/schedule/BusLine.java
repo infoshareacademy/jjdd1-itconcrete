@@ -1,12 +1,8 @@
 package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 
 import org.joda.time.LocalTime;
-
 import java.util.ArrayList;
 
-/**
- * Created by katarzynadobrowolska on 06.04.2017.
- */
 public class BusLine {
     private int lineNumber;
     private Route route;

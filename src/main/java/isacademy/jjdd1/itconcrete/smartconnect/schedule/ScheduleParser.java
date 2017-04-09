@@ -1,18 +1,9 @@
 package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 
-
-import com.sun.org.apache.xpath.internal.SourceTree;
 import org.joda.time.LocalTime;
-
 import java.io.*;
-import java.lang.reflect.Array;
-import java.lang.reflect.Field;
-import java.nio.charset.Charset;
 import java.util.*;
 
-/**
- * Created by agatabereza on 06.04.2017.
- */
 public class ScheduleParser {
 
     private ArrayList<String> variants;
@@ -199,7 +190,7 @@ public class ScheduleParser {
         for (int i = 1; i < helperArray.size() ; i++) {
             if ( !helperArray.get(i).equals("99")) {
 
-                // temp bugfix
+                //FixMe
                 try {
                     weekDaysDepartures.add(new LocalTime(helperArray.get(i)));
                 } catch (Exception e) {
