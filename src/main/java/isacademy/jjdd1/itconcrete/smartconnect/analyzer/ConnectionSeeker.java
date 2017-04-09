@@ -1,62 +1,50 @@
 package isacademy.jjdd1.itconcrete.smartconnect.analyzer;
-
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarEvent;
-import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
-import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusStopDeltas;
+import org.joda.time.DateTime;
+import org.joda.time.LocalTime;
+import org.joda.time.Minutes;
 
+import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by katarzynadobrowolska on 01.04.2017.
- */
 public class ConnectionSeeker {
 
-    public int seekConnection(CalendarEvent calendarEvent, BusLine[] busConnections){
+    public List<ResultConnection> seekConnection(List<LineRideTime> lineRideTimes, CalendarEvent calendarEvent) {
 
-        String from = calendarEvent.getFromBusStop();
-        String to = calendarEvent.getToBusStop();
+        List<ResultConnection> resultConnections = new ArrayList<>();
 
-        BusLine foundBusLine = null;
+        String fromBusStop = calendarEvent.getFromBusStop();
+        String toBusStop = calendarEvent.getToBusStop();
+        DateTime arrivalTime = calendarEvent.getArrivalTime();
 
-        for (BusLine busLine : busConnections) {
-            boolean foundFrom = false, foundTo = false;
-            List<BusStopDeltas> deltasList = busLine.getRoute().getDeltasList();
-            for (BusStopDeltas busStopDeltas : deltasList) {
-                if (busStopDeltas.getName().equals(from)) {
-                    foundFrom = true;
-                }
-                if (busStopDeltas.getName().equals(to)) {
-                    foundTo = true;
-                }
-            }
-            if (foundFrom && foundTo) {
-                foundBusLine = busLine;
-            }
-        }
+        for (LineRideTime currentlyCheckedLine:lineRideTimes) {
 
+            LocalTime departures[] = currentlyCheckedLine.getBusLine().getDepartures();
 
-        if (foundBusLine != null) {
-            System.out.println("Found bus line: " + foundBusLine.getLineNumber());
+            int timeToReachFromBusStop = currentlyCheckedLine.getTimeToReachFromBusStop();
+            int timeToReachToBusStop = currentlyCheckedLine.getTimeToReachToBusStop();
 
-            List<BusStopDeltas> deltasList = foundBusLine.getRoute().getDeltasList();
-            int rideTime = 0;
-            boolean foundStationFrom = false;
-            for (BusStopDeltas busStopDeltas : deltasList) {
-                if (busStopDeltas.getName().equals(from)) {
-                    foundStationFrom = true;
-                }
-                if (foundStationFrom) {
-                    rideTime += busStopDeltas.getTimeDifference();
-                }
-                if (busStopDeltas.getName().equals(to)) {
-                    rideTime += busStopDeltas.getTimeDifference();
+            for (int i = departures.length -1; i >= 0; i--) {
+
+                LocalTime departureFromToBusStop = departures[i].plusMinutes(timeToReachToBusStop);
+
+                LocalTime arrivalTimeOnly = new LocalTime(arrivalTime.getHourOfDay(), arrivalTime.getMinuteOfHour());
+
+                int deltaMinutes = Minutes.minutesBetween(departureFromToBusStop, arrivalTimeOnly).getMinutes();
+
+                if ( deltaMinutes >= 0) {
+
+                    LocalTime departureFromFromBusStop = departures[i].plusMinutes(timeToReachFromBusStop);
+
+                    ResultConnection resultConnection = new ResultConnection(currentlyCheckedLine.getLineNumber(),
+                            departureFromFromBusStop, departureFromToBusStop, fromBusStop, toBusStop);
+
+                    resultConnections.add(resultConnection);
                     break;
                 }
             }
-            System.out.println("Ride time: " + rideTime);
         }
 
-        return 0;
+        return resultConnections;
     }
-
 }

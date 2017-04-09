@@ -171,7 +171,7 @@ public class ScheduleParser {
 
 //        String pathToSchedules = "src/main/resources/rozklady_2015-09-08_13.43.01/131_20150718/131_20150718warianty1.csv";
 //        File file = new File(pathToSchedules);
-//        String busLineNumber = file.getName().toString().substring(0,3);
+//        String busLineNumber = file.getBusStopName().toString().substring(0,3);
 
 
 

@@ -12,7 +12,7 @@ public class BusStopDeltas {
         this.timeDifference = timeDifference;
     }
 
-    public String getName() {
+    public String getBusStopName() {
         return busStopName;
     }
 

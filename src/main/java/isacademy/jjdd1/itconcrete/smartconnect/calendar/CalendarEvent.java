@@ -4,9 +4,6 @@ import org.joda.time.DateTime;
 
 import java.util.Date;
 
-/**
- * Created by katarzynadobrowolska on 01.04.2017.
- */
 public class CalendarEvent {
 
     private String fromBusStop;
