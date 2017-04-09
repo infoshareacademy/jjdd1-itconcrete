@@ -19,14 +19,14 @@ public class ConnectionSeeker {
 
         for (LineRideTime currentlyCheckedLine:lineRideTimes) {
 
-            LocalTime departures[] = currentlyCheckedLine.getBusLine().getDepartures();
+            ArrayList<LocalTime> departures = currentlyCheckedLine.getBusLine().getDepartures();
 
             int timeToReachFromBusStop = currentlyCheckedLine.getTimeToReachFromBusStop();
             int timeToReachToBusStop = currentlyCheckedLine.getTimeToReachToBusStop();
 
-            for (int i = departures.length -1; i >= 0; i--) {
+            for (int i = departures.size() -1; i >= 0; i--) {
 
-                LocalTime departureFromToBusStop = departures[i].plusMinutes(timeToReachToBusStop);
+                LocalTime departureFromToBusStop = departures.get(i).plusMinutes(timeToReachToBusStop);
 
                 LocalTime arrivalTimeOnly = new LocalTime(arrivalTime.getHourOfDay(), arrivalTime.getMinuteOfHour());
 
@@ -34,7 +34,7 @@ public class ConnectionSeeker {
 
                 if ( deltaMinutes >= 0) {
 
-                    LocalTime departureFromFromBusStop = departures[i].plusMinutes(timeToReachFromBusStop);
+                    LocalTime departureFromFromBusStop = departures.get(i).plusMinutes(timeToReachFromBusStop);
 
                     ResultConnection resultConnection = new ResultConnection(currentlyCheckedLine.getLineNumber(),
                             departureFromFromBusStop, departureFromToBusStop, fromBusStop, toBusStop);

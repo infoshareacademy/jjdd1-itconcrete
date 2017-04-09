@@ -2,6 +2,8 @@ package isacademy.jjdd1.itconcrete.smartconnect.analyzer;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusStopDeltas;
 import org.joda.time.LocalTime;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +15,7 @@ public class MinutesToBusStops {
 
         for (BusLine currentlyCheckedBusLines : foundBusLines) {
 
-            LocalTime departures[] = currentlyCheckedBusLines.getDepartures();
+            ArrayList <LocalTime> departures = currentlyCheckedBusLines.getDepartures();
             List<BusStopDeltas> deltasList = currentlyCheckedBusLines.getRoute().getDeltasList();
 
             int timeToReachFromBusStop = 0;

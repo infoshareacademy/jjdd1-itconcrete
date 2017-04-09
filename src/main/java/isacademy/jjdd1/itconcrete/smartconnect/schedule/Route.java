@@ -10,12 +10,12 @@ public class Route {
 
     private int direction;
     private ArrayList<String> arrayOfStops;
-    private String lineNumber;
+    private int lineNumber;
     private List<BusStopDeltas> deltasList; //for X1
     private int amountOfStops;
 
 
-    public Route(int direction, ArrayList<String> arrayOfStops, String lineNumber, List<BusStopDeltas> deltasList) {
+    public Route(int direction, ArrayList<String> arrayOfStops, int lineNumber, List<BusStopDeltas> deltasList) {
         this.direction = direction;
         this.arrayOfStops = arrayOfStops;
         this.lineNumber = lineNumber;
@@ -30,7 +30,7 @@ public class Route {
         return arrayOfStops;
     }
 
-    public String getLineNumber() {
+    public int getLineNumber() {
         return lineNumber;
     }
 

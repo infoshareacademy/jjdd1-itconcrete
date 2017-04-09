@@ -1,11 +1,13 @@
 package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+import org.joda.time.LocalTime;
+
 import java.io.*;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.nio.charset.Charset;
-import java.time.LocalTime;
 import java.util.*;
 
 /**
@@ -41,20 +43,25 @@ public class ScheduleParser {
         return arrayOfRoutes;
     }
 
+    public ArrayList<BusLine> getArrayOfBusLines() {
+        return arrayOfBusLines;
+    }
+
     public HashMap<String, ArrayList> getMinutesMatrix() { return minutesMatrix; }
 
     public void loadData() throws IOException {
 
         for (File path : pathsToCSVFiles) {
-            System.out.println("Your parent path is: "+path.toString());
+
             File dir = new File(path.toString());
             File[] directoryListing = dir.listFiles();
             if (directoryListing != null) {
                 for (File child : directoryListing) {
+                    ArrayList<LocalTime> departures = new ArrayList<>();
                     if (child.getName().contains("warianty")) {
+                        departures = getDepartures(child);
 
-                        System.out.println("Current file is: "+child);
-                        ArrayList<LocalTime> departures = getDepartures(child);
+
 
                         BufferedReader br = null;
                         String line = "";
@@ -66,7 +73,7 @@ public class ScheduleParser {
                             String nameOfFile = child.getName();
                             String busLineNumber = nameOfFile.substring(0,3);
                             int direction = 0;
-                            System.out.println("Name of file to get the direction from is: "+nameOfFile);
+
 
                             if (nameOfFile.endsWith("1.csv")){
                                 direction = 1;
@@ -108,8 +115,10 @@ public class ScheduleParser {
                                 }
                             }
 
-                            Route route = new Route (direction, arrayOfBusStopsInOneRoute, busLineNumber, deltasList);
+                            Route route = new Route (direction, arrayOfBusStopsInOneRoute, Integer.parseInt(busLineNumber), deltasList);
                             arrayOfRoutes.add(route);
+                            BusLine bl = new BusLine(Integer.parseInt(busLineNumber), route, departures);
+                            arrayOfBusLines.add(bl);
 
                             variants = new ArrayList<String>();
                             String [] firstRowInCSV = singleBusData.get(0);
@@ -132,8 +141,6 @@ public class ScheduleParser {
                                 minutesMatrix.put(variants.get(i), minutes);
                             }*/
 
-                            System.out.println("your variants are:" + variants);
-
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
                         } catch (IOException e) {
@@ -153,18 +160,22 @@ public class ScheduleParser {
         }
     }
 
+
+    //DODAJ WARUNEK JESLI NIE MA 99
+
     private ArrayList<LocalTime> getDepartures (File file) throws IOException {
 
         String fileName = file.getName();
-        String filePath = file.getPath();
+
+        String filePath = file.getParentFile().toString();
         int indexOfWarianty = fileName.indexOf('w');
         String fileHead = fileName.substring(0,indexOfWarianty);
         String pathToDepartures = "";
 
         if (fileName.endsWith("1.csv")){
-            pathToDepartures = filePath + fileHead + "kursy1.csv";
+            pathToDepartures = filePath +"\\" + fileHead + "kursy1.csv";
         } else {
-            pathToDepartures = filePath + fileHead + "kursy2.csv";
+            pathToDepartures = filePath + "\\" + fileHead + "kursy2.csv";
         }
 
         File newFile = new File (pathToDepartures);
@@ -182,18 +193,16 @@ public class ScheduleParser {
             helperArray.add(datesColumnInCSV);
         }
 
+
+        ArrayList<LocalTime> weekDaysDepartures = new ArrayList<>();
         for (int i = 1; i < helperArray.size() ; i++) {
-            while (helperArray.get(i) != "99"){
-
+            if (helperArray.get(i) != "99") {
+                weekDaysDepartures.add(new LocalTime(helperArray.get(i)));
             }
-
+            break;
         }
 
-
-        ArrayList<LocalTime> lt = new ArrayList<>();
-
-
-        return lt;
+        return weekDaysDepartures;
 
     }
 }
