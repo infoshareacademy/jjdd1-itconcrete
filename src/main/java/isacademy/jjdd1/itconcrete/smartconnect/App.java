@@ -25,24 +25,24 @@ public class App {
 //        CalendarParser cp = new CalendarParser();
 //        cp.getConnectionData(1); // EventsConnectionNumber can be either 0 or 1, cause there are only 2 connections in a sampled Calendar file
 //
-//        CalendarEvent[] AllConnectionsToday = new CalendarEvent[99];
+//        System.out.println(cp.getConnectionData(0).getFromBusStop());
+//        System.out.println(cp.getConnectionData(0).getToBusStop());
+//        System.out.println(cp.getConnectionData(0).getArrivalTime());
 //
-//        for (int i = 0; i < 2; i++) {
-//            AllConnectionsToday[i] = cp.getConnectionData(i);
-//        }
-//        for (int i = 0; i < 2; i++) {
-//            System.out.println(AllConnectionsToday[i]);
-//        }
+//        System.out.println(cp.getConnectionData(1).getFromBusStop());
+//        System.out.println(cp.getConnectionData(1).getToBusStop());
+//        System.out.println(cp.getConnectionData(1).getArrivalTime());
+
 //----------------------------------------
 
-//        ScheduleParser sp = new ScheduleParser();
-//        sp.loadData();
-//
-//        ArrayList<Route> allRoutes = new ArrayList<Route>();
-//        allRoutes = sp.getArrayOfRoutes();
-//
-//        ArrayList<BusLine> allBusLines = new ArrayList<BusLine>();
-//        allBusLines = sp.getArrayOfBusLines();
+        ScheduleParser sp = new ScheduleParser();
+        sp.loadData();
+
+        ArrayList<Route> allRoutes = new ArrayList<Route>();
+        allRoutes = sp.getArrayOfRoutes();
+
+        ArrayList<BusLine> allBusLines = new ArrayList<BusLine>();
+        allBusLines = sp.getArrayOfBusLines();
 //        for (BusLine bl : allBusLines){
 //            System.out.println("Departures for busline"+bl.getLineNumber()+"\n");
 //            System.out.println(bl.getDepartures());
@@ -55,14 +55,10 @@ public class App {
 //        for (Route route : allRoutes) {
 //            if (route.containsStops(startBusStop, endBusStop)) {
 //                int lenghtOfRoute = route.getAmountOfStops();
-//                System.out.println(route.getLineNumber() + " direction of: " + route.getDirection() + " - " + route.getArrayOfStops().get(lenghtOfRoute-1));
+//                System.out.println(route.getLineNumber() + " direction of: " + route.getDirection() + " - " +
+//                        route.getArrayOfStops().get(lenghtOfRoute - 1));
 //            }
 //        }
-
-
-
-
-
 
         //data mock
 
@@ -82,77 +78,60 @@ public class App {
 //        deltasList.add(new BusStopDeltas("Kolumba", 2));
 //        deltasList.add(new BusStopDeltas("Brętowo PKM", 1));
 //
-//        Route route = new Route(1, deltasList, null);
+//        Route route = new Route(1, null, 131, deltasList);
 //
-//        LocalTime[] departuresByBus = {
-//                new LocalTime("08:12"),
-//                new LocalTime("08:12"),
-//                new LocalTime("08:46"),
-//                new LocalTime("08:52"),
-//                new LocalTime("09:12"),
-//                new LocalTime("09:25"),
-//                new LocalTime("09:38"),
-//                new LocalTime("09:46"),
-//                new LocalTime("10:38"),
-//                new LocalTime("10:46"),
-//                new LocalTime("11:38"),
-//                new LocalTime("11:46"),
-//                new LocalTime("12:38"),
-//                new LocalTime("12:46")};
+//        ArrayList<LocalTime> departuresByBus = new ArrayList<>();
+//        departuresByBus.add(new LocalTime("08:12"));
+//        departuresByBus.add(new LocalTime("08:42"));
+//        departuresByBus.add(new LocalTime("08:52"));
+//        departuresByBus.add(new LocalTime("09:12"));
+//        departuresByBus.add(new LocalTime("09:25"));
+//        departuresByBus.add(new LocalTime("09:38"));
+//        departuresByBus.add(new LocalTime("10:38"));
+//        departuresByBus.add(new LocalTime("10:46"));
+//        departuresByBus.add(new LocalTime("11:38"));
+//        departuresByBus.add(new LocalTime("11:46"));
+//        departuresByBus.add(new LocalTime("12:38"));
+//        departuresByBus.add(new LocalTime("12:46"));
 //
 //
-//        BusLine busLine1 = new BusLine(131, route, departuresByBus);
-//        BusLine busLine2 = new BusLine(131, route, departuresByBus);
+//        BusLine busLine1 = new BusLine(1, route, departuresByBus);
+//        BusLine busLine2 = new BusLine(1, route, departuresByBus);
+//        BusLine busLine3 = new BusLine(1, route, departuresByBus);
 //
-//        BusLine[] busLines = {busLine1, busLine2};
-//
-//        // end of data mock
-//
-//        BusLineSeeker busLineSeeker = new BusLineSeeker();
-//        MinutesToBusStops minutesToBusStops = new MinutesToBusStops();
-//        ConnectionSeeker connectionSeeker = new ConnectionSeeker();
-//        DisplayConnection displayConnection = new DisplayConnection();
-//
-//        for (int i = 0; i < calendarEvent.length; i++) {
-//
-//            List<BusLine> busLineList = busLineSeeker.seekBusLine(calendarEvent[i], busLines);
-//
-//            List<LineRideTime> lineRideTimes = minutesToBusStops.calculateMinutesToBusStops(busLineList,
-//                    calendarEvent[i].getFromBusStop(), calendarEvent[i].getToBusStop());
-//
-//            List<ResultConnection> resultConnections = connectionSeeker.seekConnection(lineRideTimes, calendarEvent[i]);
-//
-//            for (ResultConnection resultConnection : resultConnections) {
-//
-//                String textForEachResult = displayConnection.displayingConnection(resultConnection);
-//                System.out.println(textForEachResult);
-//
-//            }
-//        }
+//        BusLine[] busLines = {busLine1, busLine2, busLine3};
 
+        // end of data mock
+
+        BusLineSeeker busLineSeeker = new BusLineSeeker();
+        MinutesToBusStops minutesToBusStops = new MinutesToBusStops();
+        ConnectionSeeker connectionSeeker = new ConnectionSeeker();
+        DisplayConnection displayConnection = new DisplayConnection();
 
         // option for Calendar given as List by parser
 
-//        CalendarParserKasia calendarParserKasia = new CalendarParserKasia();
-//        List<CalendarEvent> calendarEventsList = calendarParserKasia.getEventList();
-//        System.out.println(calendarEventsList);
-//
-//        for (int i = 0; i < calendarEventsList.size(); i++) {
-//
-//            List<BusLine> busLineList = busLineSeeker.seekBusLine(calendarEventsList.get(i), busLines);
-//
-//            List<LineRideTime> lineRideTimes = minutesToBusStops.calculateMinutesToBusStops(busLineList,
-//                    calendarEventsList.get(i).getFromBusStop(), calendarEventsList.get(i).getToBusStop());
-//
-//            List<ResultConnection> resultConnections = connectionSeeker.seekConnection(lineRideTimes, calendarEventsList.get(i));
-//
-//            for (ResultConnection resultConnection : resultConnections) {
-//
-//                String textForEachResult = displayConnection.displayingConnection(resultConnection);
-//                System.out.println(textForEachResult);
-//
-//            }
-//        }
+        CalendarParserKasia calendarParserKasia = new CalendarParserKasia();
+        List<CalendarEvent> calendarEventsList = calendarParserKasia.getEventList();
+        // System.out.println(calendarEventsList);
+
+        for (int i = 0; i < calendarEventsList.size(); i++) {
+
+            System.out.println( "List of connections for event number " + (i+1));
+
+            List<BusLine> busLineList = busLineSeeker.seekBusLine(calendarEventsList.get(i), allBusLines);
+
+            List<LineRideTime> lineRideTimes = minutesToBusStops.calculateMinutesToBusStops(busLineList,
+                    calendarEventsList.get(i).getFromBusStop(), calendarEventsList.get(i).getToBusStop());
+
+            List<ResultConnection> resultConnections = connectionSeeker.seekConnection(lineRideTimes, calendarEventsList.get(i));
+
+            for (ResultConnection resultConnection : resultConnections) {
+
+                String textForEachResult = displayConnection.displayingConnection(resultConnection);
+                System.out.println(textForEachResult);
+
+            }
+        }
     }
 }
 

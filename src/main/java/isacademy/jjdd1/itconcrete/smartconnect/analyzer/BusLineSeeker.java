@@ -8,7 +8,7 @@ import java.util.List;
 
 public class BusLineSeeker {
 
-    public List<BusLine> seekBusLine(CalendarEvent eventForSeeking, BusLine[] busForSeeking) {
+    public List<BusLine> seekBusLine(CalendarEvent eventForSeeking, ArrayList<BusLine> busForSeeking) {
 
         List<BusLine> foundBusLines = new ArrayList<>();
         String fromBusStop = eventForSeeking.getFromBusStop();
@@ -19,6 +19,8 @@ public class BusLineSeeker {
         for (BusLine currentlyChceckdBusLine : busForSeeking) {
 
             List<BusStopDeltas> deltasList = currentlyChceckdBusLine.getRoute().getDeltasList();
+            foundBusStopFrom = false;
+            foundBusStopTo = false;
 
             for (BusStopDeltas currentlyCheckedBusStopDelta : deltasList) {
                 if (currentlyCheckedBusStopDelta.getBusStopName().equals(fromBusStop)) {

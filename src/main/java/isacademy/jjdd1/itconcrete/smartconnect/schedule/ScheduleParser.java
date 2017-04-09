@@ -172,10 +172,12 @@ public class ScheduleParser {
         String fileHead = fileName.substring(0,indexOfWarianty);
         String pathToDepartures = "";
 
+        // problems with // direction depending on operating system
+
         if (fileName.endsWith("1.csv")){
-            pathToDepartures = filePath +"\\" + fileHead + "kursy1.csv";
+            pathToDepartures = filePath +"//" + fileHead + "kursy1.csv";
         } else {
-            pathToDepartures = filePath + "\\" + fileHead + "kursy2.csv";
+            pathToDepartures = filePath + "//" + fileHead + "kursy2.csv";
         }
 
         File newFile = new File (pathToDepartures);

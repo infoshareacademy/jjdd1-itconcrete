@@ -7,8 +7,6 @@ import org.joda.time.DateTime;
  */
 public class Event {
 
-
-
     private String location;
     private String summary;
     private boolean confirmed;

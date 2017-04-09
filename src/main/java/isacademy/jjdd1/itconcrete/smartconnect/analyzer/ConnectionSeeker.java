@@ -19,7 +19,7 @@ public class ConnectionSeeker {
 
         for (LineRideTime currentlyCheckedLine:lineRideTimes) {
 
-            ArrayList<LocalTime> departures = currentlyCheckedLine.getBusLine().getDepartures();
+            List<LocalTime> departures = currentlyCheckedLine.getBusLine().getDepartures();
 
             int timeToReachFromBusStop = currentlyCheckedLine.getTimeToReachFromBusStop();
             int timeToReachToBusStop = currentlyCheckedLine.getTimeToReachToBusStop();

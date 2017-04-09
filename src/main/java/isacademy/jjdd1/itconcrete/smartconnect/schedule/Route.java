@@ -22,6 +22,7 @@ public class Route {
         this.deltasList = deltasList;
     }
 
+
     public int getDirection() {
         return direction;
     }
