@@ -22,42 +22,42 @@ public class App {
 
 
 //---------------------------------------How to use CalendarParser
-        CalendarParser cp = new CalendarParser();
-        cp.getConnectionData(1); // EventsConnectionNumber can be either 0 or 1, cause there are only 2 connections in a sampled Calendar file
-
-        System.out.println(cp.getConnectionData(0).getFromBusStop());
-        System.out.println(cp.getConnectionData(0).getToBusStop());
-        System.out.println(cp.getConnectionData(0).getArrivalTime());
-
-        System.out.println(cp.getConnectionData(1).getFromBusStop());
-        System.out.println(cp.getConnectionData(1).getToBusStop());
-        System.out.println(cp.getConnectionData(1).getArrivalTime());
-
+//        CalendarParser cp = new CalendarParser();
+//        cp.getConnectionData(1); // EventsConnectionNumber can be either 0 or 1, cause there are only 2 connections in a sampled Calendar file
+//
+//        CalendarEvent[] AllConnectionsToday = new CalendarEvent[99];
+//
+//        for (int i = 0; i < 2; i++) {
+//            AllConnectionsToday[i] = cp.getConnectionData(i);
+//        }
+//        for (int i = 0; i < 2; i++) {
+//            System.out.println(AllConnectionsToday[i]);
+//        }
 //----------------------------------------
 
-        ScheduleParser sp = new ScheduleParser();
-        sp.loadData();
-
-        ArrayList<Route> allRoutes = new ArrayList<Route>();
-        allRoutes = sp.getArrayOfRoutes();
-
-        ArrayList<BusLine> allBusLines = new ArrayList<BusLine>();
-        allBusLines = sp.getArrayOfBusLines();
-        for (BusLine bl : allBusLines){
-            System.out.println("Departures for busline"+bl.getLineNumber()+"\n");
-            System.out.println(bl.getDepartures());
-        }
-
-
-        String startBusStop = "Niedźwiednik";
-        String endBusStop = "Potokowa";
-
-        for (Route route : allRoutes) {
-            if (route.containsStops(startBusStop, endBusStop)) {
-                int lenghtOfRoute = route.getAmountOfStops();
-                System.out.println(route.getLineNumber() + " direction of: " + route.getDirection() + " - " + route.getArrayOfStops().get(lenghtOfRoute-1));
-            }
-        }
+//        ScheduleParser sp = new ScheduleParser();
+//        sp.loadData();
+//
+//        ArrayList<Route> allRoutes = new ArrayList<Route>();
+//        allRoutes = sp.getArrayOfRoutes();
+//
+//        ArrayList<BusLine> allBusLines = new ArrayList<BusLine>();
+//        allBusLines = sp.getArrayOfBusLines();
+//        for (BusLine bl : allBusLines){
+//            System.out.println("Departures for busline"+bl.getLineNumber()+"\n");
+//            System.out.println(bl.getDepartures());
+//        }
+//
+//
+//        String startBusStop = "Niedźwiednik";
+//        String endBusStop = "Potokowa";
+//
+//        for (Route route : allRoutes) {
+//            if (route.containsStops(startBusStop, endBusStop)) {
+//                int lenghtOfRoute = route.getAmountOfStops();
+//                System.out.println(route.getLineNumber() + " direction of: " + route.getDirection() + " - " + route.getArrayOfStops().get(lenghtOfRoute-1));
+//            }
+//        }
 
 
 
