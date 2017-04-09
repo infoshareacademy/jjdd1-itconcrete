@@ -19,4 +19,8 @@ public class BusStopDeltas {
     public int getTimeDifference() {
         return timeDifference;
     }
+
+    @Override
+    public String toString() {
+        return busStopName+", " + timeDifference;   }
 }

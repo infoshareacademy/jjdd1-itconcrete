@@ -1,10 +1,11 @@
 package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 
 
-
 import java.io.*;
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.nio.charset.Charset;
+import java.time.LocalTime;
 import java.util.*;
 
 /**
@@ -12,18 +13,19 @@ import java.util.*;
  */
 public class ScheduleParser {
 
-    private ArrayList<String[]> listOfScheduleRows;
-    private ArrayList<String> route;
     private ArrayList<String> variants;
+    private HashMap<String, ArrayList> minutesMatrix;
     private HashMap<String, ArrayList> hashMapOfBusStops;
     private File[] pathsToCSVFiles;
+    private ArrayList<Route> arrayOfRoutes;
+    private ArrayList<BusLine> arrayOfBusLines;
 
-    public ScheduleParser() throws IllegalAccessException, NoSuchFieldException {
-        //Added in order to allow using polish characters.
-        /*System.setProperty("file.encoding","windows-1250");
-        Field charset = Charset.class.getDeclaredField("defaultCharset");
-        charset.setAccessible(true);
-        charset.set(null,null);*/
+
+    public ScheduleParser() throws IllegalAccessException, NoSuchFieldException {   //TODO: Organize constructor in a better way
+
+        arrayOfRoutes = new ArrayList<Route>();
+        arrayOfBusLines = new ArrayList<BusLine>();
+        hashMapOfBusStops = new HashMap<String, ArrayList>();
 
         String csvFile = "src/main/resources/rozklady_2015-09-08_13.43.01/";
         File f = null;
@@ -31,57 +33,28 @@ public class ScheduleParser {
         pathsToCSVFiles = f.listFiles();
     }
 
-    /*private String charsetConverter (String windowsCharsetString) {
-        String UTFCharsetString = Charset.forName("UTF-8").encode(windowsCharsetString).toString();
-        return UTFCharsetString;
-    }*/
+    public HashMap<String, ArrayList> getHashMapOfBusStops() {
+        return hashMapOfBusStops;
+    }
 
-    /*private String charsetConverter (String windowsCharsetString) throws UnsupportedEncodingException {
-        byte ptext[] = windowsCharsetString.getBytes("UTF-8");
-        String UTFCharsetString = new String(ptext, "UTF-8");
-        return UTFCharsetString;
-    }*/
+    public ArrayList<Route> getArrayOfRoutes() {
+        return arrayOfRoutes;
+    }
 
-    /*private String charsetConverter (String windowsCharsetString) throws UnsupportedEncodingException {
-        byte[] byteText = windowsCharsetString.getBytes(Charset.forName("windows-1250"));
-        String originalString = new String(byteText, "windows-1250");
-        return originalString;
-        /*ą=Ä…
-        ć=Ä‡
-        ę=Ä™
-        ł=Ĺ‚
-        ń=Ĺ„
-        ó=Ăł
-        ś=Ĺ›
-        ź=Ĺş
-        ż=ĹĽ*/
+    public HashMap<String, ArrayList> getMinutesMatrix() { return minutesMatrix; }
 
-
-    /*private String byteConverter (String input){
-        input = "This is an example";
-        byte[] bytes = input.getBytes();
-
-        System.out.println("Text : " + input);
-        System.out.println("Text [Byte Format] : " + bytes);
-        System.out.println("Text [Byte Format] : " + bytes.toString());
-
-        String output = new String(bytes);
-        System.out.println("Text Decryted : " + output);
-        return output;
-    }*/
-
-
-    public HashMap<String, ArrayList> hashMapOfBusStops() {
-
-        hashMapOfBusStops = new HashMap<String, ArrayList>();
+    public void loadData() throws IOException {
 
         for (File path : pathsToCSVFiles) {
+            System.out.println("Your parent path is: "+path.toString());
             File dir = new File(path.toString());
             File[] directoryListing = dir.listFiles();
             if (directoryListing != null) {
                 for (File child : directoryListing) {
                     if (child.getName().contains("warianty")) {
 
+                        System.out.println("Current file is: "+child);
+                        ArrayList<LocalTime> departures = getDepartures(child);
 
                         BufferedReader br = null;
                         String line = "";
@@ -90,27 +63,76 @@ public class ScheduleParser {
                         try {
 
                             br = new BufferedReader( new InputStreamReader(new FileInputStream(child),"windows-1250"));
-                            //br = new BufferedReader(new FileReader(child));
-                            String busLine = child.getName().substring(0,3);
+                            String nameOfFile = child.getName();
+                            String busLineNumber = nameOfFile.substring(0,3);
+                            int direction = 0;
+                            System.out.println("Name of file to get the direction from is: "+nameOfFile);
+
+                            if (nameOfFile.endsWith("1.csv")){
+                                direction = 1;
+                            } else {
+                                direction = 2;
+                            }
+
+                            ArrayList<String> arrayOfBusStopsInOneRoute = new ArrayList<>();
+                            ArrayList<BusStopDeltas> deltasList = new ArrayList<>();
+                            ArrayList<String[]> singleBusData = new ArrayList<String[]>();
+
                             while ((line = br.readLine()) != null) {
 
                                 String[] oneRowInCSV = line.split(cvsSplitBy);
+                                singleBusData.add(oneRowInCSV);
                                 String nameColumnInCSV = oneRowInCSV[3];
-                                System.out.println(oneRowInCSV[3]);
+                                String deltaColumnInCSV = oneRowInCSV[4];
 
+                                if (!deltaColumnInCSV.startsWith("X")){
+                                    if (deltaColumnInCSV.isEmpty()){
+                                        BusStopDeltas bsd = new BusStopDeltas(nameColumnInCSV,-1);
+                                        deltasList.add(bsd);
+                                    } else {
+                                        BusStopDeltas bsd = new BusStopDeltas(nameColumnInCSV, Integer.parseInt(deltaColumnInCSV));
+                                        deltasList.add(bsd);
+                                    }
+                                }
 
                                 if (!nameColumnInCSV.equals("Nazwa")) {
+                                    arrayOfBusStopsInOneRoute.add(nameColumnInCSV);
 
                                     if (!hashMapOfBusStops.containsKey(nameColumnInCSV)) {
                                         ArrayList listOfBusLines = new ArrayList();
-                                        listOfBusLines.add(busLine);
+                                        listOfBusLines.add(busLineNumber);
                                         hashMapOfBusStops.put(nameColumnInCSV, listOfBusLines);
-                                    } else if (!hashMapOfBusStops.get(nameColumnInCSV).contains(busLine)) {
-                                        hashMapOfBusStops.get(nameColumnInCSV).add(busLine);
+                                    } else if (!hashMapOfBusStops.get(nameColumnInCSV).contains(busLineNumber)) {
+                                        hashMapOfBusStops.get(nameColumnInCSV).add(busLineNumber);
                                     }
                                 }
                             }
 
+                            Route route = new Route (direction, arrayOfBusStopsInOneRoute, busLineNumber, deltasList);
+                            arrayOfRoutes.add(route);
+
+                            variants = new ArrayList<String>();
+                            String [] firstRowInCSV = singleBusData.get(0);
+                            for (int i = 4; i < firstRowInCSV.length; i++){
+                                String currentElementFromFirsRow = firstRowInCSV[i];
+                                variants.add(currentElementFromFirsRow.substring(0,currentElementFromFirsRow.indexOf("(")));
+                            }
+
+                           /* minutesMatrix = new HashMap<String,ArrayList>();
+                            for (int i = 0; i < variants.size() ; i++) {
+                                ArrayList<String> minutes = new ArrayList<String>();
+                                for (int j = 1; j < singleBusData.size() ; j++) {
+                                    String minute = singleBusData.get(j)[4+i];
+                                    if (minute == null ){
+                                        minutes.add("Skip");
+                                    } else {
+                                        minutes.add(minute);
+                                    }
+                                }
+                                minutesMatrix.put(variants.get(i), minutes);
+                            }*/
+
+                            System.out.println("your variants are:" + variants);
 
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
@@ -129,75 +151,49 @@ public class ScheduleParser {
                 }
             }
         }
-        return hashMapOfBusStops;
     }
 
+    private ArrayList<LocalTime> getDepartures (File file) throws IOException {
 
-    public ArrayList<String[]> scheduleParser(String bus) throws Exception{
+        String fileName = file.getName();
+        String filePath = file.getPath();
+        int indexOfWarianty = fileName.indexOf('w');
+        String fileHead = fileName.substring(0,indexOfWarianty);
+        String pathToDepartures = "";
 
-        listOfScheduleRows = new ArrayList<String[]>();
+        if (fileName.endsWith("1.csv")){
+            pathToDepartures = filePath + fileHead + "kursy1.csv";
+        } else {
+            pathToDepartures = filePath + fileHead + "kursy2.csv";
+        }
 
-        for (File path : pathsToCSVFiles) {
-            if (path.toString().contains(bus+"_")) {
-                File dir = new File(path.toString());
-                File[] directoryListing = dir.listFiles();
-                if (directoryListing != null) {
-                    for (File child : directoryListing) {
-                        if (child.getName().contains("warianty")) {
+        File newFile = new File (pathToDepartures);
 
-                            String pathToSchedules = child.getAbsolutePath();
-                            BufferedReader br = null;
-                            String line = "";
-                            String csvSplitBy = ";";
+        BufferedReader br = null;
+        String line = "";
+        String cvsSplitBy = ";";
+        br = new BufferedReader( new InputStreamReader(new FileInputStream(newFile),"windows-1250"));
+        ArrayList<String> helperArray = new ArrayList<>();
 
-                            try {
+        while ((line = br.readLine()) != null) {
 
-                                br = new BufferedReader( new InputStreamReader(new FileInputStream(pathToSchedules),"windows-1250"));
-                                while ((line = br.readLine()) != null) {
+            String[] oneRowInCSV = line.split(cvsSplitBy);
+            String datesColumnInCSV = oneRowInCSV[0];
+            helperArray.add(datesColumnInCSV);
+        }
 
-                                    String[] oneRowInCSV = line.split(csvSplitBy);
-                                    listOfScheduleRows.add(oneRowInCSV);
+        for (int i = 1; i < helperArray.size() ; i++) {
+            while (helperArray.get(i) != "99"){
 
-                                }
-
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }
             }
-        }
-
-//        String pathToSchedules = "src/main/resources/rozklady_2015-09-08_13.43.01/131_20150718/131_20150718warianty1.csv";
-//        File file = new File(pathToSchedules);
-//        String busLineNumber = file.getBusStopName().toString().substring(0,3);
-
-
-
-
-        variants = new ArrayList<String>();
-        String [] firstRowInCSV = listOfScheduleRows.get(0);
-        for (int i = 4; i < firstRowInCSV.length-1; i++){
-            String currentElementFromFirsRow = firstRowInCSV[i];
-            variants.add(currentElementFromFirsRow.substring(0,currentElementFromFirsRow.indexOf("(")));
-        }
-
-
-        route = new ArrayList<String>();
-        for (int i = 1; i < listOfScheduleRows.size() ; i++) {
-            route.add(listOfScheduleRows.get(i)[3]);
-        }
-
-        System.out.println("Busline: "+bus + "\nDirection: " + route.get(route.size()-1)+"\nVariants: " + variants + "\n");
-        for (int i = 0; i < route.size(); i++) {
-            System.out.println(route.get(i));
 
         }
 
-        return listOfScheduleRows;
+
+        ArrayList<LocalTime> lt = new ArrayList<>();
+
+
+        return lt;
+
     }
-
-
-
 }
