@@ -23,10 +23,12 @@ public class BusLineSeeker {
             foundBusStopTo = false;
 
             for (BusStopDeltas currentlyCheckedBusStopDelta : deltasList) {
-                if (currentlyCheckedBusStopDelta.getBusStopName().equals(fromBusStop)) {
+                if (currentlyCheckedBusStopDelta.getBusStopName().equals(fromBusStop)
+                        && currentlyCheckedBusStopDelta.getTimeDifference() >= 0) {
                     foundBusStopFrom = true;
                 }
-                if (foundBusStopFrom && currentlyCheckedBusStopDelta.getBusStopName().equals(toBusStop) ) {
+                if (foundBusStopFrom && currentlyCheckedBusStopDelta.getBusStopName().equals(toBusStop)
+                        && currentlyCheckedBusStopDelta.getTimeDifference() >= 0) {
                     foundBusStopTo = true;
                 }
             }
