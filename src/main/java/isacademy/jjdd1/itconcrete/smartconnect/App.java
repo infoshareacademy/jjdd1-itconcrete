@@ -1,8 +1,8 @@
 package isacademy.jjdd1.itconcrete.smartconnect;
 
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.*;
-import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarEvent;
-import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParserKasia;
+import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
+import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParserAlternative;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.DisplayConnection;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.*;
 import java.util.ArrayList;
@@ -21,8 +21,9 @@ public class App {
         ConnectionSeeker connectionSeeker = new ConnectionSeeker();
         DisplayConnection displayConnection = new DisplayConnection();
 
-        CalendarParserKasia calendarParserKasia = new CalendarParserKasia();
-        List<CalendarEvent> calendarEventsList = calendarParserKasia.getEventList();
+        CalendarParserAlternative calendarParserAlternative = new CalendarParserAlternative();
+
+        List<Journey> calendarEventsList = calendarParserAlternative.getEventList();
 
         for (int i = 0; i < calendarEventsList.size(); i++) {
 
@@ -31,10 +32,9 @@ public class App {
             String textForEachEvent = displayConnection.displayEventHeader(calendarEventsList.get(i));
             System.out.println(textForEachEvent);
 
-            List<BusLine> busLineList = busLineSeeker.seekBusLine(calendarEventsList.get(i), allBusLines);
+            List<BusLine> foundBusLines = busLineSeeker.seekBusLine(calendarEventsList.get(i), allBusLines);
 
-            List<LineRideTime> lineRideTimes = minutesToBusStops.calculateMinutesToBusStops(busLineList,
-                    calendarEventsList.get(i).getFromBusStop(), calendarEventsList.get(i).getToBusStop());
+            List<LineRideTime> lineRideTimes = minutesToBusStops.calculateMinutesToBusStops(foundBusLines, calendarEventsList.get(i));
 
             List<ResultConnection> resultConnections = connectionSeeker.seekConnection(lineRideTimes, calendarEventsList.get(i));
 

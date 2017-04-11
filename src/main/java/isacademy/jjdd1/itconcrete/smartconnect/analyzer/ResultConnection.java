@@ -6,15 +6,15 @@ public class ResultConnection {
     private int lineNumber;
     private LocalTime travelStartTime;
     private LocalTime travelEndTime;
-    private String fromBusStop;
-    private String toBusStop;
+    private String startBusStop;
+    private String endBusStop;
 
-    public ResultConnection(int lineNumber, LocalTime travelStartTime, LocalTime travelEndTime, String fromBusStop, String toBusStop) {
+    public ResultConnection(int lineNumber, LocalTime travelStartTime, LocalTime travelEndTime, String startBusStop, String endBusStop) {
         this.lineNumber = lineNumber;
         this.travelStartTime = travelStartTime;
         this.travelEndTime = travelEndTime;
-        this.fromBusStop = fromBusStop;
-        this.toBusStop = toBusStop;
+        this.startBusStop = startBusStop;
+        this.endBusStop = endBusStop;
     }
 
     public int getLineNumber() {
@@ -29,11 +29,11 @@ public class ResultConnection {
         return travelEndTime;
     }
 
-    public String getFromBusStop() {
-        return fromBusStop;
+    public String getStartBusStop() {
+        return startBusStop;
     }
 
-    public String getToBusStop() {
-        return toBusStop;
+    public String getEndBusStop() {
+        return endBusStop;
     }
 }

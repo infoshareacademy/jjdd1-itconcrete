@@ -1,39 +1,39 @@
 package isacademy.jjdd1.itconcrete.smartconnect.analyzer;
+import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusStopDeltas;
-import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarEvent;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BusLineSeeker {
 
-    public List<BusLine> seekBusLine(CalendarEvent eventForSeeking, ArrayList<BusLine> busForSeeking) {
+    public List<BusLine> seekBusLine(Journey journeyForSeeking, ArrayList<BusLine> busLinesForSeeking) {
 
         List<BusLine> foundBusLines = new ArrayList<>();
-        String fromBusStop = eventForSeeking.getFromBusStop();
-        String toBusStop = eventForSeeking.getToBusStop();
-        boolean foundBusStopFrom ;
-        boolean foundBusStopTo;
+        String startBusStop = journeyForSeeking.getStartBusStop();
+        String endBusStop = journeyForSeeking.getEndBusStop();
+        boolean foundStartBusStop;
+        boolean foundEndBusStop;
 
-        for (BusLine currentlyChceckdBusLine : busForSeeking) {
+        for (BusLine currentlyCheckedBusLine : busLinesForSeeking) {
 
-            List<BusStopDeltas> deltasList = currentlyChceckdBusLine.getRoute().getDeltasList();
-            foundBusStopFrom = false;
-            foundBusStopTo = false;
+            List<BusStopDeltas> deltasList = currentlyCheckedBusLine.getRoute().getDeltasList();
+            foundStartBusStop = false;
+            foundEndBusStop = false;
 
             for (BusStopDeltas currentlyCheckedBusStopDelta : deltasList) {
-                if (currentlyCheckedBusStopDelta.getBusStopName().equals(fromBusStop)
+                if (currentlyCheckedBusStopDelta.getBusStopName().equals(startBusStop)
                         && currentlyCheckedBusStopDelta.getTimeDifference() >= 0) {
-                    foundBusStopFrom = true;
+                    foundStartBusStop = true;
                 }
-                if (foundBusStopFrom && currentlyCheckedBusStopDelta.getBusStopName().equals(toBusStop)
+                if (foundStartBusStop && currentlyCheckedBusStopDelta.getBusStopName().equals(endBusStop)
                         && currentlyCheckedBusStopDelta.getTimeDifference() >= 0) {
-                    foundBusStopTo = true;
+                    foundEndBusStop = true;
                 }
             }
-            if (foundBusStopFrom && foundBusStopTo) {
-                foundBusLines.add(currentlyChceckdBusLine);
+            if (foundStartBusStop && foundEndBusStop) {
+                foundBusLines.add(currentlyCheckedBusLine);
             }
         }
 
