@@ -190,7 +190,7 @@ public class ScheduleParser {
         for (int i = 1; i < helperArray.size() ; i++) {
             String ha = helperArray.get(i);
             if ( !ha.equals("99") || !ha.equals("")) {
-                //FixMe
+
                 try {
                     weekDaysDepartures.add(new LocalTime(helperArray.get(i)));
                 } catch (Exception e) {
