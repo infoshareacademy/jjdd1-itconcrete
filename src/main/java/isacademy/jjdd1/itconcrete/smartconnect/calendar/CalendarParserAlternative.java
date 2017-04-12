@@ -9,48 +9,48 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CalendarParserKasia {
+public class CalendarParserAlternative {
 
-    public List<CalendarEvent> getEventList() throws IOException {
+    public List<Journey> getEventList() throws IOException {
 
         FileReader fileReader = new FileReader("src/main/resources/kalendarz.ics");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         String line;
-        CalendarEvent calendarEvent = null;
-        List<CalendarEvent> calendarEvents = new ArrayList<>();
+        Journey journey = null;
+        List<Journey> journeys = new ArrayList<>();
         final String HOME = "Klonowa";
 
         while ((line = bufferedReader.readLine()) != null) {
 
             if (line.startsWith("BEGIN:VEVENT")) {
 
-                if (calendarEvent == null) {
-                    calendarEvent = new CalendarEvent();
-                    calendarEvent.setFromBusStop(HOME);
+                if (journey == null) {
+                    journey = new Journey();
+                    journey.setStartBusStop(HOME);
                 } else {
-                    String toBusStopFromPreviousEvent = calendarEvent.getToBusStop();
-                    calendarEvent = new CalendarEvent();
-                    calendarEvent.setFromBusStop(toBusStopFromPreviousEvent);
+                    String toBusStopFromPreviousEvent = journey.getEndBusStop();
+                    journey = new Journey();
+                    journey.setStartBusStop(toBusStopFromPreviousEvent);
                 }
 
             } else if (line.startsWith("END:VEVENT")) {
-                calendarEvents.add(calendarEvent);
+                journeys.add(journey);
             }
 
             if (line.startsWith("DTSTART")) {
                 String[] strings = line.split(":");
                 DateTimeFormatter parser = DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss'Z'");
                 DateTime dateTime = parser.parseDateTime(strings[1]);
-                calendarEvent.setArrivalTime(dateTime);
+                journey.setStartOfDestinedEvent(dateTime);
             }
 
             if (line.startsWith("LOCATION")) {
                 String[] strings = line.split(":");
-                calendarEvent.setToBusStop(strings[1]);
+                journey.setEndBusStop(strings[1]);
             }
 
         }
         fileReader.close();
-        return calendarEvents;
+        return journeys;
     }
 }

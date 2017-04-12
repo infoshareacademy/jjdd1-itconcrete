@@ -5,7 +5,6 @@ import org.joda.time.format.DateTimeFormat;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -31,7 +30,7 @@ public class CalendarParser {
 
 
     final static int WillILearnHowToUseArraysNope = 99;
-    CalendarEvent[] EventsConnection = new CalendarEvent[WillILearnHowToUseArraysNope];
+    Journey[] EventsConnection = new Journey[WillILearnHowToUseArraysNope];
 
 
     @Override
@@ -39,7 +38,7 @@ public class CalendarParser {
         return EventsConnection[1].toString();         //this toString has [0]/[1] hardcoded and is for test only
     }                                                  //EventsConnection[0] is the first connection between two stops and EventsConnection[1] is second one
 
-    public CalendarEvent getConnectionData(int EventsConnectionNumber) throws Exception {
+    public Journey getConnectionData(int EventsConnectionNumber) throws Exception {
         Path path = Paths.get("src/main/resources", "kalendarz.ics");
         List<String> lines = Files.readAllLines(path);
         int eventsNumber = 0;                                       //this can be used by list of events for each day
@@ -53,7 +52,7 @@ public class CalendarParser {
         }
 
         Event[] DailyEvents = new Event[eventsNumber];               //this table stores all {events taking place during same day} separately
-        //CalendarEvent[] EventsConnection = new CalendarEvent[eventsNumber - 1];
+        //Journey[] EventsConnection = new Journey[eventsNumber - 1];
 
 
 // following loops declares each Event today
@@ -61,8 +60,8 @@ public class CalendarParser {
             DailyEvents[i] = new Event(constructorDate0, constructorDate0, "", "", false);
         }
         for (int i = 0; i < eventsNumber; i++) {
-            EventsConnection[0] = new CalendarEvent(" ", " ", constructorDate0);
-            new CalendarEvent(" ", " ", constructorDate0);
+            EventsConnection[0] = new Journey(" ", " ", null, null, constructorDate0, null);
+            new Journey(" ", " ", null, null, constructorDate0, null);
         }
 
 
@@ -95,7 +94,7 @@ public class CalendarParser {
                 }
             }
             for (int i = 0; i < eventsNumber - 1; i++) {
-                EventsConnection[i] = new CalendarEvent(DailyEvents[i].getLocation(), DailyEvents[i + 1].getLocation(), DailyEvents[i + 1].getStartTimeYoda());
+                EventsConnection[i] = new Journey(DailyEvents[i].getLocation(), DailyEvents[i + 1].getLocation(), null, null, DailyEvents[i + 1].getStartTimeYoda(), null);
             }
 
 

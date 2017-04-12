@@ -1,10 +1,9 @@
 package isacademy.jjdd1.itconcrete.smartconnect.displayer;
 
+import isacademy.jjdd1.itconcrete.smartconnect.analyzer.DateAndTimeConverter;
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.ResultConnection;
-import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarEvent;
+import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
 import org.joda.time.LocalTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 
 public class DisplayConnection {
 
@@ -13,25 +12,19 @@ public class DisplayConnection {
         int lineNumber = resultConnections.getLineNumber();
         LocalTime travelStartTime = resultConnections.getTravelStartTime();
         LocalTime travelEndTime = resultConnections.getTravelEndTime();
-        String fromBusStop = resultConnections.getFromBusStop();
-        String toBusStop = resultConnections.getToBusStop();
+        String startBusStop = resultConnections.getStartBusStop();
+        String endBusStop = resultConnections.getEndBusStop();
 
-        String connectionResultText = lineNumber + " - start journey at: " + prettyFormatTime(travelStartTime) + ", you will reach destination "
-                 + prettyFormatTime(travelEndTime);
+        String connectionResultText = lineNumber + " - start journey at: " + DateAndTimeConverter.prettyFormatTime(travelStartTime) + ", you will reach destination "
+                 + DateAndTimeConverter.prettyFormatTime(travelEndTime);
 
         return connectionResultText;
     }
 
-    private String prettyFormatTime(LocalTime time) {
+    public String displayEventHeader(Journey journey) {
 
-        DateTimeFormatter formatter = DateTimeFormat.forPattern("HH:mm");
-        return formatter.print(time);
-    }
-
-    public String displayEventHeader(CalendarEvent calendarEvent) {
-
-        String fromBusStop = calendarEvent.getFromBusStop();
-        String toBusStop = calendarEvent.getToBusStop();
+        String fromBusStop = journey.getStartBusStop();
+        String toBusStop = journey.getEndBusStop();
         String eventHeaderText = "From bus stop " + fromBusStop + " to bus stop " + toBusStop + " you can take lines:";
 
         return eventHeaderText;
