@@ -1,11 +1,13 @@
 package isacademy.jjdd1.itconcrete.smartconnect;
 
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.*;
+import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParserAlternative;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.DisplayConnection;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class App {

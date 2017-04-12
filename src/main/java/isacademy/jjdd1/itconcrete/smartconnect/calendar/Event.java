@@ -10,38 +10,40 @@ public class Event {
     private String location;
     private String summary;
     private boolean confirmed;
-    private DateTime startTimeYoda;
-    private DateTime endTimeYoda;
+    private DateTime startTime;
+    private DateTime endTime;
 
     @Override
     public String toString() {
-        return "Event: "+ startTimeYoda + " " + endTimeYoda +  " " + location
+        return "Event: "+ startTime + " " + endTime +  " " + location
                 + " " + summary + " " + confirmed;
     }
 
-    public Event(DateTime startTimeYoda, DateTime endTimeYoda, String location, String summary, boolean confirmed) {
-        this.startTimeYoda = startTimeYoda;
-        this.endTimeYoda = endTimeYoda;
+    public Event() {}
+
+    public Event(DateTime startTime, DateTime endTime, String location, String summary, boolean confirmed) {
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.location = location;
         this.summary = summary;
         this.confirmed = confirmed;
     }
 
 
-    public DateTime getStartTimeYoda() {
-        return startTimeYoda;
+    public DateTime getStartTime() {
+        return startTime;
     }
 
-    public void setStartTimeYoda(DateTime startTimeYoda) {
-        this.startTimeYoda = startTimeYoda;
+    public void setStartTime(DateTime startTimeYoda) {
+        this.startTime = startTimeYoda;
     }
 
-    public DateTime getEndTimeYoda() {
-        return endTimeYoda;
+    public DateTime getEndTime() {
+        return endTime;
     }
 
-    public void setEndTimeYoda(DateTime endTimeYoda) {
-        this.endTimeYoda = endTimeYoda;
+    public void setEndTime(DateTime endTimeYoda) {
+        this.endTime = endTimeYoda;
     }
 
     public String getLocation() {

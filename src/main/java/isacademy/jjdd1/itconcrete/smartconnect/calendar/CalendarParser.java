@@ -2,16 +2,89 @@ package isacademy.jjdd1.itconcrete.smartconnect.calendar;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
-
-
-
 
 public class CalendarParser {
 
+    List<Event> events = new ArrayList<>();
+    Event event = new Event();
+    //   String path = "src/main/resources/kalendarz.ics";
+
+    public List<Event> readEvents(String path) throws IOException {
+
+        CalendarParser cp = new CalendarParser();
+        FileReader fileReader = new FileReader(path);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        String line;
+
+        while ((line = bufferedReader.readLine()) != null) {
+
+            if (line.startsWith("BEGIN:VEVENT")) {
+                event = new Event();
+            }
+            if (line.startsWith("DTSTART")) {
+                cp.setStartDate(line, event);
+            }
+            if (line.startsWith("DTEND")) {
+                cp.setEndDate(line, event);
+            }
+            if (line.startsWith("LOCATION")) {
+                cp.setLocation(line, event);
+            }
+            if (line.startsWith("SUMMARY")) {
+                cp.setSummary(line, event);
+            }
+            if (line.startsWith("STATUS")) {
+                cp.setStatus(line,event);
+            }
+            if (line.startsWith("END:VEVENT")) {
+                events.add(event);
+            }
+        }
+        fileReader.close();
+        return events;
+    }
+
+    public Event setStartDate(String line, Event event) {
+        DateTime date = DateTime.parse(line.substring(8, 23),
+                DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss"));
+        event.setStartTime(date);
+        return event;
+    }
+    public Event setEndDate(String line, Event event) {
+        DateTime date = DateTime.parse(line.substring(6, 21),
+                DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss"));
+        event.setEndTime(date);
+        return event;
+    }
+    public Event setLocation(String line, Event event) {
+        event.setLocation(line.substring(9, line.length()));
+        return event;
+    }
+    public Event setSummary(String line, Event event) {
+        event.setSummary(line.substring(8, line.length()));
+        return event;
+    }
+    public Event setStatus(String line, Event event) {
+        if (line.substring(7, line.length()).equals("CONFIRMED")) {
+            event.setConfirmed(true);
+        } else if (line.substring(7, line.length()).equals("UNCONFIRMED")) {       //TODO: check real STATUS of non-confirmed events
+            event.setConfirmed(false);
+        }
+        return event;
+    }
+
+
+
+    public List<Event> sortEvents(List<Event> events) {
+        events.sort((e1,e2) -> e1.getStartTime().compareTo(e2.getStartTime()));
+        return events;
+    }
+}
 //---    Typical Event Values:
 //    BEGIN:VEVENT
 //    DTSTART:20170408T070000Z
@@ -29,83 +102,5 @@ public class CalendarParser {
 //    END:VEVENT
 
 
-    final static int WillILearnHowToUseArraysNope = 99;
-    Journey[] EventsConnection = new Journey[WillILearnHowToUseArraysNope];
 
-
-    @Override
-    public String toString() {
-        return EventsConnection[1].toString();         //this toString has [0]/[1] hardcoded and is for test only
-    }                                                  //EventsConnection[0] is the first connection between two stops and EventsConnection[1] is second one
-
-    public Journey getConnectionData(int EventsConnectionNumber) throws Exception {
-        Path path = Paths.get("src/main/resources", "kalendarz.ics");
-        List<String> lines = Files.readAllLines(path);
-        int eventsNumber = 0;                                       //this can be used by list of events for each day
-        DateTime constructorDate0 = DateTime.parse("00000000T00");
-        DateTimeFormat.forPattern("yyyyMMdd'T'HH");
-
-        for (String line : lines) {                                 // counting number of events today
-            if (line.equals("BEGIN:VEVENT")) {
-                eventsNumber++;
-            }
-        }
-
-        Event[] DailyEvents = new Event[eventsNumber];               //this table stores all {events taking place during same day} separately
-        //Journey[] EventsConnection = new Journey[eventsNumber - 1];
-
-
-// following loops declares each Event today
-        for (int i = 0; i < eventsNumber; i++) {
-            DailyEvents[i] = new Event(constructorDate0, constructorDate0, "", "", false);
-        }
-        for (int i = 0; i < eventsNumber; i++) {
-            EventsConnection[0] = new Journey(" ", " ", null, null, constructorDate0, null);
-            new Journey(" ", " ", null, null, constructorDate0, null);
-        }
-
-
-        int eventOrder = -1; // used to tell iterator when to switch to next DailyEvents tab (DailyEvents[0]--->DailyEvents[1];
-
-        for (String line : lines) {         //main iteration through file
-
-            if (line.substring(0, 7).equals("DTSTART")) {
-                eventOrder++;
-                DateTime date = DateTime.parse(line.substring(8, 23),
-                        DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss"));
-                DailyEvents[eventOrder].setStartTimeYoda(date);
-            }
-            if (line.substring(0, 5).equals("DTEND")) {
-                DateTime date = DateTime.parse(line.substring(6, 21),
-                        DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss"));
-                DailyEvents[eventOrder].setEndTimeYoda(date);
-            }
-            if (line.substring(0, 8).equals("LOCATION")) {
-                DailyEvents[eventOrder].setLocation(line.substring(9, line.length()));
-            }
-            if (line.substring(0, 7).equals("SUMMARY")) {
-                DailyEvents[eventOrder].setSummary(line.substring(8, line.length()));
-            }
-            if (line.substring(0, 6).equals("STATUS")) {
-                if (line.substring(7, line.length()).equals("CONFIRMED")) {
-                    DailyEvents[eventOrder].setConfirmed(true);
-                } else if (line.substring(7, line.length()).equals("UNCONFIRMED")) {       //TODO: check real STATUS of non-confirmed events
-                    DailyEvents[eventOrder].setConfirmed(false);
-                }
-            }
-            for (int i = 0; i < eventsNumber - 1; i++) {
-                EventsConnection[i] = new Journey(DailyEvents[i].getLocation(), DailyEvents[i + 1].getLocation(), null, null, DailyEvents[i + 1].getStartTimeYoda(), null);
-            }
-
-
-        }
-        return EventsConnection[EventsConnectionNumber];
-
-    }
-
-    public void DrugaMetodaLOLNaCoToKomuKomuToPotrzebne() {
-    }
-
-
-}
 
