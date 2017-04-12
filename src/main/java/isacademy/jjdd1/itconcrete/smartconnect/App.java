@@ -1,8 +1,8 @@
 package isacademy.jjdd1.itconcrete.smartconnect;
 
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.*;
-import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParserAlternative;
+import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.DisplayConnection;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.*;
 import java.util.ArrayList;
@@ -14,6 +14,7 @@ public class App {
 
         ScheduleParser sp = new ScheduleParser();
         sp.loadData();
+
         ArrayList<BusLine> allBusLines = sp.getArrayOfBusLines();
 
         BusLineSeeker busLineSeeker = new BusLineSeeker();
