@@ -11,6 +11,7 @@ public class ScheduleParser {
     private HashMap<String, ArrayList> hashMapOfBusStops;
     private ArrayList<Route> arrayOfRoutes;
     private ArrayList<BusLine> arrayOfBusLines;
+//    private final InitialChecker initialChecker; TODO create field initial checker
 
     private static final String pathToSchedulesParentDirectory = "src/main/resources/rozklady_2015-09-08_13.43.01/";
     private static final File parentDirectoryWithSchedules = new File (pathToSchedulesParentDirectory);
@@ -22,6 +23,7 @@ public class ScheduleParser {
         arrayOfRoutes = new ArrayList<>();
         arrayOfBusLines = new ArrayList<>();
         hashMapOfBusStops = new HashMap<>();
+//        initialChecker = new InitialChecker(); TODO initialization of initial checker
     }
 
     public HashMap<String, ArrayList> getHashMapOfBusStops() {
@@ -36,23 +38,24 @@ public class ScheduleParser {
         return arrayOfBusLines;
     }
 
-    private static boolean checkPresenceOfSchedulesResources(File[] resource){
-        Optional<File[]> listOfFiles = Optional.ofNullable(listOfSchedulesDirectories);
-        return listOfFiles.isPresent();
-    }
-
     public HashMap<String, ArrayList> getMinutesMatrix() { //TODO logic/algorythm of this method for further use
         return minutesMatrix; }
 
     public void loadData() throws IOException {
+        //initialChecker.checkSomething() //TODO Define initial checker
         if (!checkPresenceOfSchedulesResources(listOfSchedulesDirectories)) {
             ///TODO Logger - fatal - no data to build schedules database
             System.out.println("Oh no, there is no data to parse.");
         } else {
             //TODO Logger - info
-            //System.out.println("Great, let's build the database!");
+            System.out.println("Great, let's build the database!");
             parseThroughDirectories();
         }
+    }
+
+    private static boolean checkPresenceOfSchedulesResources(File[] resource){
+        Optional<File[]> listOfFiles = Optional.ofNullable(listOfSchedulesDirectories);
+        return listOfFiles.isPresent();
     }
 
     private void parseThroughDirectories () throws IOException {
@@ -98,15 +101,20 @@ public class ScheduleParser {
         }
     }
 
+    private int getBusLineNumber (File file){
+        String busLineNumber = file.getName().substring(0, 3);
+     return Integer.parseInt(busLineNumber);
+    }
+
     private void buildDatabaseOfBusline(File file, ArrayList<LocalTime> departures){
+
         BufferedReader br = null;
         String line = "";
 
         try {
             br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "windows-1250"));
-            String nameOfFile = file.getName();
-            String busLineNumber = nameOfFile.substring(0, 3);
-            int direction = getBusDirection(nameOfFile);
+            int busLineNumber = getBusLineNumber(file);
+            int direction = getBusDirection(file.getName());
 
             ArrayList<String> arrayOfBusStopsInOneRoute = new ArrayList<>();
             ArrayList<BusStopDeltas> deltasList = new ArrayList<>();
@@ -140,9 +148,9 @@ public class ScheduleParser {
                 }
             }
 
-            Route route = new Route(direction, arrayOfBusStopsInOneRoute, Integer.parseInt(busLineNumber), deltasList);
+            Route route = new Route(direction, arrayOfBusStopsInOneRoute, busLineNumber, deltasList);
             arrayOfRoutes.add(route);
-            BusLine bl = new BusLine(Integer.parseInt(busLineNumber), route, departures);
+            BusLine bl = new BusLine(busLineNumber, route, departures);
             arrayOfBusLines.add(bl);
 
             variants = new ArrayList<String>();
