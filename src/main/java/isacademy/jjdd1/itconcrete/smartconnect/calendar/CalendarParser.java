@@ -6,12 +6,15 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class CalendarParser {
 
     List<Event> events = new ArrayList<>();
     Event event = new Event();
+   
+
     //   String path = "src/main/resources/kalendarz.ics";
 
     public List<Event> readEvents(String path) throws IOException {
@@ -78,12 +81,31 @@ public class CalendarParser {
         return event;
     }
 
-
-
     public List<Event> sortEvents(List<Event> events) {
         events.sort((e1,e2) -> e1.getStartTime().compareTo(e2.getStartTime()));
         return events;
     }
+
+    public LinkedList<Journey> connectEventsIntoJourneys(List<Event> events) {
+        LinkedList<Journey> journeys = new LinkedList<>();
+
+        for (int i = 0; i <events.size()-1 ; i++) {
+           
+
+            String location0 = events.get(i).getLocation();
+            String location1 = events.get(i+1).getLocation();
+            String summary0 = events.get(i).getSummary();
+            String summary1 = events.get(i+1).getSummary();
+            DateTime czas = events.get(i+1).getStartTime();
+            DateTime czas1 = events.get(i).getEndTime();
+
+
+            Journey journey = new Journey(location0, location1,summary0,summary1,czas,czas1);
+            journeys.add(journey);
+        }
+        return journeys;
+    }
+
 }
 //---    Typical Event Values:
 //    BEGIN:VEVENT
