@@ -11,15 +11,27 @@ import java.util.List;
 
 public class CalendarParser {
 
-    List<Event> events = new ArrayList<>();
+
+
+    LinkedList<Event> events = new LinkedList<>();
+    LinkedList<Event> sortedEvents;
+    LinkedList<Journey> journeys = new LinkedList<>();
     Event event = new Event();
-   
+
+
 
     //   String path = "src/main/resources/kalendarz.ics";
 
-    public List<Event> readEvents(String path) throws IOException {
 
-        CalendarParser cp = new CalendarParser();
+    public LinkedList<Journey> parseFileAddHomeSortEvents(String path) throws IOException {
+        sortedEvents = sortEvents(readEvents(path));
+        journeys = connectEventsIntoJourneys(HomeAsFirstEvent(sortedEvents));
+        return journeys;
+    }
+
+    public LinkedList<Event> readEvents(String path) throws IOException {
+
+
         FileReader fileReader = new FileReader(path);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         String line;
@@ -30,19 +42,19 @@ public class CalendarParser {
                 event = new Event();
             }
             if (line.startsWith("DTSTART")) {
-                cp.setStartDate(line, event);
+                setStartDate(line, event);
             }
             if (line.startsWith("DTEND")) {
-                cp.setEndDate(line, event);
+                setEndDate(line, event);
             }
             if (line.startsWith("LOCATION")) {
-                cp.setLocation(line, event);
+                setLocation(line, event);
             }
             if (line.startsWith("SUMMARY")) {
-                cp.setSummary(line, event);
+                setSummary(line, event);
             }
             if (line.startsWith("STATUS")) {
-                cp.setStatus(line,event);
+                setStatus(line,event);
             }
             if (line.startsWith("END:VEVENT")) {
                 events.add(event);
@@ -81,13 +93,23 @@ public class CalendarParser {
         return event;
     }
 
-    public List<Event> sortEvents(List<Event> events) {
+    public LinkedList<Event> sortEvents(LinkedList<Event> events) {
         events.sort((e1,e2) -> e1.getStartTime().compareTo(e2.getStartTime()));
         return events;
     }
 
-    public LinkedList<Journey> connectEventsIntoJourneys(List<Event> events) {
-        LinkedList<Journey> journeys = new LinkedList<>();
+    public LinkedList<Event> HomeAsFirstEvent(LinkedList<Event> events) {
+
+        DateTime eightAm = DateTime.parse("20170101T080000",
+                DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss"));
+        Event home = new Event(eightAm,eightAm,"Klonowa","dom",true);
+
+        events.push(home);
+        return events;
+    }
+
+    public LinkedList<Journey> connectEventsIntoJourneys(LinkedList<Event> events) {
+
 
         for (int i = 0; i <events.size()-1 ; i++) {
            
@@ -98,7 +120,6 @@ public class CalendarParser {
             String summary1 = events.get(i+1).getSummary();
             DateTime czas = events.get(i+1).getStartTime();
             DateTime czas1 = events.get(i).getEndTime();
-
 
             Journey journey = new Journey(location0, location1,summary0,summary1,czas,czas1);
             journeys.add(journey);
