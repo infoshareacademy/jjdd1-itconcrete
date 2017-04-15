@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 
 public class ScheduleParser {
 
+    final String cvsSplitBy = ";";
     private ArrayList<String> variants;
     private HashMap<String, ArrayList> minutesMatrix;
     private HashMap<String, ArrayList> hashMapOfBusStops;
@@ -76,8 +77,6 @@ public class ScheduleParser {
 
                     BufferedReader br = null;
                     String line = "";
-                    String cvsSplitBy = ";";
-
                     try {
 
 
@@ -186,7 +185,6 @@ public class ScheduleParser {
             pathToDepartures = path.getParent().resolve(parentFileName + "kursy2.csv");
         }
 
-        final String cvsSplitBy = ";";
         List<String> helperArray = Files.readAllLines(pathToDepartures, Charset.forName("windows-1250"))
                 .stream()
                 .map(l -> l.split(cvsSplitBy)) //String[] oneRowInCSV = line.split(cvsSplitBy);
