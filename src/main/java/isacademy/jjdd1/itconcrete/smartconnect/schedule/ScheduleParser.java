@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ScheduleParser {
 
@@ -68,11 +69,9 @@ public class ScheduleParser {
     public void loadData() throws IOException {
 
         for (Path path : subdirectories(rootPath)) {
-
             for (Path child : subdirectories(path)) {
-                ArrayList<LocalTime> departures = new ArrayList<>();
                 if (child.getFileName().toString().contains("warianty")) {
-                    departures = getDepartures(child);
+                    ArrayList<LocalTime> departures = getDepartures(child);
 
 
                     BufferedReader br = null;
@@ -181,24 +180,18 @@ public class ScheduleParser {
         Path pathToDepartures;
 
         // problems with // direction depending on operating system
-
-        if (path.getFileName().toString().endsWith("1.csv")) {
+        if (path.endsWith("1.csv")) {
             pathToDepartures = path.getParent().resolve(parentFileName + "kursy1.csv");
         } else {
             pathToDepartures = path.getParent().resolve(parentFileName + "kursy2.csv");
         }
 
-        String line = "";
-        String cvsSplitBy = ";";
-        BufferedReader br = Files.newBufferedReader(pathToDepartures, Charset.forName("windows-1250"));
-        ArrayList<String> helperArray = new ArrayList<>();
-
-        while ((line = br.readLine()) != null) {
-
-            String[] oneRowInCSV = line.split(cvsSplitBy);
-            String datesColumnInCSV = oneRowInCSV[0];
-            helperArray.add(datesColumnInCSV);
-        }
+        final String cvsSplitBy = ";";
+        List<String> helperArray = Files.readAllLines(pathToDepartures, Charset.forName("windows-1250"))
+                .stream()
+                .map(l -> l.split(cvsSplitBy)) //String[] oneRowInCSV = line.split(cvsSplitBy);
+                .map(a -> a[0]) //String datesColumnInCSV = oneRowInCSV[0];
+                .collect(Collectors.toList()); //helperArray.add(datesColumnInCSV);
 
         ArrayList<LocalTime> weekDaysDepartures = new ArrayList<>();
         for (int i = 1; i < helperArray.size(); i++) {
