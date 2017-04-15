@@ -29,7 +29,8 @@ public class App {
 //
 //            System.out.println(journey.getStartBusStop() + "       " + journey.getEndBusStop() + "       " +
 //                    journey.getStartLocation() + "       " + journey.getEndLocation() + "       " +
-//                    journey.getStartOfDestinedEvent() + "       " + journey.getEndOfFinishedEvent());
+//                    DateAndTimeConverter.prettyFormatTime(journey.getStartOfDestinedEvent()) + "       "
+//                    + DateAndTimeConverter.prettyFormatTime(journey.getEndOfFinishedEvent()));
 //        }
 
         for (int i = 0; i < journeys.size(); i++) {

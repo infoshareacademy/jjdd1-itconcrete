@@ -14,7 +14,7 @@ public class ConnectionSeeker {
 
         String startBusStop = journey.getStartBusStop();
         String endBusStop = journey.getEndBusStop();
-        DateTime startOfDestinedEvent = journey.getStartOfDestinedEvent();
+        LocalTime startOfDestinedEvent = journey.getStartOfDestinedEvent();
 
         for (LineRideTime currentlyCheckedLine:lineRideTimes) {
 
@@ -27,7 +27,7 @@ public class ConnectionSeeker {
 
                 LocalTime departureFromEndBusStop = departures.get(i).plusMinutes(timeToReachEndBusStop);
 
-                LocalTime startOfDestinedEventTimeOnly = DateAndTimeConverter.dateTimeToLocalTime(startOfDestinedEvent);
+                LocalTime startOfDestinedEventTimeOnly = startOfDestinedEvent;
 
                 int deltaMinutes = Minutes.minutesBetween(departureFromEndBusStop, startOfDestinedEventTimeOnly).getMinutes();
 

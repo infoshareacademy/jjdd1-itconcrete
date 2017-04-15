@@ -27,6 +27,7 @@ public class BusLineSeeker {
                         && currentlyCheckedBusStopDelta.getTimeDifference() >= 0) {
                     foundStartBusStop = true;
                 }
+
                 if (foundStartBusStop && currentlyCheckedBusStopDelta.getBusStopName().equals(endBusStop)
                         && currentlyCheckedBusStopDelta.getTimeDifference() >= 0) {
                     foundEndBusStop = true;

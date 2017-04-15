@@ -1,8 +1,7 @@
 package isacademy.jjdd1.itconcrete.smartconnect.calendar;
 
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
+import isacademy.jjdd1.itconcrete.smartconnect.analyzer.DateAndTimeConverter;
+import org.joda.time.LocalTime;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -17,12 +16,6 @@ public class JourneyCreator {
         return result;
     }
 
-    private DateTime timeParser(String timeInString) {
-        DateTimeFormatter parser = DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss'Z'");
-        DateTime dateTime = parser.parseDateTime(timeInString);
-        return dateTime;
-    }
-
     public List<Journey> getEventList() throws IOException {
 
         FileReader fileReader = new FileReader("src/main/resources/SmartConnectTest.ics");
@@ -34,12 +27,12 @@ public class JourneyCreator {
 
         final String HOME_BUS_STOP = "Klonowa";
         final String HOME = "Home";
-        final String TIME_OF_LEAVING_HOME = "20170408T063000Z";
-        final String TIME_OF_ARRIVING_HOME = "20170408T180000Z";
+        final LocalTime TIME_OF_LEAVING_HOME = DateAndTimeConverter.timeParser("20170408T063000Z");
+        final LocalTime TIME_OF_ARRIVING_HOME = DateAndTimeConverter.timeParser("20170408T180000Z");
 
         String memorizedBusStop = null;
-        String memorizedEndLocation = null;
-        DateTime memorizedEndOfPreviousEvent = null;
+        String memorizedLocation = null;
+        LocalTime memorizedEvent = null;
 
         while ((line = bufferedReader.readLine()) != null) {
 
@@ -47,7 +40,7 @@ public class JourneyCreator {
                 journey = new Journey();
                 journey.setStartBusStop(HOME_BUS_STOP);
                 journey.setStartLocation(HOME);
-                journey.setEndOfFinishedEvent(timeParser(TIME_OF_LEAVING_HOME));
+                journey.setEndOfFinishedEvent(TIME_OF_LEAVING_HOME);
                 continue;
 
             } else {
@@ -55,11 +48,11 @@ public class JourneyCreator {
                 if (journeys.size() == 0) {
 
                     if (line.startsWith("DTSTART")) {
-                        journey.setStartOfDestinedEvent(timeParser(splitLine(line)));
+                        journey.setStartOfDestinedEvent(DateAndTimeConverter.timeParser(splitLine(line)));
                     }
 
                     if (line.startsWith("DTEND")) {
-                        memorizedEndOfPreviousEvent = timeParser(splitLine(line));
+                        memorizedEvent = DateAndTimeConverter.timeParser(splitLine(line));
                     }
 
                     if (line.startsWith("LOCATION")) {
@@ -68,8 +61,8 @@ public class JourneyCreator {
                     }
 
                     if (line.startsWith("SUMMARY")) {
-                        memorizedEndLocation = splitLine(line);
-                        journey.setEndLocation(memorizedEndLocation);
+                        memorizedLocation = splitLine(line);
+                        journey.setEndLocation(memorizedLocation);
                     }
 
                     if (line.startsWith("END:VEVENT")) {
@@ -81,16 +74,16 @@ public class JourneyCreator {
                     if (line.startsWith("BEGIN:VEVENT")) {
                         journey = new Journey();
                         journey.setStartBusStop(memorizedBusStop);
-                        journey.setStartLocation(memorizedEndLocation);
-                        journey.setEndOfFinishedEvent(memorizedEndOfPreviousEvent);
+                        journey.setStartLocation(memorizedLocation);
+                        journey.setEndOfFinishedEvent(memorizedEvent);
                     }
 
                     if (line.startsWith("DTSTART")) {
-                        journey.setStartOfDestinedEvent(timeParser(splitLine(line)));
+                        journey.setStartOfDestinedEvent(DateAndTimeConverter.timeParser(splitLine(line)));
                     }
 
                     if (line.startsWith("DTEND")) {
-                        memorizedEndOfPreviousEvent = timeParser(splitLine(line));
+                        memorizedEvent = DateAndTimeConverter.timeParser(splitLine(line));
                     }
 
                     if (line.startsWith("LOCATION")) {
@@ -99,8 +92,8 @@ public class JourneyCreator {
                     }
 
                     if (line.startsWith("SUMMARY")) {
-                        memorizedEndLocation = splitLine(line);
-                        journey.setEndLocation(memorizedEndLocation);
+                        memorizedLocation = splitLine(line);
+                        journey.setEndLocation(memorizedLocation);
                     }
 
                     if (line.startsWith("END:VEVENT")) {
@@ -114,10 +107,10 @@ public class JourneyCreator {
             journey = new Journey();
             journey.setStartBusStop(memorizedBusStop);
             journey.setEndBusStop(HOME_BUS_STOP);
-            journey.setStartLocation(memorizedEndLocation);
+            journey.setStartLocation(memorizedLocation);
             journey.setEndLocation(HOME);
-            journey.setStartOfDestinedEvent(timeParser(TIME_OF_ARRIVING_HOME));
-            journey.setEndOfFinishedEvent(memorizedEndOfPreviousEvent);
+            journey.setStartOfDestinedEvent(TIME_OF_ARRIVING_HOME);
+            journey.setEndOfFinishedEvent(memorizedEvent);
             journeys.add(journey);
 
             return journeys;
