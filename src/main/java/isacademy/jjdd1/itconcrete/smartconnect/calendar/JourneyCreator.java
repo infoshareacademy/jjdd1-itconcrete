@@ -25,7 +25,7 @@ public class JourneyCreator {
 
     public List<Journey> getEventList() throws IOException {
 
-        FileReader fileReader = new FileReader("src/main/resources/kalendarz.ics");
+        FileReader fileReader = new FileReader("src/main/resources/SmartConnectTest.ics");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
 
         String line;
@@ -33,8 +33,8 @@ public class JourneyCreator {
         List<Journey> journeys = new ArrayList<>();
 
         final String HOME_BUS_STOP = "Klonowa";
-        final String HOME = "Dom";
-        final String TIME_OF_LEAVING_HOME = "20170408T060000Z";
+        final String HOME = "Home";
+        final String TIME_OF_LEAVING_HOME = "20170408T063000Z";
         final String TIME_OF_ARRIVING_HOME = "20170408T180000Z";
 
         String memorizedBusStop = null;
