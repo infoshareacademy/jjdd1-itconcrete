@@ -72,4 +72,16 @@ public class Journey {
     public void setEndOfFinishedEvent(DateTime endOfFinishedEvent) {
         this.endOfFinishedEvent = endOfFinishedEvent;
     }
+
+    @Override
+    public String toString() {
+        return "Journey{" +
+                "startBusStop='" + startBusStop + '\'' +
+                ", endBusStop='" + endBusStop + '\'' +
+                ", startLocation='" + startLocation + '\'' +
+                ", endLocation='" + endLocation + '\'' +
+                ", startOfDestinedEvent=" + startOfDestinedEvent +
+                ", endOfFinishedEvent=" + endOfFinishedEvent +
+                '}';
+    }
 }
