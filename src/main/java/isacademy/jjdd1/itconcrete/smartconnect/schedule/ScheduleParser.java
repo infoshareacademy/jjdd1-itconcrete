@@ -2,15 +2,15 @@ package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 
 import org.joda.time.LocalTime;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
-import java.nio.file.FileSystem;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,19 +20,13 @@ public class ScheduleParser {
     final String cvsSplitBy = ";";
     private ArrayList<String> variants;
     private HashMap<String, ArrayList> minutesMatrix;
-    private HashMap<String, ArrayList> hashMapOfBusStops;
+    private HashMap<String, ArrayList> hashMapOfBusStops = new HashMap<>();
     private Path rootPath;
-    private ArrayList<Route> arrayOfRoutes;
-    private ArrayList<BusLine> arrayOfBusLines;
+    private ArrayList<Route> arrayOfRoutes = new ArrayList<>();
+    private ArrayList<BusLine> arrayOfBusLines = new ArrayList<>();
 
 
     public ScheduleParser() throws URISyntaxException, IOException {   //TODO: Organize constructor in a better way
-
-        arrayOfRoutes = new ArrayList<Route>();
-        arrayOfBusLines = new ArrayList<BusLine>();
-        hashMapOfBusStops = new HashMap<String, ArrayList>();
-
-
         URI uri = ScheduleParser.class.getResource("/rozklady_2015-09-08_13.43.01").toURI();
         rootPath = Paths.get(uri);
     }
