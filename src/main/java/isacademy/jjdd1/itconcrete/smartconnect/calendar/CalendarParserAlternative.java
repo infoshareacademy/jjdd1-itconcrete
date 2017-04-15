@@ -3,9 +3,11 @@ package isacademy.jjdd1.itconcrete.smartconnect.calendar;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +15,8 @@ public class CalendarParserAlternative {
 
     public List<Journey> getEventList() throws IOException {
 
-        FileReader fileReader = new FileReader("src/main/resources/kalendarz.ics");
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        InputStream stream = CalendarParserAlternative.class.getResourceAsStream("/kalendarz.ics");
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream));
         String line;
         Journey journey = null;
         List<Journey> journeys = new ArrayList<>();
@@ -50,7 +52,6 @@ public class CalendarParserAlternative {
             }
 
         }
-        fileReader.close();
         return journeys;
     }
 }
