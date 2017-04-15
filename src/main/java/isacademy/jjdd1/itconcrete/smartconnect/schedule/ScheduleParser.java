@@ -11,6 +11,7 @@ import java.nio.charset.Charset;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,7 +29,12 @@ public class ScheduleParser {
 
     public ScheduleParser() throws URISyntaxException, IOException {   //TODO: Organize constructor in a better way
         URI uri = ScheduleParser.class.getResource("/rozklady_2015-09-08_13.43.01").toURI();
-        rootPath = Paths.get(uri);
+        if (uri.getScheme().equals("jar")) {
+            FileSystem fileSystem = FileSystems.newFileSystem(uri, Collections.emptyMap());
+            rootPath = fileSystem.getPath("/");
+        } else { //filesystem
+            rootPath = Paths.get(uri);
+        }
     }
 
     static List<Path> subdirectories(Path path) throws IOException {
