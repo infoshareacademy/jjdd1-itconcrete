@@ -2,7 +2,7 @@ package isacademy.jjdd1.itconcrete.smartconnect;
 
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.*;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
-import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParserAlternative;
+import isacademy.jjdd1.itconcrete.smartconnect.calendar.JourneyCreator;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.DisplayConnection;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.*;
 import java.util.ArrayList;
@@ -21,22 +21,29 @@ public class App {
         ConnectionSeeker connectionSeeker = new ConnectionSeeker();
         DisplayConnection displayConnection = new DisplayConnection();
 
-        CalendarParserAlternative calendarParserAlternative = new CalendarParserAlternative();
+        JourneyCreator journeyCreator = new JourneyCreator();
 
-        List<Journey> calendarEventsList = calendarParserAlternative.getEventList();
+        List<Journey> journeys = journeyCreator.getEventList();
 
-        for (int i = 0; i < calendarEventsList.size(); i++) {
+//        for (Journey journey : journeys) {
+//
+//            System.out.println(journey.getStartBusStop() + "       " + journey.getEndBusStop() + "       " +
+//                    journey.getStartLocation() + "       " + journey.getEndLocation() + "       " +
+//                    journey.getStartOfDestinedEvent() + "       " + journey.getEndOfFinishedEvent());
+//        }
+
+        for (int i = 0; i < journeys.size(); i++) {
 
             System.out.println("Event number " + (i+1) + ": ");
 
-            String textForEachEvent = displayConnection.displayEventHeader(calendarEventsList.get(i));
+            String textForEachEvent = displayConnection.displayEventHeader(journeys.get(i));
             System.out.println(textForEachEvent);
 
-            List<BusLine> foundBusLines = busLineSeeker.seekBusLine(calendarEventsList.get(i), allBusLines);
+            List<BusLine> foundBusLines = busLineSeeker.seekBusLine(journeys.get(i), allBusLines);
 
-            List<LineRideTime> lineRideTimes = minutesToBusStops.calculateMinutesToBusStops(foundBusLines, calendarEventsList.get(i));
+            List<LineRideTime> lineRideTimes = minutesToBusStops.calculateMinutesToBusStops(foundBusLines, journeys.get(i));
 
-            List<ResultConnection> resultConnections = connectionSeeker.seekConnection(lineRideTimes, calendarEventsList.get(i));
+            List<ResultConnection> resultConnections = connectionSeeker.seekConnection(lineRideTimes, journeys.get(i));
 
             for (ResultConnection resultConnection : resultConnections) {
                 String textForEachResult = displayConnection.displayingConnection(resultConnection);
