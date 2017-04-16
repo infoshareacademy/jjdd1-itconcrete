@@ -15,6 +15,13 @@ public class DateAndTimeConverter {
         return localTime;
     }
 
+    public static LocalTime timeFromKeyboardParser(String timeInString) {
+
+        DateTimeFormatter parser = DateTimeFormat.forPattern("HH:mm");
+        DateTime dateTime = parser.parseDateTime(timeInString);
+        LocalTime localTime = new LocalTime(dateTime.getHourOfDay(), dateTime.getMinuteOfHour());
+        return localTime;
+    }
 
     public static String prettyFormatTime(LocalTime time) {
 

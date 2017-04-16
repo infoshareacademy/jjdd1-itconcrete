@@ -27,6 +27,7 @@ public class ConnectionSeeker {
 
                 LocalTime departureFromEndBusStop = departures.get(i).plusMinutes(timeToReachEndBusStop);
 
+
                 LocalTime startOfDestinedEventTimeOnly = startOfDestinedEvent;
 
                 int deltaMinutes = Minutes.minutesBetween(departureFromEndBusStop, startOfDestinedEventTimeOnly).getMinutes();
