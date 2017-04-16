@@ -4,25 +4,23 @@ import org.joda.time.LocalTime;
 import java.util.ArrayList;
 
 public class BusLine {
-    private int lineNumber;
-    private Route route;
-    private ArrayList<LocalTime> departures;
 
-    public BusLine(int lineNumber, Route route, ArrayList<LocalTime> departures) {
-        this.lineNumber = lineNumber;
-        this.route = route;
-        this.departures = departures;
-    }
 
-    public int getLineNumber() {
-        return lineNumber;
-    }
-
-    public Route getRoute() {
-        return route;
-    }
-
-    public ArrayList<LocalTime> getDepartures() {
-        return departures;
-    }
+//    public BusLine(int lineNumber, Route route, ArrayList<LocalTime> departures) {
+//        this.lineNumber = lineNumber;
+//        this.route = route;
+//        this.departures = departures;
+//    }
+//
+//    public int getLineNumber() {
+//        return lineNumber;
+//    }
+//
+//    public Route getRoute() {
+//        return route;
+//    }
+//
+//    public ArrayList<LocalTime> getDepartures() {
+//        return departures;
+//    }
 }

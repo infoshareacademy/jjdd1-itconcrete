@@ -1,5 +1,7 @@
 package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 import java.io.*;
 import java.util.*;
 
@@ -37,6 +39,7 @@ public class ScheduleParser {
                 System.out.println("It is not a proper directory file.");
             } else {
                 //TODO Logger - info - Start building database about busline number X
+                System.out.println("We are entering the directory " + singleBuslineDirectory.getName());
                 parseInsideParticularBuslineDirectory(singleBuslineDirectory);
             }
         }
@@ -50,7 +53,9 @@ public class ScheduleParser {
         } else {
             //TODO Logger - info - receiving data about departures and route
             int buslineNumber = getBusLineNumber(singleBuslineDirectory);
+            System.out.println("Gathering data over line " + buslineNumber);
             SingleBusLineData singleBusLineData = new SingleBusLineData(buslineNumber, listOfOneBuslineFiles);
+            singleBusLineData.loadData();
             completeBusLinesData.put(buslineNumber,singleBusLineData);
         }
     }

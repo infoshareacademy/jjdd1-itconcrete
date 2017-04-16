@@ -18,20 +18,20 @@ public class BusLineSeeker {
 
         for (BusLine currentlyCheckedBusLine : busLinesForSeeking) {
 
-            List<BusStopDeltas> deltasList = currentlyCheckedBusLine.getRoute().getDeltasList();
+//            List<BusStopDeltas> deltasList = currentlyCheckedBusLine.getRoute().getDeltasList();
             foundStartBusStop = false;
             foundEndBusStop = false;
 
-            for (BusStopDeltas currentlyCheckedBusStopDelta : deltasList) {
-                if (currentlyCheckedBusStopDelta.getBusStopName().equals(startBusStop)
-                        && currentlyCheckedBusStopDelta.getTimeDifference() >= 0) {
-                    foundStartBusStop = true;
-                }
-                if (foundStartBusStop && currentlyCheckedBusStopDelta.getBusStopName().equals(endBusStop)
-                        && currentlyCheckedBusStopDelta.getTimeDifference() >= 0) {
-                    foundEndBusStop = true;
-                }
-            }
+//            for (BusStopDeltas currentlyCheckedBusStopDelta : deltasList) {
+//                if (currentlyCheckedBusStopDelta.getBusStopName().equals(startBusStop)
+//                        && currentlyCheckedBusStopDelta.getTimeDifference() >= 0) {
+//                    foundStartBusStop = true;
+//                }
+//                if (foundStartBusStop && currentlyCheckedBusStopDelta.getBusStopName().equals(endBusStop)
+//                        && currentlyCheckedBusStopDelta.getTimeDifference() >= 0) {
+//                    foundEndBusStop = true;
+//                }
+//            }
             if (foundStartBusStop && foundEndBusStop) {
                 foundBusLines.add(currentlyCheckedBusLine);
             }
