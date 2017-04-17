@@ -18,14 +18,15 @@ public class CalendarParser {
     LinkedList<Journey> journeys = new LinkedList<>();
     Event event = new Event();
 
-
+    DateTime eightAm = DateTime.parse("20170101T080000",
+            DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss"));
+    Event home = new Event(eightAm,eightAm,"Klonowa","dom",true);
 
     //   String path = "src/main/resources/kalendarz.ics";
 
-
-    public LinkedList<Journey> parseFileAddHomeSortEvents(String path) throws IOException {
+    public LinkedList<Journey> parseFileSortEventsAddHome(String path) throws IOException {
         sortedEvents = sortEvents(readEvents(path));
-        journeys = connectEventsIntoJourneys(HomeAsFirstEvent(sortedEvents));
+        journeys = connectEventsIntoJourneys(HomeAsFirstAndLastEvent(sortedEvents));
         return journeys;
     }
 
@@ -98,13 +99,10 @@ public class CalendarParser {
         return events;
     }
 
-    public LinkedList<Event> HomeAsFirstEvent(LinkedList<Event> events) {
-
-        DateTime eightAm = DateTime.parse("20170101T080000",
-                DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss"));
-        Event home = new Event(eightAm,eightAm,"Klonowa","dom",true);
+    public LinkedList<Event> HomeAsFirstAndLastEvent(LinkedList<Event> events) {
 
         events.push(home);
+        events.add(home);
         return events;
     }
 

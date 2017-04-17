@@ -55,7 +55,7 @@ public class App {
         }
 // How to use CalendarParser
 //        CalendarParser cp = new CalendarParser();
-//        System.out.println(cp.parseFileAddHomeSortEvents("src/main/resources/kalendarz.ics"));
+//        System.out.println(cp.parseFileSortEventsAddHome("src/main/resources/kalendarz.ics"));
 
 
     }
