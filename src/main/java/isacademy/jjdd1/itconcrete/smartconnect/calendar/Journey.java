@@ -11,6 +11,18 @@ public class Journey {
     private DateTime startOfDestinedEvent;
     private DateTime endOfFinishedEvent;
 
+    @Override
+    public String toString() {
+        return "Journey{" +
+                "startBusStop='" + startBusStop + '\'' +
+                ", endBusStop='" + endBusStop + '\'' +
+                ", startLocation='" + startLocation + '\'' +        //summary
+                ", endLocation='" + endLocation + '\'' +            //summary
+                ", startOfDestinedEvent=" + startOfDestinedEvent +
+                ", endOfFinishedEvent=" + endOfFinishedEvent +
+                '}';
+    }
+
     public Journey(String startBusStop, String endBusStop, String startLocation,
                    String endLocation, DateTime startOfDestinedEvent, DateTime endOfFinishedEvent) {
         this.startBusStop = startBusStop;
