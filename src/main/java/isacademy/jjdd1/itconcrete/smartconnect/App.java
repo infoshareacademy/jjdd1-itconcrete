@@ -22,37 +22,11 @@ public class App {
         DisplayConnection displayConnection = new DisplayConnection();
 
         BusLineSeeker busLineSeeker = new BusLineSeeker();
-        CheckingBusStopExistence checkingBusStopExistence = new CheckingBusStopExistence();
 
-        // interaction with user
+        String homeBusStop = QuestionAsker.askForHome(allBusLines);
+        String timeOfLeavingHome = QuestionAsker.askForTimeOfLeavingHome();
+        String timeOfArrivingHome = QuestionAsker.askForTimeOfArrivingHome();
 
-        System.out.println("Hello! What is your home bus stop?");
-        String homeBusStop = QuestionAsker.askForInfo();
-
-        while (!checkingBusStopExistence.busStopExistence(homeBusStop, allBusLines) ) {
-            System.out.println("Sorry, there is no '"+ homeBusStop + "' bus stop, try again");
-            homeBusStop = QuestionAsker.askForInfo();
-        }
-
-        System.out.println("What time do you want to leave home? (Time Format HH:MM)");
-
-        String timeOfLeavingHome = QuestionAsker.askForInfo();
-
-        while (!timeOfLeavingHome.matches("([01]?[0-9]|2[0-3]):[0-5][0-9]")) {
-            System.out.println("Sorry, wrong time format, try again");
-            timeOfLeavingHome = QuestionAsker.askForInfo();
-        }
-
-        System.out.println("What time do you want to get back home? (Time Format HH:MM)");
-
-        String timeOfArrivingHome = QuestionAsker.askForInfo();
-
-        while (!timeOfArrivingHome.matches("([01]?[0-9]|2[0-3]):[0-5][0-9]")) {
-            System.out.println("Sorry, wrong time format, try again");
-            timeOfArrivingHome = QuestionAsker.askForInfo();
-        }
-
-        // end of interaction with user
 
         JourneyCreator journeyCreator = new JourneyCreator();
         List<Journey> journeys = journeyCreator.getJourneysList(homeBusStop, timeOfLeavingHome, timeOfArrivingHome);
@@ -67,9 +41,7 @@ public class App {
             System.out.println(textForEachEvent);
 
             List<BusLine> foundBusLines = busLineSeeker.seekBusLine(journeys.get(i), allBusLines);
-
             List<LineRideTime> lineRideTimes = minutesToBusStops.calculateMinutesToBusStops(foundBusLines, journeys.get(i));
-
             List<ResultConnection> resultConnections = connectionSeeker.seekConnection(lineRideTimes, journeys.get(i));
 
             for (ResultConnection resultConnection : resultConnections) {

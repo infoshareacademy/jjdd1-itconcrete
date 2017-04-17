@@ -19,6 +19,7 @@ public class MinutesToBusStops {
             List<BusStopDeltas> deltasList = currentlyCheckedBusLines.getRoute().getDeltasList();
 
             int timeToReachStartBusStopFromFirstBusStop;
+
             timeToReachStartBusStopFromFirstBusStop = calculateTimeToReachBusStop(startBusStop, deltasList);
 
             int timeToReachEndBusStopFromFirstBusStop;
@@ -34,8 +35,10 @@ public class MinutesToBusStops {
 
         int timeToReachBusStopFromFirstBusStop = 0;
         for (BusStopDeltas busStopDeltas : deltasList) {
-            timeToReachBusStopFromFirstBusStop += busStopDeltas.getTimeDifference();
-            if (busStopDeltas.getBusStopName().equals(busStop)) {
+            if (busStopDeltas.getTimeDifference() > 0){
+                timeToReachBusStopFromFirstBusStop += busStopDeltas.getTimeDifference();}
+
+            if (busStopDeltas.getBusStopName().toLowerCase().equals(busStop.toLowerCase())) {
                 break;
             }
         }
