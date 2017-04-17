@@ -1,9 +1,8 @@
 package isacademy.jjdd1.itconcrete.smartconnect.calendar;
 
-import isacademy.jjdd1.itconcrete.smartconnect.App;
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.DateAndTimeConverter;
+import isacademy.jjdd1.itconcrete.smartconnect.displayer.CapitalLetter;
 import org.joda.time.LocalTime;
-import org.joda.time.Minutes;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -23,6 +22,8 @@ public class JourneyCreator {
 
         FileReader fileReader = new FileReader("src/main/resources/SmartConnectTest.ics");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+        homeBusStop = CapitalLetter.makeFirstLetterCapital(homeBusStop);
 
         String line;
         Journey journey = null;
