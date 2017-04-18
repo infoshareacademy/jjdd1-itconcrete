@@ -75,12 +75,6 @@ public class ScheduleParser {
                     ArrayList<LocalTime> departures = getDepartures(child);
 
 
-                    BufferedReader br = null;
-                    String line = "";
-                    try {
-
-
-                        br = Files.newBufferedReader(child, Charset.forName("windows-1250"));
                         String nameOfFile = child.getFileName().toString();
                         String busLineNumber = nameOfFile.substring(0, 3);
                         int direction = 0;
@@ -96,8 +90,8 @@ public class ScheduleParser {
                         ArrayList<BusStopDeltas> deltasList = new ArrayList<>();
                         ArrayList<String[]> singleBusData = new ArrayList<String[]>();
 
-                        while ((line = br.readLine()) != null) {
-
+                        List<String> strings = Files.readAllLines(child, Charset.forName("windows-1250"));
+                        for(String line: strings) {
                             String[] oneRowInCSV = line.split(cvsSplitBy);
                             singleBusData.add(oneRowInCSV);
                             String nameColumnInCSV = oneRowInCSV[3];
@@ -152,19 +146,6 @@ public class ScheduleParser {
                                 minutesMatrix.put(variants.get(i), minutes);
                             }*/
 
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } finally {
-                        if (br != null) {
-                            try {
-                                br.close();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
                 }
             }
         }
