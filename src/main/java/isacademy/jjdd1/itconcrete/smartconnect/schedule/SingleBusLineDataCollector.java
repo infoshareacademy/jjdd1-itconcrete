@@ -1,7 +1,5 @@
 package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 
-import org.joda.time.LocalTime;
-
 import java.io.*;
 import java.util.ArrayList;
 
