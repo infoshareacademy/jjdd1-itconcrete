@@ -6,12 +6,13 @@ import isacademy.jjdd1.itconcrete.smartconnect.calendar.JourneyCreator;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CompleteResultDisplayer {
 
-    public void displayCompleteResult(String homeBusStop, String timeOfLeavingHome, String timeOfArrivingHome, ArrayList<BusLine> allBusLines) throws IOException {
+    public void displayCompleteResult(String homeBusStop, String timeOfLeavingHome, String timeOfArrivingHome, ArrayList<BusLine> allBusLines) throws IOException, URISyntaxException {
 
         MinutesToBusStops minutesToBusStops = new MinutesToBusStops();
         ConnectionSeeker connectionSeeker = new ConnectionSeeker();
