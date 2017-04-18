@@ -18,30 +18,30 @@ public class ConnectionSeeker {
 
         for (LineRideTime currentlyCheckedLine:lineRideTimes) {
 
-//            List<LocalTime> departures = currentlyCheckedLine.getBusLine().getDepartures();
+            List<LocalTime> departures = currentlyCheckedLine.getBusLine().getDepartures();
 
             int timeToReachStartBusStop = currentlyCheckedLine.getTimeToReachStartBusStop();
             int timeToReachEndBusStop = currentlyCheckedLine.getTimeToReachEndBusStop();
 
-//            for (int i = departures.size() -1; i >= 0; i--) {
-//
-//                LocalTime departureFromEndBusStop = departures.get(i).plusMinutes(timeToReachEndBusStop);
-//
-//                LocalTime startOfDestinedEventTimeOnly = DateAndTimeConverter.dateTimeToLocalTime(startOfDestinedEvent);
-//
-//                int deltaMinutes = Minutes.minutesBetween(departureFromEndBusStop, startOfDestinedEventTimeOnly).getMinutes();
-//
-//                if ( deltaMinutes >= 0) {
-//
-//                    LocalTime departureFromStartBusStop = departures.get(i).plusMinutes(timeToReachStartBusStop);
-//
-//                    ResultConnection resultConnection = new ResultConnection(currentlyCheckedLine.getLineNumber(),
-//                            departureFromStartBusStop, departureFromEndBusStop, startBusStop, endBusStop);
-//
-//                    resultConnections.add(resultConnection);
-//                    break;
-//                }
-//            }
+            for (int i = departures.size() -1; i >= 0; i--) {
+
+                LocalTime departureFromEndBusStop = departures.get(i).plusMinutes(timeToReachEndBusStop);
+
+                LocalTime startOfDestinedEventTimeOnly = DateAndTimeConverter.dateTimeToLocalTime(startOfDestinedEvent);
+
+                int deltaMinutes = Minutes.minutesBetween(departureFromEndBusStop, startOfDestinedEventTimeOnly).getMinutes();
+
+                if ( deltaMinutes >= 0) {
+
+                    LocalTime departureFromStartBusStop = departures.get(i).plusMinutes(timeToReachStartBusStop);
+
+                    ResultConnection resultConnection = new ResultConnection(currentlyCheckedLine.getLineNumber(),
+                            departureFromStartBusStop, departureFromEndBusStop, startBusStop, endBusStop);
+
+                    resultConnections.add(resultConnection);
+                    break;
+                }
+            }
         }
 
         return resultConnections;

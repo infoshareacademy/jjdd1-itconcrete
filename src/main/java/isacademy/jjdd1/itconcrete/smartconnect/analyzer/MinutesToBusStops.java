@@ -16,16 +16,16 @@ public class MinutesToBusStops {
 
         for (BusLine currentlyCheckedBusLines : foundBusLines) {
 
-//            List<BusStopDeltas> deltasList = currentlyCheckedBusLines.getRoute().getDeltasList();
+            List<BusStopDeltas> deltasList = currentlyCheckedBusLines.getRoute().getDeltasList();
 
-//            int timeToReachStartBusStop;
-//            timeToReachStartBusStop = calculateTimeToReachBusStop(startBusStop, deltasList);
-//
-//            int timeToReachToBusStop;
-//            timeToReachToBusStop = calculateTimeToReachBusStop(endBusStop, deltasList);
-//
-//            minutesToBusStops.add(new LineRideTime(currentlyCheckedBusLines.getLineNumber(),
-//                    timeToReachStartBusStop, timeToReachToBusStop, currentlyCheckedBusLines));
+            int timeToReachStartBusStop;
+            timeToReachStartBusStop = calculateTimeToReachBusStop(startBusStop, deltasList);
+
+            int timeToReachToBusStop;
+            timeToReachToBusStop = calculateTimeToReachBusStop(endBusStop, deltasList);
+
+            minutesToBusStops.add(new LineRideTime(currentlyCheckedBusLines.getLineNumber(),
+                    timeToReachStartBusStop, timeToReachToBusStop, currentlyCheckedBusLines));
         }
         return minutesToBusStops;
     }

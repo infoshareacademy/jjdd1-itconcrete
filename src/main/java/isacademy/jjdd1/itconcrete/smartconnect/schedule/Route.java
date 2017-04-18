@@ -8,14 +8,18 @@ public class Route {
     private Direction direction;
     private ArrayList<String> arrayOfStops;
     private int lineNumber;
-    private List<VariantX> variantXList; //for X1
+    private List<BusStopDeltas> deltasList; //for X1
+    //private List<VariantX> variantXList; //for X1
 
 
-    public Route(Direction direction, ArrayList<String> arrayOfStops, int lineNumber, List<VariantX> variantXList) {
+    public Route() {
+    }
+
+    public Route(Direction direction, ArrayList<String> arrayOfStops, int lineNumber, List<BusStopDeltas> deltasList) {
         this.direction = direction;
         this.arrayOfStops = arrayOfStops;
         this.lineNumber = lineNumber;
-        this.variantXList = variantXList;
+        this.deltasList = deltasList;
     }
 
 
@@ -31,12 +35,9 @@ public class Route {
         return lineNumber;
     }
 
-    public List<VariantX> getVariantXList() {
-        return variantXList;
+    public List<BusStopDeltas> getDeltasList() {
+        return deltasList;
     }
-
-    public int getAmountOfStops() {return arrayOfStops.size();}
-
 
     @Override
     public String toString() {
@@ -44,7 +45,7 @@ public class Route {
                 "direction=" + direction +
                 ",\n arrayOfStops=" + arrayOfStops +
                 ",\n lineNumber='" + lineNumber + '\'' +
-                ",\n variantXList=" + variantXList +
+                ",\n deltasList=" + deltasList +
                 '}';
     }
 

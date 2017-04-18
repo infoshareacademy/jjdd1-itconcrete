@@ -26,7 +26,7 @@ public class DeparturesFirstStop {
         this.direction = direction;
         this.departuresWeekdays = departuresWeekdays;
         this.departuresSaturdays = departuresSaturdays;
-        this.departuresSundaysAndHolidays = departuresSaturdaysSundaysAndHolidays;
+        this.departuresSaturdaysSundaysAndHolidays = departuresSaturdaysSundaysAndHolidays;
         this.departuresSundaysAndHolidays = departuresSundaysAndHolidays;
     }
 
