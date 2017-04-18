@@ -1,7 +1,9 @@
 package isacademy.jjdd1.itconcrete.smartconnect.analyzer;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
-import org.joda.time.LocalTime;
-import org.joda.time.Minutes;
+
+
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +20,7 @@ public class ConnectionSeeker {
 
         for (LineRideTime currentlyCheckedLine:lineRideTimes) {
 
-            List<LocalTime> departures = currentlyCheckedLine.getBusLine().getDepartures();
+            List<LocalTime> departures = currentlyCheckedLine.getBusLine().getDeparturesWeekdays();
 
             int timeToReachStartBusStop = currentlyCheckedLine.getTimeToReachStartBusStopFromFirstBusStop();
             int timeToReachEndBusStop = currentlyCheckedLine.getTimeToReachEndBusStopFromFirstBusStop();
@@ -28,8 +30,8 @@ public class ConnectionSeeker {
                 LocalTime departureToEndBusStop = departures.get(i).plusMinutes(timeToReachEndBusStop);
                 LocalTime departureToStartBusStop = departures.get(i).plusMinutes(timeToReachStartBusStop);
 
-                int deltaMinutesBetweenDepartureToEndBusStopAndStartOfDestinedEvent = Minutes.minutesBetween(departureToEndBusStop, startOfDestinedEvent).getMinutes();
-                int deltaMinutesBetweenDepartureToStartBusStopAndEndOfPreviousEvent = Minutes.minutesBetween(endOfFinishedEvent, departureToStartBusStop).getMinutes();
+                long deltaMinutesBetweenDepartureToEndBusStopAndStartOfDestinedEvent = ChronoUnit.MINUTES.between(departureToEndBusStop, startOfDestinedEvent);
+                long deltaMinutesBetweenDepartureToStartBusStopAndEndOfPreviousEvent = ChronoUnit.MINUTES.between(endOfFinishedEvent, departureToStartBusStop);
 
                 if ( deltaMinutesBetweenDepartureToEndBusStopAndStartOfDestinedEvent >= 0 && deltaMinutesBetweenDepartureToStartBusStopAndEndOfPreviousEvent>= 0) {
 

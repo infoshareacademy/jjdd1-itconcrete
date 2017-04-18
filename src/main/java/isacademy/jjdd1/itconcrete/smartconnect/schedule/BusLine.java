@@ -1,7 +1,8 @@
 package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 
-import org.joda.time.LocalTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class BusLine {
 
@@ -24,19 +25,35 @@ public class BusLine {
         return route;
     }
 
-    public ArrayList<DepartureWithVariant> getDeparturesWeekdays() {
+    public ArrayList<DepartureWithVariant> getDeparturesWeekdaysWithVariant() {
+        return departures.getDeparturesWithVariantWeekdays();
+    }
+
+    public ArrayList<DepartureWithVariant> getDeparturesSaturdaysWithVariant() {
+        return departures.getDeparturesWithVariantSaturdays();
+    }
+
+    public ArrayList<DepartureWithVariant> getDeparturesSundaysAndHolidaysWithVariant() {
+        return departures.getDeparturesWithVariantSundaysAndHolidays();
+    }
+
+    public ArrayList<DepartureWithVariant> getDeparturesSaturdaysSundaysAndHolidaysWithVariant() {
+        return departures.getDeparturesWithVariantSaturdaysSundaysAndHolidays();
+    }
+
+    public List<LocalTime> getDeparturesWeekdays() {
         return departures.getDeparturesWeekdays();
     }
 
-    public ArrayList<DepartureWithVariant> getDeparturesSaturdays() {
+    public List<LocalTime> getDeparturesSaturdays() {
         return departures.getDeparturesSaturdays();
     }
 
-    public ArrayList<DepartureWithVariant> getDeparturesSundaysAndHolidays() {
+    public List<LocalTime> getDeparturesSundaysAndHolidays() {
         return departures.getDeparturesSundaysAndHolidays();
     }
 
-    public ArrayList<DepartureWithVariant> getDeparturesSaturdaysSundaysAndHolidays() {
+    public List<LocalTime> getDeparturesSaturdaysSundaysAndHolidays() {
         return departures.getDeparturesSaturdaysSundaysAndHolidays();
     }
 }

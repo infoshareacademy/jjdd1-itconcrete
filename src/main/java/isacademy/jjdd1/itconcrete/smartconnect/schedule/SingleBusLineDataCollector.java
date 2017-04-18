@@ -127,7 +127,7 @@ public class SingleBusLineDataCollector {
 //                }
 //            }
 //        }
-    }
+//    }
 
     private Direction getBusDirection (String busScheduleFilename) {
         if (busScheduleFilename.endsWith("1.csv")) {

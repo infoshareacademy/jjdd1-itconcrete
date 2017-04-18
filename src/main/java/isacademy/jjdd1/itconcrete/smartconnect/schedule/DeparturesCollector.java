@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by Ageee on 17.04.2017.
  */
-public class DeparturesCollector {
+class DeparturesCollector {
 
     private File file;
     private int lineNumber;
@@ -29,7 +29,7 @@ public class DeparturesCollector {
     }
 
     private ArrayList<String[]> getDeparturesFromFirstStopWithoutDivisionWithXVariants(File file) throws IOException {
-        //System.out.println("Initialization of departures list...");
+        System.out.println("Initialization of departures list...");
         BufferedReader br = initializeBufferedReader(file);
         ArrayList<String[]> departuresFirstStopWithoutDivision = createListOfDeparturesForAWholeWeek(br);
         return departuresFirstStopWithoutDivision;

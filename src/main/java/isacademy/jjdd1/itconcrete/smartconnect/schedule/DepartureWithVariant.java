@@ -1,7 +1,7 @@
 package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 
 
-import org.joda.time.LocalTime;
+import java.time.LocalTime;
 
 /**
  * Created by Ageee on 16.04.2017.

@@ -1,6 +1,7 @@
 package isacademy.jjdd1.itconcrete.smartconnect.analyzer;
 
-import org.joda.time.LocalTime;
+
+import java.time.LocalTime;
 
 public class ResultConnection {
     private int lineNumber;
