@@ -9,8 +9,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.Path;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,11 +25,8 @@ public class JourneyCreator {
 
     public List<Journey> getJourneysList(String homeBusStop, String timeOfLeavingHome, String timeOfArrivingHome) throws IOException, URISyntaxException {
 
-
         URI uri = JourneyCreator.class.getResource("/kalendarz.ics").toURI();
-
-        FileReader fileReader = new FileReader(String.valueOf(uri));
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(uri));
 
         homeBusStop = CapitalLetter.makeFirstLetterCapital(homeBusStop);
 
@@ -111,7 +108,7 @@ public class JourneyCreator {
                 }
             }
         }
-            fileReader.close();
+
 
             journey = new Journey();
             journey.setStartBusStop(memorizedBusStop);
