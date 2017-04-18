@@ -1,8 +1,7 @@
 package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 
-import org.joda.time.LocalTime;
-
 import java.io.*;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 /**
@@ -29,7 +28,7 @@ class DeparturesCollector {
     }
 
     private ArrayList<String[]> getDeparturesFromFirstStopWithoutDivisionWithXVariants(File file) throws IOException {
-        System.out.println("Initialization of departures list...");
+        //System.out.println("Initialization of departures list...");
         BufferedReader br = initializeBufferedReader(file);
         ArrayList<String[]> departuresFirstStopWithoutDivision = createListOfDeparturesForAWholeWeek(br);
         return departuresFirstStopWithoutDivision;
@@ -99,7 +98,7 @@ class DeparturesCollector {
                 }
                 continue;
             }
-            current.add(new DepartureWithVariant(new LocalTime(hourColumn), variantColumn));
+            current.add(new DepartureWithVariant(LocalTime.parse(hourColumn), variantColumn));
             //TODO Logger - debug - invalid input
         }
         DeparturesFirstStop dfs = new DeparturesFirstStop(lineNumber, currentDirection, weekdays, saturdays, saturdaysSundays, sundays);

@@ -1,32 +1,35 @@
 package isacademy.jjdd1.itconcrete.smartconnect.analyzer;
 
-import org.joda.time.DateTime;
-import org.joda.time.LocalTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public class DateAndTimeConverter {
 
     public static LocalTime timeParser(String timeInString) {
 
-        DateTimeFormatter parser = DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss'Z'");
-        DateTime dateTime = parser.parseDateTime(timeInString);
-        LocalTime localTime = new LocalTime(dateTime.getHourOfDay(), dateTime.getMinuteOfHour());
+        DateTimeFormatter parser = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss'Z'");
+        LocalDateTime dateTime = LocalDateTime.from(parser.parse(timeInString));
+        LocalTime localTime = LocalTime.of(dateTime.getHour(), dateTime.getMinute(), 0, 0);
         return localTime;
     }
 
+//    DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+//    LocalDateTime dateTime = LocalDateTime.from(f.parse("2012-01-10 23:13:26"));
+
     public static LocalTime timeFromKeyboardParser(String timeInString) {
 
-        DateTimeFormatter parser = DateTimeFormat.forPattern("HH:mm");
-        DateTime dateTime = parser.parseDateTime(timeInString);
-        LocalTime localTime = new LocalTime(dateTime.getHourOfDay(), dateTime.getMinuteOfHour());
+        DateTimeFormatter parser = DateTimeFormatter.ofPattern("HH:mm");
+        //DateTimeFormatter parser = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss'Z'");
+        LocalDateTime dateTime = LocalDateTime.from(parser.parse(timeInString));
+        LocalTime localTime = LocalTime.of(dateTime.getHour(), dateTime.getMinute(), 0, 0);
         return localTime;
     }
 
     public static String prettyFormatTime(LocalTime time) {
-
-        DateTimeFormatter formatter = DateTimeFormat.forPattern("HH:mm");
-        return formatter.print(time);
+        //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        return time.truncatedTo(ChronoUnit.MINUTES).toString();
     }
 
 }

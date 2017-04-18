@@ -56,9 +56,10 @@ public class ScheduleParser {
 
             SingleBusLineDataCollector singleBusLineDataCollector = new SingleBusLineDataCollector(buslineNumber, listOfOneBuslineFiles);
             singleBusLineDataCollector.loadData();
-            ArrayList<BusLine> oneBusLineBothDirections = singleBusLineDataCollector.getOneBusLineBothDirections();
-            arrayOfBusLines.addAll(oneBusLineBothDirections);
-            completeBusLinesData.put(buslineNumber, singleBusLineDataCollector);
+//            ArrayList<BusLine> oneBusLineBothDirections = singleBusLineDataCollector.getOneBusLineBothDirections();
+//            arrayOfBusLines.addAll(oneBusLineBothDirections);
+//            completeBusLinesData.put(buslineNumber, singleBusLineDataCollector);
+            arrayOfBusLines.add(singleBusLineDataCollector.getBusLine());
         }
     }
 
