@@ -5,14 +5,14 @@ import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 public class LineRideTime {
 
     private int lineNumber;
-    private int timeToReachStartBusStop;
-    private int timeToReachEndBusStop;
+    private int timeToReachStartBusStopFromFirstBusStop;
+    private int timeToReachEndBusStopFromFirstBusStop;
     private BusLine busLine;
 
-    public LineRideTime(int lineNumber, int timeToReachStartBusStop, int timeToReachEndBusStop, BusLine busLine) {
+    public LineRideTime(int lineNumber, int timeToReachStartBusStopFromFirstBusStop, int timeToReachEndBusStopFromFirstBusStop, BusLine busLine) {
         this.lineNumber = lineNumber;
-        this.timeToReachStartBusStop = timeToReachStartBusStop;
-        this.timeToReachEndBusStop = timeToReachEndBusStop;
+        this.timeToReachStartBusStopFromFirstBusStop = timeToReachStartBusStopFromFirstBusStop;
+        this.timeToReachEndBusStopFromFirstBusStop = timeToReachEndBusStopFromFirstBusStop;
         this.busLine = busLine;
     }
 
@@ -20,12 +20,12 @@ public class LineRideTime {
         return lineNumber;
     }
 
-    public int getTimeToReachStartBusStop() {
-        return timeToReachStartBusStop;
+    public int getTimeToReachStartBusStopFromFirstBusStop() {
+        return timeToReachStartBusStopFromFirstBusStop;
     }
 
-    public int getTimeToReachEndBusStop() {
-        return timeToReachEndBusStop;
+    public int getTimeToReachEndBusStopFromFirstBusStop() {
+        return timeToReachEndBusStopFromFirstBusStop;
     }
 
     public BusLine getBusLine() {
