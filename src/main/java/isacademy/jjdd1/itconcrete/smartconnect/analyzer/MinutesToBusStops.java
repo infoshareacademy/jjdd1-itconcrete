@@ -18,27 +18,30 @@ public class MinutesToBusStops {
 
             List<BusStopDeltas> deltasList = currentlyCheckedBusLines.getRoute().getDeltasList();
 
-            int timeToReachStartBusStop;
-            timeToReachStartBusStop = calculateTimeToReachBusStop(startBusStop, deltasList);
+            int timeToReachStartBusStopFromFirstBusStop;
 
-            int timeToReachToBusStop;
-            timeToReachToBusStop = calculateTimeToReachBusStop(endBusStop, deltasList);
+            timeToReachStartBusStopFromFirstBusStop = calculateTimeToReachBusStop(startBusStop, deltasList);
+
+            int timeToReachEndBusStopFromFirstBusStop;
+            timeToReachEndBusStopFromFirstBusStop = calculateTimeToReachBusStop(endBusStop, deltasList);
 
             minutesToBusStops.add(new LineRideTime(currentlyCheckedBusLines.getLineNumber(),
-                    timeToReachStartBusStop, timeToReachToBusStop, currentlyCheckedBusLines));
+                    timeToReachStartBusStopFromFirstBusStop, timeToReachEndBusStopFromFirstBusStop, currentlyCheckedBusLines));
         }
         return minutesToBusStops;
     }
 
     private int calculateTimeToReachBusStop (String busStop, List<BusStopDeltas> deltasList) {
 
-        int timeToReachBusStop = 0;
+        int timeToReachBusStopFromFirstBusStop = 0;
         for (BusStopDeltas busStopDeltas : deltasList) {
-            timeToReachBusStop += busStopDeltas.getTimeDifference();
-            if (busStopDeltas.getBusStopName().equals(busStop)) {
+            if (busStopDeltas.getTimeDifference() > 0){
+                timeToReachBusStopFromFirstBusStop += busStopDeltas.getTimeDifference();}
+
+            if (busStopDeltas.getBusStopName().toLowerCase().equals(busStop.toLowerCase())) {
                 break;
             }
         }
-        return timeToReachBusStop;
+        return timeToReachBusStopFromFirstBusStop;
     }
 }

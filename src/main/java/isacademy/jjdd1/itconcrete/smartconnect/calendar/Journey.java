@@ -1,6 +1,9 @@
 package isacademy.jjdd1.itconcrete.smartconnect.calendar;
 
 import org.joda.time.DateTime;
+import org.joda.time.LocalTime;
+
+import java.util.List;
 
 public class Journey {
 
@@ -8,11 +11,11 @@ public class Journey {
     private String endBusStop;
     private String startLocation;
     private String endLocation;
-    private DateTime startOfDestinedEvent;
-    private DateTime endOfFinishedEvent;
+    private LocalTime startOfDestinedEvent;
+    private LocalTime endOfFinishedEvent;
 
     public Journey(String startBusStop, String endBusStop, String startLocation,
-                   String endLocation, DateTime startOfDestinedEvent, DateTime endOfFinishedEvent) {
+                   String endLocation, LocalTime startOfDestinedEvent, LocalTime endOfFinishedEvent) {
         this.startBusStop = startBusStop;
         this.endBusStop = endBusStop;
         this.startLocation = startLocation;
@@ -41,11 +44,11 @@ public class Journey {
         return endLocation;
     }
 
-    public DateTime getStartOfDestinedEvent() {
+    public LocalTime getStartOfDestinedEvent() {
         return startOfDestinedEvent;
     }
 
-    public DateTime getEndOfFinishedEvent() {
+    public LocalTime getEndOfFinishedEvent() {
         return endOfFinishedEvent;
     }
 
@@ -65,11 +68,11 @@ public class Journey {
         this.endLocation = endLocation;
     }
 
-    public void setStartOfDestinedEvent(DateTime startOfDestinedEvent) {
+    public void setStartOfDestinedEvent(LocalTime startOfDestinedEvent) {
         this.startOfDestinedEvent = startOfDestinedEvent;
     }
 
-    public void setEndOfFinishedEvent(DateTime endOfFinishedEvent) {
+    public void setEndOfFinishedEvent(LocalTime endOfFinishedEvent) {
         this.endOfFinishedEvent = endOfFinishedEvent;
     }
 }

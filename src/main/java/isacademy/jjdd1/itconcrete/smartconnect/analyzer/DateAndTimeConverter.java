@@ -7,11 +7,20 @@ import org.joda.time.format.DateTimeFormatter;
 
 public class DateAndTimeConverter {
 
-    public static LocalTime dateTimeToLocalTime(DateTime dateTime){
+    public static LocalTime timeParser(String timeInString) {
 
+        DateTimeFormatter parser = DateTimeFormat.forPattern("yyyyMMdd'T'HHmmss'Z'");
+        DateTime dateTime = parser.parseDateTime(timeInString);
         LocalTime localTime = new LocalTime(dateTime.getHourOfDay(), dateTime.getMinuteOfHour());
         return localTime;
+    }
 
+    public static LocalTime timeFromKeyboardParser(String timeInString) {
+
+        DateTimeFormatter parser = DateTimeFormat.forPattern("HH:mm");
+        DateTime dateTime = parser.parseDateTime(timeInString);
+        LocalTime localTime = new LocalTime(dateTime.getHourOfDay(), dateTime.getMinuteOfHour());
+        return localTime;
     }
 
     public static String prettyFormatTime(LocalTime time) {

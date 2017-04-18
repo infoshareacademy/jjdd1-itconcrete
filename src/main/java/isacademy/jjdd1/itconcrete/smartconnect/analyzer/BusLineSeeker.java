@@ -23,11 +23,12 @@ public class BusLineSeeker {
             foundEndBusStop = false;
 
             for (BusStopDeltas currentlyCheckedBusStopDelta : deltasList) {
-                if (currentlyCheckedBusStopDelta.getBusStopName().equals(startBusStop)
+                if (currentlyCheckedBusStopDelta.getBusStopName().toLowerCase().equals(startBusStop.toLowerCase())
                         && currentlyCheckedBusStopDelta.getTimeDifference() >= 0) {
                     foundStartBusStop = true;
                 }
-                if (foundStartBusStop && currentlyCheckedBusStopDelta.getBusStopName().equals(endBusStop)
+
+                if (foundStartBusStop && currentlyCheckedBusStopDelta.getBusStopName().toLowerCase().equals(endBusStop.toLowerCase())
                         && currentlyCheckedBusStopDelta.getTimeDifference() >= 0) {
                     foundEndBusStop = true;
                 }
@@ -38,5 +39,25 @@ public class BusLineSeeker {
         }
 
         return foundBusLines;
+    }
+
+
+    public boolean busStopExistence(String busStop, ArrayList<BusLine> busLinesForSeeking) {
+
+        boolean busStopExistence = false;
+
+        for (BusLine currentlyCheckedBusLine : busLinesForSeeking) {
+
+            List<BusStopDeltas> deltasList = currentlyCheckedBusLine.getRoute().getDeltasList();
+
+            for (BusStopDeltas currentlyCheckedBusStopDelta : deltasList) {
+
+                if (currentlyCheckedBusStopDelta.getBusStopName().toLowerCase().equals(busStop.toLowerCase())
+                        && currentlyCheckedBusStopDelta.getTimeDifference() >= 0) {
+                    busStopExistence = true;
+                }
+            }
+        }
+        return busStopExistence;
     }
 }
