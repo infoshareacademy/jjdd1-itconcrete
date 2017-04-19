@@ -3,7 +3,9 @@ package isacademy.jjdd1.itconcrete.smartconnect.displayer;
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.DateAndTimeConverter;
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.ResultConnection;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
-import org.joda.time.LocalTime;
+
+import java.time.LocalTime;
+
 
 public class DisplayConnection {
 

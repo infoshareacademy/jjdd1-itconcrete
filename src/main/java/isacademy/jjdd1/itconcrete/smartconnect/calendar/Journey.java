@@ -1,9 +1,9 @@
 package isacademy.jjdd1.itconcrete.smartconnect.calendar;
 
-import org.joda.time.DateTime;
-import org.joda.time.LocalTime;
 
-import java.util.List;
+
+import java.time.LocalTime;
+
 
 public class Journey {
 

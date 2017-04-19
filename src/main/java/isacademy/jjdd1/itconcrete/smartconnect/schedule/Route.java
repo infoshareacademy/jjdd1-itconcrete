@@ -5,14 +5,17 @@ import java.util.List;
 
 public class Route {
 
-    private int direction;
+    private Direction direction;
     private ArrayList<String> arrayOfStops;
     private int lineNumber;
     private List<BusStopDeltas> deltasList; //for X1
-    private int amountOfStops;
+    //private List<VariantX> variantXList; //for X1
 
 
-    public Route(int direction, ArrayList<String> arrayOfStops, int lineNumber, List<BusStopDeltas> deltasList) {
+    public Route() {
+    }
+
+    public Route(Direction direction, ArrayList<String> arrayOfStops, int lineNumber, List<BusStopDeltas> deltasList) {
         this.direction = direction;
         this.arrayOfStops = arrayOfStops;
         this.lineNumber = lineNumber;
@@ -20,7 +23,7 @@ public class Route {
     }
 
 
-    public int getDirection() {
+    public Direction getDirection() {
         return direction;
     }
 
@@ -35,9 +38,6 @@ public class Route {
     public List<BusStopDeltas> getDeltasList() {
         return deltasList;
     }
-
-    public int getAmountOfStops() {return arrayOfStops.size();}
-
 
     @Override
     public String toString() {

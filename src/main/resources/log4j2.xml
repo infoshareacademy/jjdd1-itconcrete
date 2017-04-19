@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" name="TravelToTheMoon">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%highlight{%d{HH:mm:ss.SSS} [%t] | %-18marker | %-5level %logger{1.} [%line] - %msg%n%throwable}{FATAL=black,ERROR=red,WARN=yellow,INFO=black,DEBUG=green,TRACE=cyan}"/>
+        </Console>
+        <File name="MonitoringFile" fileName="logs/app.log" append="true">
+            <PatternLayout pattern="%highlight{%d{HH:mm:ss.SSS} [%t] | %-18marker | %-5level %logger{1.} [%line] - %enc{%msg}%n}{FATAL=black,ERROR=red,WARN=yellow,INFO=black,DEBUG=green,TRACE=cyan}"/>
+        </File>
+        <File name="FuelFile" fileName="logs/fuel_consumption.log" append="true">
+            <MarkerFilter marker="FUEL TANK" onMatch="ACCEPT" onMismatch="DENY" />
+            <PatternLayout pattern="%highlight{%d{HH:mm:ss.SSS} [%t] | %-18marker | %-5level %logger{1.} [%line] - %enc{%msg}%n}{FATAL=black,ERROR=red,WARN=yellow,INFO=black,DEBUG=green,TRACE=cyan}"/>
+        </File>
+
+        <RollingFile name="FuelRollingFile" fileName="logs/monitoring.log"
+                     filePattern="logs/$${date:yyyy-MM-dd}/monitoring-%i.log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %logger{1.} - %enc{%msg}%n"/>
+
+            <Policies>
+                <!--<TimeBasedTriggeringPolicy/>-->
+                <SizeBasedTriggeringPolicy size="1 KB" />
+            </Policies>
+            <DefaultRolloverStrategy max="3" />
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="com.isa.jjdd.loggery.ex07_formatters.components.FuelTank" level="TRACE">
+            <AppenderRef ref="FuelFile" />
+        </Logger>
+        <Root level="trace">
+            <AppenderRef ref="FuelRollingFile"/>
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
