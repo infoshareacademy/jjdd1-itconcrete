@@ -16,9 +16,11 @@ public class App {
         String homeBusStop = QuestionAsker.askForHome(allBusLines);
         String timeOfLeavingHome = QuestionAsker.askForTimeOfLeavingHome();
         String timeOfArrivingHome = QuestionAsker.askForTimeOfArrivingHome();
+        int maxAmountOfResults = QuestionAsker.askForMaxAmountOfResults();
+
 
         CompleteResultDisplayer completeResultDisplayer = new CompleteResultDisplayer();
-        completeResultDisplayer.displayCompleteResult(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, allBusLines);
+        completeResultDisplayer.displayCompleteResult(homeBusStop, timeOfLeavingHome,timeOfArrivingHome, maxAmountOfResults, allBusLines);
 
     }
 }

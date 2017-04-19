@@ -12,7 +12,7 @@ import java.util.List;
 
 public class CompleteResultDisplayer {
 
-    public void displayCompleteResult(String homeBusStop, String timeOfLeavingHome, String timeOfArrivingHome, ArrayList<BusLine> allBusLines) throws IOException, URISyntaxException {
+    public void displayCompleteResult(String homeBusStop, String timeOfLeavingHome, String timeOfArrivingHome, int maxAmountOfResults, ArrayList<BusLine> allBusLines) throws IOException, URISyntaxException {
 
         MinutesToBusStops minutesToBusStops = new MinutesToBusStops();
         ConnectionSeeker connectionSeeker = new ConnectionSeeker();
@@ -33,7 +33,7 @@ public class CompleteResultDisplayer {
 
             List<BusLine> foundBusLines = busLineSeeker.seekBusLine(journeys.get(i), allBusLines);
             List<LineRideTime> lineRideTimes = minutesToBusStops.calculateMinutesToBusStops(foundBusLines, journeys.get(i));
-            List<ResultConnection> resultConnections = connectionSeeker.seekConnection(lineRideTimes, journeys.get(i));
+            List<ResultConnection> resultConnections = connectionSeeker.seekConnection(lineRideTimes, journeys.get(i), maxAmountOfResults);
 
             for (ResultConnection resultConnection : resultConnections) {
                 String textForEachResult = displayConnection.displayingConnection(resultConnection);

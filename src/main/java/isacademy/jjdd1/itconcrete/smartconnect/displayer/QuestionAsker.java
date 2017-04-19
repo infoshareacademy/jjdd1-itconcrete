@@ -13,6 +13,12 @@ public class QuestionAsker {
         return info;
     }
 
+    public static int askForIntInfo() {
+
+        Scanner scanner = new Scanner(System.in);
+        int info = scanner.nextInt();
+        return info;
+    }
 
     public static String askForHome(ArrayList<BusLine> allBusLines) {
 
@@ -54,5 +60,18 @@ public class QuestionAsker {
             timeOfArrivingHome = QuestionAsker.askForInfo();
         }
         return timeOfArrivingHome;
+    }
+
+    public static int askForMaxAmountOfResults() {
+
+        System.out.println("What is the maximum amount of results you want to see? [1-10]");
+
+        int maxResultsAmount = QuestionAsker.askForIntInfo();
+
+        while (!Integer.toString(maxResultsAmount).matches("([1-9]|10)")) {
+            System.out.println("Sorry, wrong time format, try again");
+            maxResultsAmount = QuestionAsker.askForIntInfo();
+        }
+        return maxResultsAmount;
     }
 }
