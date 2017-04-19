@@ -3,9 +3,6 @@ package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 import java.io.File;
 import java.util.Optional;
 
-/**
- * Created by Ageee on 13.04.2017.
- */
 class InitialDataChecker {
 
     public boolean checkIfSchedulesDirectoriesArePresent (File[] listOfSchedulesDirectories) {
