@@ -1,18 +1,21 @@
 package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 
-import org.joda.time.LocalTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class BusLine {
-    private int lineNumber;
-    private Route route;
-    private ArrayList<LocalTime> departures;
 
-    public BusLine(int lineNumber, Route route, ArrayList<LocalTime> departures) {
+    private final int lineNumber;
+    private final Route route;
+    private final DeparturesFirstStop departures;
+
+    public BusLine(int lineNumber, Route route, DeparturesFirstStop departuresFirstStop) {
         this.lineNumber = lineNumber;
         this.route = route;
-        this.departures = departures;
+        this.departures = departuresFirstStop;
     }
+
 
     public int getLineNumber() {
         return lineNumber;
@@ -22,7 +25,35 @@ public class BusLine {
         return route;
     }
 
-    public ArrayList<LocalTime> getDepartures() {
-        return departures;
+    public ArrayList<DepartureWithVariant> getDeparturesWeekdaysWithVariant() {
+        return departures.getDeparturesWithVariantWeekdays();
+    }
+
+    public ArrayList<DepartureWithVariant> getDeparturesSaturdaysWithVariant() {
+        return departures.getDeparturesWithVariantSaturdays();
+    }
+
+    public ArrayList<DepartureWithVariant> getDeparturesSundaysAndHolidaysWithVariant() {
+        return departures.getDeparturesWithVariantSundaysAndHolidays();
+    }
+
+    public ArrayList<DepartureWithVariant> getDeparturesSaturdaysSundaysAndHolidaysWithVariant() {
+        return departures.getDeparturesWithVariantSaturdaysSundaysAndHolidays();
+    }
+
+    public List<LocalTime> getDeparturesWeekdays() {
+        return departures.getDeparturesWeekdays();
+    }
+
+    public List<LocalTime> getDeparturesSaturdays() {
+        return departures.getDeparturesSaturdays();
+    }
+
+    public List<LocalTime> getDeparturesSundaysAndHolidays() {
+        return departures.getDeparturesSundaysAndHolidays();
+    }
+
+    public List<LocalTime> getDeparturesSaturdaysSundaysAndHolidays() {
+        return departures.getDeparturesSaturdaysSundaysAndHolidays();
     }
 }

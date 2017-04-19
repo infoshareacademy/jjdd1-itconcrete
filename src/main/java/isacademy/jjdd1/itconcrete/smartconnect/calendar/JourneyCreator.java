@@ -2,7 +2,7 @@ package isacademy.jjdd1.itconcrete.smartconnect.calendar;
 
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.DateAndTimeConverter;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.CapitalLetter;
-import org.joda.time.LocalTime;
+
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -12,6 +12,7 @@ import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
