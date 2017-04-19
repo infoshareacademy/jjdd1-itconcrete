@@ -2,6 +2,7 @@ package isacademy.jjdd1.itconcrete.smartconnect.displayer;
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.BusLineSeeker;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class QuestionAsker {
@@ -10,13 +11,6 @@ public class QuestionAsker {
 
         Scanner scanner = new Scanner(System.in);
         String info = scanner.nextLine();
-        return info;
-    }
-
-    public static int askForIntInfo() {
-
-        Scanner scanner = new Scanner(System.in);
-        int info = scanner.nextInt();
         return info;
     }
 
@@ -55,7 +49,7 @@ public class QuestionAsker {
 
         String timeOfArrivingHome = QuestionAsker.askForInfo();
 
-        while (!timeOfArrivingHome.matches("([01]?[0-9]|2[0-3]):[0-5][0-9]")) {
+        while (!timeOfArrivingHome.matches("^([01][0-9]|2[0-3]):[0-5][0-9]$")) {
             System.out.println("Sorry, wrong time format, try again");
             timeOfArrivingHome = QuestionAsker.askForInfo();
         }
@@ -66,12 +60,18 @@ public class QuestionAsker {
 
         System.out.println("What is the maximum amount of results you want to see? [1-10]");
 
-        int maxResultsAmount = QuestionAsker.askForIntInfo();
+        String maxResultsAmount = QuestionAsker.askForInfo();
 
-        while (!Integer.toString(maxResultsAmount).matches("([1-9]|10)")) {
-            System.out.println("Sorry, wrong time format, try again");
-            maxResultsAmount = QuestionAsker.askForIntInfo();
+        while (!maxResultsAmount.matches("(10|[1-9])")) {
+
+            maxResultsAmount = QuestionAsker.askForInfo();
+
+            System.out.println("Sorry, wrong number, try again");
+            maxResultsAmount = QuestionAsker.askForInfo();
         }
-        return maxResultsAmount;
+
+        int maxResultAmountAsInt = Integer.valueOf(maxResultsAmount);
+
+        return maxResultAmountAsInt;
     }
 }

@@ -1,9 +1,5 @@
 package isacademy.jjdd1.itconcrete.smartconnect.calendar;
-
-
-
 import java.time.LocalTime;
-
 
 public class Journey {
 
@@ -75,4 +71,18 @@ public class Journey {
     public void setEndOfFinishedEvent(LocalTime endOfFinishedEvent) {
         this.endOfFinishedEvent = endOfFinishedEvent;
     }
+
+    @Override
+    public String toString() {
+        return "Journey{" +
+                "startBusStop='" + startBusStop + '\'' +
+                ", endBusStop='" + endBusStop + '\'' +
+                ", startLocation='" + startLocation + '\'' +
+                ", endLocation='" + endLocation + '\'' +
+                ", startOfDestinedEvent=" + startOfDestinedEvent +
+                ", endOfFinishedEvent=" + endOfFinishedEvent +
+                '}';
+    }
 }
+
+
