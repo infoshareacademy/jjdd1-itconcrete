@@ -15,20 +15,11 @@ public class DateAndTimeConverter {
         return localTime;
     }
 
-//    DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-//    LocalDateTime dateTime = LocalDateTime.from(f.parse("2012-01-10 23:13:26"));
-
     public static LocalTime timeFromKeyboardParser(String timeInString) {
-
-        DateTimeFormatter parser = DateTimeFormatter.ofPattern("HH:mm");
-        //DateTimeFormatter parser = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss'Z'");
-        LocalDateTime dateTime = LocalDateTime.from(parser.parse(timeInString));
-        LocalTime localTime = LocalTime.of(dateTime.getHour(), dateTime.getMinute(), 0, 0);
-        return localTime;
+        return LocalTime.parse(timeInString);
     }
 
     public static String prettyFormatTime(LocalTime time) {
-        //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         return time.truncatedTo(ChronoUnit.MINUTES).toString();
     }
 

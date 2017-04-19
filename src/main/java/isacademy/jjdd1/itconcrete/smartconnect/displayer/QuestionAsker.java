@@ -35,7 +35,7 @@ public class QuestionAsker {
 
         String timeOfLeavingHome = QuestionAsker.askForInfo();
 
-        while (!timeOfLeavingHome.matches("([01]?[0-9]|2[0-3]):[0-5][0-9]")) {
+        while (!timeOfLeavingHome.matches("^([01][0-9]|2[0-3]):[0-5][0-9]$")) {
             System.out.println("Sorry, wrong time format, try again");
             timeOfLeavingHome = QuestionAsker.askForInfo();
         }
