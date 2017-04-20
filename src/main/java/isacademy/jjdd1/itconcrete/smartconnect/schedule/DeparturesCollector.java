@@ -4,9 +4,6 @@ import java.io.*;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-/**
- * Created by Ageee on 17.04.2017.
- */
 class DeparturesCollector {
 
     private File file;

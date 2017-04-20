@@ -1,7 +1,10 @@
 package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.util.*;
+
 
 public class ScheduleParser {
 
@@ -12,6 +15,7 @@ public class ScheduleParser {
     private static final String pathToSchedulesParentDirectory = "src/main/resources/rozklady_2015-09-08_13.43.01/";
     private static final File parentDirectoryWithSchedules = new File (pathToSchedulesParentDirectory);
     private static final File[] listOfSchedulesDirectories = parentDirectoryWithSchedules.listFiles();
+    private static final Logger LOGGER = LoggerFactory.getLogger(ScheduleParser.class);
 
     public ScheduleParser() throws IllegalAccessException, NoSuchFieldException, IOException {
         initialDataChecker = new InitialDataChecker();
@@ -20,12 +24,11 @@ public class ScheduleParser {
     }
 
     public void loadData() throws IOException {
+        LOGGER.trace("Loading data from schedule resources.");
         if (!initialDataChecker.checkIfSchedulesDirectoriesArePresent(listOfSchedulesDirectories)) {
-            ///TODO Logger - fatal - no data to build schedules database
-            System.out.println("Oh no, there is no data to parse.");
+            LOGGER.error("Data to build schedules database not found.");
         } else {
-            //TODO Logger - info
-            System.out.println("Great, let's build the database!");
+            LOGGER.trace("Starting to parse directories.");
             parseThroughDirectories();
         }
     }
@@ -34,11 +37,10 @@ public class ScheduleParser {
         assert listOfSchedulesDirectories != null;
         for (File singleBuslineDirectory : listOfSchedulesDirectories) {
             if (!singleBuslineDirectory.isDirectory()) {
-                //TODO Debug - This isn't a directory
-                System.out.println("It is not a proper directory file.");
+                LOGGER.debug(singleBuslineDirectory.getName() + " is not a proper directory file. Process terminated.");
             } else {
-                //TODO Logger - info - Start building database about busline number X
-                //System.out.println("We are entering the directory " + singleBuslineDirectory.getName());
+                LOGGER.info("Gathering information about busline number " + singleBuslineDirectory.getName().substring(0,3));
+                LOGGER.trace("Entering directory " + singleBuslineDirectory.getName());
                 parseInsideParticularBuslineDirectory(singleBuslineDirectory);
             }
         }
@@ -47,18 +49,13 @@ public class ScheduleParser {
     private void parseInsideParticularBuslineDirectory(File singleBuslineDirectory) throws IOException {
         File[] listOfOneBuslineFiles = singleBuslineDirectory.listFiles();
         if (!initialDataChecker.checkPresenceOfScheduleResource(listOfOneBuslineFiles)) {
-            //TODO Logger - Warning - no schedules available for this line + line number
-            System.out.println("Couldn't find schedule files for this busline.");
+            LOGGER.warn("Schedules for line " + singleBuslineDirectory.getName().substring(0,3) + " not available.");
         } else {
-            //TODO Logger - info - receiving data about departures and route
+            LOGGER.trace("Collectig data about departures and routes.");
             int buslineNumber = getBusLineNumber(singleBuslineDirectory);
-            //System.out.println("Gathering data over line " + buslineNumber);
 
             SingleBusLineDataCollector singleBusLineDataCollector = new SingleBusLineDataCollector(buslineNumber, listOfOneBuslineFiles);
             singleBusLineDataCollector.loadData();
-//            ArrayList<BusLine> oneBusLineBothDirections = singleBusLineDataCollector.getOneBusLineBothDirections();
-//            arrayOfBusLines.addAll(oneBusLineBothDirections);
-//            completeBusLinesData.put(buslineNumber, singleBusLineDataCollector);
             arrayOfBusLines.add(singleBusLineDataCollector.getBusLine());
         }
     }
@@ -66,19 +63,6 @@ public class ScheduleParser {
     private int getBusLineNumber (File file){
         String busLineNumber = file.getName().substring(0, 3);
      return Integer.parseInt(busLineNumber);
-    }
-
-    //TODO przypadek jeśli w bazie danych nie znajdzie tego numeru
-    //TODO logger - warning
-    public SingleBusLineDataCollector getCompleteBusLinesData(int numberOfLine) {
-        for (int key : completeBusLinesData.keySet()){
-            if(key == numberOfLine) {
-                ///TODO Logger - info
-                return completeBusLinesData.get(numberOfLine);
-            }
-        }
-        SingleBusLineDataCollector singleBusLineDataCollector = new SingleBusLineDataCollector();
-        return singleBusLineDataCollector;
     }
 
     public ArrayList<BusLine> getArrayOfBusLines() {

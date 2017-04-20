@@ -4,9 +4,6 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Ageee on 13.04.2017.
- */
 public class DeparturesFirstStop {
 
     private int lineNumber;
