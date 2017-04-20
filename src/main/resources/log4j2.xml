@@ -7,28 +7,25 @@
         <File name="MonitoringFile" fileName="logs/app.log" append="true">
             <PatternLayout pattern="%highlight{%d{HH:mm:ss.SSS} [%t] | %-18marker | %-5level %logger{1.} [%line] - %enc{%msg}%n}{FATAL=black,ERROR=red,WARN=yellow,INFO=black,DEBUG=green,TRACE=cyan}"/>
         </File>
-        <!--<File name="FuelFile" fileName="logs/fuel_consumption.log" append="true">-->
-            <!--<MarkerFilter marker="FUEL TANK" onMatch="ACCEPT" onMismatch="DENY" />-->
-            <!--<PatternLayout pattern="%highlight{%d{HH:mm:ss.SSS} [%t] | %-18marker | %-5level %logger{1.} [%line] - %enc{%msg}%n}{FATAL=black,ERROR=red,WARN=yellow,INFO=black,DEBUG=green,TRACE=cyan}"/>-->
-        <!--</File>-->
 
         <RollingFile name="MonitoringRollingFile" fileName="logs/monitoring.log"
-                     filePattern="logs/$${date:yyyy-MM-dd}/monitoring-%i.log">
+                     filePattern="logs/%d{yyyy-MM-dd}/monitoring-%i.log">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %logger{1.} - %enc{%msg}%n"/>
 
             <Policies>
-                <!--<TimeBasedTriggeringPolicy/>-->
-                <SizeBasedTriggeringPolicy size="1 KB" />
+                <TimeBasedTriggeringPolicy/>
             </Policies>
-            <DefaultRolloverStrategy max="3" />
+            <DefaultRolloverStrategy max="7" />
         </RollingFile>
     </Appenders>
     <Loggers>
-        <Logger name="com.isa.jjdd.loggery.ex07_formatters.components.FuelTank" level="TRACE">
-            <AppenderRef ref="FuelFile" />
-        </Logger>
-        <Root level="trace">
+        <Root level="warn">
+            <AppenderRef ref="MonitoringFile"/>
+        </Root>
+        <Root level="debug">
             <AppenderRef ref="MonitoringRollingFile"/>
+        </Root>
+        <Root level="warn">
             <AppenderRef ref="Console"/>
         </Root>
     </Loggers>

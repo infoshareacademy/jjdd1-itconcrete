@@ -5,7 +5,7 @@ import isacademy.jjdd1.itconcrete.smartconnect.displayer.QuestionAsker;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+//@Slf4j - TODO poczytaj
 
 import java.util.ArrayList;
 
