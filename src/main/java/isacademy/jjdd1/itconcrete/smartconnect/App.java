@@ -31,6 +31,7 @@ public class App {
 
         CompleteResultDisplayer completeResultDisplayer = new CompleteResultDisplayer();
         completeResultDisplayer.displayCompleteResult("klonowa", "06:00","22:00", maxAmountOfResultsAsInt, allBusLines);
+        System.out.println("");
 
     }
 }

@@ -1,8 +1,9 @@
 package isacademy.jjdd1.itconcrete.smartconnect.displayer;
 
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.*;
+import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
-import isacademy.jjdd1.itconcrete.smartconnect.calendar.JourneyCreator;
+
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +13,7 @@ import org.slf4j.MarkerFactory;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class CompleteResultDisplayer {
@@ -26,8 +28,9 @@ public class CompleteResultDisplayer {
         DisplayConnection displayConnection = new DisplayConnection();
 
         BusLineSeeker busLineSeeker = new BusLineSeeker();
-        JourneyCreator journeyCreator = new JourneyCreator();
-        List<Journey> journeys = journeyCreator.getJourneysList(homeBusStop, timeOfLeavingHome, timeOfArrivingHome);
+
+        CalendarParser cp = new CalendarParser();
+        LinkedList<Journey> journeys = cp.parseFileSortEventsAddHome(homeBusStop, timeOfLeavingHome, timeOfArrivingHome);
 
         for (int i = 0; i < journeys.size(); i++) {
 
