@@ -5,6 +5,10 @@ import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
 
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Marker;
+import org.slf4j.MarkerFactory;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -13,6 +17,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class CompleteResultDisplayer {
+
+    private static final Marker RESULT_DISPLAYER_MARKER = MarkerFactory.getMarker("RESULT DISPLAYER");
+    private static final Logger LOGGER = LoggerFactory.getLogger(CompleteResultDisplayer.class);
 
     public void displayCompleteResult(String homeBusStop, String timeOfLeavingHome, String timeOfArrivingHome, int maxAmountOfResults, ArrayList<BusLine> allBusLines) throws IOException, URISyntaxException {
 
@@ -27,12 +34,10 @@ public class CompleteResultDisplayer {
 
         for (int i = 0; i < journeys.size(); i++) {
 
-            System.out.println("");
-
-            System.out.println("Event number " + (i+1) + ": ");
+            LOGGER.trace(RESULT_DISPLAYER_MARKER, "\nEvent number " + (i+1) + ": ");
 
             String textForEachEvent = displayConnection.displayEventHeader(journeys.get(i));
-            System.out.println(textForEachEvent);
+            LOGGER.trace(RESULT_DISPLAYER_MARKER, textForEachEvent);
 
             List<BusLine> foundBusLines = busLineSeeker.seekBusLine(journeys.get(i), allBusLines);
             List<LineRideTime> lineRideTimes = minutesToBusStops.calculateMinutesToBusStops(foundBusLines, journeys.get(i));
@@ -40,17 +45,12 @@ public class CompleteResultDisplayer {
 
             for (ResultConnection resultConnection : resultConnections) {
                 String textForEachResult = displayConnection.displayingConnection(resultConnection);
-
-                System.out.println(textForEachResult);
+                LOGGER.trace(RESULT_DISPLAYER_MARKER, textForEachResult);
             }
 
             if (resultConnections.size() == 0) {
-                System.out.println("Sorry, there is no direct connection for this event.");
+                LOGGER.warn(RESULT_DISPLAYER_MARKER,"Sorry, there is no direct connection for this event." + "\n");
             }
-
-            System.out.println("");
-
         }
-
     }
 }

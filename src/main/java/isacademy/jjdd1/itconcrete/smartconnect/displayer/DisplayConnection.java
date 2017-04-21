@@ -3,7 +3,6 @@ package isacademy.jjdd1.itconcrete.smartconnect.displayer;
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.DateAndTimeConverter;
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.ResultConnection;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
-
 import java.time.LocalTime;
 
 

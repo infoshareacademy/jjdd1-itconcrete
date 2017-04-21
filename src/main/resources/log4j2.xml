@@ -1,27 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN" name="smartconnect">
+
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%highlight{%d{HH:mm:ss.SSS} [%t] | %-18marker | %-5level %logger{1.} [%line] - %msg%n%throwable}{FATAL=black,ERROR=red,WARN=yellow,INFO=black,DEBUG=green,TRACE=cyan}"/>
         </Console>
-        <!--<File name="MonitoringFile" fileName="logs/app.log" append="true">-->
-            <!--<PatternLayout pattern="%highlight{%d{HH:mm:ss.SSS} [%t] | %-18marker | %-5level %logger{1.} [%line] - %enc{%msg}%n}{FATAL=black,ERROR=red,WARN=yellow,INFO=black,DEBUG=green,TRACE=cyan}"/>-->
-        <!--</File>-->
+
+        <Console name="Console_result_displayer" target="SYSTEM_OUT">
+            <MarkerFilter marker="RESULT DISPLAYER" onMatch="ACCEPT" onMismatch="DENY" />
+            <PatternLayout pattern="%highlight{%msg%n%throwable}{FATAL=black,ERROR=red,WARN=yellow,INFO=black,DEBUG=green,TRACE=black}"/>
+        </Console>
+
+        <Console name="Console_question_asker" target="SYSTEM_OUT">
+            <MarkerFilter marker="QUESTION ASKER" onMatch="ACCEPT" onMismatch="DENY" />
+            <PatternLayout pattern="%highlight{%msg%n%throwable}{FATAL=black,ERROR=red,WARN=yellow,INFO=black,DEBUG=blue,TRACE=green}"/>
+        </Console>
+
+        <File name="QuestionAsker" fileName="logs/Asked_questions.log" append="true">
+            <MarkerFilter marker="QUESTION ASKER" onMatch="ACCEPT" onMismatch="DENY" />
+            <PatternLayout pattern="%highlight{%d{HH:mm:ss.SSS} [%t] | %-18marker | %-5level %logger{1.} [%line] - %enc{%msg}%n}{FATAL=black,ERROR=red,WARN=orange,INFO=black,DEBUG=green,TRACE=cyan}"/>
+        </File>
+
+        <File name="ResultDisplayerFile" fileName="logs/Displayed_results.log" append="true">
+            <MarkerFilter marker="RESULT DISPLAYER" onMatch="ACCEPT" onMismatch="DENY" />
+            <PatternLayout pattern="%highlight{%d{HH:mm:ss.SSS} [%t] | %-18marker | %-5level %logger{1.} [%line] - %enc{%msg}%n}{FATAL=black,ERROR=red,WARN=orange,INFO=black,DEBUG=green,TRACE=cyan}"/>
+        </File>
 
         <RollingFile name="MonitoringRollingFile" fileName="logs/monitoring.log"
                      filePattern="logs/%d{yyyy-MM-dd}/monitoring-%i.log">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %logger{1.} - %enc{%msg}%n"/>
-
             <Policies>
                 <TimeBasedTriggeringPolicy/>
             </Policies>
             <DefaultRolloverStrategy max="7" />
         </RollingFile>
     </Appenders>
+
     <Loggers>
+        <Logger name="isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultDisplayer" level="TRACE">
+            <AppenderRef ref="ResultDisplayerFile" />
+        </Logger>
+
+        <Logger name="isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultDisplayer" level="TRACE">
+            <AppenderRef ref="Console_result_displayer" />
+        </Logger>
+
+        <Logger name="isacademy.jjdd1.itconcrete.smartconnect.displayer.QuestionAsker" level="TRACE">
+            <AppenderRef ref="QuestionAskerFile" />
+        </Logger>
+
+        <Logger name="isacademy.jjdd1.itconcrete.smartconnect.displayer.QuestionAsker" level="TRACE">
+            <AppenderRef ref="Console_question_asker" />
+        </Logger>
+
         <Logger name="isacademy.jjdd1.itconcrete.smartconnect" level="debug" additivity="false">
             <AppenderRef ref="MonitoringRollingFile"/>
         </Logger>
+
         <Root level="warn">
             <AppenderRef ref="Console"/>
         </Root>
