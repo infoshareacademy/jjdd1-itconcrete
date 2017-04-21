@@ -2,6 +2,7 @@ package isacademy.jjdd1.itconcrete.smartconnect.calendar;
 
 
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.DateAndTimeConverter;
+import isacademy.jjdd1.itconcrete.smartconnect.displayer.CapitalLetter;
 
 import java.io.BufferedReader;
 
@@ -108,8 +109,8 @@ public class CalendarParser {
 
     public LinkedList<Event> HomeAsFirstAndLastEvent(LinkedList<Event> events, String homeBusStop, String timeOfLeavingHome, String timeOfArrivingHome ) {
 
-        events.push(new Event(eightAm, DateAndTimeConverter.timeFromKeyboardParser(timeOfLeavingHome).atDate(LocalDate.now()),homeBusStop,"dom",true));
-        events.add(new Event(DateAndTimeConverter.timeFromKeyboardParser(timeOfArrivingHome).atDate(LocalDate.now()),eightAm,homeBusStop,"dom",true));
+        events.push(new Event(eightAm, DateAndTimeConverter.timeFromKeyboardParser(timeOfLeavingHome).atDate(LocalDate.now()), CapitalLetter.makeFirstLetterCapital(homeBusStop),"dom",true));
+        events.add(new Event(DateAndTimeConverter.timeFromKeyboardParser(timeOfArrivingHome).atDate(LocalDate.now()),eightAm,CapitalLetter.makeFirstLetterCapital(homeBusStop),"dom",true));
         return events;
     }
 

@@ -3,9 +3,6 @@ package isacademy.jjdd1.itconcrete.smartconnect.calendar;
 
 import java.time.LocalDateTime;
 
-/**
- * Created by rekinlukasz on 03.04.17.
- */
 public class Event {
 
     private String location;
