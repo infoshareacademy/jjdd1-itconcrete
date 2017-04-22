@@ -7,6 +7,7 @@ import isacademy.jjdd1.itconcrete.smartconnect.displayer.CapitalLetter;
 import java.io.BufferedReader;
 
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
@@ -41,8 +42,9 @@ public class CalendarParser {
     public LinkedList<Event> readEvents() throws IOException, URISyntaxException {
 
 
-        URI uri = CalendarParser.class.getResource("/kalendarz.ics").toURI();
-        BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(uri));
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
+                this.getClass().getResourceAsStream("/kalendarz.ics")));
+
         String line;
 
         while ((line = bufferedReader.readLine()) != null) {
