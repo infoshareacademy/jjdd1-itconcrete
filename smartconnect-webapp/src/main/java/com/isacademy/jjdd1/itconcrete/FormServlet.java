@@ -15,13 +15,8 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/smartconnect")
-public class Servlet extends HttpServlet {
-
-    List<ResultConnection> resultConnections;
-
-    @Inject
-    CompleteResultDisplayer completeResultDisplayer;
+@WebServlet(urlPatterns = "/smartconnect_form")
+public class FormServlet extends HttpServlet {
 
     @Inject
     ScheduleParser scheduleParser;
@@ -29,26 +24,12 @@ public class Servlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
 
-        try {
-            scheduleParser.loadData();
-            ArrayList<BusLine> allBusLines = scheduleParser.getArrayOfBusLines();
-
-            completeResultDisplayer.displayCompleteResult("Klonowa", "06:00", "22:00", 3, allBusLines);
-//            this.resultConnections = completeResultDisplayer.getResultConnections();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-    req.setAttribute("resultConnections", resultConnections);
-
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/form.jsp");
         dispatcher.forward(req, resp);
 
     }

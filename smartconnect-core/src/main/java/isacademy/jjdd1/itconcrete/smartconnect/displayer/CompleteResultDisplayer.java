@@ -20,6 +20,11 @@ public class CompleteResultDisplayer {
 
     private static final Marker RESULT_DISPLAYER_MARKER = MarkerFactory.getMarker("RESULT DISPLAYER");
     private static final Logger LOGGER = LoggerFactory.getLogger(CompleteResultDisplayer.class);
+    public List<ResultConnection> allResultConnections;
+
+    public List<ResultConnection> getAllResultConnections() {
+        return allResultConnections;
+    }
 
     public void displayCompleteResult(String homeBusStop, String timeOfLeavingHome, String timeOfArrivingHome, int maxAmountOfResults, ArrayList<BusLine> allBusLines) throws IOException, URISyntaxException {
 
@@ -32,6 +37,8 @@ public class CompleteResultDisplayer {
         CalendarParser calendarParser = new CalendarParser();
         LinkedList<Journey> journeys = calendarParser.parseFileSortEventsAddHome(homeBusStop, timeOfLeavingHome, timeOfArrivingHome);
 
+        allResultConnections = new ArrayList<>();
+
         for (int i = 0; i < journeys.size(); i++) {
 
             LOGGER.trace(RESULT_DISPLAYER_MARKER, "\nEvent number " + (i+1) + ": ");
@@ -42,6 +49,7 @@ public class CompleteResultDisplayer {
             List<BusLine> foundBusLines = busLineSeeker.seekBusLine(journeys.get(i), allBusLines);
             List<LineRideTime> lineRideTimes = minutesToBusStops.calculateMinutesToBusStops(foundBusLines, journeys.get(i));
             List<ResultConnection> resultConnections = connectionSeeker.seekConnection(lineRideTimes, journeys.get(i), maxAmountOfResults);
+            allResultConnections.addAll(resultConnections);
 
             for (ResultConnection resultConnection : resultConnections) {
                 String textForEachResult = displayConnection.displayingConnection(resultConnection);

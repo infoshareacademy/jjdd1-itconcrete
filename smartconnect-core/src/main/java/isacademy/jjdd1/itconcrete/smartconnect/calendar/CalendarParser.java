@@ -111,6 +111,7 @@ public class CalendarParser {
 
     public LinkedList<Event> HomeAsFirstAndLastEvent(LinkedList<Event> events, String homeBusStop, String timeOfLeavingHome, String timeOfArrivingHome ) {
 
+
         events.push(new Event(eightAm, DateAndTimeConverter.timeFromKeyboardParser(timeOfLeavingHome).atDate(LocalDate.now()), CapitalLetter.makeFirstLetterCapital(homeBusStop),"dom",true));
         events.add(new Event(DateAndTimeConverter.timeFromKeyboardParser(timeOfArrivingHome).atDate(LocalDate.now()),eightAm,CapitalLetter.makeFirstLetterCapital(homeBusStop),"dom",true));
         return events;

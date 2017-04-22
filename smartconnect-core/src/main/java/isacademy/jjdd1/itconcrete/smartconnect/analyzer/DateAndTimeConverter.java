@@ -7,14 +7,6 @@ import java.time.temporal.ChronoUnit;
 
 public class DateAndTimeConverter {
 
-    public static LocalTime timeParser(String timeInString) {
-
-        DateTimeFormatter parser = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss'Z'");
-        LocalDateTime dateTime = LocalDateTime.from(parser.parse(timeInString));
-        LocalTime localTime = LocalTime.of(dateTime.getHour(), dateTime.getMinute(), 0, 0);
-        return localTime;
-    }
-
     public static LocalTime timeFromKeyboardParser(String timeInString) {
         return LocalTime.parse(timeInString);
     }

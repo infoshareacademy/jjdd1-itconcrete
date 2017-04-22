@@ -37,4 +37,15 @@ public class ResultConnection {
     public String getEndBusStop() {
         return endBusStop;
     }
+
+    @Override
+    public String toString() {
+        return "ResultConnection{" +
+                "lineNumber=" + lineNumber +
+                ", travelStartTime=" + travelStartTime +
+                ", travelEndTime=" + travelEndTime +
+                ", startBusStop='" + startBusStop + '\'' +
+                ", endBusStop='" + endBusStop + '\'' +
+                '}';
+    }
 }

@@ -15,24 +15,24 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-//        LOGGER.info("Starting application.");
-//        LOGGER.trace("Schedules database is initialized.");
+        LOGGER.info("Starting application.");
+        LOGGER.trace("Schedules database is initialized.");
 
         ScheduleParser scheduleParser = new ScheduleParser();
         scheduleParser.loadData();
         ArrayList<BusLine> allBusLines = scheduleParser.getArrayOfBusLines();
 
-//        LOGGER.info("Asking for user input in order to define home location.");
+        LOGGER.info("Asking for user input in order to define home location.");
 
         String homeBusStop = QuestionAsker.askForHome(allBusLines);
         String timeOfLeavingHome = QuestionAsker.askForTimeOfLeavingHome();
         String timeOfArrivingHome = QuestionAsker.askForTimeOfArrivingHome();
 
-//        LOGGER.debug("Home bus stop: " + homeBusStop);
+        LOGGER.debug("Home bus stop: " + homeBusStop);
 
         int maxAmountOfResultsAsInt = QuestionAsker.askForMaxAmountOfResults();
 
-//        LOGGER.info("Choosen amount of options to show: " + maxAmountOfResultsAsInt);
+        LOGGER.info("Chosen amount of options to show: " + maxAmountOfResultsAsInt);
 
         TransferSeeker transferSeeker = new TransferSeeker();
         transferSeeker.seekTransfer("Klonowa","Galeria Bałtycka");
