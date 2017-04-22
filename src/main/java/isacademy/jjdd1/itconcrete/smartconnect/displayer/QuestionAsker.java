@@ -72,9 +72,8 @@ public class QuestionAsker {
 
         while (!maxResultsAmount.matches("(10|[1-9])")) {
 
-            maxResultsAmount = QuestionAsker.askForInfo();
-
             LOGGER.warn(QUESTION_ASKER_MARKER, "Sorry, wrong number, try again");
+
             maxResultsAmount = QuestionAsker.askForInfo();
         }
 

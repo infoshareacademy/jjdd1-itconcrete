@@ -16,7 +16,6 @@ public class BusLine {
         this.departures = departuresFirstStop;
     }
 
-
     public int getLineNumber() {
         return lineNumber;
     }
@@ -55,5 +54,14 @@ public class BusLine {
 
     public List<LocalTime> getDeparturesSaturdaysSundaysAndHolidays() {
         return departures.getDeparturesSaturdaysSundaysAndHolidays();
+    }
+
+    @Override
+    public String toString() {
+        return "BusLine{" +
+                "lineNumber=" + lineNumber +
+                ", route=" + route +
+                ", departures=" + departures +
+                '}' + "/n";
     }
 }

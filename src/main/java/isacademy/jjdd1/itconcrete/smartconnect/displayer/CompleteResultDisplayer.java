@@ -29,8 +29,8 @@ public class CompleteResultDisplayer {
 
         BusLineSeeker busLineSeeker = new BusLineSeeker();
 
-        CalendarParser cp = new CalendarParser();
-        LinkedList<Journey> journeys = cp.parseFileSortEventsAddHome(homeBusStop, timeOfLeavingHome, timeOfArrivingHome);
+        CalendarParser calendarParser = new CalendarParser();
+        LinkedList<Journey> journeys = calendarParser.parseFileSortEventsAddHome(homeBusStop, timeOfLeavingHome, timeOfArrivingHome);
 
         for (int i = 0; i < journeys.size(); i++) {
 
