@@ -12,7 +12,7 @@ public class ScheduleParser {
     private InitialDataChecker initialDataChecker;
     private HashMap<Integer,SingleBusLineDataCollector> completeBusLinesData;
 
-    private static final String pathToSchedulesParentDirectory = "src/main/resources/rozklady_2015-09-08_13.43.01/";
+    private static final String pathToSchedulesParentDirectory = "smartconnect-core/src/main/resources/rozklady_2015-09-08_13.43.01/";
     private static final File parentDirectoryWithSchedules = new File (pathToSchedulesParentDirectory);
     private static final File[] listOfSchedulesDirectories = parentDirectoryWithSchedules.listFiles();
     private static final Logger LOGGER = LoggerFactory.getLogger(ScheduleParser.class);

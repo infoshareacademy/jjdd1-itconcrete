@@ -7,7 +7,6 @@ import org.slf4j.Marker;
 import org.slf4j.MarkerFactory;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class QuestionAsker {
