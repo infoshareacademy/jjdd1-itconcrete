@@ -24,8 +24,9 @@
     <c:forEach items="${resultForWebAppList}" var="journey">
         <table class="table">
             <tr class="info">
-                <td>
-                    <b>From '${journey.getStartLocation()}' to '${journey.getEndLocation()}',
+                <td colspan="2">
+                    <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                    <b>  From '${journey.getStartLocation()}' to '${journey.getEndLocation()}',
                         start journey at bus stop '${journey.getStartBusStop()}'
                         and get to '${journey.getEndBusStop()} with following lines:</b>
                 </td>
@@ -37,11 +38,10 @@
                 <c:when test="${journey.getResultConnectionList().size() > 0}">
                     <c:forEach items="${journey.getResultConnectionList()}" var="resultConnection">
                         <tr>
+                            <td align="center" width="20px"><b>${resultConnection.getLineNumber()}</b></td>
                             <td>
-                                <b>${resultConnection.getLineNumber()}</b> - start journey at:
-                                    ${resultConnection.getPrettyFormattedStartTime()},
-                                    you will reach your destination at:
-                                    ${resultConnection.getPrettyFormattedEndTime()}
+                                start journey at: ${resultConnection.getPrettyFormattedStartTime()},
+                                you will reach your destination at: ${resultConnection.getPrettyFormattedEndTime()}
                             </td>
                         </tr>
 

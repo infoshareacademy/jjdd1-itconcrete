@@ -23,19 +23,46 @@
     <br/>
 
     <form name="askForm" method="post" action="/smartconnect_results">
+
         <div class="form-group">
-            <label for="homeBusStop">Home bus:</label>
-            <input type="text" class="form-control" id="homeBusStop" placeholder="Enter your home bus stop name">
+            <label class="control-label" for="maxAmountOfResults">Home bus stop</label>
+            <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></span>
+                <input type="text" class="form-control" id="homeBusStop" placeholder="Enter your home bus stop name"
+                       aria-describedby="inputGroupSuccess1Status">
+            </div>
         </div>
+
         <div class="form-group">
-            <label for="timeOfLeavingHome">Time of leaving home:</label>
-            <input type="time" class="form-control" id="timeOfLeavingHome" placeholder="Enter time of leaving home (Format HH:MM)">
+            <label class="control-label" for="timeOfLeavingHome">Time of arriving home</label>
+            <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
+                <input type="time" class="form-control" id="timeOfLeavingHome"
+                       placeholder="Enter time of leaving home (HH:MM)" aria-describedby="inputGroupSuccess1Status">
+            </div>
         </div>
+
         <div class="form-group">
-            <label for="timeOfArrivingingHome">Time of leaving home:</label>
-            <input type="time" class="form-control" id="timeOfArrivingingHome"
-                   placeholder="Enter time of arriving home (Format HH:MM)">
+            <label class="control-label" for="maxAmountOfResults">Time of arriving home</label>
+            <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
+                <input type="time" class="form-control" id="timeOfArrivingingHome"
+                       placeholder="Enter time of arriving home (HH:MM)"
+                       aria-describedby="inputGroupSuccess1Status">
+            </div>
         </div>
+
+        <div class="form-group">
+            <label class="control-label" for="maxAmountOfResults">Maximum amount of results</label>
+            <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-random"
+                                                      aria-hidden="true"></span></span>
+                <input type="number" class="form-control" id="maxAmountOfResults"
+                       placeholder="Enter maximum amount of results (1-10)"
+                       aria-describedby="inputGroupSuccess1Status">
+            </div>
+        </div>
+
         <button type="submit" class="btn btn-info">Submit</button>
     </form>
 </div>
