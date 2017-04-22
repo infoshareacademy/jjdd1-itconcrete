@@ -40,6 +40,8 @@ public class BusLineSeeker {
 
         return foundBusLines;
     }
+
+
     public boolean busStopExistence(String busStop, ArrayList<BusLine> busLinesForSeeking) {
 
         boolean busStopExistence = false;

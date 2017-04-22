@@ -2,6 +2,7 @@ package com.isacademy.jjdd1.itconcrete;
 
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.ResultConnection;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultDisplayer;
+import isacademy.jjdd1.itconcrete.smartconnect.forwebapp.ResultForWebApp;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
 
@@ -20,7 +21,7 @@ import java.util.List;
 @WebServlet(urlPatterns = "/smartconnect_results")
 public class ResultServlet extends HttpServlet {
 
-    List<ResultConnection> resultConnections;
+    List<ResultForWebApp> resultForWebAppList;
 
     @Inject
     CompleteResultDisplayer completeResultDisplayer;
@@ -37,7 +38,7 @@ public class ResultServlet extends HttpServlet {
 
             completeResultDisplayer.displayCompleteResult("Klonowa", "06:00", "22:00", 3, allBusLines);
 
-            resultConnections=completeResultDisplayer.getAllResultConnections();
+            resultForWebAppList = completeResultDisplayer.getAllResultConnections();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -49,7 +50,7 @@ public class ResultServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-    req.setAttribute("resultConnections", resultConnections);
+    req.setAttribute("resultForWebAppList", resultForWebAppList);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
         dispatcher.forward(req, resp);
@@ -59,7 +60,7 @@ public class ResultServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        req.setAttribute("resultConnections", resultConnections);
+        req.setAttribute("resultForWebAppList", resultForWebAppList);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
         dispatcher.forward(req, resp);

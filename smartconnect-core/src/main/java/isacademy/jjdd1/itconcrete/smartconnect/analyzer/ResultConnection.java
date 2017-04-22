@@ -38,6 +38,16 @@ public class ResultConnection {
         return endBusStop;
     }
 
+    public String getPrettyFormattedStartTime(){
+
+        return DateAndTimeConverter.prettyFormatTime(travelStartTime);
+    }
+
+    public String getPrettyFormattedEndTime(){
+
+        return DateAndTimeConverter.prettyFormatTime(travelEndTime);
+    }
+
     @Override
     public String toString() {
         return "ResultConnection{" +

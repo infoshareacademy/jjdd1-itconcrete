@@ -19,67 +19,26 @@
 <div class="container">
     <h1>SmartConnect</h1>
     <br/>
+    <h3>Hello! Please enter some journey details</h3>
+    <br/>
 
-    <div class="container">
-        <h3>Hello! Please enter some journey details</h3>
-        <br/>
-
-        <form name="askForm" method="post" action="/smartconnect_results">
-            <div class="form-group">
-                <label for="homeBusStop">Home bus:</label>
-                <input type="text" class="form-control" id="homeBusStop" placeholder="Enter your home bus stop name">
-            </div>
-            <div class="form-group">
-                <label for="timeOfLeavingHome">Time of leaving home:</label>
-                <input type="time" class="form-control" id="timeOfLeavingHome" placeholder="Enter time of leaving home">
-            </div>
-            <div class="form-group">
-                <label for="timeOfArrivingingHome">Time of leaving home:</label>
-                <input type="time" class="form-control" id="timeOfArrivingingHome" placeholder="Enter time of arriving home">
-            </div>
-            <button type="submit" class="btn btn-info">Submit</button>
-        </form>
-    </div>
+    <form name="askForm" method="post" action="/smartconnect_results">
+        <div class="form-group">
+            <label for="homeBusStop">Home bus:</label>
+            <input type="text" class="form-control" id="homeBusStop" placeholder="Enter your home bus stop name">
+        </div>
+        <div class="form-group">
+            <label for="timeOfLeavingHome">Time of leaving home:</label>
+            <input type="time" class="form-control" id="timeOfLeavingHome" placeholder="Enter time of leaving home (Format HH:MM)">
+        </div>
+        <div class="form-group">
+            <label for="timeOfArrivingingHome">Time of leaving home:</label>
+            <input type="time" class="form-control" id="timeOfArrivingingHome"
+                   placeholder="Enter time of arriving home (Format HH:MM)">
+        </div>
+        <button type="submit" class="btn btn-info">Submit</button>
+    </form>
+</div>
 
 </body>
 </html>
-
-
-<%--<div class="container">--%>
-<%--<h2>Contextual Colors</h2>--%>
-<%--<p>Use the contextual classes to provide "meaning through colors":</p>--%>
-<%--<p class="text-muted">This text is muted.</p>--%>
-<%--<p class="text-primary">This text is important.</p>--%>
-<%--<p class="text-success">This text indicates success.</p>--%>
-<%--<p class="text-info">This text represents some information.</p>--%>
-<%--<p class="text-warning">This text represents a warning.</p>--%>
-<%--<p class="text-danger">This text represents danger.</p>--%>
-<%--</div>--%>
-
-<%--<button type="button" class="btn">Basic</button>--%>
-<%--<button type="button" class="btn btn-default">Default</button>--%>
-<%--<button type="button" class="btn btn-primary">Primary</button>--%>
-<%--<button type="button" class="btn btn-success">Success</button>--%>
-<%--<button type="button" class="btn btn-info">Info</button>--%>
-<%--<button type="button" class="btn btn-warning">Warning</button>--%>
-<%--<button type="button" class="btn btn-danger">Danger</button>--%>
-<%--<button type="button" class="btn btn-link">Link</button>--%>
-
-
-<%--<div class="container">--%>
-<%--<h2>Vertical (basic) ResultServlet</h2>--%>
-<%--<form>--%>
-<%--<div class="form-group">--%>
-<%--<label for="email">Email:</label>--%>
-<%--<input type="email" class="form-control" id="email" placeholder="Enter email">--%>
-<%--</div>--%>
-<%--<div class="form-group">--%>
-<%--<label for="pwd">Password:</label>--%>
-<%--<input type="password" class="form-control" id="pwd" placeholder="Enter password">--%>
-<%--</div>--%>
-<%--<div class="checkbox">--%>
-<%--<label><input type="checkbox"> Remember me</label>--%>
-<%--</div>--%>
-<%--<button type="submit" class="btn btn-default">Submit</button>--%>
-<%--</form>--%>
-<%--</div>--%>
