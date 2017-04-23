@@ -3,6 +3,7 @@ package com.isacademy.jjdd1.itconcrete;
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.BusLineSeeker;
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.ResultConnection;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultDisplayer;
+import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
 
@@ -26,6 +27,9 @@ public class FormServlet extends HttpServlet {
 
     @Inject
     BusLineSeeker busLineSeeker;
+
+    @Inject
+    Util util;
 
     private ArrayList<BusLine> busLinesForSeeking;
 
@@ -74,7 +78,7 @@ public class FormServlet extends HttpServlet {
         String timeOfArrivingHome = request.getParameter("timeOfArrivingHome");
         String maxAmountOfResults = request.getParameter("maxAmountOfResults");
 
-        boolean correctHomeBusStop = busLineSeeker.busStopExistence(homeBusStop, busLinesForSeeking);
+        boolean correctHomeBusStop = util.busStopExistence(homeBusStop, busLinesForSeeking);
         boolean correctTimeOfLeavingHome = timeOfLeavingHome.matches("^([01][0-9]|2[0-3]):[0-5][0-9]$");
         boolean correctTimeOfArrivingHome = timeOfArrivingHome.matches("^([01][0-9]|2[0-3]):[0-5][0-9]$");
         boolean correctMaxAmountOfResults = maxAmountOfResults.matches("(10|[1-9])");

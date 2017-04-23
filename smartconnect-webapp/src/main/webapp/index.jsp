@@ -40,8 +40,8 @@
                         <tr>
                             <td align="center" width="20px"><b>${resultConnection.getLineNumber()}</b></td>
                             <td>
-                                start journey at: ${resultConnection.getPrettyFormattedStartTime()},
-                                you will reach your destination at: ${resultConnection.getPrettyFormattedEndTime()}
+                                start journey at: ${util.prettyFormatTime(resultConnection.getTravelStartTime())},
+                                you will reach your destination at: ${util.prettyFormatTime(resultConnection.getTravelEndTime())}
                             </td>
                         </tr>
 
