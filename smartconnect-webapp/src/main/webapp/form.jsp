@@ -22,13 +22,15 @@
     <h3>Hello! Please enter some journey details</h3>
     <br/>
 
-    <form name="askForm" method="post" action="/smartconnect_results">
+    <h2>${errorMessage}</h2>
+
+    <form name="askForm" method="post" action="/smartconnect_form">
 
         <div class="form-group">
             <label class="control-label" for="maxAmountOfResults">Home bus stop</label>
             <div class="input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></span>
-                <input type="text" class="form-control" id="homeBusStop" placeholder="Enter your home bus stop name"
+                <input type="text" class="form-control" id="homeBusStop" name="homeBusStop" placeholder="Enter your home bus stop name"
                        aria-describedby="inputGroupSuccess1Status">
             </div>
         </div>
@@ -37,7 +39,7 @@
             <label class="control-label" for="timeOfLeavingHome">Time of arriving home</label>
             <div class="input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
-                <input type="time" class="form-control" id="timeOfLeavingHome"
+                <input type="time" class="form-control" id="timeOfLeavingHome" name="timeOfLeavingHome"
                        placeholder="Enter time of leaving home (HH:MM)" aria-describedby="inputGroupSuccess1Status">
             </div>
         </div>
@@ -46,7 +48,7 @@
             <label class="control-label" for="maxAmountOfResults">Time of arriving home</label>
             <div class="input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
-                <input type="time" class="form-control" id="timeOfArrivingingHome"
+                <input type="time" class="form-control" id="timeOfArrivingHome" name="timeOfArrivingHome"
                        placeholder="Enter time of arriving home (HH:MM)"
                        aria-describedby="inputGroupSuccess1Status">
             </div>
@@ -55,9 +57,8 @@
         <div class="form-group">
             <label class="control-label" for="maxAmountOfResults">Maximum amount of results</label>
             <div class="input-group">
-                <span class="input-group-addon"><span class="glyphicon glyphicon-random"
-                                                      aria-hidden="true"></span></span>
-                <input type="number" class="form-control" id="maxAmountOfResults"
+                <span class="input-group-addon"><span class="glyphicon glyphicon-random" aria-hidden="true"></span></span>
+                <input type="text" class="form-control" id="maxAmountOfResults" name="maxAmountOfResults"
                        placeholder="Enter maximum amount of results (1-10)"
                        aria-describedby="inputGroupSuccess1Status">
             </div>

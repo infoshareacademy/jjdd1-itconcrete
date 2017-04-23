@@ -29,41 +29,52 @@ public class ResultServlet extends HttpServlet {
     @Inject
     ScheduleParser scheduleParser;
 
+    ArrayList<BusLine> allBusLines;
+
     @Override
     public void init() throws ServletException {
 
         try {
             scheduleParser.loadData();
-            ArrayList<BusLine> allBusLines = scheduleParser.getArrayOfBusLines();
-
-            completeResultDisplayer.displayCompleteResult("Klonowa", "06:00", "22:00", 3, allBusLines);
-
-            resultForWebAppList = completeResultDisplayer.getAllResultConnections();
+            allBusLines = scheduleParser.getArrayOfBusLines();
 
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
             e.printStackTrace();
         }
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    req.setAttribute("resultForWebAppList", resultForWebAppList);
+        request.setAttribute("resultForWebAppList", resultForWebAppList);
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
-        dispatcher.forward(req, resp);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+        dispatcher.forward(request, response);
     }
 
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        req.setAttribute("resultForWebAppList", resultForWebAppList);
+        String homeBusStop = request.getParameter("homeBusStop");
+        String timeOfLeavingHome = request.getParameter("timeOfLeavingHome");
+        String timeOfArrivingHome = request.getParameter("timeOfArrivingHome");
+        String maxAmountOfResults = request.getParameter("maxAmountOfResults");
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
-        dispatcher.forward(req, resp);
+        try {
+            completeResultDisplayer.displayCompleteResult(homeBusStop, timeOfLeavingHome, timeOfArrivingHome,
+                    Integer.valueOf(maxAmountOfResults), allBusLines);
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        resultForWebAppList = completeResultDisplayer.getAllResultConnections();
+
+
+        request.setAttribute("resultForWebAppList", resultForWebAppList);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+        dispatcher.forward(request, response);
     }
 
 
