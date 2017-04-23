@@ -5,11 +5,20 @@ import java.util.ArrayList;
 public class VariantX {
 
     private String variant;
-    private int lineNumber;
-    private Route route;
-    private ArrayList<String> arrayOfStops;
-//    private List<BusStopDeltas> deltasList;
+    private ArrayList<BusStopDeltas> variantDeltas;
 
-    ArrayList<BusStopDeltas> deltasList = new ArrayList<>();
+    public VariantX(String variant) {
+        this.variant = variant;
+    }
 
+    public VariantX() {
+    }
+
+    public String getVariant() {
+        return variant;
+    }
+
+    public ArrayList<BusStopDeltas> getVariantDeltas() {
+        return variantDeltas;
+    }
 }
