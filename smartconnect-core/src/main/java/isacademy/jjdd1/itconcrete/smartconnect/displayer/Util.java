@@ -34,7 +34,8 @@ public class Util {
         return LocalTime.parse(timeInString);
     }
 
-    public static String prettyFormatTime(LocalTime time) {
+
+    public String prettyFormatTime(LocalTime time) {
         return time.truncatedTo(ChronoUnit.MINUTES).toString();
     }
 
