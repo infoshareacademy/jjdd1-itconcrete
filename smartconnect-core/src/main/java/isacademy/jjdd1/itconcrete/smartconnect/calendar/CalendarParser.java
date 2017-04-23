@@ -1,17 +1,9 @@
 package isacademy.jjdd1.itconcrete.smartconnect.calendar;
-
-
-import isacademy.jjdd1.itconcrete.smartconnect.analyzer.DateAndTimeConverter;
-import isacademy.jjdd1.itconcrete.smartconnect.displayer.CapitalLetter;
-
+import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
 import java.io.BufferedReader;
-
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.URI;
 import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -22,12 +14,13 @@ import java.util.LinkedList;
 public class CalendarParser {
 
     DateTimeFormatter parser = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss");
-    DateTimeFormatter parserWithZAtTheEnd = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss'Z'");
 
     LinkedList<Event> events = new LinkedList<>();
     LinkedList<Event> sortedEvents;
     LinkedList<Journey> journeys = new LinkedList<>();
     Event event = new Event();
+
+    Util util = new Util();
 
 
     LocalDateTime eightAm =LocalDateTime.from(parser.parse("20170101T080000"));
@@ -112,8 +105,8 @@ public class CalendarParser {
     public LinkedList<Event> HomeAsFirstAndLastEvent(LinkedList<Event> events, String homeBusStop, String timeOfLeavingHome, String timeOfArrivingHome ) {
 
 
-        events.push(new Event(eightAm, DateAndTimeConverter.timeFromKeyboardParser(timeOfLeavingHome).atDate(LocalDate.now()), CapitalLetter.makeFirstLetterCapital(homeBusStop),"Dom",true));
-        events.add(new Event(DateAndTimeConverter.timeFromKeyboardParser(timeOfArrivingHome).atDate(LocalDate.now()),eightAm,CapitalLetter.makeFirstLetterCapital(homeBusStop),"Dom",true));
+        events.push(new Event(eightAm, util.timeFromKeyboardParser(timeOfLeavingHome).atDate(LocalDate.now()), util.makeFirstLetterCapital(homeBusStop),"Dom",true));
+        events.add(new Event(util.timeFromKeyboardParser(timeOfArrivingHome).atDate(LocalDate.now()), eightAm, util.makeFirstLetterCapital(homeBusStop),"Dom",true));
         return events;
     }
 

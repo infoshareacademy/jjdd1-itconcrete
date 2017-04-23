@@ -23,12 +23,12 @@ public class QuestionAsker {
 
     public static String askForHome(ArrayList<BusLine> allBusLines) {
 
-        BusLineSeeker busLineSeeker = new BusLineSeeker();
+        Util util = new Util();
 
         LOGGER.trace(QUESTION_ASKER_MARKER, "Hello! What is your home bus stop?");
         String homeBusStop = QuestionAsker.askForInfo();
 
-        while (!busLineSeeker.busStopExistence(homeBusStop, allBusLines)) {
+        while (!util.busStopExistence(homeBusStop, allBusLines)) {
             LOGGER.warn(QUESTION_ASKER_MARKER, "Sorry, there is no '" + homeBusStop + "' bus stop, try again");
             homeBusStop = QuestionAsker.askForInfo();
         }

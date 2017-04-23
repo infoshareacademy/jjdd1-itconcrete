@@ -3,6 +3,7 @@ package com.isacademy.jjdd1.itconcrete;
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.BusLineSeeker;
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.ResultConnection;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultDisplayer;
+import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
 
@@ -27,6 +28,9 @@ public class FormServlet extends HttpServlet {
     @Inject
     BusLineSeeker busLineSeeker;
 
+    @Inject
+    Util util;
+
     private ArrayList<BusLine> busLinesForSeeking;
 
 
@@ -45,40 +49,84 @@ public class FormServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         RequestDispatcher dispatcher = req.getRequestDispatcher("/form.jsp");
         dispatcher.forward(req, resp);
-
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
+        boolean isError = false;
 
-        if (validateForm(req)) {
-
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/smartconnect_results");
-            dispatcher.forward(req, resp);
-
+        if (!validateHomeBusStop(request)) {
+            request.setAttribute("homeBusStopError", "Wrong data, try again. ");
+            request.setAttribute("hasError1", "has-error");
+            isError = true;
         } else {
+            setCorrectParameter(request, "homeBusStop");
+        }
 
-            req.setAttribute("errorMessage", "Wrong data, try again");
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/form.jsp");
-            dispatcher.forward(req, resp);
+        if (!validateTimeOfLeavingHome(request)) {
+            request.setAttribute("timeOfLeavingError", "Wrong data, try again. ");
+            request.setAttribute("hasError2", "has-error");
+            isError = true;
+        } else {
+            setCorrectParameter(request, "timeOfLeavingHome");
+        }
+
+        if (!validateTimeOfArrivingHome(request)) {
+            request.setAttribute("timeOfArrivingError", "Wrong data, try again. ");
+            request.setAttribute("hasError3", "has-error");
+            isError = true;
+        } else {
+            setCorrectParameter(request, "timeOfArrivingHome");
+        }
+
+        if (!validateMaxResults(request)) {
+            request.setAttribute("maxResultsError", "Wrong data, try again. ");
+            request.setAttribute("hasError4", "has-error");
+            isError = true;
+        } else {
+            setCorrectParameter(request, "maxAmountOfResults");
+        }
+
+        if (isError) {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/form.jsp");
+            dispatcher.forward(request, resp);
+        } else {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/smartconnect_results");
+            dispatcher.forward(request, resp);
         }
     }
 
-    private boolean validateForm(HttpServletRequest request) {
-
+    private boolean validateHomeBusStop(HttpServletRequest request) {
         String homeBusStop = request.getParameter("homeBusStop");
+        boolean correctHomeBusStop = util.busStopExistence(homeBusStop, busLinesForSeeking);
+        return correctHomeBusStop;
+    }
+
+
+    private boolean validateTimeOfLeavingHome(HttpServletRequest request) {
         String timeOfLeavingHome = request.getParameter("timeOfLeavingHome");
-        String timeOfArrivingHome = request.getParameter("timeOfArrivingHome");
-        String maxAmountOfResults = request.getParameter("maxAmountOfResults");
-
-        boolean correctHomeBusStop = busLineSeeker.busStopExistence(homeBusStop, busLinesForSeeking);
         boolean correctTimeOfLeavingHome = timeOfLeavingHome.matches("^([01][0-9]|2[0-3]):[0-5][0-9]$");
-        boolean correctTimeOfArrivingHome = timeOfArrivingHome.matches("^([01][0-9]|2[0-3]):[0-5][0-9]$");
-        boolean correctMaxAmountOfResults = maxAmountOfResults.matches("(10|[1-9])");
+        return correctTimeOfLeavingHome;
+    }
 
-        return (correctHomeBusStop && correctTimeOfLeavingHome && correctTimeOfArrivingHome && correctMaxAmountOfResults);
+
+    private boolean validateTimeOfArrivingHome(HttpServletRequest request) {
+        String timeOfArrivingHome = request.getParameter("timeOfArrivingHome");
+        boolean correctTimeOfArrivingHome = timeOfArrivingHome.matches("^([01][0-9]|2[0-3]):[0-5][0-9]$");
+        return correctTimeOfArrivingHome;
+    }
+
+
+    private boolean validateMaxResults(HttpServletRequest request) {
+        String maxAmountOfResults = request.getParameter("maxAmountOfResults");
+        boolean correctMaxAmountOfResults = maxAmountOfResults.matches("(10|[1-9])");
+        return correctMaxAmountOfResults;
+    }
+
+    private void setCorrectParameter(HttpServletRequest request, String placeholder) {
+        String value = request.getParameter(placeholder);
+        request.setAttribute(placeholder, value);
     }
 }

@@ -23,10 +23,11 @@
     <br/>
     <c:forEach items="${resultForWebAppList}" var="journey">
         <table class="table">
+
             <tr class="info">
                 <td colspan="2">
                     <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                    <b>  From '${journey.getStartLocation()}' to '${journey.getEndLocation()}',
+                    <b> From '${journey.getStartLocation()}' to '${journey.getEndLocation()}'
                         start journey at bus stop '${journey.getStartBusStop()}'
                         and get to '${journey.getEndBusStop()} with following lines:</b>
                 </td>
@@ -40,8 +41,8 @@
                         <tr>
                             <td align="center" width="20px"><b>${resultConnection.getLineNumber()}</b></td>
                             <td>
-                                start journey at: ${resultConnection.getPrettyFormattedStartTime()},
-                                you will reach your destination at: ${resultConnection.getPrettyFormattedEndTime()}
+                                start journey at <b>${resultConnection.getTravelStartTime()}</b>,
+                                you will reach your destination at <b>${resultConnection.getTravelEndTime()}</b>
                             </td>
                         </tr>
 
@@ -57,9 +58,12 @@
             </c:choose>
         </table>
     </c:forEach>
+
+    <br/>
+    <h4><a href="/smartconnect_form">Seek again!</a></h4>
+    <br/>
+
 </div>
-
 <br/>
-
 </body>
 </html>
