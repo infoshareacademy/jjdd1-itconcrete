@@ -29,7 +29,7 @@
             <div class="input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></span>
                 <input type="text" class="form-control" id="homeBusStop" name="homeBusStop"
-                       placeholder="${homeBusStopError}Enter your home bus stop name"
+                       placeholder="${homeBusStopError}Enter home bus stop name"
                        value="${homeBusStop}"
                        aria-describedby="inputGroupSuccess1Status">
             </div>

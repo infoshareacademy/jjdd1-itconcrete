@@ -51,7 +51,7 @@
                 <c:otherwise>
                     <tr>
                         <td>
-                            Sorry, there is no direct connection for this event
+                            <span style="color: #337ab7;">Sorry, there is no direct connection for this event</span>
                         </td>
                     </tr>
                 </c:otherwise>
