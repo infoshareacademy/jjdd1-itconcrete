@@ -51,6 +51,8 @@ public class CompleteResultDisplayer {
             List<BusLine> foundBusLines = busLineSeeker.seekBusLine(journeys.get(i), allBusLines);
             List<LineRideTime> lineRideTimes = minutesToBusStops.calculateMinutesToBusStops(foundBusLines, journeys.get(i));
             List<ResultConnection> resultConnections = connectionSeeker.seekConnection(lineRideTimes, journeys.get(i), maxAmountOfResults);
+            resultConnections = new LinePromoter(resultConnections).putPromotedLinesFirstInAList();
+
             resultForWebAppList.add(new ResultForWebApp(journeys.get(i).getStartLocation(),
                     journeys.get(i).getEndLocation(), journeys.get(i).getStartBusStop(),
                     journeys.get(i).getEndBusStop(), resultConnections));
