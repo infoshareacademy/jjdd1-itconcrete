@@ -23,11 +23,6 @@ public class App {
         scheduleParser.loadData();
         ArrayList<BusLine> allBusLines = scheduleParser.getArrayOfBusLines();
 
-        for(BusLine bl : allBusLines){
-            System.out.println("Line number " + bl.getLineNumber() + " direction " + bl.getRoute().getDirection() + "\n route " + bl.getRoute().getArrayOfStops());
-        }
-
-
         LOGGER.info("Asking for user input in order to define home location.");
 
         String homeBusStop = QuestionAsker.askForHome(allBusLines);
