@@ -12,42 +12,37 @@ class DeparturesCollector {
     private DeparturesFirstStop departuresFirstStop;
     private static final String csvSplitBy = ";";
 
-    public DeparturesCollector(File file, Direction currentDirection, int lineNumber) {
+    DeparturesCollector(File file, Direction currentDirection, int lineNumber) {
         this.file = file;
         this.currentDirection = currentDirection;
         this.lineNumber = lineNumber;
     }
 
-    public void loadDeparturesData() throws IOException {
+    void loadDeparturesData() throws IOException {
         ArrayList<String[]> departuresFirstStopWithoutDivision =  getDeparturesFromFirstStopWithoutDivisionWithXVariants(file);
         departuresFirstStop = new DeparturesFirstStop();
         departuresFirstStop = fillInDeparturesFirstStopObject (departuresFirstStopWithoutDivision);
     }
 
     private ArrayList<String[]> getDeparturesFromFirstStopWithoutDivisionWithXVariants(File file) throws IOException {
-        //System.out.println("Initialization of departures list...");
         BufferedReader br = initializeBufferedReader(file);
-        ArrayList<String[]> departuresFirstStopWithoutDivision = createListOfDeparturesForAWholeWeek(br);
-        return departuresFirstStopWithoutDivision;
+        return createListOfDeparturesForAWholeWeek(br);
     }
 
     private BufferedReader initializeBufferedReader (File file) throws FileNotFoundException, UnsupportedEncodingException {
         FileInputStream fis = new FileInputStream(getFileToCreateDeparturesList(file));
         InputStreamReader isr = new InputStreamReader(fis,"windows-1250");
-        BufferedReader br = new BufferedReader(isr);
-        return br;
+        return new BufferedReader(isr);
     }
 
     private File getFileToCreateDeparturesList(File file) {
         String pathToDepartures = replaceFilepathFromWariantyToKursy(file);
-        File newFile = new File(pathToDepartures);
-        return newFile;
+        return new File(pathToDepartures);
     }
 
     private String replaceFilepathFromWariantyToKursy(File file){
         String currentPathOfFile = file.getAbsolutePath();
-        String pathToDepartures = currentPathOfFile.replace("warianty","kursy");
-        return pathToDepartures;
+        return currentPathOfFile.replace("warianty","kursy");
     }
 
     private ArrayList<String[]> createListOfDeparturesForAWholeWeek (BufferedReader br) throws IOException {
@@ -98,8 +93,7 @@ class DeparturesCollector {
             current.add(new DepartureWithVariant(LocalTime.parse(hourColumn), variantColumn));
             //TODO Logger - debug - invalid input
         }
-        DeparturesFirstStop dfs = new DeparturesFirstStop(lineNumber, currentDirection, weekdays, saturdays, saturdaysSundays, sundays);
-        return dfs;
+        return new DeparturesFirstStop(lineNumber, currentDirection, weekdays, saturdays, saturdaysSundays, sundays);
     }
 
     private DayOfWorking checkDayOfWorking(String descriptionOfDayOfWorking){
@@ -114,7 +108,7 @@ class DeparturesCollector {
         }
     }
 
-    public DeparturesFirstStop getDeparturesFirstStop() {
+    DeparturesFirstStop getDeparturesFirstStop() {
         return departuresFirstStop;
     }
 }

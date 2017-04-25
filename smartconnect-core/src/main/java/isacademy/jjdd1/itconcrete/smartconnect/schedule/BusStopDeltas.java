@@ -4,7 +4,7 @@ public class BusStopDeltas {
     String busStopName;
     int timeDifference;
 
-    public BusStopDeltas(String busStopName, int timeDifference) {
+    BusStopDeltas(String busStopName, int timeDifference) {
         this.busStopName = busStopName;
         this.timeDifference = timeDifference;
     }

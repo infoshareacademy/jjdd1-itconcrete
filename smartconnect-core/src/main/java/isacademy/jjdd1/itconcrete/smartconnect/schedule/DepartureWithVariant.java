@@ -8,12 +8,12 @@ public class DepartureWithVariant {
     private LocalTime timeOfDeparture;
     private String variant;
 
-    public DepartureWithVariant(LocalTime timeOfDeparture, String variant) {
+    DepartureWithVariant(LocalTime timeOfDeparture, String variant) {
         this.timeOfDeparture = timeOfDeparture;
         this.variant = variant;
     }
 
-    public LocalTime getTimeOfDeparture() {
+    LocalTime getTimeOfDeparture() {
         return timeOfDeparture;
     }
 

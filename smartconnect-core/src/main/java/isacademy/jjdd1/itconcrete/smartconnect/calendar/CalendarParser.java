@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URISyntaxException;
+import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -36,7 +37,9 @@ public class CalendarParser {
 
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
-                this.getClass().getResourceAsStream("/kalendarz.ics")));
+                this.getClass().getResourceAsStream("/kalendarz.ics"),
+                Charset.forName("UTF-8")
+        ));
 
         String line;
 
