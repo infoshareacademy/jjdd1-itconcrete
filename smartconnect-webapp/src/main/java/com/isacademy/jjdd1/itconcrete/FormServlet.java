@@ -49,6 +49,7 @@ public class FormServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/html;charset=UTF-8");
         RequestDispatcher dispatcher = req.getRequestDispatcher("/form.jsp");
         dispatcher.forward(req, resp);
     }
