@@ -11,11 +11,7 @@ public class Route {
     private List<BusStopDeltas> deltasList; //for X1
     //private List<VariantX> variantXList; //for X1
 
-
-    public Route() {
-    }
-
-    public Route(Direction direction, ArrayList<String> arrayOfStops, int lineNumber, List<BusStopDeltas> deltasList) {
+    Route(Direction direction, ArrayList<String> arrayOfStops, int lineNumber, List<BusStopDeltas> deltasList) {
         this.direction = direction;
         this.arrayOfStops = arrayOfStops;
         this.lineNumber = lineNumber;

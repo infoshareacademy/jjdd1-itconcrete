@@ -4,7 +4,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeparturesFirstStop {
+class DeparturesFirstStop {
 
     private int lineNumber;
     private Direction direction;
@@ -18,10 +18,10 @@ public class DeparturesFirstStop {
     private List<LocalTime> departuresSundaysAndHolidays;
 
 
-    public DeparturesFirstStop() {
+    DeparturesFirstStop() {
     }
 
-    public DeparturesFirstStop(int lineNumber, Direction direction,
+    DeparturesFirstStop(int lineNumber, Direction direction,
                                ArrayList<DepartureWithVariant> departuresWithVariantWeekdays,
                                ArrayList<DepartureWithVariant> departuresWithVariantSaturdays,
                                ArrayList<DepartureWithVariant> departuresWithVariantSaturdaysSundaysAndHolidays,
@@ -34,23 +34,23 @@ public class DeparturesFirstStop {
         this.departuresWithVariantSundaysAndHolidays = departuresWithVariantSundaysAndHolidays;
     }
 
-    public ArrayList<DepartureWithVariant> getDeparturesWithVariantWeekdays() {
+    ArrayList<DepartureWithVariant> getDeparturesWithVariantWeekdays() {
         return departuresWithVariantWeekdays;
     }
 
-    public ArrayList<DepartureWithVariant> getDeparturesWithVariantSaturdays() {
+    ArrayList<DepartureWithVariant> getDeparturesWithVariantSaturdays() {
         return departuresWithVariantSaturdays;
     }
 
-    public ArrayList<DepartureWithVariant> getDeparturesWithVariantSaturdaysSundaysAndHolidays() {
+    ArrayList<DepartureWithVariant> getDeparturesWithVariantSaturdaysSundaysAndHolidays() {
         return departuresWithVariantSaturdaysSundaysAndHolidays;
     }
 
-    public ArrayList<DepartureWithVariant> getDeparturesWithVariantSundaysAndHolidays() {
+    ArrayList<DepartureWithVariant> getDeparturesWithVariantSundaysAndHolidays() {
         return departuresWithVariantSundaysAndHolidays;
     }
 
-    public List<LocalTime> getDeparturesWeekdays() {
+    List<LocalTime> getDeparturesWeekdays() {
         departuresWeekdays = new ArrayList<>();
         for (DepartureWithVariant departuresWithVariantWeekday : departuresWithVariantWeekdays) {
             departuresWeekdays.add(departuresWithVariantWeekday.getTimeOfDeparture());
@@ -58,7 +58,7 @@ public class DeparturesFirstStop {
         return departuresWeekdays;
     }
 
-    public List<LocalTime> getDeparturesSaturdays() {
+    List<LocalTime> getDeparturesSaturdays() {
         departuresSaturdays = new ArrayList<>();
         for (DepartureWithVariant departuresWithVariantSaturday : departuresWithVariantSaturdays) {
             departuresSaturdays.add(departuresWithVariantSaturday.getTimeOfDeparture());
@@ -66,7 +66,7 @@ public class DeparturesFirstStop {
         return departuresSaturdays;
     }
 
-    public List<LocalTime> getDeparturesSaturdaysSundaysAndHolidays() {
+    List<LocalTime> getDeparturesSaturdaysSundaysAndHolidays() {
         departuresSaturdaysSundaysAndHolidays = new ArrayList<>();
         for (DepartureWithVariant departuresWithVariantSaturdaysSundaysAndHoliday : departuresWithVariantSaturdaysSundaysAndHolidays) {
             departuresSaturdaysSundaysAndHolidays.add(departuresWithVariantSaturdaysSundaysAndHoliday.getTimeOfDeparture());
@@ -74,7 +74,7 @@ public class DeparturesFirstStop {
         return departuresSaturdaysSundaysAndHolidays;
     }
 
-    public List<LocalTime> getDeparturesSundaysAndHolidays() {
+    List<LocalTime> getDeparturesSundaysAndHolidays() {
         departuresSundaysAndHolidays = new ArrayList<>();
         for (DepartureWithVariant departuresWithVariantSundaysAndHoliday : departuresWithVariantSundaysAndHolidays) {
             departuresSundaysAndHolidays.add(departuresWithVariantSundaysAndHoliday.getTimeOfDeparture());
