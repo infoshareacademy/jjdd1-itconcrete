@@ -8,20 +8,39 @@ import java.net.URISyntaxException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.*;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 
 public class ScheduleParser {
 
-    private ArrayList<BusLine> arrayOfBusLines = new ArrayList<>();
-    private InitialDataChecker initialDataChecker = new InitialDataChecker();
-    private Path rootPath;
-
+    private static final String ZIP_FILE_PATH = "/rozklady_2015-09-08_13.43.01.zip";
+    private static final Path ROOT_PATH = Paths.get(System.getProperty("java.io.tmpdir")).resolve("smartconnect");
     private static final Logger LOGGER = LoggerFactory.getLogger(ScheduleParser.class);
 
-    public ScheduleParser() throws IllegalAccessException, NoSuchFieldException, IOException, URISyntaxException {
+    private ArrayList<BusLine> arrayOfBusLines = new ArrayList<>();
+    private InitialDataChecker initialDataChecker = new InitialDataChecker();
 
-        URI uri = Paths.get("C:\\Users\\Ageee\\IdeaProjects\\jjdd1-itconcrete\\smartconnect-core\\src\\main\\resources\\rozklady_2015-09-08_13.43.01").toUri();
-        rootPath = Paths.get(uri);
+    public ScheduleParser() throws IOException {
+        LOGGER.debug("Unzipping zip {} to temp folder {}.", ZIP_FILE_PATH, ROOT_PATH);
+        Files.createDirectories(ROOT_PATH);
+        ZipInputStream stream = new ZipInputStream(ScheduleParser.class.getResourceAsStream(ZIP_FILE_PATH));
+        ZipEntry entry;
+        while ((entry = stream.getNextEntry()) != null) {
+            Path p = ROOT_PATH.resolve(entry.getName());
+            if (entry.isDirectory()) {
+                Files.createDirectories(p);
+            } else {
+                OutputStream outputStream = Files.newOutputStream(p);
+                final int BUFFER_SIZE = 4096;
+                byte[] bytesIn = new byte[BUFFER_SIZE];
+                int read = 0;
+                while ((read = stream.read(bytesIn)) != -1) {
+                    outputStream.write(bytesIn, 0, read);
+                }
+                outputStream.close();
+            }
+        }
     }
 
     private static List<Path> subdirectories(Path path) throws IOException {
@@ -39,7 +58,7 @@ public class ScheduleParser {
 
     public void loadData() throws IOException {
         LOGGER.trace("Loading data from schedule resources.");
-        List<Path> pathsToScheduleFiles = subdirectories(rootPath);
+        List<Path> pathsToScheduleFiles = subdirectories(ROOT_PATH);
         for (Path path : pathsToScheduleFiles) {
             if (!initialDataChecker.checkIfSchedulesArePresent(pathsToScheduleFiles)) {
                 LOGGER.error("Data to build schedules database not found.");

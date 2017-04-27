@@ -31,12 +31,7 @@ public class TransferSeeker {
             throws IOException, NoSuchFieldException, IllegalAccessException {
 
 
-        ScheduleParser sp = null;
-        try {
-            sp = new ScheduleParser();
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
+        ScheduleParser sp = new ScheduleParser();
         sp.loadData();
         ArrayList<BusLine> allBusLines = sp.getArrayOfBusLines();
 
