@@ -3,7 +3,7 @@ package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 import java.io.*;
 import java.util.ArrayList;
 
-public class RouteCollector {
+class RouteCollector {
 
     private File file;
     private int lineNumber;
@@ -15,27 +15,24 @@ public class RouteCollector {
     private static final int kNameColumnIndex = 3;
     private static final int kFirstColumnWithVariantIndex = 4;
 
-    public RouteCollector(File file, Direction currentDirection, int lineNumber) {
+    RouteCollector(File file, Direction currentDirection, int lineNumber) {
         this.file = file;
         this.currentDirection = currentDirection;
         this.lineNumber = lineNumber;
     }
 
-    public void loadRouteData() throws IOException {
-        //System.out.println("Initialization of stopslist...");
+    void loadRouteData() throws IOException {
         BufferedReader br = initializeBufferedReader(file);
         deltasList = new ArrayList<>();
         ArrayList<String> arrayOfStops = createListOfStops(br);
         route = generateRoute(deltasList, arrayOfStops);
-
 //        ArrayList<String> variants = getVariants(br);
     }
 
     private BufferedReader initializeBufferedReader(File file) throws FileNotFoundException, UnsupportedEncodingException {
         FileInputStream fis = new FileInputStream(file);
         InputStreamReader isr = new InputStreamReader(fis, "windows-1250");
-        BufferedReader br = new BufferedReader(isr);
-        return br;
+        return new BufferedReader(isr);
     }
 
     private ArrayList<String> createListOfStops(BufferedReader br) throws IOException {
@@ -72,13 +69,13 @@ public class RouteCollector {
         return route;
     }
 
-    public Route getRoute() {
+    Route getRoute() {
         return route;
     }
 }
 
 
-
+//TODO - functionality for further sprints
 //  private ArrayList<String> getVariants (BufferedReader br) throws IOException {
 //      String firstLineInCSV = br.readLine();
 //      String[] oneRowInCSV = firstLineInCSV.split(csvSplitBy);

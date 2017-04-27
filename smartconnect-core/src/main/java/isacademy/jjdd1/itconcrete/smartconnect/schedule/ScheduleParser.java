@@ -3,66 +3,79 @@ package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.*;
 
 
 public class ScheduleParser {
 
-    private ArrayList<BusLine> arrayOfBusLines;
-    private InitialDataChecker initialDataChecker;
-    private HashMap<Integer,SingleBusLineDataCollector> completeBusLinesData;
+    private ArrayList<BusLine> arrayOfBusLines = new ArrayList<>();
+    private InitialDataChecker initialDataChecker = new InitialDataChecker();
+    private Path rootPath;
 
-    private static final String pathToSchedulesParentDirectory = "smartconnect-core/src/main/resources/rozklady_2015-09-08_13.43.01/";
-    private static final File parentDirectoryWithSchedules = new File (pathToSchedulesParentDirectory);
-    private static final File[] listOfSchedulesDirectories = parentDirectoryWithSchedules.listFiles();
     private static final Logger LOGGER = LoggerFactory.getLogger(ScheduleParser.class);
 
-    public ScheduleParser() throws IllegalAccessException, NoSuchFieldException, IOException {
-        initialDataChecker = new InitialDataChecker();
-        completeBusLinesData = new HashMap<>();
-        arrayOfBusLines = new ArrayList<>();
+    public ScheduleParser() throws IllegalAccessException, NoSuchFieldException, IOException, URISyntaxException {
+        URI uri = Paths.get("/Users/katarzynadobrowolska/Desktop/rozklady_2015-09-08_13.43.01").toUri();
+        rootPath = Paths.get(uri);
+    }
+
+    private static List<Path> subdirectories(Path path) throws IOException {
+        List<Path> pathsToCSVFiles = new ArrayList<>();
+        Files.walkFileTree(path, new SimpleFileVisitor<Path>() {
+            @Override
+            public FileVisitResult visitFile(Path file, BasicFileAttributes attrs)
+                    throws IOException {
+                pathsToCSVFiles.add(file);
+                return FileVisitResult.CONTINUE;
+            }
+        });
+        return pathsToCSVFiles;
     }
 
     public void loadData() throws IOException {
         LOGGER.trace("Loading data from schedule resources.");
-        if (!initialDataChecker.checkIfSchedulesDirectoriesArePresent(listOfSchedulesDirectories)) {
-            LOGGER.error("Data to build schedules database not found.");
-        } else {
-            LOGGER.trace("Starting to parse directories.");
-            parseThroughDirectories();
-        }
-    }
-
-    private void parseThroughDirectories () throws IOException {
-        assert listOfSchedulesDirectories != null;
-        for (File singleBuslineDirectory : listOfSchedulesDirectories) {
-            if (!singleBuslineDirectory.isDirectory()) {
-                LOGGER.debug(singleBuslineDirectory.getName() + " is not a proper directory file. Process terminated.");
+        List<Path> pathsToScheduleFiles = subdirectories(rootPath);
+        for (Path path : pathsToScheduleFiles) {
+            if (!initialDataChecker.checkIfSchedulesArePresent(pathsToScheduleFiles)) {
+                LOGGER.error("Data to build schedules database not found.");
             } else {
-                LOGGER.info("Gathering information about busline number " + singleBuslineDirectory.getName().substring(0,3));
-                LOGGER.trace("Entering directory " + singleBuslineDirectory.getName());
-                parseInsideParticularBuslineDirectory(singleBuslineDirectory);
+                if (path.toString().contains("warianty")){
+                    LOGGER.trace("Starting to parse files.");
+                    arrayOfBusLines.add(collectLineData(path));
+                }
             }
         }
     }
 
-    private void parseInsideParticularBuslineDirectory(File singleBuslineDirectory) throws IOException {
-        File[] listOfOneBuslineFiles = singleBuslineDirectory.listFiles();
-        if (!initialDataChecker.checkPresenceOfScheduleResource(listOfOneBuslineFiles)) {
-            LOGGER.warn("Schedules for line " + singleBuslineDirectory.getName().substring(0,3) + " not available.");
-        } else {
-            LOGGER.trace("Collectig data about departures and routes.");
-            int buslineNumber = getBusLineNumber(singleBuslineDirectory);
+    private BusLine collectLineData(Path path) throws IOException {
+        String scheduleFileName = path.getFileName().toString();
+        int buslineNumber = getBusLineNumber(scheduleFileName);
+        Direction directionOfBus = getBusDirection(scheduleFileName);
+        LOGGER.trace("Collectig data about departures and routes for line number: " + buslineNumber);
 
-            SingleBusLineDataCollector singleBusLineDataCollector = new SingleBusLineDataCollector(buslineNumber, listOfOneBuslineFiles);
-            singleBusLineDataCollector.loadData();
-            arrayOfBusLines.add(singleBusLineDataCollector.getBusLine());
-        }
+        SingleBusLineDataCollector sbldc = new SingleBusLineDataCollector(buslineNumber,directionOfBus, new File(path.toString()));
+        return sbldc.getBusLine();
     }
 
-    private int getBusLineNumber (File file){
-        String busLineNumber = file.getName().substring(0, 3);
+    private int getBusLineNumber (String fileName){
+        String busLineNumber = fileName.substring(0, 3);
      return Integer.parseInt(busLineNumber);
+    }
+
+    private Direction getBusDirection(String busScheduleFilename) {
+        if (busScheduleFilename.endsWith("1.csv")) {
+            return Direction.direction_1;
+        } else if (busScheduleFilename.endsWith("2.csv")) {
+            return Direction.direction_2;
+        } else {
+            LOGGER.warn("Invalid schedule file. Direction not defined. Filename: " + busScheduleFilename);
+            //TODO Logger - error - direction not defined
+            return Direction.undefined;
+        }
     }
 
     public ArrayList<BusLine> getArrayOfBusLines() {

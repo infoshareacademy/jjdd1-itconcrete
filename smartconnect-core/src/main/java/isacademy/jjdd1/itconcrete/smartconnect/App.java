@@ -1,15 +1,13 @@
 package isacademy.jjdd1.itconcrete.smartconnect;
 
-import isacademy.jjdd1.itconcrete.smartconnect.analyzer.TransferSeeker;
+
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultDisplayer;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.QuestionAsker;
-import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
-import isacademy.jjdd1.itconcrete.smartconnect.forwebapp.ResultForWebApp;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
-import java.util.List;
+
 
 
 public class App {

@@ -48,14 +48,14 @@ public class FormServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html;charset=UTF-8");
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/form.jsp");
-        dispatcher.forward(req, resp);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/form.jsp");
+        dispatcher.forward(request, response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         boolean isError = false;
 
         if (!validateHomeBusStop(request)) {
@@ -92,10 +92,10 @@ public class FormServlet extends HttpServlet {
 
         if (isError) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/form.jsp");
-            dispatcher.forward(request, resp);
+            dispatcher.forward(request, response);
         } else {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/smartconnect_results");
-            dispatcher.forward(request, resp);
+            dispatcher.forward(request, response);
         }
     }
 
