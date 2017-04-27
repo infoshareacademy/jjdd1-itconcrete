@@ -19,6 +19,7 @@ public class ScheduleParser {
     private static final Logger LOGGER = LoggerFactory.getLogger(ScheduleParser.class);
 
     public ScheduleParser() throws IllegalAccessException, NoSuchFieldException, IOException, URISyntaxException {
+
         URI uri = Paths.get("/Users/katarzynadobrowolska/Desktop/rozklady_2015-09-08_13.43.01").toUri();
         rootPath = Paths.get(uri);
     }
