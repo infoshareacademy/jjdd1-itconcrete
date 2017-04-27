@@ -3,7 +3,6 @@ package isacademy.jjdd1.itconcrete.smartconnect.analyzer;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusStopDeltas;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
-
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -29,14 +28,23 @@ public class TransferSeeker {
 
 
     public List<List<BusLine>> seekTransfer (String startBusStop, String endBusStop)
-            throws IOException, NoSuchFieldException, IllegalAccessException, URISyntaxException {
+            throws IOException, NoSuchFieldException, IllegalAccessException {
 
-        ScheduleParser sp = new ScheduleParser();
+
+        ScheduleParser sp = null;
+        try {
+            sp = new ScheduleParser();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
         sp.loadData();
         ArrayList<BusLine> allBusLines = sp.getArrayOfBusLines();
 
+
+
         List<BusLine> foundPartStartBusLine = new ArrayList<>();
         List<BusLine> foundPartEndBusLine = new ArrayList<>();
+
 
         List<BusLine> confirmedStartPartBusLines = seekPartBusLine(allBusLines, startBusStop);
         List<BusLine> confirmedEndPartBusLines = seekPartBusLine(allBusLines, endBusStop);
@@ -63,6 +71,7 @@ public class TransferSeeker {
                 }
             }
         }
+
 
         List<List<BusLine>> foundStartEndPartBusLine = new ArrayList<>();
 

@@ -19,6 +19,8 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl.ThreadStateMap.Byte0.waiting;
+
 @WebServlet(urlPatterns = "/smartconnect_results")
 public class ResultServlet extends HttpServlet {
 
@@ -49,7 +51,7 @@ public class ResultServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        response.setContentType("text/html;charset=UTF-8");
         request.setAttribute("resultForWebAppList", resultForWebAppList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
         dispatcher.forward(request, response);
