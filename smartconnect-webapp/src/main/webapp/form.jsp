@@ -14,12 +14,26 @@
 </head>
 <body>
 
-<div class="container">
-    <h1>SmartConnect</h1>
-    <br/>
-    <h3>Hello! Please enter some journey details</h3>
-    <br/>
 
+<div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <h3><span class="label label-info">Smartconnect</span></h3>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<br/><br/>
+
+<div class="container" style="width: 40%">
+    <h3>Hello! Please enter some journey details</h3>
+</div>
+
+<br/>
+
+<div class="container" style="width: 40%">
     <form name="askForm" method="post" action="/smartconnect_form">
 
         <div class="form-group ${hasError1}">
