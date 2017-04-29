@@ -4,7 +4,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-class DeparturesFirstStop {
+public class DeparturesFirstStop {
 
     private int lineNumber;
     private Direction direction;
