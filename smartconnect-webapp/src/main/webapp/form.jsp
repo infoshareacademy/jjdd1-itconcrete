@@ -2,38 +2,32 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <title>SmartConnect</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <title>SmartConnect - Welcome!</title>
 </head>
 <body>
-
 
 <div class="container">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
-            <div class="navbar-header">
-                <h3><span class="label label-info">Smartconnect</span></h3>
+            <div class="navbar-header" style="padding-bottom: 10px;">
+                <h2><span class="label label-info">Smartconnect</span></h2>
             </div>
         </div>
     </nav>
 </div>
 
-<br/><br/>
-
-<div class="container" style="width: 40%">
+<div class="container" style="width: 500px; padding-top: 75px;" align="center">
     <h3>Hello! Please enter some journey details</h3>
 </div>
 
 <br/>
 
-<div class="container" style="width: 40%">
+<div class="container" style="width: 450px;">
     <form name="askForm" method="post" action="/smartconnect_form">
 
         <div class="form-group ${hasError1}">
