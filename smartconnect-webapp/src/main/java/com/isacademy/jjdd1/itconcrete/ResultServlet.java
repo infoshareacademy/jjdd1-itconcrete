@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.*;
 import java.net.URISyntaxException;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,12 +66,14 @@ public class ResultServlet extends HttpServlet {
 
 
         Part calendarFile = request.getPart("calendarFile");
-//        String calendarFileName = Paths.get(calendarFile.getSubmittedFileName()).getFileName().toString();
         InputStream fileContent = calendarFile.getInputStream();
+
+        final String TEMP = new String(System.getProperty("java.io.tmpdir"));
+        final String DIR = new String("smartconnect/calendar.ics");
 
         byte[] buffer = new byte[8 * 1024];
         try {
-            OutputStream output = new FileOutputStream(System.getProperty("java.io.tmpdir").concat("smartconnect/calendar.ics"));
+            OutputStream output = new FileOutputStream(TEMP+DIR);
             try {
                 int bytesRead;
                 while ((bytesRead = fileContent.read(buffer)) != -1) {
@@ -100,6 +101,5 @@ public class ResultServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
         dispatcher.forward(request, response);
     }
-
 
 }
