@@ -3,7 +3,7 @@ package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 import java.io.*;
 import java.util.ArrayList;
 
-class RouteCollector {
+public class RouteCollector {
 
     private File file;
     private int lineNumber;
@@ -13,7 +13,7 @@ class RouteCollector {
     private static final int kNameColumnIndex = 3;
     private static final int kFirstColumnWithVariantIndex = 4;
 
-    RouteCollector(File file, Direction currentDirection, int lineNumber) throws IOException {
+    public RouteCollector(File file, Direction currentDirection, int lineNumber) throws IOException {
         this.file = file;
         this.currentDirection = currentDirection;
         this.lineNumber = lineNumber;
@@ -80,7 +80,7 @@ class RouteCollector {
     }
 
 
-    Route getRoute() {
+    public Route getRoute() {
         return route;
     }
 }
