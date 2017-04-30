@@ -8,6 +8,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <title>SmartConnect - Welcome!</title>
+
+    <style>
+        #animation {
+            width: 50px;
+            height: 75px;
+            background-image: url("img/1493607493_vehicles-12.png");
+            background-repeat: no-repeat;
+            position:relative;
+            -webkit-animation: mymove 50s infinite;
+            animation: mymove 50s infinite;
+        }
+
+        @-webkit-keyframes mymove {
+            0%   {left: 10%;}
+            100% {left: 90%;}
+        }
+
+        @keyframes mymove {
+            0%   {left: 10%;}
+            100% {left: 90%;}
+        }
+    </style>
+
 </head>
 <body>
 
@@ -21,11 +44,11 @@
     </nav>
 </div>
 
-<div class="container" style="width: 500px; padding-top: 75px;" align="center">
+<div class="container" style="width: 500px; padding-top: 75px" align="center">
     <h3>Hello! Please enter some journey details</h3>
 </div>
 
-<br/>
+<div id="animation"></div>
 
 <div class="container" style="width: 450px;">
     <form name="askForm" method="post" action="/smartconnect_form" enctype="multipart/form-data">
@@ -86,6 +109,13 @@
         <button type="submit" class="btn btn-info">Submit</button>
     </form>
 </div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-header"></div>
+    </div>
+</nav>
 
 </body>
 </html>
