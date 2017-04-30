@@ -12,8 +12,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import javax.servlet.http.Part;
+import java.io.*;
 import java.net.URISyntaxException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,6 +64,27 @@ public class ResultServlet extends HttpServlet {
         String timeOfLeavingHome = request.getParameter("timeOfLeavingHome");
         String timeOfArrivingHome = request.getParameter("timeOfArrivingHome");
         String maxAmountOfResults = request.getParameter("maxAmountOfResults");
+
+
+        Part calendarFile = request.getPart("calendarFile");
+//        String calendarFileName = Paths.get(calendarFile.getSubmittedFileName()).getFileName().toString();
+        InputStream fileContent = calendarFile.getInputStream();
+
+        byte[] buffer = new byte[8 * 1024];
+        try {
+            OutputStream output = new FileOutputStream(System.getProperty("java.io.tmpdir").concat("smartconnect/calendar.ics"));
+            try {
+                int bytesRead;
+                while ((bytesRead = fileContent.read(buffer)) != -1) {
+                    output.write(buffer, 0, bytesRead);
+                }
+            } finally {
+                output.close();
+            }
+        } finally {
+            fileContent.close();
+        }
+
 
         try {
             completeResultDisplayer.displayCompleteResult(homeBusStop, timeOfLeavingHome, timeOfArrivingHome,

@@ -1,8 +1,7 @@
 package isacademy.jjdd1.itconcrete.smartconnect.calendar;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+
+import java.io.*;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.time.LocalDate;
@@ -23,6 +22,8 @@ public class CalendarParser {
 
     Util util = new Util();
 
+    private final String TEMP = new String(System.getProperty("java.io.tmpdir"));
+    private final String DIR = new String("smartconnect/calendar.ics");
 
     LocalDateTime eightAm =LocalDateTime.from(parser.parse("20170101T080000"));
 
@@ -35,11 +36,9 @@ public class CalendarParser {
 
     public LinkedList<Event> readEvents() throws IOException, URISyntaxException {
 
-
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
-                this.getClass().getResourceAsStream("/kalendarz.ics"),
-                Charset.forName("UTF-8")
-        ));
+        String calendarPath = new String(TEMP+DIR);
+        FileReader fileReader = new FileReader(calendarPath);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
 
         String line;
 

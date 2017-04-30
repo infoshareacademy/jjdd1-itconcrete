@@ -28,7 +28,7 @@
 <br/>
 
 <div class="container" style="width: 450px;">
-    <form name="askForm" method="post" action="/smartconnect_form">
+    <form name="askForm" method="post" action="/smartconnect_form" enctype="multipart/form-data">
 
         <div class="form-group ${hasError1}">
             <label class="control-label" for="maxAmountOfResults">Home bus stop</label>
@@ -66,13 +66,21 @@
         <div class="form-group ${hasError4}">
             <label class="control-label" for="maxAmountOfResults">Maximum amount of results</label>
             <div class="input-group">
-                <span class="input-group-addon"><span class="glyphicon glyphicon-random"
-                                                      aria-hidden="true"></span></span>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-random" aria-hidden="true"></span></span>
                 <input type="text" class="form-control" id="maxAmountOfResults" name="maxAmountOfResults"
                        placeholder="${maxResultsError}Enter maximum amount of results (1-10)"
                        value="${maxAmountOfResults}"
                        aria-describedby="inputGroupSuccess1Status">
             </div>
+        </div>
+
+        <div class="form-group ${hasError5}">
+            <label class="control-label" for="calendarFile">Upload calendar file</label>
+            <div class="input-group">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+                <input type="file" class="form-control" id="calendarFile" name="calendarFile" value="${calendarFile}" aria-describedby="inputGroupSuccess1Status">
+            </div>
+            <p class="help-block ${hasError5}">${calendarFileError}</p>
         </div>
 
         <button type="submit" class="btn btn-info">Submit</button>
