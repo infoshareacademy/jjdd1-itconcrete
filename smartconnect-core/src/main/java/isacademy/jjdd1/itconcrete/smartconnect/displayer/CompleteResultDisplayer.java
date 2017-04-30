@@ -5,7 +5,9 @@ import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
 
 import isacademy.jjdd1.itconcrete.smartconnect.forwebapp.ResultForWebApp;
+import isacademy.jjdd1.itconcrete.smartconnect.statistics.StatisticsCollector;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
+import isacademy.jjdd1.itconcrete.smartconnect.statistics.StatisticsData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Marker;
@@ -16,6 +18,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class CompleteResultDisplayer {
 
@@ -66,5 +69,9 @@ public class CompleteResultDisplayer {
                 LOGGER.warn(RESULT_DISPLAYER_MARKER,"Sorry, there is no direct connection for this event." + "\n");
             }
         }
+
+        StatisticsCollector statisticsCollector = new StatisticsCollector();
+        List<StatisticsData> stats = statisticsCollector.getStatisticsData(resultForWebAppList);
+
     }
 }
