@@ -12,8 +12,6 @@ public class DisplayConnection {
         int lineNumber = resultConnections.getLineNumber();
         LocalTime travelStartTime = resultConnections.getTravelStartTime();
         LocalTime travelEndTime = resultConnections.getTravelEndTime();
-        String startBusStop = resultConnections.getStartBusStop();
-        String endBusStop = resultConnections.getEndBusStop();
 
         Util util = new Util();
 
