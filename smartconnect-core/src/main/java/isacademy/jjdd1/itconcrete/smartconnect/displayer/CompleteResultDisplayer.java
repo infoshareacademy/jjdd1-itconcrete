@@ -21,34 +21,6 @@ import java.util.List;
 
 public class CompleteResultDisplayer {
 
-    public List<CompleteResult> getCompleteResult(String homeBusStop, String timeOfLeavingHome, String timeOfArrivingHome, int maxAmountOfResults, ArrayList<BusLine> allBusLines) throws IOException, URISyntaxException {
-
-        MinutesToBusStops minutesToBusStops = new MinutesToBusStops();
-        ConnectionSeeker connectionSeeker = new ConnectionSeeker();
-        CalendarParser calendarParser = new CalendarParser();
-        BusLineSeeker busLineSeeker = new BusLineSeeker();
-        LinkedList<Journey> journeys = calendarParser.parseFileSortEventsAddHome(homeBusStop, timeOfLeavingHome, timeOfArrivingHome);
-
-        List<CompleteResult> completeResultList = new ArrayList<>();
-
-        for (int i = 0; i < journeys.size(); i++) {
-
-            List<BusLine> foundBusLines = busLineSeeker.seekBusLine(journeys.get(i), allBusLines);
-            List<LineRideTime> lineRideTimes = minutesToBusStops.calculateMinutesToBusStops(foundBusLines, journeys.get(i));
-            List<ResultConnection> resultConnectionList = connectionSeeker.seekConnection(lineRideTimes, journeys.get(i), maxAmountOfResults);
-            resultConnectionList = new LinePromoter(resultConnectionList).putPromotedLinesFirstInAList();
-
-            completeResultList.add(new CompleteResult(journeys.get(i).getStartLocation(),
-                    journeys.get(i).getEndLocation(), journeys.get(i).getStartBusStop(),
-                    journeys.get(i).getEndBusStop(), resultConnectionList));
-
-            StatisticsCollector statisticsCollector = new StatisticsCollector();
-            List<StatisticsData> stats = statisticsCollector.getStatisticsData(completeResultList);
-        }
-            return completeResultList;
-    }
-
-
     public void displayCompleteResult(List<CompleteResult> completeResultList) throws IOException, URISyntaxException {
 
         DisplayConnection displayConnection = new DisplayConnection();

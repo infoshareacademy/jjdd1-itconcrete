@@ -2,6 +2,7 @@ package com.isacademy.jjdd1.itconcrete;
 
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.CompleteResult;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultDisplayer;
+import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultGetter;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
@@ -25,7 +26,7 @@ public class ResultServlet extends HttpServlet {
     List<CompleteResult> completeResultList;
 
     @Inject
-    CompleteResultDisplayer completeResultDisplayer;
+    CompleteResultGetter completeResultGetter;
 
     @Inject
     ScheduleParser scheduleParser;
@@ -87,7 +88,7 @@ public class ResultServlet extends HttpServlet {
         }
 
         try {
-            completeResultList = completeResultDisplayer.getCompleteResult(homeBusStop, timeOfLeavingHome, timeOfArrivingHome,
+            completeResultList = completeResultGetter.getCompleteResult(homeBusStop, timeOfLeavingHome, timeOfArrivingHome,
                     Integer.valueOf(maxAmountOfResults), allBusLines);
         } catch (URISyntaxException e) {
             e.printStackTrace();

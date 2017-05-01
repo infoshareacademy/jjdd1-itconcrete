@@ -3,6 +3,7 @@ package isacademy.jjdd1.itconcrete.smartconnect;
 
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.CompleteResult;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultDisplayer;
+import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultGetter;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.QuestionAsker;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.*;
 import org.slf4j.Logger;
@@ -36,8 +37,9 @@ public class App {
         LOGGER.info("Chosen amount of options to show: " + maxAmountOfResultsAsInt);
 
         CompleteResultDisplayer completeResultDisplayer = new CompleteResultDisplayer();
+        CompleteResultGetter completeResultGetter = new CompleteResultGetter();
         List<CompleteResult> completeResultList;
-        completeResultList = completeResultDisplayer.getCompleteResult(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, maxAmountOfResultsAsInt, allBusLines);
+        completeResultList = completeResultGetter.getCompleteResult(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, maxAmountOfResultsAsInt, allBusLines);
         completeResultDisplayer.displayCompleteResult(completeResultList);
 
     }
