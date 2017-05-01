@@ -1,9 +1,9 @@
-package isacademy.jjdd1.itconcrete.smartconnect.forwebapp;
+package isacademy.jjdd1.itconcrete.smartconnect.analyzer;
 
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.ResultConnection;
 import java.util.List;
 
-public class ResultForWebApp {
+public class CompleteResult {
 
     private String startLocation;
     private String endLocation;
@@ -11,7 +11,7 @@ public class ResultForWebApp {
     private String endBusStop;
     private List<ResultConnection> resultConnectionList;
 
-    public ResultForWebApp(String startLocation, String endLocation, String startBusStop, String endBusStop, List<ResultConnection> resultConnectionList) {
+    public CompleteResult(String startLocation, String endLocation, String startBusStop, String endBusStop, List<ResultConnection> resultConnectionList) {
         this.startLocation = startLocation;
         this.endLocation = endLocation;
         this.startBusStop = startBusStop;
@@ -41,7 +41,7 @@ public class ResultForWebApp {
 
     @Override
     public String toString() {
-        return "ResultForWebApp{" +
+        return "CompleteResult{" +
                 "startLocation='" + startLocation + '\'' +
                 ", endLocation='" + endLocation + '\'' +
                 ", startBusStop='" + startBusStop + '\'' +
