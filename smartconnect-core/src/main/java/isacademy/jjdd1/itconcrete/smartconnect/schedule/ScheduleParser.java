@@ -3,8 +3,6 @@ package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.io.*;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.*;
@@ -20,6 +18,8 @@ public class ScheduleParser {
 
     private ArrayList<BusLine> arrayOfBusLines = new ArrayList<>();
     private InitialDataChecker initialDataChecker = new InitialDataChecker();
+    private ArrayList<Integer> allLineNumbers = new ArrayList<>();
+    private ArrayList<String> allBusStopNames = new ArrayList<>();
 
     public ScheduleParser() throws IOException {
         LOGGER.debug("Unzipping zip {} to temp folder {}.", ZIP_FILE_PATH, ROOT_PATH);
@@ -65,7 +65,10 @@ public class ScheduleParser {
             } else {
                 if (path.toString().contains("warianty")){
                     LOGGER.trace("Starting to parse files.");
-                    arrayOfBusLines.add(collectLineData(path));
+                    BusLine busLine = collectLineData(path);
+                    arrayOfBusLines.add(busLine);
+                    allLineNumbers.add(busLine.getLineNumber());
+                    allBusStopNames.addAll(busLine.getRoute().getArrayOfStops());
                 }
             }
         }
@@ -73,8 +76,10 @@ public class ScheduleParser {
 
     private BusLine collectLineData(Path path) throws IOException {
         String scheduleFileName = path.getFileName().toString();
+
         int buslineNumber = getBusLineNumber(scheduleFileName);
         Direction directionOfBus = getBusDirection(scheduleFileName);
+
         LOGGER.trace("Collectig data about departures and routes for line number: " + buslineNumber);
 
         SingleBusLineDataCollector sbldc = new SingleBusLineDataCollector(buslineNumber,directionOfBus, new File(path.toString()));
@@ -100,5 +105,13 @@ public class ScheduleParser {
 
     public ArrayList<BusLine> getArrayOfBusLines() {
         return arrayOfBusLines;
+    }
+
+    public ArrayList<Integer> getAllLineNumbers() {
+        return allLineNumbers;
+    }
+
+    public ArrayList<String> getAllBusStopNames() {
+        return allBusStopNames;
     }
 }
