@@ -36,8 +36,15 @@ public class CalendarParser {
 
     public LinkedList<Event> readEvents() throws IOException, URISyntaxException {
 
-        final String CALENDAR_PATH = new String(TEMP + DIR);
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(CALENDAR_PATH), Charset.forName("UTF-8")));
+        BufferedReader bufferedReader;
+
+        try {
+            final String CALENDAR_PATH = new String(TEMP + DIR);
+            bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(CALENDAR_PATH), Charset.forName("UTF-8")));
+        } catch (FileNotFoundException e) {
+            bufferedReader = new BufferedReader(new InputStreamReader(this.getClass().
+                    getResourceAsStream("/calendar_examples/busyday.ics"), Charset.forName("UTF-8")));
+        }
 
         String line;
 
