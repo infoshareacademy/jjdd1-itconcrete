@@ -8,11 +8,12 @@ import java.io.*;
 
 public class SingleBusLineDataCollector {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(SingleBusLineDataCollector.class);
     private int lineNumber;
     private Direction direction;
     private BusLine busLine;
     private File file;
-    private static final Logger LOGGER = LoggerFactory.getLogger(SingleBusLineDataCollector.class);
+
 
 
     public SingleBusLineDataCollector(int lineNumber, Direction direction, File file) throws IOException {
@@ -30,8 +31,11 @@ public class SingleBusLineDataCollector {
         //TODO updating departures  - creating departures objects for all busstops - connected wih minutes and variants
 
         RouteCollector rc = new RouteCollector(file, direction, lineNumber);
-        rc.loadRouteData();
         Route route = rc.getRoute();
+
+        if (route.equals(null)){
+            LOGGER.error("Something went wrong with collecting route data for line number: {}",lineNumber);
+        }
 
         busLine = new BusLine(lineNumber, route, departuresFirstStop);
     }

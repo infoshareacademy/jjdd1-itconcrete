@@ -3,29 +3,30 @@ package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 import java.io.*;
 import java.util.ArrayList;
 
-class RouteCollector {
+public class RouteCollector {
 
     private File file;
     private int lineNumber;
     private Direction currentDirection;
     private Route route;
-    private ArrayList<BusStopDeltas> deltasList;
     private static final String csvSplitBy = ";";
-    private static int lengthOfOneRowInCSV;
     private static final int kNameColumnIndex = 3;
     private static final int kFirstColumnWithVariantIndex = 4;
 
-    RouteCollector(File file, Direction currentDirection, int lineNumber) {
+    public RouteCollector(File file, Direction currentDirection, int lineNumber) throws IOException {
         this.file = file;
         this.currentDirection = currentDirection;
         this.lineNumber = lineNumber;
+        loadRouteData();
     }
 
-    void loadRouteData() throws IOException {
-        BufferedReader br = initializeBufferedReader(file);
-        deltasList = new ArrayList<>();
-        ArrayList<String> arrayOfStops = createListOfStops(br);
-        route = generateRoute(deltasList, arrayOfStops);
+    private void loadRouteData() throws IOException {
+        BufferedReader br1 = initializeBufferedReader(file);
+        BufferedReader br2 = initializeBufferedReader(file);
+
+        ArrayList<String> arrayOfStops = createListOfStops(br1);
+        ArrayList<BusStopDeltas> deltasList = createDeltasList(br2);
+        route = new Route(currentDirection, arrayOfStops, lineNumber, deltasList);
 //        ArrayList<String> variants = getVariants(br);
     }
 
@@ -44,8 +45,26 @@ class RouteCollector {
                 break;
             }
 
-            String nameColumnInCSV = oneRowInCSV[3];
-            String deltaColumnInCSV = oneRowInCSV[4];
+            String nameColumnInCSV = oneRowInCSV[kNameColumnIndex];
+
+            if (!nameColumnInCSV.contains("Nazwa")) {
+                arrayOfStops.add(nameColumnInCSV);
+            }
+        }
+        return arrayOfStops;
+    }
+
+    private ArrayList<BusStopDeltas> createDeltasList(BufferedReader br) throws IOException {
+        ArrayList<BusStopDeltas> deltasList = new ArrayList<>();
+        String line = "";
+        while ((line = br.readLine()) != null) {
+            String[] oneRowInCSV = line.split(csvSplitBy);
+            if (line.isEmpty()) {
+                break;
+            }
+
+            String nameColumnInCSV = oneRowInCSV[kNameColumnIndex];
+            String deltaColumnInCSV = oneRowInCSV[kFirstColumnWithVariantIndex];
 
             if (!deltaColumnInCSV.startsWith("X")){
                 if (deltaColumnInCSV.isEmpty()){
@@ -56,20 +75,12 @@ class RouteCollector {
                     deltasList.add(bsd);
                 }
             }
-
-            if (!nameColumnInCSV.contains("Nazwa")) {
-                arrayOfStops.add(nameColumnInCSV);
-            }
         }
-        return arrayOfStops;
+        return deltasList;
     }
 
-    private Route generateRoute(ArrayList<BusStopDeltas> deltas, ArrayList<String> stops) {
-        route = new Route(currentDirection, stops, lineNumber, deltas);
-        return route;
-    }
 
-    Route getRoute() {
+    public Route getRoute() {
         return route;
     }
 }
