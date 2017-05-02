@@ -23,7 +23,7 @@
 
 <div class="container" style="padding-top: 75px;"></div>
 
-<c:forEach items="${resultForWebAppList}" var="journey">
+<c:forEach items="${completeResultList}" var="journey">
 
     <div class="container" style="width: 500px;">
 

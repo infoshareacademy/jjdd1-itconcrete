@@ -1,7 +1,8 @@
 package isacademy.jjdd1.itconcrete.smartconnect.statistics;
 
+import isacademy.jjdd1.itconcrete.smartconnect.analyzer.CompleteResult;
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.ResultConnection;
-import isacademy.jjdd1.itconcrete.smartconnect.forwebapp.ResultForWebApp;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,11 +10,11 @@ import java.util.Map;
 
 public class StatisticsCollector {
 
-    public List<StatisticsData> getStatisticsData(List<ResultForWebApp> resultForWebAppList) {
+    public List<StatisticsData> getStatisticsData(List<CompleteResult> completeResultList) {
 
         Map<Integer, StatisticsData> statisticsCollection = new HashMap<>();
 
-        for (ResultForWebApp currentlyAnalyzedResult : resultForWebAppList) {
+        for (CompleteResult currentlyAnalyzedResult : completeResultList) {
             List<ResultConnection> resultConnectionList = currentlyAnalyzedResult.getResultConnectionList();
 
             for (ResultConnection currentlyAnalyzedConnection :

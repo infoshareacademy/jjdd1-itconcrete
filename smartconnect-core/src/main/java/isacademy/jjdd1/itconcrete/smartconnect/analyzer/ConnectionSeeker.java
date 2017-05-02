@@ -36,7 +36,7 @@ public class ConnectionSeeker {
                 if ( deltaMinutesBetweenDepartureToEndBusStopAndStartOfDestinedEvent >= 0 && deltaMinutesBetweenDepartureToStartBusStopAndEndOfPreviousEvent>= 0) {
 
                     ResultConnection resultConnection = new ResultConnection(currentlyCheckedLine.getLineNumber(),
-                            departureToStartBusStop, departureToEndBusStop, startBusStop, endBusStop);
+                            departureToStartBusStop, departureToEndBusStop);
 
                     resultConnections.add(resultConnection);
                     break;

@@ -1,8 +1,9 @@
 package com.isacademy.jjdd1.itconcrete;
 
+import isacademy.jjdd1.itconcrete.smartconnect.analyzer.CompleteResult;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultDisplayer;
+import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultGetter;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
-import isacademy.jjdd1.itconcrete.smartconnect.forwebapp.ResultForWebApp;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
 import javax.inject.Inject;
@@ -22,10 +23,10 @@ import java.util.List;
 @WebServlet(urlPatterns = "/smartconnect_results")
 public class ResultServlet extends HttpServlet {
 
-    List<ResultForWebApp> resultForWebAppList;
+    List<CompleteResult> completeResultList;
 
     @Inject
-    CompleteResultDisplayer completeResultDisplayer;
+    CompleteResultGetter completeResultGetter;
 
     @Inject
     ScheduleParser scheduleParser;
@@ -50,7 +51,7 @@ public class ResultServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setAttribute("resultForWebAppList", resultForWebAppList);
+        request.setAttribute("completeResultList", completeResultList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
         dispatcher.forward(request, response);
     }
@@ -86,17 +87,14 @@ public class ResultServlet extends HttpServlet {
             fileContent.close();
         }
 
-
         try {
-            completeResultDisplayer.displayCompleteResult(homeBusStop, timeOfLeavingHome, timeOfArrivingHome,
+            completeResultList = completeResultGetter.getCompleteResult(homeBusStop, timeOfLeavingHome, timeOfArrivingHome,
                     Integer.valueOf(maxAmountOfResults), allBusLines);
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
 
-        resultForWebAppList = completeResultDisplayer.getAllResultConnections();
-
-        request.setAttribute("resultForWebAppList", resultForWebAppList);
+        request.setAttribute("completeResultList", completeResultList);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
         dispatcher.forward(request, response);

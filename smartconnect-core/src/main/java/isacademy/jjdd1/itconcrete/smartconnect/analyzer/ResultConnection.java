@@ -7,35 +7,35 @@ public class ResultConnection {
     private int lineNumber;
     private LocalTime travelStartTime;
     private LocalTime travelEndTime;
-    private String startBusStop;
-    private String endBusStop;
 
-    public ResultConnection(int lineNumber, LocalTime travelStartTime, LocalTime travelEndTime, String startBusStop, String endBusStop) {
+    public ResultConnection(int lineNumber, LocalTime travelStartTime, LocalTime travelEndTime) {
         this.lineNumber = lineNumber;
         this.travelStartTime = travelStartTime;
         this.travelEndTime = travelEndTime;
-        this.startBusStop = startBusStop;
-        this.endBusStop = endBusStop;
     }
 
     public int getLineNumber() {
         return lineNumber;
     }
 
+    public void setLineNumber(int lineNumber) {
+        this.lineNumber = lineNumber;
+    }
+
     public LocalTime getTravelStartTime() {
         return travelStartTime;
+    }
+
+    public void setTravelStartTime(LocalTime travelStartTime) {
+        this.travelStartTime = travelStartTime;
     }
 
     public LocalTime getTravelEndTime() {
         return travelEndTime;
     }
 
-    public String getStartBusStop() {
-        return startBusStop;
-    }
-
-    public String getEndBusStop() {
-        return endBusStop;
+    public void setTravelEndTime(LocalTime travelEndTime) {
+        this.travelEndTime = travelEndTime;
     }
 
     @Override
@@ -44,8 +44,6 @@ public class ResultConnection {
                 "lineNumber=" + lineNumber +
                 ", travelStartTime=" + travelStartTime +
                 ", travelEndTime=" + travelEndTime +
-                ", startBusStop='" + startBusStop + '\'' +
-                ", endBusStop='" + endBusStop + '\'' +
                 '}';
     }
 }
