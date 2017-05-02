@@ -1,13 +1,15 @@
 package isacademy.jjdd1.itconcrete.smartconnect;
 
-
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.CompleteResult;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultDisplayer;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultGetter;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.QuestionAsker;
-import isacademy.jjdd1.itconcrete.smartconnect.schedule.*;
+import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
+import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
+import isacademy.jjdd1.itconcrete.smartconnect.transfers.TransferBusLinesSeeker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,21 +28,24 @@ public class App {
 
         LOGGER.info("Asking for user input in order to define home location.");
 
-        String homeBusStop = QuestionAsker.askForHome(allBusLines);
-        String timeOfLeavingHome = QuestionAsker.askForTimeOfLeavingHome();
-        String timeOfArrivingHome = QuestionAsker.askForTimeOfArrivingHome();
-
-        LOGGER.debug("Home bus stop: " + homeBusStop);
-
-        int maxAmountOfResultsAsInt = QuestionAsker.askForMaxAmountOfResults();
-
-        LOGGER.info("Chosen amount of options to show: " + maxAmountOfResultsAsInt);
+//        String homeBusStop = QuestionAsker.askForHome(allBusLines);
+//        String timeOfLeavingHome = QuestionAsker.askForTimeOfLeavingHome();
+//        String timeOfArrivingHome = QuestionAsker.askForTimeOfArrivingHome();
+//
+//        LOGGER.debug("Home bus stop: " + homeBusStop);
+//
+//        int maxAmountOfResultsAsInt = QuestionAsker.askForMaxAmountOfResults();
+//
+//        LOGGER.info("Chosen amount of options to show: " + maxAmountOfResultsAsInt);
 
         CompleteResultDisplayer completeResultDisplayer = new CompleteResultDisplayer();
         CompleteResultGetter completeResultGetter = new CompleteResultGetter();
         List<CompleteResult> completeResultList;
-        completeResultList = completeResultGetter.getCompleteResult(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, maxAmountOfResultsAsInt, allBusLines);
+        completeResultList = completeResultGetter.getCompleteResult("klonowa", "06:00", "22:00", 3, allBusLines);
         completeResultDisplayer.displayCompleteResult(completeResultList);
+
+        TransferBusLinesSeeker transferBusLinesSeeker = new TransferBusLinesSeeker();
+        transferBusLinesSeeker.seekBusLinePairs("klonowa", "potokowa");
 
     }
 }
