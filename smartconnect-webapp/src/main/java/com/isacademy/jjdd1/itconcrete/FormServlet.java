@@ -7,14 +7,17 @@ import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import java.io.IOException;
 import java.util.ArrayList;
 
 @WebServlet(urlPatterns = "/smartconnect_form")
+@MultipartConfig
 public class FormServlet extends HttpServlet {
 
     @Inject
@@ -85,6 +88,12 @@ public class FormServlet extends HttpServlet {
             setCorrectParameter(request, "maxAmountOfResults");
         }
 
+        if (!validateCalendarFile(request)) {
+            request.setAttribute("calendarFileError", "Wrong file format, try again");
+            request.setAttribute("hasError5", "has-error");
+            isError = true;
+        }
+
         if (isError) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/form.jsp");
             dispatcher.forward(request, response);
@@ -119,6 +128,12 @@ public class FormServlet extends HttpServlet {
         String maxAmountOfResults = request.getParameter("maxAmountOfResults");
         boolean correctMaxAmountOfResults = maxAmountOfResults.matches("(10|[1-9])");
         return correctMaxAmountOfResults;
+    }
+
+    private boolean validateCalendarFile(HttpServletRequest request) throws IOException, ServletException {
+        Part calendarFile = request.getPart("calendarFile");
+        boolean correctCalendarFile = calendarFile.getSubmittedFileName().endsWith("ics");
+        return correctCalendarFile;
     }
 
     private void setCorrectParameter(HttpServletRequest request, String placeholder) {

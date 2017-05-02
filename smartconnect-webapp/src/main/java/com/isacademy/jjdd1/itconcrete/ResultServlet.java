@@ -12,7 +12,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import javax.servlet.http.Part;
+import java.io.*;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
@@ -63,6 +64,29 @@ public class ResultServlet extends HttpServlet {
         String timeOfArrivingHome = request.getParameter("timeOfArrivingHome");
         String maxAmountOfResults = request.getParameter("maxAmountOfResults");
 
+
+        Part calendarFile = request.getPart("calendarFile");
+        InputStream fileContent = calendarFile.getInputStream();
+
+        final String TEMP = new String(System.getProperty("java.io.tmpdir"));
+        final String DIR = new String("smartconnect/calendar.ics");
+
+        byte[] buffer = new byte[8 * 1024];
+        try {
+            OutputStream output = new FileOutputStream(TEMP+DIR);
+            try {
+                int bytesRead;
+                while ((bytesRead = fileContent.read(buffer)) != -1) {
+                    output.write(buffer, 0, bytesRead);
+                }
+            } finally {
+                output.close();
+            }
+        } finally {
+            fileContent.close();
+        }
+
+
         try {
             completeResultDisplayer.displayCompleteResult(homeBusStop, timeOfLeavingHome, timeOfArrivingHome,
                     Integer.valueOf(maxAmountOfResults), allBusLines);
@@ -77,6 +101,5 @@ public class ResultServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
         dispatcher.forward(request, response);
     }
-
 
 }

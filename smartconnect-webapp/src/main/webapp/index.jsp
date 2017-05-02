@@ -115,5 +115,13 @@
     </nav>
 </div>
 
+<br/><br><br/>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-header"></div>
+    </div>
+</nav>
+
 </body>
 </html>
