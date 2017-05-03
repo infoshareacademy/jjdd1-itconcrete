@@ -5,7 +5,7 @@ import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultDisplayer
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.CompleteResultGetter;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
-import isacademy.jjdd1.itconcrete.smartconnect.transfers.TransferBusLinesSeeker;
+import isacademy.jjdd1.itconcrete.smartconnect.transfers.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,7 +44,10 @@ public class App {
         completeResultDisplayer.displayCompleteResult(completeResultList);
 
         TransferBusLinesSeeker transferBusLinesSeeker = new TransferBusLinesSeeker();
-        transferBusLinesSeeker.seekBusLinePairs("klonowa", "potokowa");
+        TransferSetForSeeking transferSetForSeeking = transferBusLinesSeeker.seekBusLinePairs("klonowa", "potokowa");
 
+        MinutesToBusStopsCounter minutesToBusStopsCounter = new MinutesToBusStopsCounter();
+
+        minutesToBusStopsCounter.calculateTransfersMinutesToBusStops(transferSetForSeeking);
     }
 }

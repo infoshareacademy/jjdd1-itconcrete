@@ -10,12 +10,10 @@ import java.util.List;
 
 public class TransferBusLinesSeeker {
 
-    public List<TransferBusLineSet> seekBusLinePairs(String startBusStop, String endBusStop)
+    public TransferSetForSeeking seekBusLinePairs(String startBusStop, String endBusStop)
             throws IOException, NoSuchFieldException, IllegalAccessException {
 
-        int check = 0;
-        ScheduleParser sp = null;
-        sp = new ScheduleParser();
+        ScheduleParser sp = new ScheduleParser();
         sp.loadData();
         ArrayList<BusLine> allBusLines = sp.getArrayOfBusLines();
 
@@ -53,7 +51,8 @@ public class TransferBusLinesSeeker {
                 }
             }
         }
-        System.out.println(transferBusLineSets);
-        return transferBusLineSets;
+
+        TransferSetForSeeking transferSetForSeeking = new TransferSetForSeeking(startBusStop, endBusStop, transferBusLineSets);
+        return transferSetForSeeking;
     }
 }

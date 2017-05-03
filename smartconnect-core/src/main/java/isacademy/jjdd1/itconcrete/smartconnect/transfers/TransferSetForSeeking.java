@@ -2,13 +2,13 @@ package isacademy.jjdd1.itconcrete.smartconnect.transfers;
 
 import java.util.List;
 
-public class TransferSetsForSeeking {
+public class TransferSetForSeeking {
 
     private String startBusStop;
     private String endBusStop;
     private List<TransferBusLineSet> transferBusLineSetList;
 
-    public TransferSetsForSeeking(String startBusStop, String endBusStop, List<TransferBusLineSet> transferBusLineSetList) {
+    public TransferSetForSeeking(String startBusStop, String endBusStop, List<TransferBusLineSet> transferBusLineSetList) {
         this.startBusStop = startBusStop;
         this.endBusStop = endBusStop;
         this.transferBusLineSetList = transferBusLineSetList;
@@ -40,7 +40,7 @@ public class TransferSetsForSeeking {
 
     @Override
     public String toString() {
-        return "TransferSetsForSeeking{" +
+        return "TransferSetForSeeking{" +
                 "startBusStop='" + startBusStop + '\'' +
                 ", endBusStop='" + endBusStop + '\'' +
                 ", transferBusLineSetList=" + transferBusLineSetList +
