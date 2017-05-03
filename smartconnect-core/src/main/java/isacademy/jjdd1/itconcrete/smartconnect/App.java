@@ -2,8 +2,7 @@ package isacademy.jjdd1.itconcrete.smartconnect;
 
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.CompleteResult;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultDisplayer;
-import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultGetter;
-import isacademy.jjdd1.itconcrete.smartconnect.displayer.QuestionAsker;
+import isacademy.jjdd1.itconcrete.smartconnect.analyzer.CompleteResultGetter;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
 import isacademy.jjdd1.itconcrete.smartconnect.transfers.TransferBusLinesSeeker;

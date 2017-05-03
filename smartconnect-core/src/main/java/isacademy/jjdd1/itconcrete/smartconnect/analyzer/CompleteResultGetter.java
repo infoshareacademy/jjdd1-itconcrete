@@ -1,8 +1,9 @@
-package isacademy.jjdd1.itconcrete.smartconnect.displayer;
+package isacademy.jjdd1.itconcrete.smartconnect.analyzer;
 
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.*;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
+import isacademy.jjdd1.itconcrete.smartconnect.displayer.LinePromoter;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.statistics.StatisticsCollector;
 import isacademy.jjdd1.itconcrete.smartconnect.statistics.StatisticsData;

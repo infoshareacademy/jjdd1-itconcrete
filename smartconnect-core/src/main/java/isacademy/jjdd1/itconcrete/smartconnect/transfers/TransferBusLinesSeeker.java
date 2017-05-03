@@ -40,23 +40,12 @@ public class TransferBusLinesSeeker {
                         if (currentStartDeltasList.getBusStopName().equals(currentEndDeltasList.getBusStopName()) &&
                                 currentStartDeltasList.getTimeDifference() >= 0 && currentEndDeltasList.getTimeDifference() >= 0) {
 
-                            int startBusStopIndexInCurrentStartDeltasList = checkBusStopIndex(startDeltasList, startBusStop);
-//                            System.out.println("startBusStopIndexInCurrentStartDeltasList = " + startBusStopIndexInCurrentStartDeltasList);
-                            int midBusStopIndexInCurrentStartDeltasList = checkBusStopIndex(startDeltasList, currentStartDeltasList.getBusStopName());
-//                            System.out.println("midBusStopIndexInCurrentStartDeltasList = " + midBusStopIndexInCurrentStartDeltasList);
+                            DirectionChecker directionChecker = new DirectionChecker();
 
-                            boolean startStopBeforeMidStopInCurrentStartDeltasList = startBusStopIndexInCurrentStartDeltasList < midBusStopIndexInCurrentStartDeltasList;
-//                            System.out.println("startStopBeforeMidStopInCurrentStartDeltasList = " + startStopBeforeMidStopInCurrentStartDeltasList);
+                            boolean finalCondition = directionChecker.checkDirection(startDeltasList, endDeltasList,
+                                    currentStartDeltasList, currentEndDeltasList, startBusStop, endBusStop);
 
-                            int midBusStopIndexInCurrentEndDeltasList = checkBusStopIndex(endDeltasList, currentEndDeltasList.getBusStopName());
-//                            System.out.println("midBusStopIndexInCurrentEndDeltasList = " + midBusStopIndexInCurrentEndDeltasList);
-                            int endBusStopIndexInCurrentEndDeltasList = checkBusStopIndex(endDeltasList, endBusStop);
-//                            System.out.println("endBusStopIndexInCurrentEndDeltasList = " + endBusStopIndexInCurrentEndDeltasList);
-
-                            boolean midStopBeforeEndStopInCurrentEndDeltasList = midBusStopIndexInCurrentEndDeltasList < endBusStopIndexInCurrentEndDeltasList;
-//                            System.out.println("midStopBeforeEndStopInCurrentEndDeltasList = " + midStopBeforeEndStopInCurrentEndDeltasList);
-
-                            if (startStopBeforeMidStopInCurrentStartDeltasList && midStopBeforeEndStopInCurrentEndDeltasList) {
+                            if (finalCondition) {
                                 transferBusLineSets.add(new TransferBusLineSet(foundStartPartBusLine, currentStartDeltasList.getBusStopName(), foundEndPartBusLine));
                             }
                         }
@@ -67,20 +56,4 @@ public class TransferBusLinesSeeker {
         System.out.println(transferBusLineSets);
         return transferBusLineSets;
     }
-
-
-    public int checkBusStopIndex(List<BusStopDeltas> busStopDeltas, String busStop) {
-
-        int index = 0;
-        int i = 0;
-
-        for (i = 1; i < busStopDeltas.size(); i++) {
-
-            if (busStopDeltas.get(i).getBusStopName().toLowerCase().equals(busStop.toLowerCase())) {
-                index = i;
-            }
-        }
-        return index;
-    }
-
 }
