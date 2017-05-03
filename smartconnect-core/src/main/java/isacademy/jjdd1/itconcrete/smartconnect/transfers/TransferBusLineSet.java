@@ -2,16 +2,16 @@ package isacademy.jjdd1.itconcrete.smartconnect.transfers;
 
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 
-public class TransferBusLinePair {
+public class TransferBusLineSet {
 
     BusLine startBusLine;
-    BusLine endBusLine;
     String midBusStop;
+    BusLine endBusLine;
 
-    public TransferBusLinePair(BusLine startBusLine, BusLine endBusLine, String midBusStop) {
+    public TransferBusLineSet(BusLine startBusLine, String midBusStop, BusLine endBusLine) {
         this.startBusLine = startBusLine;
-        this.endBusLine = endBusLine;
         this.midBusStop = midBusStop;
+        this.endBusLine = endBusLine;
     }
 
     public BusLine getStartBusLine() {
@@ -22,14 +22,6 @@ public class TransferBusLinePair {
         this.startBusLine = startBusLine;
     }
 
-    public BusLine getEndBusLine() {
-        return endBusLine;
-    }
-
-    public void setEndBusLine(BusLine endBusLine) {
-        this.endBusLine = endBusLine;
-    }
-
     public String getMidBusStop() {
         return midBusStop;
     }
@@ -38,13 +30,20 @@ public class TransferBusLinePair {
         this.midBusStop = midBusStop;
     }
 
+    public BusLine getEndBusLine() {
+        return endBusLine;
+    }
+
+    public void setEndBusLine(BusLine endBusLine) {
+        this.endBusLine = endBusLine;
+    }
 
     @Override
     public String toString() {
-        return "TransferBusLinePair{" +
-                "startBusLine=" + startBusLine.getLineNumber() + "\n" +
-                ", endBusLine=" + endBusLine.getLineNumber() + "\n" +
+        return "TransferBusLineSet{" +
+                "startBusLine=" + startBusLine.getLineNumber() +
                 ", midBusStop='" + midBusStop + '\'' +
+                ", endBusLine=" + endBusLine.getLineNumber() +
                 '}';
     }
 }
