@@ -1,35 +1,26 @@
 package isacademy.jjdd1.itconcrete.smartconnect.transfers;
 
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusStopDeltas;
-
 import java.util.List;
 
 public class DirectionChecker {
 
-    public boolean checkDirection(List<BusStopDeltas> startDeltasList, List<BusStopDeltas> endDeltasList,
-                                  BusStopDeltas currentStartDeltasList, BusStopDeltas currentEndDeltasList, String startBusStop, String endBusStop) {
+    public boolean checkDirection(List<BusStopDeltas> firstLineDeltasList, List<BusStopDeltas> secondLineDeltasList,
+                                  BusStopDeltas busStopDeltaFirstLine, BusStopDeltas busStopDeltaSecondLine, String startBusStop, String endBusStop) {
 
         BusStopIndex busStopIndex = new BusStopIndex();
 
         boolean finalCondition = false;
 
-        int startBusStopIndexInCurrentStartDeltasList = busStopIndex.checkBusStopIndex(startDeltasList, startBusStop);
-//        System.out.println("startBusStopIndexInCurrentStartDeltasList = " + startBusStopIndexInCurrentStartDeltasList);
-        int midBusStopIndexInCurrentStartDeltasList = busStopIndex.checkBusStopIndex(startDeltasList, currentStartDeltasList.getBusStopName());
-//        System.out.println("midBusStopIndexInCurrentStartDeltasList = " + midBusStopIndexInCurrentStartDeltasList);
+        int startBusStopIndexFirstLine = busStopIndex.checkBusStopIndex(firstLineDeltasList, startBusStop);
+        int midBusStopIndexFirstLine = busStopIndex.checkBusStopIndex(firstLineDeltasList, busStopDeltaFirstLine.getBusStopName());
+        boolean startStopBeforeMidStopFirstLine = startBusStopIndexFirstLine < midBusStopIndexFirstLine;
 
-        boolean startStopBeforeMidStopInCurrentStartDeltasList = startBusStopIndexInCurrentStartDeltasList < midBusStopIndexInCurrentStartDeltasList;
-//        System.out.println("startStopBeforeMidStopInCurrentStartDeltasList = " + startStopBeforeMidStopInCurrentStartDeltasList);
+        int midBusStopIndexSecondLine = busStopIndex.checkBusStopIndex(secondLineDeltasList, busStopDeltaSecondLine.getBusStopName());
+        int endBusStopIndexSecondLine = busStopIndex.checkBusStopIndex(secondLineDeltasList, endBusStop);
+        boolean midStopBeforeEndStopSecondLine = midBusStopIndexSecondLine < endBusStopIndexSecondLine;
 
-        int midBusStopIndexInCurrentEndDeltasList = busStopIndex.checkBusStopIndex(endDeltasList, currentEndDeltasList.getBusStopName());
-//        System.out.println("midBusStopIndexInCurrentEndDeltasList = " + midBusStopIndexInCurrentEndDeltasList);
-        int endBusStopIndexInCurrentEndDeltasList = busStopIndex.checkBusStopIndex(endDeltasList, endBusStop);
-//        System.out.println("endBusStopIndexInCurrentEndDeltasList = " + endBusStopIndexInCurrentEndDeltasList);
-
-        boolean midStopBeforeEndStopInCurrentEndDeltasList = midBusStopIndexInCurrentEndDeltasList < endBusStopIndexInCurrentEndDeltasList;
-//        System.out.println("midStopBeforeEndStopInCurrentEndDeltasList = " + midStopBeforeEndStopInCurrentEndDeltasList);
-
-        finalCondition = startStopBeforeMidStopInCurrentStartDeltasList && midStopBeforeEndStopInCurrentEndDeltasList;
+        finalCondition = startStopBeforeMidStopFirstLine && midStopBeforeEndStopSecondLine;
 
         return finalCondition;
 

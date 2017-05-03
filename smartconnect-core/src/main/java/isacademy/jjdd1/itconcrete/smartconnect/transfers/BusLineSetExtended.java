@@ -2,16 +2,16 @@ package isacademy.jjdd1.itconcrete.smartconnect.transfers;
 
 import java.util.List;
 
-public class TransferSetForSeeking {
+public class BusLineSetExtended {
 
     private String startBusStop;
     private String endBusStop;
-    private List<TransferBusLineSet> transferBusLineSetList;
+    private List<BusLineSet> busLineSetList;
 
-    public TransferSetForSeeking(String startBusStop, String endBusStop, List<TransferBusLineSet> transferBusLineSetList) {
+    public BusLineSetExtended(String startBusStop, String endBusStop, List<BusLineSet> busLineSetList) {
         this.startBusStop = startBusStop;
         this.endBusStop = endBusStop;
-        this.transferBusLineSetList = transferBusLineSetList;
+        this.busLineSetList = busLineSetList;
     }
 
     public String getStartBusStop() {
@@ -30,20 +30,20 @@ public class TransferSetForSeeking {
         this.endBusStop = endBusStop;
     }
 
-    public List<TransferBusLineSet> getTransferBusLineSetList() {
-        return transferBusLineSetList;
+    public List<BusLineSet> getBusLineSetList() {
+        return busLineSetList;
     }
 
-    public void setTransferBusLineSetList(List<TransferBusLineSet> transferBusLineSetList) {
-        this.transferBusLineSetList = transferBusLineSetList;
+    public void setBusLineSetList(List<BusLineSet> busLineSetList) {
+        this.busLineSetList = busLineSetList;
     }
 
     @Override
     public String toString() {
-        return "TransferSetForSeeking{" +
+        return "BusLineSetExtended{" +
                 "startBusStop='" + startBusStop + '\'' +
                 ", endBusStop='" + endBusStop + '\'' +
-                ", transferBusLineSetList=" + transferBusLineSetList +
+                ", busLineSetList=" + busLineSetList +
                 '}';
     }
 }

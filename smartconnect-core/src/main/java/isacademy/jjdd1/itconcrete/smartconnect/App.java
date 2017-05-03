@@ -37,17 +37,17 @@ public class App {
 //
 //        LOGGER.info("Chosen amount of options to show: " + maxAmountOfResultsAsInt);
 
-        CompleteResultDisplayer completeResultDisplayer = new CompleteResultDisplayer();
-        CompleteResultGetter completeResultGetter = new CompleteResultGetter();
-        List<CompleteResult> completeResultList;
-        completeResultList = completeResultGetter.getCompleteResult("klonowa", "06:00", "22:00", 3, allBusLines);
-        completeResultDisplayer.displayCompleteResult(completeResultList);
+//        CompleteResultDisplayer completeResultDisplayer = new CompleteResultDisplayer();
+//        CompleteResultGetter completeResultGetter = new CompleteResultGetter();
+//        List<CompleteResult> completeResultList;
+//        completeResultList = completeResultGetter.getCompleteResult("klonowa", "06:00", "22:00", 3, allBusLines);
+//        completeResultDisplayer.displayCompleteResult(completeResultList);
 
-        TransferBusLinesSeeker transferBusLinesSeeker = new TransferBusLinesSeeker();
-        TransferSetForSeeking transferSetForSeeking = transferBusLinesSeeker.seekBusLinePairs("klonowa", "potokowa");
+        BusLinePairsSeeker busLinePairsSeeker = new BusLinePairsSeeker();
+        BusLineSetExtended busLineSetExtended = busLinePairsSeeker.seekBusLinePairs("klonowa", "potokowa");
 
-        MinutesToBusStopsCounter minutesToBusStopsCounter = new MinutesToBusStopsCounter();
+        TimeDifferenceCounter timeDifferenceCounter = new TimeDifferenceCounter();
 
-        minutesToBusStopsCounter.calculateTransfersMinutesToBusStops(transferSetForSeeking);
+        timeDifferenceCounter.calculateTimeDifferenceSet(busLineSetExtended);
     }
 }
