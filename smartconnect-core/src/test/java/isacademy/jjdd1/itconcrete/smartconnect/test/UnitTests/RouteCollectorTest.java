@@ -1,8 +1,8 @@
-package isacademy.jjdd1.itconcrete.smartconnect.test;
+package isacademy.jjdd1.itconcrete.smartconnect.test.UnitTests;
 
 
+import isacademy.jjdd1.itconcrete.smartconnect.test.ExemplaryCSVFileBuilder.CSVFileWriter;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusStopDeltas;
-import isacademy.jjdd1.itconcrete.smartconnect.schedule.CSVBuilder.CSVFileWriter;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.Direction;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.Route;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.RouteCollector;

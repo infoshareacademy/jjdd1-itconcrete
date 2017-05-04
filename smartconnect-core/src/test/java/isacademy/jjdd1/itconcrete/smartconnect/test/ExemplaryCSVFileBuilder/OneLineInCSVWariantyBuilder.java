@@ -1,4 +1,4 @@
-package isacademy.jjdd1.itconcrete.smartconnect.schedule.CSVBuilder;
+package isacademy.jjdd1.itconcrete.smartconnect.test.ExemplaryCSVFileBuilder;
 
 
 public class OneLineInCSVWariantyBuilder extends Object {
