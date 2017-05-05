@@ -113,7 +113,12 @@
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
-        <div class="navbar-header"></div>
+        <div class="navbar-header navbar-right">
+            <button type="button" class="btn btn-primary btn-xs" >
+                <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+                Line Popularity Report
+            </button>
+        </div>
     </div>
 </nav>
 

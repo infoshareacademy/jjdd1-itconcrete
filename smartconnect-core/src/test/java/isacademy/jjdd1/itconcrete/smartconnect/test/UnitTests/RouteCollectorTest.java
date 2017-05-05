@@ -31,6 +31,7 @@ public class RouteCollectorTest {
 
     @BeforeClass
     public static void setup() throws IOException {
+        System.out.println(fileName);
         CSVFileWriter.writeCsvFile(fileName);
         file = new File(fileName);
         routeCollector = new RouteCollector(file, direction, lineNumber);
