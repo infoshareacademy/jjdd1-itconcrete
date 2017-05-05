@@ -1,16 +1,21 @@
 package isacademy.jjdd1.itconcrete.smartconnect.displayer;
 
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.ResultConnection;
+
+
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class LinePromoter {
 
-    private ArrayList<Integer> promotedLines;
+
+    public ArrayList<Integer> promotedLines;
     private List<ResultConnection> resultConnections;
 
     public LinePromoter(List<ResultConnection> resultConnections) {
+
+
         promotedLines = new ArrayList<>();
         this.resultConnections = resultConnections;
     }
@@ -18,6 +23,7 @@ public class LinePromoter {
     public List<ResultConnection> putPromotedLinesFirstInAList(){
         promotedLines.add(157);
         promotedLines.add(116);
+
 
         List<ResultConnection> convertedList = new ArrayList<ResultConnection>();
 
