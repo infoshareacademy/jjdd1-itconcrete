@@ -42,9 +42,9 @@ public class BusLineSetExtended {
     public String toString() {
         return "BusLineSetExtended{" +
                 "startBusStop='" + startBusStop + '\'' +
-                ", endBusStop='" + endBusStop + '\'' +
-                ", busLineSetList=" + busLineSetList +
-                '}';
+                ", endBusStop='" + endBusStop + '\'' + "\n" +
+                ", busLineSetList=" + "\n" + busLineSetList +
+                '}' + "\n";
     }
 }
 

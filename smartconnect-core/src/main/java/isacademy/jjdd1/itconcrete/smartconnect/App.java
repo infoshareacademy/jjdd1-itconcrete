@@ -1,6 +1,8 @@
 package isacademy.jjdd1.itconcrete.smartconnect;
 
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.CompleteResult;
+import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
+import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultDisplayer;
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.CompleteResultGetter;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
@@ -10,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class App {
@@ -43,11 +46,25 @@ public class App {
 //        completeResultList = completeResultGetter.getCompleteResult("klonowa", "06:00", "22:00", 3, allBusLines);
 //        completeResultDisplayer.displayCompleteResult(completeResultList);
 
-        BusLinePairsSeeker busLinePairsSeeker = new BusLinePairsSeeker();
-        BusLineSetExtended busLineSetExtended = busLinePairsSeeker.seekBusLinePairs("klonowa", "potokowa");
+        CalendarParser calendarParser = new CalendarParser();
+        LinkedList<Journey> journeys = calendarParser.parseFileSortEventsAddHome("klonowa", "06:00", "22:00");
 
-        TimeDifferenceCounter timeDifferenceCounter = new TimeDifferenceCounter();
+        for (Journey journey : journeys) {
 
-        timeDifferenceCounter.calculateTimeDifferenceSet(busLineSetExtended);
+            BusLinePairsSeeker busLinePairsSeeker = new BusLinePairsSeeker();
+            BusLineSetExtended busLineSetExtended = busLinePairsSeeker.seekBusLinePairs(journey);
+
+            TimeDifferenceCounter timeDifferenceCounter = new TimeDifferenceCounter();
+            List<TimeDifferenceSet> timeDifferenceSetList = timeDifferenceCounter.calculateTimeDifferenceSet(busLineSetExtended);
+
+            TransferSeeker transferSeeker = new TransferSeeker();
+
+            List<TransferResultConnection> transferResultConnection = new ArrayList<>();
+            transferResultConnection = transferSeeker.seekTransfer(timeDifferenceSetList, journey, 10);
+            System.out.println(transferResultConnection);
+
+        }
+
+
     }
 }

@@ -4,9 +4,9 @@ import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 
 public class BusLineSet {
 
-    BusLine firstBusLine;
-    String midBusStop;
-    BusLine secondBusLine;
+    private BusLine firstBusLine;
+    private String midBusStop;
+    private BusLine secondBusLine;
 
     public BusLineSet(BusLine firstBusLine, String midBusStop, BusLine secondBusLine) {
         this.firstBusLine = firstBusLine;
@@ -44,6 +44,6 @@ public class BusLineSet {
                 "firstBusLine=" + firstBusLine.getLineNumber() +
                 ", midBusStop='" + midBusStop + '\'' +
                 ", secondBusLine=" + secondBusLine.getLineNumber() +
-                '}';
+                '}' + "\n";
     }
 }

@@ -36,7 +36,7 @@ public class TimeDifferenceCounter {
                     timeMidBusStopFirstLine, secondBusLine, timeMidBusStopSecondLine, timeEndBusStopSecondLine));
         }
 
-        System.out.println(timeDifferenceSetList);
+//        System.out.println(timeDifferenceSetList);
         return timeDifferenceSetList;
     }
 }

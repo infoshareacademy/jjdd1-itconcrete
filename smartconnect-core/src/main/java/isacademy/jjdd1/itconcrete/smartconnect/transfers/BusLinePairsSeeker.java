@@ -1,5 +1,6 @@
 package isacademy.jjdd1.itconcrete.smartconnect.transfers;
 
+import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusStopDeltas;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
@@ -10,12 +11,14 @@ import java.util.List;
 
 public class BusLinePairsSeeker {
 
-    public BusLineSetExtended seekBusLinePairs(String startBusStop, String endBusStop)
+    public BusLineSetExtended seekBusLinePairs(Journey journey)
             throws IOException, NoSuchFieldException, IllegalAccessException {
 
         ScheduleParser sp = new ScheduleParser();
         sp.loadData();
         ArrayList<BusLine> allBusLines = sp.getArrayOfBusLines();
+        String startBusStop = journey.getStartBusStop();
+        String endBusStop = journey.getEndBusStop();
 
         List<BusLineSet> busLineSets = new ArrayList<>();
         PartBusLineSeeker partBusLineSeeker = new PartBusLineSeeker();
@@ -40,11 +43,24 @@ public class BusLinePairsSeeker {
 
                             DirectionChecker directionChecker = new DirectionChecker();
 
-                            boolean finalCondition = directionChecker.checkDirection(firstLineDeltasList, secondLineDeltasList,
+                            boolean checkedDirection = directionChecker.checkDirection(firstLineDeltasList, secondLineDeltasList,
                                     busStopDeltaFirstLine, busStopDeltaSecondLine, startBusStop, endBusStop);
 
-                            if (finalCondition) {
-                                busLineSets.add(new BusLineSet(foundFirstBusLine, busStopDeltaFirstLine.getBusStopName(), foundSecondBusLine));
+                            BusLineIndex busLineIndex = new BusLineIndex();
+
+                            if (busLineSets.size() > 0) {
+
+                                boolean addsToList = busLineIndex.checkAddingToList(busLineSets, foundFirstBusLine, foundSecondBusLine);
+
+                                if (checkedDirection && (foundFirstBusLine.getLineNumber() != foundSecondBusLine.getLineNumber()) && addsToList) {
+                                    busLineSets.add(new BusLineSet(foundFirstBusLine, busStopDeltaFirstLine.getBusStopName(), foundSecondBusLine));
+
+                                }
+                            } else {
+
+                                if (checkedDirection && (foundFirstBusLine.getLineNumber() != foundSecondBusLine.getLineNumber())) {
+                                    busLineSets.add(new BusLineSet(foundFirstBusLine, busStopDeltaFirstLine.getBusStopName(), foundSecondBusLine));
+                                }
                             }
                         }
                     }

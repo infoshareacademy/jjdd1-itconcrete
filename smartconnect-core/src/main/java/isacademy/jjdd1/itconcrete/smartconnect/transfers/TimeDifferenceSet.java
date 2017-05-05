@@ -8,17 +8,16 @@ public class TimeDifferenceSet {
     int timeStartBusStopFirstLine;
     int timeMidBusStopFirstLine;
     BusLine secondBusLine;
-    int timeToMidBusStopOnEndLine;
-    int timeToEndBusStopOnEndLine;
+    int timeMidBusStopOnEndLine;
+    int timeEndBusStopSecondLine;
 
-
-    public TimeDifferenceSet(BusLine firstBusLine, int timeStartBusStopFirstLine, int timeMidBusStopFirstLine, BusLine secondBusLine, int timeToMidBusStopOnEndLine, int timeToEndBusStopOnEndLine) {
+    public TimeDifferenceSet(BusLine firstBusLine, int timeStartBusStopFirstLine, int timeMidBusStopFirstLine, BusLine secondBusLine, int timeMidBusStopOnEndLine, int timeEndBusStopSecondLine) {
         this.firstBusLine = firstBusLine;
         this.timeStartBusStopFirstLine = timeStartBusStopFirstLine;
         this.timeMidBusStopFirstLine = timeMidBusStopFirstLine;
         this.secondBusLine = secondBusLine;
-        this.timeToMidBusStopOnEndLine = timeToMidBusStopOnEndLine;
-        this.timeToEndBusStopOnEndLine = timeToEndBusStopOnEndLine;
+        this.timeMidBusStopOnEndLine = timeMidBusStopOnEndLine;
+        this.timeEndBusStopSecondLine = timeEndBusStopSecondLine;
     }
 
     public BusLine getFirstBusLine() {
@@ -53,31 +52,31 @@ public class TimeDifferenceSet {
         this.secondBusLine = secondBusLine;
     }
 
-    public int getTimeToMidBusStopOnEndLine() {
-        return timeToMidBusStopOnEndLine;
+    public int getTimeMidBusStopOnEndLine() {
+        return timeMidBusStopOnEndLine;
     }
 
-    public void setTimeToMidBusStopOnEndLine(int timeToMidBusStopOnEndLine) {
-        this.timeToMidBusStopOnEndLine = timeToMidBusStopOnEndLine;
+    public void setTimeMidBusStopOnEndLine(int timeMidBusStopOnEndLine) {
+        this.timeMidBusStopOnEndLine = timeMidBusStopOnEndLine;
     }
 
-    public int getTimeToEndBusStopOnEndLine() {
-        return timeToEndBusStopOnEndLine;
+    public int getTimeEndBusStopSecondLine() {
+        return timeEndBusStopSecondLine;
     }
 
-    public void setTimeToEndBusStopOnEndLine(int timeToEndBusStopOnEndLine) {
-        this.timeToEndBusStopOnEndLine = timeToEndBusStopOnEndLine;
+    public void setTimeEndBusStopSecondLine(int timeEndBusStopSecondLine) {
+        this.timeEndBusStopSecondLine = timeEndBusStopSecondLine;
     }
 
     @Override
     public String toString() {
         return "TimeDifferenceSet{" +
-                "firstBusLine=" + firstBusLine.getLineNumber() +
+                "firstBusLine=" + firstBusLine +
                 ", timeStartBusStopFirstLine=" + timeStartBusStopFirstLine +
                 ", timeMidBusStopFirstLine=" + timeMidBusStopFirstLine +
-                ", secondBusLine=" + secondBusLine.getLineNumber() +
-                ", timeToMidBusStopOnEndLine=" + timeToMidBusStopOnEndLine +
-                ", timeToEndBusStopOnEndLine=" + timeToEndBusStopOnEndLine +
+                ", secondBusLine=" + secondBusLine +
+                ", timeMidBusStopOnEndLine=" + timeMidBusStopOnEndLine +
+                ", timeEndBusStopSecondLine=" + timeEndBusStopSecondLine +
                 '}';
     }
 }

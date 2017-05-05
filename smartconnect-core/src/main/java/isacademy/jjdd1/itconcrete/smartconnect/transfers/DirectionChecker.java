@@ -10,7 +10,7 @@ public class DirectionChecker {
 
         BusStopIndex busStopIndex = new BusStopIndex();
 
-        boolean finalCondition = false;
+        boolean checkedDirection = false;
 
         int startBusStopIndexFirstLine = busStopIndex.checkBusStopIndex(firstLineDeltasList, startBusStop);
         int midBusStopIndexFirstLine = busStopIndex.checkBusStopIndex(firstLineDeltasList, busStopDeltaFirstLine.getBusStopName());
@@ -20,9 +20,15 @@ public class DirectionChecker {
         int endBusStopIndexSecondLine = busStopIndex.checkBusStopIndex(secondLineDeltasList, endBusStop);
         boolean midStopBeforeEndStopSecondLine = midBusStopIndexSecondLine < endBusStopIndexSecondLine;
 
-        finalCondition = startStopBeforeMidStopFirstLine && midStopBeforeEndStopSecondLine;
+        checkedDirection = startStopBeforeMidStopFirstLine && midStopBeforeEndStopSecondLine;
 
-        return finalCondition;
+        return checkedDirection;
 
     }
+
+
+
+
+
+
 }
