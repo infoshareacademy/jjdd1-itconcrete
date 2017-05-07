@@ -60,8 +60,6 @@ public class BusLine {
     public String toString() {
         return "BusLine{" +
                 "lineNumber=" + lineNumber +
-                ", route=" + route +
-                ", departures=" + departures +
-                '}' + "/n";
+                '}' + "\n";
     }
 }

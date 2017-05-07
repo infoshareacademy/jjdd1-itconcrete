@@ -56,9 +56,6 @@ class TransferSeeker {
                             String endBusStop = journey.getEndBusStop();
 
                             transferResultConnectionList.add(new TransferResultConnection(startBusStop, firstBusLine.getLineNumber(), departureFirstLine, arrivalFirstLine, midBusStop, secondBusLine.getLineNumber(), departureSecondLine, arrivalSecondLine, endBusStop));
-
-//                            System.out.println(endOfFinishedEvent + " " + startOfDestinedEvent + " " + departureFirstLine + " " + arrivalFirstLine + " " + departureSecondLine + " " + arrivalSecondLine);
-
                         }
                     }
                 }

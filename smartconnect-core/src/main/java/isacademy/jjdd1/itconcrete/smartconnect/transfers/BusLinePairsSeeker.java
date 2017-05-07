@@ -37,40 +37,34 @@ class BusLinePairsSeeker {
 
                     for (BusStopDeltas busStopDeltaSecondLine : secondLineDeltasList) {
 
-                        if (busStopDeltaFirstLine.getBusStopName().equals(busStopDeltaSecondLine.getBusStopName()) &&
-                                busStopDeltaFirstLine.getTimeDifference() >= 0 && busStopDeltaSecondLine.getTimeDifference() >= 0) {
+                        String midBusStop = busStopDeltaFirstLine.getBusStopName();
 
-                            DirectionChecker directionChecker = new DirectionChecker();
+                        DirectionChecker directionChecker = new DirectionChecker();
+                        boolean checkedDirection = directionChecker.checkDirection(firstLineDeltasList, secondLineDeltasList, startBusStop, midBusStop, endBusStop);
 
-                            boolean checkedDirection = directionChecker.checkDirection(firstLineDeltasList, secondLineDeltasList,
-                                    busStopDeltaFirstLine, busStopDeltaSecondLine, startBusStop, endBusStop);
+                        SetExistence setExistence = new SetExistence();
+                        boolean setExists = setExistence.checkSetExists(busLineSets, foundFirstBusLine, foundSecondBusLine);
 
-                            if (checkedDirection) {
+                        boolean lineNumbersIdentical = (foundFirstBusLine.getLineNumber() == foundSecondBusLine.getLineNumber());
+                        boolean sameBusStop = busStopDeltaFirstLine.getBusStopName().equals(busStopDeltaSecondLine.getBusStopName());
+                        boolean firstLineRidesBusStop = busStopDeltaFirstLine.getTimeDifference() >= 0;
+                        boolean secondLineRidesBusStop = busStopDeltaSecondLine.getTimeDifference() >= 0;
 
-                                SetRepeatChecker setRepeatChecker = new SetRepeatChecker();
-                                if (busLineSets.size() > 0) {
 
-                                    boolean checkIfSetRepeats = setRepeatChecker.checkIfSetRepeats(busLineSets, foundFirstBusLine, foundSecondBusLine);
-                                    if ((foundFirstBusLine.getLineNumber() != foundSecondBusLine.getLineNumber()) && !checkIfSetRepeats) {
-                                        busLineSets.add(new BusLineSet(foundFirstBusLine, busStopDeltaFirstLine.getBusStopName(), foundSecondBusLine));
-                                    }
+                        if (checkedDirection && !setExists && !lineNumbersIdentical && sameBusStop && firstLineRidesBusStop && secondLineRidesBusStop) {
 
-                                } else {
-
-                                    if ((foundFirstBusLine.getLineNumber() != foundSecondBusLine.getLineNumber())) {
-                                        busLineSets.add(new BusLineSet(foundFirstBusLine, busStopDeltaFirstLine.getBusStopName(), foundSecondBusLine));
-                                    }
-                                }
-                            }
+                            busLineSets.add(new BusLineSet(foundFirstBusLine, midBusStop, foundSecondBusLine));
                         }
                     }
                 }
             }
         }
 
-//        System.out.println(busLineSets);
+        //fixme sa bledy filtracji wynikow? metody na sprawdzenie czy poprawne?
 
         BusLineSetExtended busLineSetExtended = new BusLineSetExtended(startBusStop, endBusStop, busLineSets);
+        System.out.println("busLineSetExtended = " + busLineSetExtended);
+
         return busLineSetExtended;
     }
 }

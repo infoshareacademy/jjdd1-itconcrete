@@ -4,11 +4,11 @@ import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 
 import java.util.List;
 
-class SetRepeatChecker {
+class SetExistence {
 
-    public boolean checkIfSetRepeats(List<BusLineSet> busLineSets, BusLine foundFirstBusLine, BusLine foundSecondBusLine) {
+    public boolean checkSetExists(List<BusLineSet> busLineSets, BusLine foundFirstBusLine, BusLine foundSecondBusLine) {
 
-        boolean setRepeats = false;
+        boolean setExists = false;
 
         for (int i = 0; i < busLineSets.size(); i++) {
 
@@ -18,12 +18,12 @@ class SetRepeatChecker {
 
                     if (foundSecondBusLine.getLineNumber() == busLineSets.get(i).getSecondBusLine().getLineNumber()) {
 
-                        setRepeats = true;
+                        setExists = true;
                     }
                 }
             }
         }
 
-        return setRepeats;
+        return setExists;
     }
 }

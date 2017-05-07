@@ -28,11 +28,9 @@ public class TransferGetter {
 
             List<TransferResultConnection> transferResultConnection = new ArrayList<>();
             transferResultConnection = transferSeeker.seekTransfer(timeDifferenceSetList, journey, maxAmountOfResults);
-            System.out.println(transferResultConnection);
+//            System.out.println(transferResultConnection);
 
         }
-
-
     }
 
 }

@@ -14,19 +14,19 @@ class PartBusLineSeeker {
 
         for (BusLine currentlyCheckedBusLine : busLinesForSeeking) {
 
-            StraightLineChecker straightLineChecker = new StraightLineChecker();
+            DirectLineChecker directLineChecker = new DirectLineChecker();
 
-            boolean straightLine = straightLineChecker.checkIfIsStraightLine(currentlyCheckedBusLine, busStopFromAnotherPart);
+            boolean directLine = directLineChecker.checkIfLineIsDirect(currentlyCheckedBusLine, busStopFromAnotherPart);
 
-            if (!straightLine) {
+            if (!directLine) {
 
                 List<BusStopDeltas> deltasList = currentlyCheckedBusLine.getRoute().getDeltasList();
                 for (BusStopDeltas currentlyCheckedBusStopDelta : deltasList) {
 
                     boolean sameBusStopName = currentlyCheckedBusStopDelta.getBusStopName().toLowerCase().equals(busStopFromCheckedPart.toLowerCase());
-                    boolean drivesThroughBusStop = currentlyCheckedBusStopDelta.getTimeDifference() >= 0;
+                    boolean ridesThroughBusStop = currentlyCheckedBusStopDelta.getTimeDifference() >= 0;
 
-                    if (sameBusStopName && drivesThroughBusStop){
+                    if (sameBusStopName && ridesThroughBusStop) {
                         foundPartBusLines.add(currentlyCheckedBusLine);
                     }
                 }
