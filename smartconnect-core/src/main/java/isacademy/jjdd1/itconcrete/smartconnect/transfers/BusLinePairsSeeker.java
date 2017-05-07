@@ -4,7 +4,6 @@ import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusStopDeltas;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +22,8 @@ public class BusLinePairsSeeker {
         List<BusLineSet> busLineSets = new ArrayList<>();
         PartBusLineSeeker partBusLineSeeker = new PartBusLineSeeker();
 
-        List<BusLine> foundFirstBusLines = partBusLineSeeker.seekPartBusLine(allBusLines, startBusStop);
-        List<BusLine> foundSecondBusLines = partBusLineSeeker.seekPartBusLine(allBusLines, endBusStop);
+        List<BusLine> foundFirstBusLines = partBusLineSeeker.seekPartBusLine(allBusLines, startBusStop, endBusStop);
+        List<BusLine> foundSecondBusLines = partBusLineSeeker.seekPartBusLine(allBusLines, endBusStop, startBusStop);
 
         for (BusLine foundFirstBusLine : foundFirstBusLines) {
 
@@ -46,20 +45,26 @@ public class BusLinePairsSeeker {
                             boolean checkedDirection = directionChecker.checkDirection(firstLineDeltasList, secondLineDeltasList,
                                     busStopDeltaFirstLine, busStopDeltaSecondLine, startBusStop, endBusStop);
 
-                            BusLineIndex busLineIndex = new BusLineIndex();
+                            if (!checkedDirection) {
+                                continue;
 
-                            if (busLineSets.size() > 0) {
-
-                                boolean addsToList = busLineIndex.checkAddingToList(busLineSets, foundFirstBusLine, foundSecondBusLine);
-
-                                if (checkedDirection && (foundFirstBusLine.getLineNumber() != foundSecondBusLine.getLineNumber()) && addsToList) {
-                                    busLineSets.add(new BusLineSet(foundFirstBusLine, busStopDeltaFirstLine.getBusStopName(), foundSecondBusLine));
-
-                                }
                             } else {
 
-                                if (checkedDirection && (foundFirstBusLine.getLineNumber() != foundSecondBusLine.getLineNumber())) {
-                                    busLineSets.add(new BusLineSet(foundFirstBusLine, busStopDeltaFirstLine.getBusStopName(), foundSecondBusLine));
+                                SetRepeatChecker setRepeatChecker = new SetRepeatChecker();
+
+                                if (busLineSets.size() > 0) {
+
+                                    boolean setRepeats = setRepeatChecker.checkIfSetRepeats(busLineSets, foundFirstBusLine, foundSecondBusLine);
+
+                                    if ((foundFirstBusLine.getLineNumber() != foundSecondBusLine.getLineNumber()) && !setRepeats) {
+                                        busLineSets.add(new BusLineSet(foundFirstBusLine, busStopDeltaFirstLine.getBusStopName(), foundSecondBusLine));
+                                    }
+
+                                } else {
+
+                                    if ((foundFirstBusLine.getLineNumber() != foundSecondBusLine.getLineNumber())) {
+                                        busLineSets.add(new BusLineSet(foundFirstBusLine, busStopDeltaFirstLine.getBusStopName(), foundSecondBusLine));
+                                    }
                                 }
                             }
                         }
@@ -67,6 +72,8 @@ public class BusLinePairsSeeker {
                 }
             }
         }
+
+//        System.out.println(busLineSets);
 
         BusLineSetExtended busLineSetExtended = new BusLineSetExtended(startBusStop, endBusStop, busLineSets);
         return busLineSetExtended;

@@ -5,19 +5,19 @@ import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 public class TimeDifferenceSet {
 
     BusLine firstBusLine;
-    int timeStartBusStopFirstLine;
-    int timeMidBusStopFirstLine;
+    int startBusFirstLineTime;
+    int midBusFirstLineTime;
     BusLine secondBusLine;
-    int timeMidBusStopOnEndLine;
-    int timeEndBusStopSecondLine;
+    int midBusSecondLineTime;
+    int endBusSecondLineTime;
 
-    public TimeDifferenceSet(BusLine firstBusLine, int timeStartBusStopFirstLine, int timeMidBusStopFirstLine, BusLine secondBusLine, int timeMidBusStopOnEndLine, int timeEndBusStopSecondLine) {
+    public TimeDifferenceSet(BusLine firstBusLine, int startBusFirstLineTime, int midBusFirstLineTime, BusLine secondBusLine, int midBusSecondLineTime, int endBusSecondLineTime) {
         this.firstBusLine = firstBusLine;
-        this.timeStartBusStopFirstLine = timeStartBusStopFirstLine;
-        this.timeMidBusStopFirstLine = timeMidBusStopFirstLine;
+        this.startBusFirstLineTime = startBusFirstLineTime;
+        this.midBusFirstLineTime = midBusFirstLineTime;
         this.secondBusLine = secondBusLine;
-        this.timeMidBusStopOnEndLine = timeMidBusStopOnEndLine;
-        this.timeEndBusStopSecondLine = timeEndBusStopSecondLine;
+        this.midBusSecondLineTime = midBusSecondLineTime;
+        this.endBusSecondLineTime = endBusSecondLineTime;
     }
 
     public BusLine getFirstBusLine() {
@@ -28,20 +28,20 @@ public class TimeDifferenceSet {
         this.firstBusLine = firstBusLine;
     }
 
-    public int getTimeStartBusStopFirstLine() {
-        return timeStartBusStopFirstLine;
+    public int getStartBusFirstLineTime() {
+        return startBusFirstLineTime;
     }
 
-    public void setTimeStartBusStopFirstLine(int timeStartBusStopFirstLine) {
-        this.timeStartBusStopFirstLine = timeStartBusStopFirstLine;
+    public void setStartBusFirstLineTime(int startBusFirstLineTime) {
+        this.startBusFirstLineTime = startBusFirstLineTime;
     }
 
-    public int getTimeMidBusStopFirstLine() {
-        return timeMidBusStopFirstLine;
+    public int getMidBusFirstLineTime() {
+        return midBusFirstLineTime;
     }
 
-    public void setTimeMidBusStopFirstLine(int timeMidBusStopFirstLine) {
-        this.timeMidBusStopFirstLine = timeMidBusStopFirstLine;
+    public void setMidBusFirstLineTime(int midBusFirstLineTime) {
+        this.midBusFirstLineTime = midBusFirstLineTime;
     }
 
     public BusLine getSecondBusLine() {
@@ -52,31 +52,31 @@ public class TimeDifferenceSet {
         this.secondBusLine = secondBusLine;
     }
 
-    public int getTimeMidBusStopOnEndLine() {
-        return timeMidBusStopOnEndLine;
+    public int getMidBusSecondLineTime() {
+        return midBusSecondLineTime;
     }
 
-    public void setTimeMidBusStopOnEndLine(int timeMidBusStopOnEndLine) {
-        this.timeMidBusStopOnEndLine = timeMidBusStopOnEndLine;
+    public void setMidBusSecondLineTime(int midBusSecondLineTime) {
+        this.midBusSecondLineTime = midBusSecondLineTime;
     }
 
-    public int getTimeEndBusStopSecondLine() {
-        return timeEndBusStopSecondLine;
+    public int getEndBusSecondLineTime() {
+        return endBusSecondLineTime;
     }
 
-    public void setTimeEndBusStopSecondLine(int timeEndBusStopSecondLine) {
-        this.timeEndBusStopSecondLine = timeEndBusStopSecondLine;
+    public void setEndBusSecondLineTime(int endBusSecondLineTime) {
+        this.endBusSecondLineTime = endBusSecondLineTime;
     }
 
     @Override
     public String toString() {
         return "TimeDifferenceSet{" +
-                "firstBusLine=" + firstBusLine +
-                ", timeStartBusStopFirstLine=" + timeStartBusStopFirstLine +
-                ", timeMidBusStopFirstLine=" + timeMidBusStopFirstLine +
-                ", secondBusLine=" + secondBusLine +
-                ", timeMidBusStopOnEndLine=" + timeMidBusStopOnEndLine +
-                ", timeEndBusStopSecondLine=" + timeEndBusStopSecondLine +
-                '}';
+                "firstBusLine=" + firstBusLine.getLineNumber() +
+                ", startBusFirstLineTime=" + startBusFirstLineTime +
+                ", midBusFirstLineTime=" + midBusFirstLineTime +
+                ", secondBusLine=" + secondBusLine.getLineNumber() +
+                ", midBusSecondLineTime=" + midBusSecondLineTime +
+                ", endBusSecondLineTime=" + endBusSecondLineTime +
+                '}' + "\n";
     }
 }

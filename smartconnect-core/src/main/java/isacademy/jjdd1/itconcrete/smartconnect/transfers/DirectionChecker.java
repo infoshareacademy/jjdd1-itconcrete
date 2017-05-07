@@ -8,16 +8,16 @@ public class DirectionChecker {
     public boolean checkDirection(List<BusStopDeltas> firstLineDeltasList, List<BusStopDeltas> secondLineDeltasList,
                                   BusStopDeltas busStopDeltaFirstLine, BusStopDeltas busStopDeltaSecondLine, String startBusStop, String endBusStop) {
 
-        BusStopIndex busStopIndex = new BusStopIndex();
+        BusStopIndexCounter busStopIndexCounter = new BusStopIndexCounter();
 
         boolean checkedDirection = false;
 
-        int startBusStopIndexFirstLine = busStopIndex.checkBusStopIndex(firstLineDeltasList, startBusStop);
-        int midBusStopIndexFirstLine = busStopIndex.checkBusStopIndex(firstLineDeltasList, busStopDeltaFirstLine.getBusStopName());
+        int startBusStopIndexFirstLine = busStopIndexCounter.countBusStopIndex(firstLineDeltasList, startBusStop);
+        int midBusStopIndexFirstLine = busStopIndexCounter.countBusStopIndex(firstLineDeltasList, busStopDeltaFirstLine.getBusStopName());
         boolean startStopBeforeMidStopFirstLine = startBusStopIndexFirstLine < midBusStopIndexFirstLine;
 
-        int midBusStopIndexSecondLine = busStopIndex.checkBusStopIndex(secondLineDeltasList, busStopDeltaSecondLine.getBusStopName());
-        int endBusStopIndexSecondLine = busStopIndex.checkBusStopIndex(secondLineDeltasList, endBusStop);
+        int midBusStopIndexSecondLine = busStopIndexCounter.countBusStopIndex(secondLineDeltasList, busStopDeltaSecondLine.getBusStopName());
+        int endBusStopIndexSecondLine = busStopIndexCounter.countBusStopIndex(secondLineDeltasList, endBusStop);
         boolean midStopBeforeEndStopSecondLine = midBusStopIndexSecondLine < endBusStopIndexSecondLine;
 
         checkedDirection = startStopBeforeMidStopFirstLine && midStopBeforeEndStopSecondLine;

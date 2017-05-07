@@ -47,24 +47,10 @@ public class App {
 //        completeResultDisplayer.displayCompleteResult(completeResultList);
 
         CalendarParser calendarParser = new CalendarParser();
-        LinkedList<Journey> journeys = calendarParser.parseFileSortEventsAddHome("klonowa", "06:00", "22:00");
+        LinkedList<Journey> journeys = calendarParser.parseFileSortEventsAddHome("klonowa", "08:00", "17:00");
 
-        for (Journey journey : journeys) {
-
-            BusLinePairsSeeker busLinePairsSeeker = new BusLinePairsSeeker();
-            BusLineSetExtended busLineSetExtended = busLinePairsSeeker.seekBusLinePairs(journey);
-
-            TimeDifferenceCounter timeDifferenceCounter = new TimeDifferenceCounter();
-            List<TimeDifferenceSet> timeDifferenceSetList = timeDifferenceCounter.calculateTimeDifferenceSet(busLineSetExtended);
-
-            TransferSeeker transferSeeker = new TransferSeeker();
-
-            List<TransferResultConnection> transferResultConnection = new ArrayList<>();
-            transferResultConnection = transferSeeker.seekTransfer(timeDifferenceSetList, journey, 10);
-            System.out.println(transferResultConnection);
-
-        }
-
+        TransferDisplayer transferDisplayer = new TransferDisplayer();
+        transferDisplayer.displayTransfers(journeys, 10);
 
     }
 }

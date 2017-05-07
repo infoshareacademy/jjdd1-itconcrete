@@ -1,9 +1,7 @@
 package isacademy.jjdd1.itconcrete.smartconnect.transfers;
 
-import isacademy.jjdd1.itconcrete.smartconnect.analyzer.ResultConnection;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
-
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -17,61 +15,74 @@ public class TransferSeeker {
 
         List<TransferResultConnection> transferResultConnectionList = new ArrayList<>();
 
-        String startBusStop = journey.getStartBusStop();
-        String endBusStop = journey.getEndBusStop();
         LocalTime startOfDestinedEvent = journey.getStartOfDestinedEvent();
         LocalTime endOfFinishedEvent = journey.getEndOfFinishedEvent();
         final int TIME_BEETWEEN_LINES = 5;
 
+
         for (TimeDifferenceSet timeDifferenceSet : timeDifferenceSetList) {
 
             BusLine firstBusLine = timeDifferenceSet.getFirstBusLine();
-            int timeStartBusStopFirstLine = timeDifferenceSet.getTimeStartBusStopFirstLine();
-            int timeMidBusStopFirstLine = timeDifferenceSet.getTimeMidBusStopFirstLine();
+            List<LocalTime> departuresFirstLine = firstBusLine.getDeparturesWeekdays();
+            int startBusFirstLineTime = timeDifferenceSet.getStartBusFirstLineTime();
+            int midBusFirstLineTime = timeDifferenceSet.getMidBusFirstLineTime();
 
             BusLine secondBusLine = timeDifferenceSet.getSecondBusLine();
-            int timeMidBusStopSecondLine = timeDifferenceSet.getTimeMidBusStopOnEndLine();
-            int timeEndBusStopSecondLine = timeDifferenceSet.getTimeEndBusStopSecondLine();
-
             List<LocalTime> departuresSecondLine = secondBusLine.getDeparturesWeekdays();
-            List<LocalTime> departuresFirstLine = firstBusLine.getDeparturesWeekdays();
-
+            int midBusSecondLineTime = timeDifferenceSet.getMidBusSecondLineTime();
+            int endBusSecondLineTime = timeDifferenceSet.getEndBusSecondLineTime();
 
 
             for (int i = departuresSecondLine.size() - 1; i >= 0; i--) {
 
-                LocalTime departureSecondLine = departuresSecondLine.get(i).plusMinutes(timeMidBusStopSecondLine);
-                LocalTime arrivalSecondLine = departuresSecondLine.get(i).plusMinutes(timeEndBusStopSecondLine);
+                LocalTime departureSecondLine = departuresSecondLine.get(i).plusMinutes(midBusSecondLineTime);
+                LocalTime arrivalSecondLine = departuresSecondLine.get(i).plusMinutes(endBusSecondLineTime);
 
-                long timeBetweenArrivalSecondLineAndStartEvent = ChronoUnit.MINUTES.between(arrivalSecondLine, startOfDestinedEvent);
-                long timeBetweenDepartureSecondLineAndEndFinishedEvent = ChronoUnit.MINUTES.between(endOfFinishedEvent, departureSecondLine);
+                long endSecondLineStartDestinedEvent = ChronoUnit.MINUTES.between(arrivalSecondLine, startOfDestinedEvent);
+                long startSecondLineFinishedEvent = ChronoUnit.MINUTES.between(endOfFinishedEvent, departureSecondLine);
 
-                if (timeBetweenArrivalSecondLineAndStartEvent >= 0 && timeBetweenDepartureSecondLineAndEndFinishedEvent >= 0) {
+                if ((endSecondLineStartDestinedEvent >= 0) && (startSecondLineFinishedEvent >= 0)) {
 
-                    for (int j = departuresFirstLine.size() - 1; i >= 0; i--) {
+                    for (int j = departuresFirstLine.size() - 1; j >= 0; j--) {
 
-                        LocalTime departureFirstLine = departuresFirstLine.get(j).plusMinutes(timeStartBusStopFirstLine);
-                        LocalTime arrivalFirstLine = departuresFirstLine.get(j).plusMinutes(timeMidBusStopFirstLine);
+                        LocalTime departureFirstLine = departuresFirstLine.get(j).plusMinutes(startBusFirstLineTime);
+                        LocalTime arrivalFirstLine = departuresFirstLine.get(j).plusMinutes(midBusFirstLineTime);
 
-                        long timeBetweenArrivalFirstLineAndDepartureSecondLine = ChronoUnit.MINUTES.between(arrivalFirstLine, departureSecondLine);
-                        long timeBetweenEndFinishedEventAndDepartureFirstLine = ChronoUnit.MINUTES.between(endOfFinishedEvent, departureFirstLine);
+                        long endFirstLineStartSecondLine = ChronoUnit.MINUTES.between(arrivalFirstLine, departureSecondLine);
+                        long finishedEventStartFirstLine = ChronoUnit.MINUTES.between(endOfFinishedEvent, departureFirstLine);
 
-                        if (timeBetweenArrivalFirstLineAndDepartureSecondLine >= TIME_BEETWEEN_LINES && timeBetweenEndFinishedEventAndDepartureFirstLine >= 0) {
+                        if ((endFirstLineStartSecondLine >= TIME_BEETWEEN_LINES) && (finishedEventStartFirstLine >= 0)) {
 
                             transferResultConnectionList.add(new TransferResultConnection(firstBusLine.getLineNumber(), departureFirstLine, arrivalFirstLine, secondBusLine.getLineNumber(), departureSecondLine, arrivalSecondLine));
+
+//                            System.out.println(endOfFinishedEvent + " " + startOfDestinedEvent + " " + departureFirstLine + " " + arrivalFirstLine + " " + departureSecondLine + " " + arrivalSecondLine);
+
                         }
                     }
                 }
-
             }
         }
-        transferResultConnectionList = sortResults(transferResultConnectionList);
+
+//        transferResultConnectionList = sortResultsByTravelStart(transferResultConnectionList); //todo how?
+
+        transferResultConnectionList = sortResultsByTravelEnd(transferResultConnectionList);
         transferResultConnectionList = shrinkResults(transferResultConnectionList, maxAmountOfResults);
 
         return transferResultConnectionList;
     }
 
-    private List<TransferResultConnection> sortResults(List<TransferResultConnection> transferResultConnectionList){
+    private List<TransferResultConnection> sortResultsByTravelStart(List<TransferResultConnection> transferResultConnectionList){
+
+        Collections.sort(transferResultConnectionList, new Comparator<TransferResultConnection>() {
+
+            public int compare(TransferResultConnection o2, TransferResultConnection o1) {
+                return o1.getDepartureFirstLine().compareTo(o2.getDepartureFirstLine());
+            }
+        });
+        return transferResultConnectionList;
+    }
+
+    private List<TransferResultConnection> sortResultsByTravelEnd(List<TransferResultConnection> transferResultConnectionList){
 
         Collections.sort(transferResultConnectionList, new Comparator<TransferResultConnection>() {
 
