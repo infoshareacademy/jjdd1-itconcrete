@@ -11,7 +11,17 @@
 </head>
 <body>
 
-<div class="chart">
+<div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header" style="padding-bottom: 10px;">
+                <h2><span class="label label-info">Smartconnect - Line popularity chart</span></h2>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="chart" style="position:absolute; top:60px; left:10px; width:500px; height:500px;">
     <canvas id="myChart1" width="400" height="400"></canvas>
 </div>
 
@@ -54,8 +64,18 @@
         options: {
             scales: {
                 yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Occurences in search'
+                    },
                     ticks: {
                         beginAtZero: true
+                    }
+                }],
+                xAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Line number'
                     }
                 }]
             }
@@ -65,3 +85,10 @@
 </script>
 </body>
 </html>
+
+yAxes: [{
+scaleLabel: {
+display: true,
+labelString: 'probability'
+}
+}]
