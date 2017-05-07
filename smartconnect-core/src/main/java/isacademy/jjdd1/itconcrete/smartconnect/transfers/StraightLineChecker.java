@@ -5,7 +5,7 @@ import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusStopDeltas;
 
 import java.util.List;
 
-public class StraightLineChecker {
+class StraightLineChecker {
 
     public boolean checkIfIsStraightLine(BusLine currentlyCheckedBusLine, String busStopFromAnotherPart) {
 

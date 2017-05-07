@@ -2,7 +2,7 @@ package isacademy.jjdd1.itconcrete.smartconnect.transfers;
 
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 
-public class BusLineSet {
+class BusLineSet {
 
     private BusLine firstBusLine;
     private String midBusStop;

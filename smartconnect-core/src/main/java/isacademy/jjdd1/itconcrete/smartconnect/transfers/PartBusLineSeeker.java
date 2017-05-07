@@ -6,7 +6,7 @@ import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusStopDeltas;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PartBusLineSeeker {
+class PartBusLineSeeker {
 
     public List<BusLine> seekPartBusLine(ArrayList<BusLine> busLinesForSeeking, String busStopFromCheckedPart, String busStopFromAnotherPart) {
 
@@ -18,11 +18,7 @@ public class PartBusLineSeeker {
 
             boolean straightLine = straightLineChecker.checkIfIsStraightLine(currentlyCheckedBusLine, busStopFromAnotherPart);
 
-            if (straightLine) {
-
-                continue;
-
-            } else {
+            if (!straightLine) {
 
                 List<BusStopDeltas> deltasList = currentlyCheckedBusLine.getRoute().getDeltasList();
                 for (BusStopDeltas currentlyCheckedBusStopDelta : deltasList) {

@@ -4,14 +4,14 @@ import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusStopDeltas;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BusLinePairsSeeker {
+class BusLinePairsSeeker {
 
-    public BusLineSetExtended seekBusLinePairs(Journey journey)
-            throws IOException, NoSuchFieldException, IllegalAccessException {
+    public BusLineSetExtended seekBusLinePairs(Journey journey) throws IOException {
 
         ScheduleParser sp = new ScheduleParser();
         sp.loadData();
@@ -45,10 +45,7 @@ public class BusLinePairsSeeker {
                             boolean checkedDirection = directionChecker.checkDirection(firstLineDeltasList, secondLineDeltasList,
                                     busStopDeltaFirstLine, busStopDeltaSecondLine, startBusStop, endBusStop);
 
-                            if (!checkedDirection) {
-                                continue;
-
-                            } else {
+                            if (checkedDirection) {
 
                                 SetRepeatChecker setRepeatChecker = new SetRepeatChecker();
                                 if (busLineSets.size() > 0) {

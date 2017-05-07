@@ -4,7 +4,7 @@ import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 
 import java.util.List;
 
-public class SetRepeatChecker {
+class SetRepeatChecker {
 
     public boolean checkIfSetRepeats(List<BusLineSet> busLineSets, BusLine foundFirstBusLine, BusLine foundSecondBusLine) {
 

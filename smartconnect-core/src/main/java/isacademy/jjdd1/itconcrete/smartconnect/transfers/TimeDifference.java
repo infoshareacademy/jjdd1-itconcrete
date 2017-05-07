@@ -1,9 +1,10 @@
 package isacademy.jjdd1.itconcrete.smartconnect.transfers;
 
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusStopDeltas;
+
 import java.util.List;
 
-public class TimeDifference {
+class TimeDifference {
 
     public int calculateTimeDifference(String busStop, List<BusStopDeltas> deltasList) {
 

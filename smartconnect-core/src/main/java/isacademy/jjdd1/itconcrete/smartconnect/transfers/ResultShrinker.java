@@ -2,7 +2,7 @@ package isacademy.jjdd1.itconcrete.smartconnect.transfers;
 
 import java.util.List;
 
-public class ResultShrinker {
+class ResultShrinker {
 
     public List<TransferResultConnection> shrinkResults(List<TransferResultConnection> transferResultConnectionList, int maxAmountOfResults) {
 

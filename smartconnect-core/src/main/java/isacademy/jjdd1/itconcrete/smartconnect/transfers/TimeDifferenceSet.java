@@ -2,7 +2,7 @@ package isacademy.jjdd1.itconcrete.smartconnect.transfers;
 
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 
-public class TimeDifferenceSet {
+class TimeDifferenceSet {
 
     private BusLine firstBusLine;
     private int startBusFirstLineTime;

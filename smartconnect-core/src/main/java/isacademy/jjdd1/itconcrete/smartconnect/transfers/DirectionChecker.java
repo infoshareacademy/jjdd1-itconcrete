@@ -1,9 +1,10 @@
 package isacademy.jjdd1.itconcrete.smartconnect.transfers;
 
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusStopDeltas;
+
 import java.util.List;
 
-public class DirectionChecker {
+class DirectionChecker {
 
     public boolean checkDirection(List<BusStopDeltas> firstLineDeltasList, List<BusStopDeltas> secondLineDeltasList,
                                   BusStopDeltas busStopDeltaFirstLine, BusStopDeltas busStopDeltaSecondLine, String startBusStop, String endBusStop) {
@@ -19,7 +20,6 @@ public class DirectionChecker {
 
         int midBusStopIndexSecondLine = busStopIndexCounter.countBusStopIndex(secondLineDeltasList, busStopDeltaSecondLine.getBusStopName());
         int endBusStopIndexSecondLine = busStopIndexCounter.countBusStopIndex(secondLineDeltasList, endBusStop);
-
         boolean midStopBeforeEndStopSecondLine = midBusStopIndexSecondLine < endBusStopIndexSecondLine;
 
         checkedDirection = startStopBeforeMidStopFirstLine && midStopBeforeEndStopSecondLine;

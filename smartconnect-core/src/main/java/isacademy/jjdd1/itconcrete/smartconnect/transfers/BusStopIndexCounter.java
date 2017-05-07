@@ -4,7 +4,7 @@ import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusStopDeltas;
 
 import java.util.List;
 
-public class BusStopIndexCounter {
+class BusStopIndexCounter {
 
     public int countBusStopIndex(List<BusStopDeltas> busStopDeltas, String busStop) {
 
