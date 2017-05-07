@@ -1,14 +1,26 @@
 package isacademy.jjdd1.itconcrete.smartconnect.calendar;
 
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
+@Entity
+@Table
 public class Event {
 
+    @Column
     private String location;
+    @Column
     private String summary;
+    @Column
     private boolean confirmed;
+    @Column
+    @Id
     private LocalDateTime startTime;
+    @Column
     private LocalDateTime endTime;
 
     @Override

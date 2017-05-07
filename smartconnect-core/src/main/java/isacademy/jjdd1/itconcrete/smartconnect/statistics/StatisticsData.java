@@ -1,9 +1,14 @@
 package isacademy.jjdd1.itconcrete.smartconnect.statistics;
 
+
+
 public class StatisticsData {
 
+
     private int lineNumber;
+
     private int countedTimes;
+
 
     public StatisticsData(int lineNumber, int countedTimes) {
         this.lineNumber = lineNumber;
