@@ -51,12 +51,10 @@ public class BusLinePairsSeeker {
                             } else {
 
                                 SetRepeatChecker setRepeatChecker = new SetRepeatChecker();
-
                                 if (busLineSets.size() > 0) {
 
-                                    boolean setRepeats = setRepeatChecker.checkIfSetRepeats(busLineSets, foundFirstBusLine, foundSecondBusLine);
-
-                                    if ((foundFirstBusLine.getLineNumber() != foundSecondBusLine.getLineNumber()) && !setRepeats) {
+                                    boolean checkIfSetRepeats = setRepeatChecker.checkIfSetRepeats(busLineSets, foundFirstBusLine, foundSecondBusLine);
+                                    if ((foundFirstBusLine.getLineNumber() != foundSecondBusLine.getLineNumber()) && !checkIfSetRepeats) {
                                         busLineSets.add(new BusLineSet(foundFirstBusLine, busStopDeltaFirstLine.getBusStopName(), foundSecondBusLine));
                                     }
 

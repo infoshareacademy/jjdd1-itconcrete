@@ -4,13 +4,13 @@ import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 
 public class TimeDifferenceSet {
 
-    BusLine firstBusLine;
-    int startBusFirstLineTime;
-    int midBusFirstLineTime;
-    String midBusStop;
-    BusLine secondBusLine;
-    int midBusSecondLineTime;
-    int endBusSecondLineTime;
+    private BusLine firstBusLine;
+    private int startBusFirstLineTime;
+    private int midBusFirstLineTime;
+    private String midBusStop;
+    private BusLine secondBusLine;
+    private int midBusSecondLineTime;
+    private int endBusSecondLineTime;
 
     public TimeDifferenceSet(BusLine firstBusLine, int startBusFirstLineTime, int midBusFirstLineTime, String midBusStop, BusLine secondBusLine, int midBusSecondLineTime, int endBusSecondLineTime) {
         this.firstBusLine = firstBusLine;

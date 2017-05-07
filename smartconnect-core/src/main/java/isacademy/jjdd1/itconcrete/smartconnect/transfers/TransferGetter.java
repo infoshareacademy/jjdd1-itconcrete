@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class TransferDisplayer {
+public class TransferGetter {
 
     public void displayTransfers(int maxAmountOfResults) throws IllegalAccessException, NoSuchFieldException, IOException, URISyntaxException {
 

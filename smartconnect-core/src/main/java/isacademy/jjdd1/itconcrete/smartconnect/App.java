@@ -1,10 +1,5 @@
 package isacademy.jjdd1.itconcrete.smartconnect;
 
-import isacademy.jjdd1.itconcrete.smartconnect.analyzer.CompleteResult;
-import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
-import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
-import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultDisplayer;
-import isacademy.jjdd1.itconcrete.smartconnect.analyzer.CompleteResultGetter;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
 import isacademy.jjdd1.itconcrete.smartconnect.transfers.*;
@@ -12,8 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
 public class App {
 
@@ -47,8 +40,8 @@ public class App {
 //        completeResultDisplayer.displayCompleteResult(completeResultList);
 
 
-        TransferDisplayer transferDisplayer = new TransferDisplayer();
-        transferDisplayer.displayTransfers( 10);
+        TransferGetter transferGetter = new TransferGetter();
+        transferGetter.displayTransfers( 5);
 
     }
 }

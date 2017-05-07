@@ -5,8 +5,6 @@ import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class TransferSeeker {
@@ -66,45 +64,13 @@ public class TransferSeeker {
             }
         }
 
-//        transferResultConnectionList = sortResultsByTravelStart(transferResultConnectionList); //todo how?
+        ResultSorters resultSorters = new ResultSorters();
+        ResultShrinker resultShrinker = new ResultShrinker();
 
-        transferResultConnectionList = sortResultsByTravelEnd(transferResultConnectionList);
-        transferResultConnectionList = shrinkResults(transferResultConnectionList, maxAmountOfResults);
+        transferResultConnectionList = resultSorters.sortResultsByTravelStart(transferResultConnectionList);
+        transferResultConnectionList = resultShrinker.shrinkResults(transferResultConnectionList, maxAmountOfResults);
+        transferResultConnectionList = resultSorters.sortResultsByTravelEnd(transferResultConnectionList);
 
-        return transferResultConnectionList;
-    }
-
-    private List<TransferResultConnection> sortResultsByTravelStart(List<TransferResultConnection> transferResultConnectionList){
-
-        Collections.sort(transferResultConnectionList, new Comparator<TransferResultConnection>() {
-
-            public int compare(TransferResultConnection o2, TransferResultConnection o1) {
-                return o1.getDepartureFirstLine().compareTo(o2.getDepartureFirstLine());
-            }
-        });
-        return transferResultConnectionList;
-    }
-
-    private List<TransferResultConnection> sortResultsByTravelEnd(List<TransferResultConnection> transferResultConnectionList){
-
-        Collections.sort(transferResultConnectionList, new Comparator<TransferResultConnection>() {
-
-            public int compare(TransferResultConnection o1, TransferResultConnection o2) {
-                return o1.getArrivalSecondLine().compareTo(o2.getArrivalSecondLine());
-            }
-        });
-        return transferResultConnectionList;
-    }
-
-
-    private List<TransferResultConnection> shrinkResults(List<TransferResultConnection> transferResultConnectionList, int maxAmountOfResults) {
-
-        int size = transferResultConnectionList.size();
-        if (size > maxAmountOfResults) {
-            for (int i = size-maxAmountOfResults; i > 0; i--) {
-                transferResultConnectionList.remove(i);
-            }
-        }
         return transferResultConnectionList;
     }
 }

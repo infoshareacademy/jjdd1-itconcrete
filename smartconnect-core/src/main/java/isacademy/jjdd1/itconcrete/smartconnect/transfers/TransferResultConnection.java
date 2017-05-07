@@ -4,15 +4,15 @@ import java.time.LocalTime;
 
 public class TransferResultConnection {
 
-    String startBusStop;
-    int firstLineNumber;
-    LocalTime departureFirstLine;
-    LocalTime arrivalFirstLine;
-    String midBusStop;
-    int secondLine;
-    LocalTime departureSecondLine;
-    LocalTime arrivalSecondLine;
-    String endBusStop;
+    private String startBusStop;
+    private int firstLineNumber;
+    private LocalTime departureFirstLine;
+    private LocalTime arrivalFirstLine;
+    private String midBusStop;
+    private int secondLine;
+    private LocalTime departureSecondLine;
+    private LocalTime arrivalSecondLine;
+    private String endBusStop;
 
     public TransferResultConnection(String startBusStop, int firstLineNumber, LocalTime departureFirstLine,
                                     LocalTime arrivalFirstLine, String midBusStop, int secondLine,
