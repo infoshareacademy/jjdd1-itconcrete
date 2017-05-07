@@ -7,6 +7,7 @@ import isacademy.jjdd1.itconcrete.smartconnect.schedule.Direction;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.Route;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.RouteCollector;
 import org.apache.commons.io.FileUtils;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -74,8 +75,9 @@ public class RouteCollectorTest {
     @Test
     public void output_charset_for_data_imported_from_windows1250_is_UTF_8(){
         String firstStopNameFromRouteCollector = route.getArrayOfStops().get(0);
-        assertThat(stopNameWithoutUsingRouteCollector).isNotEqualTo(firstStopNameFromRouteCollector);
-        assertThat(stopNameWithoutUsingRouteCollector.substring(0,5)).isEqualTo(firstStopNameFromRouteCollector.substring(0,5));
-        assertThat(stopNameWithoutUsingRouteCollector.substring(5,6)).isNotEqualTo(firstStopNameFromRouteCollector.substring(5,6));
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(stopNameWithoutUsingRouteCollector).isNotEqualTo(firstStopNameFromRouteCollector);
+        softly.assertThat(stopNameWithoutUsingRouteCollector.substring(0,5)).isEqualTo(firstStopNameFromRouteCollector.substring(0,5));
+        softly.assertThat(stopNameWithoutUsingRouteCollector.substring(5,6)).isNotEqualTo(firstStopNameFromRouteCollector.substring(5,6));
     }
 }
