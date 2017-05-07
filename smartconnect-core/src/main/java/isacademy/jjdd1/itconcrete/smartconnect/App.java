@@ -46,11 +46,9 @@ public class App {
 //        completeResultList = completeResultGetter.getCompleteResult("klonowa", "06:00", "22:00", 3, allBusLines);
 //        completeResultDisplayer.displayCompleteResult(completeResultList);
 
-        CalendarParser calendarParser = new CalendarParser();
-        LinkedList<Journey> journeys = calendarParser.parseFileSortEventsAddHome("klonowa", "08:00", "17:00");
 
         TransferDisplayer transferDisplayer = new TransferDisplayer();
-        transferDisplayer.displayTransfers(journeys, 10);
+        transferDisplayer.displayTransfers( 10);
 
     }
 }

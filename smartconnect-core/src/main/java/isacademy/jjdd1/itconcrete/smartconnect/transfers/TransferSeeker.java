@@ -19,7 +19,6 @@ public class TransferSeeker {
         LocalTime endOfFinishedEvent = journey.getEndOfFinishedEvent();
         final int TIME_BEETWEEN_LINES = 5;
 
-
         for (TimeDifferenceSet timeDifferenceSet : timeDifferenceSetList) {
 
             BusLine firstBusLine = timeDifferenceSet.getFirstBusLine();
@@ -53,7 +52,11 @@ public class TransferSeeker {
 
                         if ((endFirstLineStartSecondLine >= TIME_BEETWEEN_LINES) && (finishedEventStartFirstLine >= 0)) {
 
-                            transferResultConnectionList.add(new TransferResultConnection(firstBusLine.getLineNumber(), departureFirstLine, arrivalFirstLine, secondBusLine.getLineNumber(), departureSecondLine, arrivalSecondLine));
+                            String startBusStop = journey.getStartBusStop();
+                            String midBusStop = timeDifferenceSet.getMidBusStop();
+                            String endBusStop = journey.getEndBusStop();
+
+                            transferResultConnectionList.add(new TransferResultConnection(startBusStop, firstBusLine.getLineNumber(), departureFirstLine, arrivalFirstLine, midBusStop, secondBusLine.getLineNumber(), departureSecondLine, arrivalSecondLine, endBusStop));
 
 //                            System.out.println(endOfFinishedEvent + " " + startOfDestinedEvent + " " + departureFirstLine + " " + arrivalFirstLine + " " + departureSecondLine + " " + arrivalSecondLine);
 

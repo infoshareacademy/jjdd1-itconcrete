@@ -7,14 +7,16 @@ public class TimeDifferenceSet {
     BusLine firstBusLine;
     int startBusFirstLineTime;
     int midBusFirstLineTime;
+    String midBusStop;
     BusLine secondBusLine;
     int midBusSecondLineTime;
     int endBusSecondLineTime;
 
-    public TimeDifferenceSet(BusLine firstBusLine, int startBusFirstLineTime, int midBusFirstLineTime, BusLine secondBusLine, int midBusSecondLineTime, int endBusSecondLineTime) {
+    public TimeDifferenceSet(BusLine firstBusLine, int startBusFirstLineTime, int midBusFirstLineTime, String midBusStop, BusLine secondBusLine, int midBusSecondLineTime, int endBusSecondLineTime) {
         this.firstBusLine = firstBusLine;
         this.startBusFirstLineTime = startBusFirstLineTime;
         this.midBusFirstLineTime = midBusFirstLineTime;
+        this.midBusStop = midBusStop;
         this.secondBusLine = secondBusLine;
         this.midBusSecondLineTime = midBusSecondLineTime;
         this.endBusSecondLineTime = endBusSecondLineTime;
@@ -44,6 +46,14 @@ public class TimeDifferenceSet {
         this.midBusFirstLineTime = midBusFirstLineTime;
     }
 
+    public String getMidBusStop() {
+        return midBusStop;
+    }
+
+    public void setMidBusStop(String midBusStop) {
+        this.midBusStop = midBusStop;
+    }
+
     public BusLine getSecondBusLine() {
         return secondBusLine;
     }
@@ -71,10 +81,11 @@ public class TimeDifferenceSet {
     @Override
     public String toString() {
         return "TimeDifferenceSet{" +
-                "firstBusLine=" + firstBusLine.getLineNumber() +
+                "firstBusLine=" + firstBusLine +
                 ", startBusFirstLineTime=" + startBusFirstLineTime +
                 ", midBusFirstLineTime=" + midBusFirstLineTime +
-                ", secondBusLine=" + secondBusLine.getLineNumber() +
+                ", midBusStop='" + midBusStop + '\'' +
+                ", secondBusLine=" + secondBusLine +
                 ", midBusSecondLineTime=" + midBusSecondLineTime +
                 ", endBusSecondLineTime=" + endBusSecondLineTime +
                 '}' + "\n";

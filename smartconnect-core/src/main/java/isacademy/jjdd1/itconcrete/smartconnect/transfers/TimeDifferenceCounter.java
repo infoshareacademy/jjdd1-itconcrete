@@ -33,7 +33,7 @@ public class TimeDifferenceCounter {
             int timeEndBusStopSecondLine = timeDifference.calculateTimeDifference(endBusStop, secondBusStopDeltas);
 
             timeDifferenceSetList.add(new TimeDifferenceSet(firstBusLine, timeStartBusStopFirstLine,
-                    timeMidBusStopFirstLine, secondBusLine, timeMidBusStopSecondLine, timeEndBusStopSecondLine));
+                    timeMidBusStopFirstLine, midBusStop, secondBusLine, timeMidBusStopSecondLine, timeEndBusStopSecondLine));
         }
 
 //        System.out.println(timeDifferenceSetList); //fixme gives "0" deltas

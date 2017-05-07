@@ -4,20 +4,36 @@ import java.time.LocalTime;
 
 public class TransferResultConnection {
 
+    String startBusStop;
     int firstLineNumber;
     LocalTime departureFirstLine;
     LocalTime arrivalFirstLine;
+    String midBusStop;
     int secondLine;
     LocalTime departureSecondLine;
     LocalTime arrivalSecondLine;
+    String endBusStop;
 
-    public TransferResultConnection(int firstLineNumber, LocalTime departureFirstLine, LocalTime arrivalFirstLine, int secondLine, LocalTime departureSecondLine, LocalTime arrivalSecondLine) {
+    public TransferResultConnection(String startBusStop, int firstLineNumber, LocalTime departureFirstLine,
+                                    LocalTime arrivalFirstLine, String midBusStop, int secondLine,
+                                    LocalTime departureSecondLine, LocalTime arrivalSecondLine, String endBusStop) {
+        this.startBusStop = startBusStop;
         this.firstLineNumber = firstLineNumber;
         this.departureFirstLine = departureFirstLine;
         this.arrivalFirstLine = arrivalFirstLine;
+        this.midBusStop = midBusStop;
         this.secondLine = secondLine;
         this.departureSecondLine = departureSecondLine;
         this.arrivalSecondLine = arrivalSecondLine;
+        this.endBusStop = endBusStop;
+    }
+
+    public String getStartBusStop() {
+        return startBusStop;
+    }
+
+    public void setStartBusStop(String startBusStop) {
+        this.startBusStop = startBusStop;
     }
 
     public int getFirstLineNumber() {
@@ -44,6 +60,14 @@ public class TransferResultConnection {
         this.arrivalFirstLine = arrivalFirstLine;
     }
 
+    public String getMidBusStop() {
+        return midBusStop;
+    }
+
+    public void setMidBusStop(String midBusStop) {
+        this.midBusStop = midBusStop;
+    }
+
     public int getSecondLine() {
         return secondLine;
     }
@@ -68,16 +92,26 @@ public class TransferResultConnection {
         this.arrivalSecondLine = arrivalSecondLine;
     }
 
+    public String getEndBusStop() {
+        return endBusStop;
+    }
+
+    public void setEndBusStop(String endBusStop) {
+        this.endBusStop = endBusStop;
+    }
 
     @Override
     public String toString() {
         return "TransferResultConnection{" +
-                "firstLineNumber=" + firstLineNumber +
+                "startBusStop='" + startBusStop + '\'' +
+                ", firstLineNumber=" + firstLineNumber +
                 ", departureFirstLine=" + departureFirstLine +
                 ", arrivalFirstLine=" + arrivalFirstLine +
+                ", midBusStop='" + midBusStop + '\'' +
                 ", secondLine=" + secondLine +
                 ", departureSecondLine=" + departureSecondLine +
                 ", arrivalSecondLine=" + arrivalSecondLine +
+                ", endBusStop='" + endBusStop + '\'' +
                 '}' + "\n";
     }
 }
