@@ -63,7 +63,6 @@ class BusLinePairsSeeker {
         //fixme sa bledy filtracji wynikow? metody na sprawdzenie czy poprawne?
 
         BusLineSetExtended busLineSetExtended = new BusLineSetExtended(startBusStop, endBusStop, busLineSets);
-        System.out.println("busLineSetExtended = " + busLineSetExtended);
 
         return busLineSetExtended;
     }

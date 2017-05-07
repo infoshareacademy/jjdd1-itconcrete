@@ -9,20 +9,20 @@ class TransferResultConnection {
     private LocalTime departureFirstLine;
     private LocalTime arrivalFirstLine;
     private String midBusStop;
-    private int secondLine;
+    private int secondLineNumber;
     private LocalTime departureSecondLine;
     private LocalTime arrivalSecondLine;
     private String endBusStop;
 
     public TransferResultConnection(String startBusStop, int firstLineNumber, LocalTime departureFirstLine,
-                                    LocalTime arrivalFirstLine, String midBusStop, int secondLine,
+                                    LocalTime arrivalFirstLine, String midBusStop, int secondLineNumber,
                                     LocalTime departureSecondLine, LocalTime arrivalSecondLine, String endBusStop) {
         this.startBusStop = startBusStop;
         this.firstLineNumber = firstLineNumber;
         this.departureFirstLine = departureFirstLine;
         this.arrivalFirstLine = arrivalFirstLine;
         this.midBusStop = midBusStop;
-        this.secondLine = secondLine;
+        this.secondLineNumber = secondLineNumber;
         this.departureSecondLine = departureSecondLine;
         this.arrivalSecondLine = arrivalSecondLine;
         this.endBusStop = endBusStop;
@@ -68,12 +68,12 @@ class TransferResultConnection {
         this.midBusStop = midBusStop;
     }
 
-    public int getSecondLine() {
-        return secondLine;
+    public int getSecondLineNumber() {
+        return secondLineNumber;
     }
 
-    public void setSecondLine(int secondLine) {
-        this.secondLine = secondLine;
+    public void setSecondLineNumber(int secondLineNumber) {
+        this.secondLineNumber = secondLineNumber;
     }
 
     public LocalTime getDepartureSecondLine() {
@@ -108,7 +108,7 @@ class TransferResultConnection {
                 ", departureFirstLine=" + departureFirstLine +
                 ", arrivalFirstLine=" + arrivalFirstLine +
                 ", midBusStop='" + midBusStop + '\'' +
-                ", secondLine=" + secondLine +
+                ", secondLineNumber=" + secondLineNumber +
                 ", departureSecondLine=" + departureSecondLine +
                 ", arrivalSecondLine=" + arrivalSecondLine +
                 ", endBusStop='" + endBusStop + '\'' +
