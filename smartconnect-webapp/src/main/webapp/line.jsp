@@ -26,6 +26,27 @@
 </div>
 
 
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a  href= "/smartconnect_form" role="button" class="btn btn-info btn-xs" >
+                <span class="previous" aria-hidden="true"></span>
+                Back to main page
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <nav aria-label="footer">
+        <ul class="pager">
+            <li class="previous"><a href="/smartconnect_form"><span aria-hidden="true">&larr;  </span>Seek again</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+
 <script src="../js/Chart.bundle.js"></script>
 <script src="../js/jquery-3.2.1.js"></script>
 <script src="../js/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
@@ -86,9 +107,3 @@
 </body>
 </html>
 
-yAxes: [{
-scaleLabel: {
-display: true,
-labelString: 'probability'
-}
-}]

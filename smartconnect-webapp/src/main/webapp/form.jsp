@@ -114,7 +114,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-header navbar-right">
-            <a  href= "/line_popularity" role="button" class="btn btn-primary btn-xs" >
+            <a  href= "/line_popularity" role="button" class="btn btn-info btn-xs" >
                 <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
                 Line Popularity Report
             </a>
