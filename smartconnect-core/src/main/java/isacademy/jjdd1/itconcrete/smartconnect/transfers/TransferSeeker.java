@@ -66,8 +66,8 @@ class TransferSeeker {
         ResultShrinker resultShrinker = new ResultShrinker();
 
         transferResultConnectionList = resultSorters.sortResultsByTravelStart(transferResultConnectionList);
-        transferResultConnectionList = resultShrinker.shrinkResults(transferResultConnectionList, maxAmountOfResults);
         transferResultConnectionList = resultSorters.sortResultsByTravelEnd(transferResultConnectionList);
+        transferResultConnectionList = resultShrinker.shrinkResults(transferResultConnectionList, maxAmountOfResults);
 
         return transferResultConnectionList;
     }
