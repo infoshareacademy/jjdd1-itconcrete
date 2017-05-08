@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN" name="smartconnect">
+<Configuration status="TRACE" name="smartconnect">
 
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
@@ -53,11 +53,11 @@
             <AppenderRef ref="Console_question_asker" />
         </Logger>
 
-        <Logger name="isacademy.jjdd1.itconcrete.smartconnect" level="debug" additivity="false">
+        <Logger name="isacademy.jjdd1.itconcrete.smartconnect" level="trace" additivity="true">
             <AppenderRef ref="MonitoringRollingFile"/>
         </Logger>
 
-        <Root level="warn">
+        <Root level="trace">
             <AppenderRef ref="Console"/>
         </Root>
     </Loggers>
