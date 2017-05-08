@@ -28,6 +28,7 @@ public class StatisticsCollector {
                     statisticsData.setCountedTimes(statisticsData.getCountedTimes() + 1);
                     statisticsCollection.put(lineNumber, statisticsData);
 
+
                 } else {
                     statisticsCollection.put(lineNumber, new StatisticsData(lineNumber, 1));
                 }

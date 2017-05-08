@@ -5,7 +5,7 @@
 <hibernate-configuration>
     <session-factory>
 
-        <property name="connection.url">jdbc:mysql://0.0.0.0:32769/smartconnect</property>
+        <property name="connection.url">jdbc:mysql://0.0.0.0:32768/itconcrete</property>
         <property name="connection.username">root</property>
         <property name="connection.password">pass</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
@@ -20,9 +20,9 @@
         <property name="connection.pool_size">1</property>
         <property name="current_session_context_class">thread</property>
 
-        <mapping class="isacademy.jjdd1.itconcrete.smartconnect.database.DBPromotedLine" />
-
-
+        <mapping class="isacademy.jjdd1.itconcrete.smartconnect.database.PromotedLine" />
+        <mapping class="isacademy.jjdd1.itconcrete.smartconnect.database.HomeBusStop" />
+        <mapping class="isacademy.jjdd1.itconcrete.smartconnect.calendar.Event" />
 
     </session-factory>
 </hibernate-configuration>
