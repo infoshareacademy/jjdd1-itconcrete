@@ -1,6 +1,7 @@
 package isacademy.jjdd1.itconcrete.smartconnect.displayer;
 
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.ResultConnection;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,5 +1,5 @@
 package isacademy.jjdd1.itconcrete.smartconnect.displayer;
-import isacademy.jjdd1.itconcrete.smartconnect.analyzer.BusLineSeeker;
+
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

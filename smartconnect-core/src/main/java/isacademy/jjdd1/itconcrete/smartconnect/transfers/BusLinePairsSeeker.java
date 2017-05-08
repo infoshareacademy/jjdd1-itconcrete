@@ -3,7 +3,6 @@ package isacademy.jjdd1.itconcrete.smartconnect.transfers;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusStopDeltas;
-import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -62,8 +61,6 @@ class BusLinePairsSeeker {
                 }
             }
         }
-
-        //fixme sa bledy filtracji wynikow? metody na sprawdzenie czy poprawne?
 
         BusLineSetExtended busLineSetExtended = new BusLineSetExtended(startBusStop, endBusStop, busLineSets);
 

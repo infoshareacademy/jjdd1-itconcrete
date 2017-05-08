@@ -2,7 +2,7 @@ package isacademy.jjdd1.itconcrete.smartconnect.displayer;
 
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.CompleteResult;
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.ResultConnection;
-import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
+
 import java.time.LocalTime;
 
 
@@ -26,7 +26,7 @@ public class DisplayConnection {
 
         String fromBusStop = completeResult.getStartBusStop();
         String toBusStop = completeResult.getEndBusStop();
-        String eventHeaderText = "From bus stop " + fromBusStop + " to bus stop " + toBusStop + " you can take lines:";
+        String eventHeaderText = "From " + fromBusStop + " to " + toBusStop + " you can take lines:";
 
         return eventHeaderText;
     }
