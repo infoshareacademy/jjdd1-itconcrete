@@ -41,7 +41,7 @@ public class App {
 
 
         TransferGetter transferGetter = new TransferGetter();
-        transferGetter.displayTransfers( 3);
+        transferGetter.displayTransfers( 6);
 
     }
 }

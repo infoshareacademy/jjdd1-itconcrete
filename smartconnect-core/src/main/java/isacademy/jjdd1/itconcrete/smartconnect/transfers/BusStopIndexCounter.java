@@ -12,7 +12,10 @@ class BusStopIndexCounter {
 
         for (int i = 0; i < busStopDeltas.size()-1; i++) {
 
-            if (busStopDeltas.get(i).getBusStopName().toLowerCase().equals(busStop.toLowerCase())) {
+            boolean busStopNamesIdentical = busStopDeltas.get(i).getBusStopName().toLowerCase().equals(busStop.toLowerCase());
+            boolean lineRidesBus = busStopDeltas.get(i).getTimeDifference() >= 0;
+
+            if (busStopNamesIdentical && lineRidesBus) {
                 index = i;
             }
         }

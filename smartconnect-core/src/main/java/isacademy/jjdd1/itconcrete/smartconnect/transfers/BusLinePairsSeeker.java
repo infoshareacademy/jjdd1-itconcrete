@@ -11,11 +11,9 @@ import java.util.List;
 
 class BusLinePairsSeeker {
 
-    public BusLineSetExtended seekBusLinePairs(Journey journey) throws IOException {
+    public BusLineSetExtended seekBusLinePairs(Journey journey, ArrayList<BusLine> allBusLines) throws IOException {
 
-        ScheduleParser sp = new ScheduleParser();
-        sp.loadData();
-        ArrayList<BusLine> allBusLines = sp.getArrayOfBusLines();
+
         String startBusStop = journey.getStartBusStop();
         String endBusStop = journey.getEndBusStop();
 
@@ -39,6 +37,10 @@ class BusLinePairsSeeker {
 
                         String midBusStop = busStopDeltaFirstLine.getBusStopName();
 
+                        boolean firstLineRidesMidStop = (busStopDeltaFirstLine.getTimeDifference() >=0);
+                        boolean secondLineRidesMidStop = (busStopDeltaFirstLine.getTimeDifference() >=0);
+                        boolean bothLinesRideMidBusStop = firstLineRidesMidStop && secondLineRidesMidStop;
+
                         DirectionChecker directionChecker = new DirectionChecker();
                         boolean checkedDirection = directionChecker.checkDirection(firstLineDeltasList, secondLineDeltasList, startBusStop, midBusStop, endBusStop);
 
@@ -51,7 +53,8 @@ class BusLinePairsSeeker {
                         boolean secondLineRidesBusStop = busStopDeltaSecondLine.getTimeDifference() >= 0;
 
 
-                        if (checkedDirection && !setExists && !lineNumbersIdentical && sameBusStop && firstLineRidesBusStop && secondLineRidesBusStop) {
+                        if (checkedDirection && !setExists && !lineNumbersIdentical && sameBusStop
+                                && firstLineRidesBusStop && secondLineRidesBusStop && bothLinesRideMidBusStop) {
 
                             busLineSets.add(new BusLineSet(foundFirstBusLine, midBusStop, foundSecondBusLine));
                         }

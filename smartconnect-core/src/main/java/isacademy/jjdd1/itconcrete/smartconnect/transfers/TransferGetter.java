@@ -3,6 +3,8 @@ package isacademy.jjdd1.itconcrete.smartconnect.transfers;
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.ResultConnection;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
+import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
+import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -16,12 +18,15 @@ public class TransferGetter {
     public void displayTransfers(int maxAmountOfResults) throws IllegalAccessException, NoSuchFieldException, IOException, URISyntaxException {
 
         CalendarParser calendarParser = new CalendarParser();
-        LinkedList<Journey> journeys = calendarParser.parseFileSortEventsAddHome("klonowa", "08:00", "17:00");
+        LinkedList<Journey> journeys = calendarParser.parseFileSortEventsAddHome("klonowa", "08:00", "20:00");
+        ScheduleParser sp = new ScheduleParser();
+        sp.loadData();
+        ArrayList<BusLine> allBusLines = sp.getArrayOfBusLines();
 
         for (int i = 0; i < journeys.size(); i++) {
 
             BusLinePairsSeeker busLinePairsSeeker = new BusLinePairsSeeker();
-            BusLineSetExtended busLineSetExtended = busLinePairsSeeker.seekBusLinePairs(journeys.get(i));
+            BusLineSetExtended busLineSetExtended = busLinePairsSeeker.seekBusLinePairs(journeys.get(i), allBusLines);
 
             TimeDifferenceCounter timeDifferenceCounter = new TimeDifferenceCounter();
             List<TimeDifferenceSet> timeDifferenceSetList = timeDifferenceCounter.calculateTimeDifferenceSet(busLineSetExtended);

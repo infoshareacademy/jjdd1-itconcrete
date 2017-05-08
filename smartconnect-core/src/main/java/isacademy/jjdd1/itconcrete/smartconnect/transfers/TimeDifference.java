@@ -10,7 +10,7 @@ class TimeDifference {
 
         int timeDifference = 0;
         for (BusStopDeltas busStopDeltas : deltasList) {
-            if (busStopDeltas.getTimeDifference() > 0) {
+            if (busStopDeltas.getTimeDifference() >= 0) {
                 timeDifference += busStopDeltas.getTimeDifference();
             }
 
