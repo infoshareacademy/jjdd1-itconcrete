@@ -1,7 +1,6 @@
 package isacademy.jjdd1.itconcrete.smartconnect.calendar;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
-import isacademy.jjdd1.itconcrete.smartconnect.util.HibernateUtil;
-import org.hibernate.Session;
+
 
 import java.io.*;
 import java.net.URISyntaxException;
@@ -15,7 +14,7 @@ import java.util.LinkedList;
 
 public class CalendarParser {
 
-    private static Session session;
+
 
 
     DateTimeFormatter parser = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss");
@@ -56,8 +55,6 @@ public class CalendarParser {
 
         while ((line = bufferedReader.readLine()) != null) {
 
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
 
             if (line.startsWith("BEGIN:VEVENT")) {
                 event = new Event();
@@ -79,8 +76,7 @@ public class CalendarParser {
             }
             if (line.startsWith("END:VEVENT")) {
                 events.add(event);
-                session.save(event);
-                session.getTransaction().commit();
+
             }
         }
 

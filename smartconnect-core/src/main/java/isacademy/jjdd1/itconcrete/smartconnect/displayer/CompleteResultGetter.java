@@ -1,11 +1,14 @@
 package isacademy.jjdd1.itconcrete.smartconnect.displayer;
 
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.*;
+import isacademy.jjdd1.itconcrete.smartconnect.calendar.BusLineStatistics1;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.statistics.StatisticsCollector;
 import isacademy.jjdd1.itconcrete.smartconnect.statistics.StatisticsData;
+import isacademy.jjdd1.itconcrete.smartconnect.util.HibernateUtil;
+import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,6 +21,7 @@ import java.util.List;
 public class CompleteResultGetter {
 
     Logger LOGGER = LoggerFactory.getLogger(CompleteResultGetter.class);
+    private static Session session;
 
 
     public List<CompleteResult> getCompleteResult(String homeBusStop, String timeOfLeavingHome, String timeOfArrivingHome, int maxAmountOfResults, ArrayList<BusLine> allBusLines) throws IOException, URISyntaxException {
@@ -49,6 +53,12 @@ public class CompleteResultGetter {
         StatisticsCollector statisticsCollector = new StatisticsCollector();
         List<StatisticsData> stats = statisticsCollector.getStatisticsData(completeResultList);
         LOGGER.trace("collected statistics {}", stats);
+        session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        for(StatisticsData currentStatisticData: stats) {
+            session.save(new BusLineStatistics1(currentStatisticData.getLineNumber(), currentStatisticData.getCountedTimes()));
+        }
+        session.getTransaction().commit();
         return completeResultList;
     }
 }

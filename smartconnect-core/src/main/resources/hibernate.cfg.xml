@@ -22,7 +22,7 @@
 
         <mapping class="isacademy.jjdd1.itconcrete.smartconnect.database.PromotedLine" />
         <mapping class="isacademy.jjdd1.itconcrete.smartconnect.database.HomeBusStop" />
-        <mapping class="isacademy.jjdd1.itconcrete.smartconnect.calendar.Event" />
+        <mapping class="isacademy.jjdd1.itconcrete.smartconnect.calendar.BusLineStatistics1" />
 
     </session-factory>
 </hibernate-configuration>
