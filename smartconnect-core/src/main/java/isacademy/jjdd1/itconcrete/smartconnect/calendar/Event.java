@@ -3,12 +3,19 @@ package isacademy.jjdd1.itconcrete.smartconnect.calendar;
 
 import java.time.LocalDateTime;
 
+
 public class Event {
 
+
     private String location;
+
     private String summary;
+
     private boolean confirmed;
+
+
     private LocalDateTime startTime;
+
     private LocalDateTime endTime;
 
     @Override

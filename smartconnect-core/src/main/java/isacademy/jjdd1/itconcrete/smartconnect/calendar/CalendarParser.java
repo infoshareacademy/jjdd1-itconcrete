@@ -1,6 +1,7 @@
 package isacademy.jjdd1.itconcrete.smartconnect.calendar;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
 
+
 import java.io.*;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
@@ -12,6 +13,9 @@ import java.util.LinkedList;
 
 
 public class CalendarParser {
+
+
+
 
     DateTimeFormatter parser = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss");
 
@@ -48,7 +52,9 @@ public class CalendarParser {
 
         String line;
 
+
         while ((line = bufferedReader.readLine()) != null) {
+
 
             if (line.startsWith("BEGIN:VEVENT")) {
                 event = new Event();
@@ -70,6 +76,7 @@ public class CalendarParser {
             }
             if (line.startsWith("END:VEVENT")) {
                 events.add(event);
+
             }
         }
 
