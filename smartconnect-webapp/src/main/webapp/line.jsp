@@ -13,9 +13,9 @@
 
 <div class="container">
     <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid"   style="position: fixed; left: 50%; transform: translate(-50%);">
-            <div class="navbar-header">
-                <h2><span class="label label-info">Smartconnect - Line popularity chart</span></h2>
+        <div class="container-fluid">
+            <div class="navbar-header" style="padding-bottom: 10px;">
+                <h2><span class="label label-info">Smartconnect</span></h2>
             </div>
         </div>
     </nav>
@@ -78,6 +78,11 @@
             }]
         },
         options: {
+            title:{
+                display: true,
+                fontSize: 20,
+                text: 'Line popularity chart',
+            },
             scales: {
                 yAxes: [{
                     scaleLabel: {
