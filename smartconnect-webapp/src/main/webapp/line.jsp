@@ -13,15 +13,15 @@
 
 <div class="container">
     <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header" style="padding-bottom: 10px;">
+        <div class="container-fluid"   style="position: fixed; left: 50%; transform: translate(-50%);">
+            <div class="navbar-header">
                 <h2><span class="label label-info">Smartconnect - Line popularity chart</span></h2>
             </div>
         </div>
     </nav>
 </div>
 
-<div class="chart" style="position:absolute; top:60px; left:10px; width:500px; height:500px;">
+<div class="chart" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%);">
     <canvas id="myChart1" width="400" height="400"></canvas>
 </div>
 
@@ -29,22 +29,17 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a  href= "/smartconnect_form" role="button" class="btn btn-info btn-xs" >
-                <span class="previous" aria-hidden="true"></span>
-                Back to main page
-            </a>
+            <nav aria-label="footer">
+                <ul class="pager">
+                <li class="previous"><a href="/smartconnect_form">
+                    <span aria-hidden="true">&larr;  </span>Back to main page</a>
+                </li>
+                </ul>
+                </nav>
+
         </div>
     </div>
 </nav>
-
-<div class="container">
-    <nav aria-label="footer">
-        <ul class="pager">
-            <li class="previous"><a href="/smartconnect_form"><span aria-hidden="true">&larr;  </span>Seek again</a>
-            </li>
-        </ul>
-    </nav>
-</div>
 
 
 <script src="../js/Chart.bundle.js"></script>
