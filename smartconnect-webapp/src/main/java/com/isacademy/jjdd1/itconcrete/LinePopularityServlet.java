@@ -1,9 +1,12 @@
 package com.isacademy.jjdd1.itconcrete;
 
 
+import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
+import isacademy.jjdd1.itconcrete.smartconnect.statistics.FakeStatisticGenerator;
 import isacademy.jjdd1.itconcrete.smartconnect.statistics.StatisticsData;
 
 
+import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -19,6 +22,12 @@ import java.util.ArrayList;
 @MultipartConfig
 public class LinePopularityServlet extends HttpServlet {
 
+    @Inject
+    ScheduleParser scheduleParser;
+
+    @Inject
+    FakeStatisticGenerator fakeStatisticGenerator;
+
 
     private ArrayList<StatisticsData> statistics;
 
@@ -26,14 +35,8 @@ public class LinePopularityServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
 
-        statistics = new ArrayList<>();
-        statistics.add(new StatisticsData(136,12));
-        statistics.add(new StatisticsData(110,6));
-        statistics.add(new StatisticsData(12,28));
-        statistics.add(new StatisticsData(8,5));
-        statistics.add(new StatisticsData(122,3));
-        statistics.add(new StatisticsData(6,23));
-
+        statistics = fakeStatisticGenerator.getStatistics();
+        statistics.sort((a, b) -> ((Integer)a.getLineNumber()).compareTo(b.getLineNumber()));
 
     }
 

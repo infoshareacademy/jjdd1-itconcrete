@@ -1,7 +1,6 @@
 package com.isacademy.jjdd1.itconcrete;
 
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.CompleteResult;
-import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultDisplayer;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultGetter;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
