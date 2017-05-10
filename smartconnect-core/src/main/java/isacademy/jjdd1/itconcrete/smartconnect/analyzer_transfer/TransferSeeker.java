@@ -1,6 +1,7 @@
-package isacademy.jjdd1.itconcrete.smartconnect.transfers;
+package isacademy.jjdd1.itconcrete.smartconnect.analyzer_transfer;
 
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
+import isacademy.jjdd1.itconcrete.smartconnect.result.TransferResultConnection;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 
 import java.time.LocalTime;
@@ -8,7 +9,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
-class TransferSeeker {
+public class TransferSeeker {
 
     public List<TransferResultConnection> seekTransfer(List<TimeDifferenceSet> timeDifferenceSetList, Journey journey, int maxAmountOfResults) {
 
@@ -62,12 +63,12 @@ class TransferSeeker {
             }
         }
 
-        ResultSorters resultSorters = new ResultSorters();
-        ResultShrinker resultShrinker = new ResultShrinker();
+        TransferSorter transferSorter = new TransferSorter();
+        TransferShrinker transferShrinker = new TransferShrinker();
 
-        transferResultConnectionList = resultSorters.sortResultsByTravelStart(transferResultConnectionList);
-        transferResultConnectionList = resultSorters.sortResultsByTravelEnd(transferResultConnectionList);
-        transferResultConnectionList = resultShrinker.shrinkResults(transferResultConnectionList, maxAmountOfResults);
+        transferResultConnectionList = transferSorter.sortTransferResultsByTravelStart(transferResultConnectionList);
+        transferResultConnectionList = transferSorter.sortTransferResultsByTravelEnd(transferResultConnectionList);
+        transferResultConnectionList = transferShrinker.shrinkTransferResults(transferResultConnectionList, (maxAmountOfResults/2));
 
         return transferResultConnectionList;
     }

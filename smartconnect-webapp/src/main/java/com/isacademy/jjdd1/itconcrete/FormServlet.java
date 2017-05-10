@@ -1,6 +1,6 @@
 package com.isacademy.jjdd1.itconcrete;
 
-import isacademy.jjdd1.itconcrete.smartconnect.analyzer.BusLineSeeker;
+import isacademy.jjdd1.itconcrete.smartconnect.analyzer_direct.BusLineSeeker;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;

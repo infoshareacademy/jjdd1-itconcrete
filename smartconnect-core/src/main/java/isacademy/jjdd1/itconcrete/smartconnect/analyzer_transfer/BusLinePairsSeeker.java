@@ -1,4 +1,4 @@
-package isacademy.jjdd1.itconcrete.smartconnect.transfers;
+package isacademy.jjdd1.itconcrete.smartconnect.analyzer_transfer;
 
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-class BusLinePairsSeeker {
+public class BusLinePairsSeeker {
 
     public BusLineSetExtended seekBusLinePairs(Journey journey, ArrayList<BusLine> allBusLines) throws IOException {
 

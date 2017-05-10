@@ -1,4 +1,4 @@
-package isacademy.jjdd1.itconcrete.smartconnect.transfers;
+package isacademy.jjdd1.itconcrete.smartconnect.analyzer_transfer;
 
 import java.util.List;
 

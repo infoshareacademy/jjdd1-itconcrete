@@ -1,4 +1,4 @@
-package isacademy.jjdd1.itconcrete.smartconnect.analyzer;
+package isacademy.jjdd1.itconcrete.smartconnect.analyzer_direct;
 
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 

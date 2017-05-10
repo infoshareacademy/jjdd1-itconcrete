@@ -1,8 +1,11 @@
 package isacademy.jjdd1.itconcrete.smartconnect.displayer;
 
-import isacademy.jjdd1.itconcrete.smartconnect.analyzer.CompleteResult;
-import isacademy.jjdd1.itconcrete.smartconnect.analyzer.ResultConnection;
-import isacademy.jjdd1.itconcrete.smartconnect.transfers.TransferGetter;
+import isacademy.jjdd1.itconcrete.smartconnect.analyzer_transfer.CompleteTransfer;
+import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
+import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteDirectResult;
+import isacademy.jjdd1.itconcrete.smartconnect.result.DirectResultConnection;
+import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteTransferResult;
+import isacademy.jjdd1.itconcrete.smartconnect.result.TransferResultConnection;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -10,33 +13,44 @@ import java.util.List;
 
 public class CompleteResultDisplayer {
 
-    public void displayCompleteResult(List<CompleteResult> completeResultList, int maxAmountOfResults) throws IOException, URISyntaxException, NoSuchFieldException, IllegalAccessException {
+    public void displayCompleteResult(List<Journey> journeys, List<CompleteDirectResult> completeDirectResultList, List<CompleteTransferResult> completeTransferResultList) throws IOException, URISyntaxException, NoSuchFieldException, IllegalAccessException {
 
         DisplayConnection displayConnection = new DisplayConnection();
 
-        for (int i = 0; i < completeResultList.size(); i++) {
+        for (int i = 0; i < journeys.size(); i++) {
 
-            System.out.println("\nJourney number " + (i + 1) + ": ");
+            System.out.println(displayConnection.displayEventHeader(journeys.get(i)));
 
-            String textForEachEvent = displayConnection.displayEventHeader(completeResultList.get(i));
-            System.out.println(textForEachEvent);
 
-            List<ResultConnection> resultConnections = completeResultList.get(i).getResultConnectionList();
+            CompleteDirectResult completeDirectResult = completeDirectResultList.get(i);
 
-            for (ResultConnection resultConnection : resultConnections) {
-                String textForEachResult = displayConnection.displayingConnection(resultConnection);
-                System.out.println(textForEachResult);
+            List<DirectResultConnection> directResultConnectionList = completeDirectResult.getDirectResultConnectionList();
+
+            for (DirectResultConnection directResultConnection : directResultConnectionList) {
+                System.out.println(displayConnection.displayingDirectConnection(directResultConnection));
             }
 
-            TransferGetter transferGetter = new TransferGetter();
-            int transferResultListSize = transferGetter.getTransfers(maxAmountOfResults, i);
+            CompleteTransferResult completeTransferResult = completeTransferResultList.get(i);
 
-            boolean noResultsForBothMethods = (resultConnections.size() == 0) && (transferResultListSize == 0);
+            List<TransferResultConnection> transferResultConnectionList = completeTransferResult.getTransferResultConnectionList();
 
-            if (noResultsForBothMethods) {
+            for (TransferResultConnection transferResultConnection : transferResultConnectionList) {
 
-                System.out.println("Sorry, there is no connection for this event.");
+                System.out.println(displayConnection.displayingTransferConnection(transferResultConnection));
             }
+
+            System.out.println("");
+
         }
-    }
+
+
+
+//            if (!(sizeDirect && sizeTransfer)) {
+//
+//                System.out.println("Sorry, there is no connection for this event.");
+//            }
+
+        }
+
+
 }

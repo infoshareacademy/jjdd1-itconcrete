@@ -23,7 +23,7 @@
 
 <div class="container" style="padding-top: 75px;"></div>
 
-<c:forEach items="${completeResultList}" var="journey">
+<c:forEach items="${completeDirectResultList}" var="journey">
 
     <div class="container" style="width: 500px;">
 
@@ -73,23 +73,23 @@
                 </tr>
                 <c:choose>
                     <c:when test="${journey.getResultConnectionList().size() > 0}">
-                        <c:forEach items="${journey.getResultConnectionList()}" var="resultConnection">
+                        <c:forEach items="${journey.getResultConnectionList()}" var="directResultConnection">
                             <tr>
 
                                 <td align="center" valign="center">
                                     <a href="#" class="btn btn-default disabled btn-info" role="button"
                                        style="width: 50px;">
-                                            ${resultConnection.getLineNumber()}</a>
+                                            ${directResultConnection.getLineNumber()}</a>
                                 </td>
 
                                 <td align="center" valign="center">
                                     <a href="#" class="btn btn-default disabled" role="button"
-                                       style="width: 80px;">${resultConnection.getTravelStartTime()}</a></td>
+                                       style="width: 80px;">${directResultConnection.getTravelStartTime()}</a></td>
 
 
                                 <td align="center" valign="center">
                                     <a href="#" class="btn btn-default disabled" role="button"
-                                       style="width: 80px;">${resultConnection.getTravelEndTime()}</a></td>
+                                       style="width: 80px;">${directResultConnection.getTravelEndTime()}</a></td>
                             </tr>
                         </c:forEach>
                     </c:when>

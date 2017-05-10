@@ -1,8 +1,8 @@
-package isacademy.jjdd1.itconcrete.smartconnect.transfers;
+package isacademy.jjdd1.itconcrete.smartconnect.result;
 
 import java.time.LocalTime;
 
-class TransferResultConnection {
+public class TransferResultConnection {
 
     private String startBusStop;
     private int firstLineNumber;

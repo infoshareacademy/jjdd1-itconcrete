@@ -1,4 +1,4 @@
-package isacademy.jjdd1.itconcrete.smartconnect.transfers;
+package isacademy.jjdd1.itconcrete.smartconnect.analyzer_transfer;
 
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusStopDeltas;
@@ -6,7 +6,7 @@ import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusStopDeltas;
 import java.util.ArrayList;
 import java.util.List;
 
-class TimeDifferenceCounter {
+public class TimeDifferenceCounter {
 
     public List<TimeDifferenceSet> calculateTimeDifferenceSet(BusLineSetExtended busLineSetExtended) {
 
