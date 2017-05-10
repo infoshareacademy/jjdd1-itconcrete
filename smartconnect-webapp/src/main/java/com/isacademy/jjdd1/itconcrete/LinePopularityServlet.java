@@ -1,14 +1,11 @@
 package com.isacademy.jjdd1.itconcrete;
 
-
-import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
 import isacademy.jjdd1.itconcrete.smartconnect.statistics.FakeStatisticGenerator;
 import isacademy.jjdd1.itconcrete.smartconnect.statistics.StatisticsData;
 
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -23,15 +20,13 @@ import java.util.ArrayList;
 @MultipartConfig
 public class LinePopularityServlet extends HttpServlet {
 
-    @Inject
-    ScheduleParser scheduleParser;
 
     @Inject
     FakeStatisticGenerator fakeStatisticGenerator;
 
     private ArrayList<StatisticsData> statistics;
 
-    public void init() {
+    public void loadStats() {
         try {
             fakeStatisticGenerator.loadData();
         } catch (IOException e) {
@@ -47,7 +42,7 @@ public class LinePopularityServlet extends HttpServlet {
 
         response.setCharacterEncoding("UTF-8");
         request.setCharacterEncoding("UTF-8");
-        this.init();
+        this.loadStats();
         request.setAttribute("statistics", statistics);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/line.jsp");
         dispatcher.forward(request, response);
