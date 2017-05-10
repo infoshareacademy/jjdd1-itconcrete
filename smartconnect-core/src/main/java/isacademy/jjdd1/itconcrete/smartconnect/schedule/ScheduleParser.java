@@ -41,6 +41,7 @@ public class ScheduleParser {
                 outputStream.close();
             }
         }
+        loadData();
     }
 
     private static List<Path> subdirectories(Path path) throws IOException {

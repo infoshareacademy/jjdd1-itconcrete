@@ -21,14 +21,7 @@ public class App {
         LOGGER.trace("Schedules database is initialized.");
 
         ScheduleParser scheduleParser = new ScheduleParser();
-        scheduleParser.loadData();
         ArrayList<BusLine> allBusLines = scheduleParser.getArrayOfBusLines();
-
-        for(BusLine busLine : allBusLines){
-            if (busLine.getLineNumber() == 136 && busLine.getRoute().getDirection()==Direction.direction_1){
-
-            }
-        }
 
         LOGGER.info("Asking for user input in order to define home location.");
 

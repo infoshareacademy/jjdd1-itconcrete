@@ -21,8 +21,8 @@
     </nav>
 </div>
 
-<div class="chart" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%);">
-    <canvas id="myChart1" width="400" height="400"></canvas>
+<div class="chart" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 75%; height: 75%;">
+    <canvas id="myChart1"></canvas>
 </div>
 
 
