@@ -40,10 +40,7 @@
         </div>
     </div>
 </nav>
-
-
-<script src="../js/Chart.bundle.js"></script>
-<script src="../js/jquery-3.2.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
 <script src="../js/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <script>
     var ctx1 = document.getElementById("myChart1");
@@ -114,6 +111,7 @@
     };
     var myChart1 = new Chart(ctx1, config);
 </script>
+
 </body>
 </html>
 
