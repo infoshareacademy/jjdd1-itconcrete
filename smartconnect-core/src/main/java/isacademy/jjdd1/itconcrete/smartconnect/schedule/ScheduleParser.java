@@ -109,7 +109,10 @@ public class ScheduleParser {
     }
 
     public ArrayList<Integer> getAllLineNumbers() {
-        return allLineNumbers;
+        Set<Integer> setOfLineNumbers = new HashSet<>(allLineNumbers);
+        ArrayList <Integer> lineNumbers = new ArrayList<>(setOfLineNumbers);
+        lineNumbers.sort((a,b) -> a.compareTo(b));
+        return lineNumbers;
     }
 
     public ArrayList<String> getAllBusStopNames() {
