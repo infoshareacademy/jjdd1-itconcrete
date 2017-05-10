@@ -6,6 +6,7 @@ import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteDirectResult;
 import isacademy.jjdd1.itconcrete.smartconnect.result.TransferResultConnection;
 
 import java.time.LocalTime;
+import java.util.List;
 
 
 public class DisplayConnection {
@@ -30,7 +31,7 @@ public class DisplayConnection {
         Util util = new Util();
 
         String directResultText = lineNumber + " - start journey at: " + util.prettyFormatTime(travelStartTime) + ", you will reach destination "
-                 + util.prettyFormatTime(travelEndTime);
+                + util.prettyFormatTime(travelEndTime);
 
         return directResultText;
     }
@@ -57,5 +58,23 @@ public class DisplayConnection {
                 ", you will reach destination at: " + arrivalSecondLine;
 
         return transferResultText;
+    }
+
+    public String displayNoResultInfo(List<DirectResultConnection> directResultConnectionList,
+                                      List<TransferResultConnection> transferResultConnectionList) {
+
+        String noResultInfo = "";
+
+        boolean noDirectResult = (directResultConnectionList.size() == 0);
+        boolean noTransferResult = (transferResultConnectionList.size() == 0);
+
+        boolean noResults = (noDirectResult && noTransferResult);
+
+        if (noResults) {
+
+            noResultInfo = "Sorry, there is no connection for this event.";
+        }
+
+        return noResultInfo;
     }
 }

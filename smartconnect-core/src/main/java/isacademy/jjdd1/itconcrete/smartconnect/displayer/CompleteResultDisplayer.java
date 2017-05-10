@@ -1,6 +1,5 @@
 package isacademy.jjdd1.itconcrete.smartconnect.displayer;
 
-import isacademy.jjdd1.itconcrete.smartconnect.analyzer_transfer.CompleteTransfer;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
 import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteDirectResult;
 import isacademy.jjdd1.itconcrete.smartconnect.result.DirectResultConnection;
@@ -39,18 +38,11 @@ public class CompleteResultDisplayer {
                 System.out.println(displayConnection.displayingTransferConnection(transferResultConnection));
             }
 
+            System.out.println(displayConnection.displayNoResultInfo(directResultConnectionList, transferResultConnectionList));
+
             System.out.println("");
 
-        }
-
-
-
-//            if (!(sizeDirect && sizeTransfer)) {
-//
-//                System.out.println("Sorry, there is no connection for this event.");
-//            }
 
         }
-
-
+    }
 }
