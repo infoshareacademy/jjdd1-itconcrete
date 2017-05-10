@@ -1,8 +1,7 @@
 package com.isacademy.jjdd1.itconcrete;
 
-import isacademy.jjdd1.itconcrete.smartconnect.statistics.FakeLineStatisticGenerator;
-import isacademy.jjdd1.itconcrete.smartconnect.statistics.StatisticsData;
-
+import isacademy.jjdd1.itconcrete.smartconnect.statistics.FakeBusStopStatisticGenerator;
+import isacademy.jjdd1.itconcrete.smartconnect.statistics.StopStatisticsData;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -16,35 +15,34 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
-@WebServlet(urlPatterns = "/line_popularity")
+@WebServlet(urlPatterns = "/stop_popularity")
 @MultipartConfig
-public class LinePopularityServlet extends HttpServlet {
+public class BusStopPopularityServlet extends HttpServlet {
 
 
     @Inject
-    FakeLineStatisticGenerator fakeLineStatisticGenerator;
+    FakeBusStopStatisticGenerator fakeBusStopStatisticGenerator;
 
-    private ArrayList<StatisticsData> statistics;
+    private ArrayList<StopStatisticsData> statistics;
 
     public void loadStats() {
         try {
-            fakeLineStatisticGenerator.loadData();
+            fakeBusStopStatisticGenerator.loadData();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        statistics = fakeLineStatisticGenerator.getStatistics();
-        statistics.sort((a, b) -> ((Integer)a.getLineNumber()).compareTo(b.getLineNumber()));
+        statistics = fakeBusStopStatisticGenerator.getStatistics();
+        statistics.sort((a, b) -> (a.getBusStopName()).compareTo(b.getBusStopName()));
 
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         response.setCharacterEncoding("UTF-8");
         request.setCharacterEncoding("UTF-8");
         this.loadStats();
         request.setAttribute("statistics", statistics);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/line.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/stop.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -55,7 +53,7 @@ public class LinePopularityServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 
         request.setAttribute("statistics", statistics);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/line_popularity");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/stop_popularity");
         dispatcher.forward(request, response);
 
     }

@@ -119,6 +119,12 @@
                 Line Popularity Report
             </a>
         </div>
+        <div class="navbar-header navbar-right" style="padding-top: 15px; padding-right: 15px;">
+            <a  href= "/stop_popularity" role="button" class="btn btn-info btn-xs">
+                <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+                BusStop Popularity Report
+            </a>
+        </div>
     </div>
 </nav>
 
