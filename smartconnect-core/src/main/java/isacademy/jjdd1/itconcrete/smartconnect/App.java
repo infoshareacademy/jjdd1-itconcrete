@@ -2,20 +2,30 @@ package isacademy.jjdd1.itconcrete.smartconnect;
 
 
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.CompleteResult;
+import isacademy.jjdd1.itconcrete.smartconnect.database.PromotedLine;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultDisplayer;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultGetter;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.QuestionAsker;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.jms.Session;
 import java.util.ArrayList;
 import java.util.List;
 
 public class App {
 
+    private static Session session;
+
     private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
 
     public static void main(String[] args) throws Exception {
+
+        session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.save(new PromotedLine(157));
+        session.save(new PromotedLine(116));
 
         LOGGER.info("Starting application.");
         LOGGER.trace("Schedules database is initialized.");
