@@ -8,6 +8,7 @@ import isacademy.jjdd1.itconcrete.smartconnect.statistics.StatisticsData;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -28,13 +29,14 @@ public class LinePopularityServlet extends HttpServlet {
     @Inject
     FakeStatisticGenerator fakeStatisticGenerator;
 
-
     private ArrayList<StatisticsData> statistics;
 
-
-    @Override
-    public void init() throws ServletException {
-
+    public void init() {
+        try {
+            fakeStatisticGenerator.loadData();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         statistics = fakeStatisticGenerator.getStatistics();
         statistics.sort((a, b) -> ((Integer)a.getLineNumber()).compareTo(b.getLineNumber()));
 
@@ -45,7 +47,7 @@ public class LinePopularityServlet extends HttpServlet {
 
         response.setCharacterEncoding("UTF-8");
         request.setCharacterEncoding("UTF-8");
-
+        this.init();
         request.setAttribute("statistics", statistics);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/line.jsp");
         dispatcher.forward(request, response);

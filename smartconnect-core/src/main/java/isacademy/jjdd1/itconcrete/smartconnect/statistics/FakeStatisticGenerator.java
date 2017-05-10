@@ -1,22 +1,22 @@
 package isacademy.jjdd1.itconcrete.smartconnect.statistics;
 
-
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
+
+import javax.ejb.Stateless;
+import javax.enterprise.context.RequestScoped;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
+@RequestScoped
 public class FakeStatisticGenerator {
 
-    ScheduleParser scheduleParser = new ScheduleParser();
-    ArrayList<Integer> allBusLineNumbers = scheduleParser.getAllLineNumbers();
     ArrayList<StatisticsData> statistics = new ArrayList<>();
 
-    public FakeStatisticGenerator() throws IOException {
-        loadData();
-    }
+    public void loadData() throws IOException {
 
-    private void loadData() throws IOException {
+        ScheduleParser scheduleParser = new ScheduleParser();
+        ArrayList<Integer> allBusLineNumbers = scheduleParser.getAllLineNumbers();
 
         ArrayList<Integer> listOfAlreadyAddedLines = new ArrayList<>();
         for (int i = 0; i < 11 ; i++) {
