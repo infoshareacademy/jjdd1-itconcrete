@@ -17,14 +17,17 @@ public class FakeStatisticGenerator {
 
         ScheduleParser scheduleParser = new ScheduleParser();
         ArrayList<Integer> allBusLineNumbers = scheduleParser.getAllLineNumbers();
-
         ArrayList<Integer> listOfAlreadyAddedLines = new ArrayList<>();
-        for (int i = 0; i < 11 ; i++) {
+
+        int upperboundForRandomValues = 100;
+        int lowerboundForRandomValues = 1;
+
+        for (int i = 0; i < 10 ; i++) {
             Random random = new Random();
             int randomLineNumber = allBusLineNumbers.get(random.nextInt(allBusLineNumbers.size()));
             if (!listOfAlreadyAddedLines.contains(randomLineNumber)){
                 listOfAlreadyAddedLines.add(randomLineNumber);
-                int generatedValue = (int)(Math.random()*101);
+                int generatedValue = (int)(Math.random() * ((upperboundForRandomValues - lowerboundForRandomValues) + 1) + lowerboundForRandomValues);
                 statistics.add(new StatisticsData(randomLineNumber,generatedValue));
             }
 
