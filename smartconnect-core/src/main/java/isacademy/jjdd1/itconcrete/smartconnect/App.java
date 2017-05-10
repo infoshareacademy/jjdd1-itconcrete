@@ -2,11 +2,13 @@ package isacademy.jjdd1.itconcrete.smartconnect;
 
 
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.CompleteResult;
+import isacademy.jjdd1.itconcrete.smartconnect.database.HomeBusStop;
 import isacademy.jjdd1.itconcrete.smartconnect.database.PromotedLine;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultDisplayer;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultGetter;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.QuestionAsker;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.*;
+import isacademy.jjdd1.itconcrete.smartconnect.util.HibernateUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,7 +18,7 @@ import java.util.List;
 
 public class App {
 
-    private static Session session;
+    private static org.hibernate.Session session;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
 
@@ -52,5 +54,8 @@ public class App {
         completeResultList = completeResultGetter.getCompleteResult(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, maxAmountOfResultsAsInt, allBusLines);
         completeResultDisplayer.displayCompleteResult(completeResultList);
 
+
+        session.save(new HomeBusStop(homeBusStop));
+        session.getTransaction().commit();
     }
 }
