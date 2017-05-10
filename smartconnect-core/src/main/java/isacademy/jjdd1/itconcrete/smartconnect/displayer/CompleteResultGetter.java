@@ -1,11 +1,16 @@
 package isacademy.jjdd1.itconcrete.smartconnect.displayer;
 
+import isacademy.jjdd1.itconcrete.smartconnect.App;
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer.*;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
+import isacademy.jjdd1.itconcrete.smartconnect.database.BusLineStatistics;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.statistics.StatisticsCollector;
 import isacademy.jjdd1.itconcrete.smartconnect.statistics.StatisticsData;
+import isacademy.jjdd1.itconcrete.smartconnect.util.HibernateUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -14,6 +19,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class CompleteResultGetter {
+
+    private Logger LOGGER = LoggerFactory.getLogger(App.class);
+    private static org.hibernate.Session session;
 
     public List<CompleteResult> getCompleteResult(String homeBusStop, String timeOfLeavingHome, String timeOfArrivingHome, int maxAmountOfResults, ArrayList<BusLine> allBusLines) throws IOException, URISyntaxException {
 
@@ -35,10 +43,16 @@ public class CompleteResultGetter {
             completeResultList.add(new CompleteResult(journeys.get(i).getStartLocation(),
                     journeys.get(i).getEndLocation(), journeys.get(i).getStartBusStop(),
                     journeys.get(i).getEndBusStop(), resultConnectionList));
-
-            StatisticsCollector statisticsCollector = new StatisticsCollector();
-            List<StatisticsData> stats = statisticsCollector.getStatisticsData(completeResultList);
         }
+        StatisticsCollector statisticsCollector = new StatisticsCollector();
+        List<StatisticsData> stats = statisticsCollector.getStatisticsData(completeResultList);
+        LOGGER.trace("collected statistics {}", stats);
+        session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        for(StatisticsData currentStatisticData: stats) {
+            session.save(new BusLineStatistics(currentStatisticData.getLineNumber(), currentStatisticData.getCountedTimes()));
+        }
+        session.getTransaction().commit();
         return completeResultList;
     }
 }

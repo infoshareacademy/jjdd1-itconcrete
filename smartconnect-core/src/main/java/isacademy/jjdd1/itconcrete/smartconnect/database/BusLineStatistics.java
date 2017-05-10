@@ -8,10 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class BusLineStatistics {
 
-
     @Id
-    private int id;
-
     @Column
     private int lineNumber;
 
