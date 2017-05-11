@@ -1,4 +1,4 @@
-package isacademy.jjdd1.itconcrete.smartconnect.test;
+package isacademy.jjdd1.itconcrete.smartconnect.test.UnitTests;
 
 
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.*;

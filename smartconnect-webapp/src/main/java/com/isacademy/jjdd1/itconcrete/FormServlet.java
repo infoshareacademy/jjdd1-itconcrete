@@ -35,13 +35,7 @@ public class FormServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
 
-        try {
-            scheduleParser.loadData();
-            busLinesForSeeking = scheduleParser.getArrayOfBusLines();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        busLinesForSeeking = scheduleParser.getArrayOfBusLines();
 
     }
 

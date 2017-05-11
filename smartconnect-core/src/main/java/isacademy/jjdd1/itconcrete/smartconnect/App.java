@@ -27,7 +27,6 @@ public class App {
         LOGGER.trace("Schedules database is initialized.");
 
         ScheduleParser scheduleParser = new ScheduleParser();
-        scheduleParser.loadData();
         ArrayList<BusLine> allBusLines = scheduleParser.getArrayOfBusLines();
 
 

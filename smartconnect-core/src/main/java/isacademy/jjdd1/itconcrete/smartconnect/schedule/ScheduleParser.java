@@ -41,6 +41,7 @@ public class ScheduleParser {
                 outputStream.close();
             }
         }
+        loadData();
     }
 
     private static List<Path> subdirectories(Path path) throws IOException {
@@ -82,8 +83,9 @@ public class ScheduleParser {
 
         LOGGER.trace("Collectig data about departures and routes for line number: " + buslineNumber);
 
-        SingleBusLineDataCollector sbldc = new SingleBusLineDataCollector(buslineNumber,directionOfBus, new File(path.toString()));
-        return sbldc.getBusLine();
+        SingleBusLineDataCollector singleBusLineDataCollector;
+        singleBusLineDataCollector = new SingleBusLineDataCollector(buslineNumber,directionOfBus, new File(path.toString()));
+        return singleBusLineDataCollector.getBusLine();
     }
 
     private int getBusLineNumber (String fileName){
@@ -98,7 +100,6 @@ public class ScheduleParser {
             return Direction.direction_2;
         } else {
             LOGGER.warn("Invalid schedule file. Direction not defined. Filename: " + busScheduleFilename);
-            //TODO Logger - error - direction not defined
             return Direction.undefined;
         }
     }
@@ -108,10 +109,16 @@ public class ScheduleParser {
     }
 
     public ArrayList<Integer> getAllLineNumbers() {
-        return allLineNumbers;
+        Set<Integer> setOfLineNumbers = new HashSet<>(allLineNumbers);
+        ArrayList <Integer> lineNumbers = new ArrayList<>(setOfLineNumbers);
+        lineNumbers.sort((a,b) -> a.compareTo(b));
+        return lineNumbers;
     }
 
     public ArrayList<String> getAllBusStopNames() {
-        return allBusStopNames;
+        Set<String> setOfStopNames = new HashSet<>(allBusStopNames);
+        ArrayList<String> stopNames = new ArrayList<>(setOfStopNames);
+        stopNames.sort((a, b) -> a.compareTo(b));
+        return stopNames;
     }
 }

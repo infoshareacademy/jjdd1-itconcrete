@@ -1,4 +1,4 @@
-package isacademy.jjdd1.itconcrete.smartconnect.test;
+package isacademy.jjdd1.itconcrete.smartconnect.test.UnitTests;
 
 
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.*;
@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
@@ -20,8 +21,9 @@ public class RouteTest {
         Direction direction = Direction.direction_1;
         ArrayList<String> stops = new ArrayList<>(Arrays.asList("Jasień PKM", "Jasieńska", "Staw Wróbla", "Zacna"));
         int lineNumber = 142;
-        ArrayList<BusStopDeltas> bsd = mock(ArrayList.class);
-        route = new Route(direction, stops, lineNumber, bsd);
+        ArrayList<BusStopDeltas> busStopDeltas = mock(ArrayList.class);
+        HashMap<String,String> postsWithStopsMap = mock(HashMap.class);
+        route = new Route(direction, stops, lineNumber, busStopDeltas,postsWithStopsMap);
     }
 
     @Test
@@ -54,5 +56,15 @@ public class RouteTest {
         String endStop = "Zacna";
         assertThat(route.containsStops(startStop,endStop)).isTrue();
         assertThat(route.containsStops(endStop,startStop)).isFalse();
+    }
+
+    @Test
+    public void getPostSygnature_returns_a_proper_format_post_sygnature(){
+            String string = "B,P(2263)";
+            int indexOfOpeningParentheses = string.indexOf("(");
+            int indexOfClosingParentheses = string.indexOf(")");
+            String post = string.substring(indexOfOpeningParentheses+1,indexOfClosingParentheses);
+            assertThat(post).containsOnlyDigits();
+            assertThat(post.length()).isGreaterThanOrEqualTo(3).isLessThanOrEqualTo(4);
     }
 }

@@ -2,6 +2,7 @@ package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class RouteCollector {
 
@@ -12,6 +13,7 @@ public class RouteCollector {
     private static final String csvSplitBy = ";";
     private static final int kNameColumnIndex = 3;
     private static final int kFirstColumnWithVariantIndex = 4;
+    private static final int kPostColumnIndex = 1;
 
     public RouteCollector(File file, Direction currentDirection, int lineNumber) throws IOException {
         this.file = file;
@@ -23,10 +25,12 @@ public class RouteCollector {
     private void loadRouteData() throws IOException {
         BufferedReader br1 = initializeBufferedReader(file);
         BufferedReader br2 = initializeBufferedReader(file);
+        BufferedReader br3 = initializeBufferedReader(file);
 
         ArrayList<String> arrayOfStops = createListOfStops(br1);
         ArrayList<BusStopDeltas> deltasList = createDeltasList(br2);
-        route = new Route(currentDirection, arrayOfStops, lineNumber, deltasList);
+        HashMap<String,String> stopsWithPosts = createStopsWithPostsMap(br3);
+        route = new Route(currentDirection, arrayOfStops, lineNumber, deltasList, stopsWithPosts);
 //        ArrayList<String> variants = getVariants(br);
     }
 
@@ -77,6 +81,32 @@ public class RouteCollector {
             }
         }
         return deltasList;
+    }
+
+    private HashMap<String,String> createStopsWithPostsMap(BufferedReader br) throws IOException {
+        HashMap<String,String> stopsWithPosts = new HashMap<>();
+        String line = "";
+        while ((line = br.readLine()) != null) {
+            String[] oneRowInCSV = line.split(csvSplitBy);
+            if (line.isEmpty()) {
+                break;
+            }
+
+            String nameColumnInCSV = oneRowInCSV[kNameColumnIndex];
+            String postColumnInCSV = oneRowInCSV[kPostColumnIndex];
+
+            if (!nameColumnInCSV.contains("Nazwa")) {
+                stopsWithPosts.put(nameColumnInCSV, getPostSygnature(postColumnInCSV));
+            }
+        }
+        return stopsWithPosts;
+    }
+
+    private String getPostSygnature(String string){
+        int indexOfOpeningParentheses = string.indexOf("(");
+        int indexOfClosingParentheses = string.indexOf(")");
+        String post = string.substring(indexOfOpeningParentheses+1,indexOfClosingParentheses);
+        return post;
     }
 
 
