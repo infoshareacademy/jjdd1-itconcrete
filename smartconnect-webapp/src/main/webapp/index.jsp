@@ -72,8 +72,8 @@
                     </td>
                 </tr>
                 <c:choose>
-                    <c:when test="${journey.getResultConnectionList().size() > 0}">
-                        <c:forEach items="${journey.getResultConnectionList()}" var="directResultConnection">
+                    <c:when test="${completeDirectResult.getDirectResultConnectionList().size() > 0}">
+                        <c:forEach items="${completeDirectResult.getDirectResultConnectionList()}" var="completeDirectResultList">
                             <tr>
 
                                 <td align="center" valign="center">
