@@ -1,14 +1,14 @@
-package isacademy.jjdd1.itconcrete.smartconnect.analyzer;
+package isacademy.jjdd1.itconcrete.smartconnect.result;
 
 
 import java.time.LocalTime;
 
-public class ResultConnection {
+public class DirectResultConnection {
     private int lineNumber;
     private LocalTime travelStartTime;
     private LocalTime travelEndTime;
 
-    public ResultConnection(int lineNumber, LocalTime travelStartTime, LocalTime travelEndTime) {
+    public DirectResultConnection(int lineNumber, LocalTime travelStartTime, LocalTime travelEndTime) {
         this.lineNumber = lineNumber;
         this.travelStartTime = travelStartTime;
         this.travelEndTime = travelEndTime;
@@ -40,7 +40,7 @@ public class ResultConnection {
 
     @Override
     public String toString() {
-        return "ResultConnection{" +
+        return "DirectResultConnection{" +
                 "lineNumber=" + lineNumber +
                 ", travelStartTime=" + travelStartTime +
                 ", travelEndTime=" + travelEndTime +

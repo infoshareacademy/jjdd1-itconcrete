@@ -1,14 +1,20 @@
 package isacademy.jjdd1.itconcrete.smartconnect;
 
-
-import isacademy.jjdd1.itconcrete.smartconnect.analyzer.CompleteResult;
+import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
+import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultDisplayer;
-import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultGetter;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.QuestionAsker;
-import isacademy.jjdd1.itconcrete.smartconnect.schedule.*;
+import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteDirectResult;
+import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteDirectResultGetter;
+import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteTransferResult;
+import isacademy.jjdd1.itconcrete.smartconnect.result.TransferResultGetter;
+import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
+import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class App {
@@ -23,6 +29,7 @@ public class App {
         ScheduleParser scheduleParser = new ScheduleParser();
         ArrayList<BusLine> allBusLines = scheduleParser.getArrayOfBusLines();
 
+
         LOGGER.info("Asking for user input in order to define home location.");
 
         String homeBusStop = QuestionAsker.askForHome(allBusLines);
@@ -31,15 +38,22 @@ public class App {
 
         LOGGER.debug("Home bus stop: " + homeBusStop);
 
-        int maxAmountOfResultsAsInt = QuestionAsker.askForMaxAmountOfResults();
+        int maxAmountOfResultsAsInt = 3; //QuestionAsker.askForMaxAmountOfResults();
 
         LOGGER.info("Chosen amount of options to show: " + maxAmountOfResultsAsInt);
 
+        CalendarParser calendarParser = new CalendarParser();
+        LinkedList<Journey> journeys = calendarParser.parseFileSortEventsAddHome(homeBusStop, timeOfLeavingHome, timeOfArrivingHome);
+
+        CompleteDirectResultGetter completeDirectResultGetter = new CompleteDirectResultGetter();
+        List<CompleteDirectResult> completeDirectResultList = completeDirectResultGetter.getCompleteResult(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, maxAmountOfResultsAsInt, allBusLines);
+
+        TransferResultGetter transferResultGetter = new TransferResultGetter();
+        List<CompleteTransferResult> completeTransferResultList = transferResultGetter.getTransfers(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, maxAmountOfResultsAsInt, allBusLines);
+
+
         CompleteResultDisplayer completeResultDisplayer = new CompleteResultDisplayer();
-        CompleteResultGetter completeResultGetter = new CompleteResultGetter();
-        List<CompleteResult> completeResultList;
-        completeResultList = completeResultGetter.getCompleteResult(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, maxAmountOfResultsAsInt, allBusLines);
-        completeResultDisplayer.displayCompleteResult(completeResultList);
+        completeResultDisplayer.displayCompleteResult(journeys, completeDirectResultList, completeTransferResultList);
 
     }
 }
