@@ -2,11 +2,13 @@ package isacademy.jjdd1.itconcrete.smartconnect;
 
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
-import isacademy.jjdd1.itconcrete.smartconnect.result.*;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultDisplayer;
+import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteDirectResult;
+import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteDirectResultGetter;
+import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteTransferResult;
+import isacademy.jjdd1.itconcrete.smartconnect.result.TransferResultGetter;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
-import isacademy.jjdd1.itconcrete.smartconnect.result.TransferResultGetter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,15 +29,16 @@ public class App {
         scheduleParser.loadData();
         ArrayList<BusLine> allBusLines = scheduleParser.getArrayOfBusLines();
 
+
         LOGGER.info("Asking for user input in order to define home location.");
 
         String homeBusStop = "Klonowa"; //QuestionAsker.askForHome(allBusLines);
-        String timeOfLeavingHome = "06:00"; //QuestionAsker.askForTimeOfLeavingHome();
-        String timeOfArrivingHome = "22:00"; //QuestionAsker.askForTimeOfArrivingHome();
+        String timeOfLeavingHome = "08:00"; //QuestionAsker.askForTimeOfLeavingHome();
+        String timeOfArrivingHome = "17:00"; //QuestionAsker.askForTimeOfArrivingHome();
 
         LOGGER.debug("Home bus stop: " + homeBusStop);
 
-        int maxAmountOfResultsAsInt = 10; //QuestionAsker.askForMaxAmountOfResults();
+        int maxAmountOfResultsAsInt = 5; //QuestionAsker.askForMaxAmountOfResults();
 
         LOGGER.info("Chosen amount of options to show: " + maxAmountOfResultsAsInt);
 

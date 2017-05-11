@@ -2,7 +2,6 @@ package isacademy.jjdd1.itconcrete.smartconnect.displayer;
 
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
 import isacademy.jjdd1.itconcrete.smartconnect.result.DirectResultConnection;
-import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteDirectResult;
 import isacademy.jjdd1.itconcrete.smartconnect.result.TransferResultConnection;
 
 import java.time.LocalTime;

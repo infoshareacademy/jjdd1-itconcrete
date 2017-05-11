@@ -1,7 +1,6 @@
 package isacademy.jjdd1.itconcrete.smartconnect.analyzer_direct;
 
 import isacademy.jjdd1.itconcrete.smartconnect.result.DirectResultConnection;
-import isacademy.jjdd1.itconcrete.smartconnect.result.TransferResultConnection;
 
 import java.util.List;
 
@@ -11,7 +10,7 @@ class DirectShrinker {
 
         int size = directResultConnections.size();
         if (size > maxAmountOfResults) {
-            for (int i = size-maxAmountOfResults-1; i > 0; i--) {
+            for (int i = size-maxAmountOfResults-1; i >= 0; i--) {
                 directResultConnections.remove(i);
             }
         }

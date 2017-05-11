@@ -1,7 +1,6 @@
 package isacademy.jjdd1.itconcrete.smartconnect.analyzer_direct;
 
 import isacademy.jjdd1.itconcrete.smartconnect.result.DirectResultConnection;
-import isacademy.jjdd1.itconcrete.smartconnect.result.TransferResultConnection;
 
 import java.util.List;
 

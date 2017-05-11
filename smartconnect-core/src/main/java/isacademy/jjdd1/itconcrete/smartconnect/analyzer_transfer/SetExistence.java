@@ -12,11 +12,11 @@ class SetExistence {
 
         for (int i = 0; i < busLineSets.size(); i++) {
 
-            if (foundFirstBusLine.getLineNumber() == busLineSets.get(i).getFirstBusLine().getLineNumber()) {
+            if (foundFirstBusLine == busLineSets.get(i).getFirstBusLine()) {
 
                 for (i = 0; i < busLineSets.size(); i++) {
 
-                    if (foundSecondBusLine.getLineNumber() == busLineSets.get(i).getSecondBusLine().getLineNumber()) {
+                    if (foundSecondBusLine == busLineSets.get(i).getSecondBusLine()) {
 
                         setExists = true;
                     }

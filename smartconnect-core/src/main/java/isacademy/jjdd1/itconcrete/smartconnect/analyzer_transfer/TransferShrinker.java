@@ -10,7 +10,7 @@ class TransferShrinker {
 
         int size = transferResultConnectionList.size();
         if (size > maxAmountOfResults) {
-            for (int i = size-maxAmountOfResults-1; i > 0; i--) {
+            for (int i = size-maxAmountOfResults; i >= 0; i--) {
                 transferResultConnectionList.remove(i);
             }
         }

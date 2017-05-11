@@ -46,13 +46,13 @@ public class BusLinePairsSeeker {
                         SetExistence setExistence = new SetExistence();
                         boolean setExists = setExistence.checkSetExists(busLineSets, foundFirstBusLine, foundSecondBusLine);
 
-                        boolean lineNumbersIdentical = (foundFirstBusLine.getLineNumber() == foundSecondBusLine.getLineNumber());
+                        boolean busLinesIdentical = (foundFirstBusLine == foundSecondBusLine);
                         boolean sameBusStop = busStopDeltaFirstLine.getBusStopName().equals(busStopDeltaSecondLine.getBusStopName());
                         boolean firstLineRidesBusStop = busStopDeltaFirstLine.getTimeDifference() >= 0;
                         boolean secondLineRidesBusStop = busStopDeltaSecondLine.getTimeDifference() >= 0;
 
 
-                        if (checkedDirection && !setExists && !lineNumbersIdentical && sameBusStop
+                        if (checkedDirection && !setExists && !busLinesIdentical && sameBusStop
                                 && firstLineRidesBusStop && secondLineRidesBusStop && bothLinesRideMidBusStop) {
 
                             busLineSets.add(new BusLineSet(foundFirstBusLine, midBusStop, foundSecondBusLine));

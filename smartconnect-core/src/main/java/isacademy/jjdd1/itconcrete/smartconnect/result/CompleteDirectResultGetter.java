@@ -1,6 +1,9 @@
 package isacademy.jjdd1.itconcrete.smartconnect.result;
 
-import isacademy.jjdd1.itconcrete.smartconnect.analyzer_direct.*;
+import isacademy.jjdd1.itconcrete.smartconnect.analyzer_direct.BusLineSeeker;
+import isacademy.jjdd1.itconcrete.smartconnect.analyzer_direct.ConnectionSeeker;
+import isacademy.jjdd1.itconcrete.smartconnect.analyzer_direct.LineRideTime;
+import isacademy.jjdd1.itconcrete.smartconnect.analyzer_direct.MinutesToBusStops;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.LinePromoter;

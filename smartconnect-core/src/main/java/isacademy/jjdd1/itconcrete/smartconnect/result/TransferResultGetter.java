@@ -3,8 +3,6 @@ package isacademy.jjdd1.itconcrete.smartconnect.result;
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer_transfer.*;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
-import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteTransferResult;
-import isacademy.jjdd1.itconcrete.smartconnect.result.TransferResultConnection;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 
 import java.io.IOException;

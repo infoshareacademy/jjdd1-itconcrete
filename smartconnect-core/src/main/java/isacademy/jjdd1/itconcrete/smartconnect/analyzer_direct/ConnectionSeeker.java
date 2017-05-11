@@ -6,8 +6,6 @@ import isacademy.jjdd1.itconcrete.smartconnect.result.DirectResultConnection;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class ConnectionSeeker {
@@ -51,7 +49,7 @@ public class ConnectionSeeker {
         DirectShrinker directShrinker = new DirectShrinker();
 
         directResultConnections = directSorter.sortDirectResultsByTravelEnd(directResultConnections);
-        directResultConnections = directShrinker.shrinkDirectResults(directResultConnections, (askForMaxAmountOfResults/2));
+        directResultConnections = directShrinker.shrinkDirectResults(directResultConnections, askForMaxAmountOfResults);
 
 
         return directResultConnections;

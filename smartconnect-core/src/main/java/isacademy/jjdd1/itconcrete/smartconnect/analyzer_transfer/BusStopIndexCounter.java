@@ -8,9 +8,11 @@ class BusStopIndexCounter {
 
     public int countBusStopIndex(List<BusStopDeltas> busStopDeltas, String busStop) {
 
-        int index = 0;
+        int index = -1;
 
         for (int i = 0; i < busStopDeltas.size()-1; i++) {
+
+
 
             boolean busStopNamesIdentical = busStopDeltas.get(i).getBusStopName().toLowerCase().equals(busStop.toLowerCase());
             boolean lineRidesBus = busStopDeltas.get(i).getTimeDifference() >= 0;
