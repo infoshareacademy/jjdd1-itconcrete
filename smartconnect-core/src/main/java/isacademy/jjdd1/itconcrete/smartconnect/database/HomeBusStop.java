@@ -1,5 +1,6 @@
 package isacademy.jjdd1.itconcrete.smartconnect.database;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -7,6 +8,9 @@ import javax.persistence.Id;
 public class HomeBusStop {
 
     @Id
+    private long id;
+
+    @Column
     private String name;
 
     public HomeBusStop(String name) {

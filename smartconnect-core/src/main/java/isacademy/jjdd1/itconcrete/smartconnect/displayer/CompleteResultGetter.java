@@ -5,6 +5,8 @@ import isacademy.jjdd1.itconcrete.smartconnect.analyzer.*;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
 import isacademy.jjdd1.itconcrete.smartconnect.database.BusLineStatistics;
+import isacademy.jjdd1.itconcrete.smartconnect.database.HomeBusStop;
+import isacademy.jjdd1.itconcrete.smartconnect.database.PromotedLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.statistics.StatisticsCollector;
 import isacademy.jjdd1.itconcrete.smartconnect.statistics.StatisticsData;
@@ -49,9 +51,12 @@ public class CompleteResultGetter {
         LOGGER.trace("collected statistics {}", stats);
         session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
+        session.save(new PromotedLine(157));
+        session.save(new PromotedLine(116));
         for(StatisticsData currentStatisticData: stats) {
-            session.save(new BusLineStatistics(currentStatisticData.getLineNumber(), currentStatisticData.getCountedTimes()));
+        session.save(new BusLineStatistics(currentStatisticData.getLineNumber(), currentStatisticData.getCountedTimes()));
         }
+        session.save(new HomeBusStop(homeBusStop));
         session.getTransaction().commit();
         return completeResultList;
     }

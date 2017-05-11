@@ -18,16 +18,10 @@ import java.util.List;
 
 public class App {
 
-    private static org.hibernate.Session session;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
 
     public static void main(String[] args) throws Exception {
-
-        session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        session.save(new PromotedLine(157));
-        session.save(new PromotedLine(116));
 
         LOGGER.info("Starting application.");
         LOGGER.trace("Schedules database is initialized.");
@@ -54,8 +48,5 @@ public class App {
         completeResultList = completeResultGetter.getCompleteResult(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, maxAmountOfResultsAsInt, allBusLines);
         completeResultDisplayer.displayCompleteResult(completeResultList);
 
-
-        session.save(new HomeBusStop(homeBusStop));
-        session.getTransaction().commit();
     }
 }

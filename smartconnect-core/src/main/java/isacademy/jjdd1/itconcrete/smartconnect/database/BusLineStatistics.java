@@ -3,12 +3,16 @@ package isacademy.jjdd1.itconcrete.smartconnect.database;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class BusLineStatistics {
 
     @Id
+    @GeneratedValue
+    private long number;
+
     @Column
     private int lineNumber;
 
