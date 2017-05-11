@@ -2,14 +2,13 @@ package isacademy.jjdd1.itconcrete.smartconnect.statistics;
 
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
 
-import javax.ejb.Stateless;
 import javax.enterprise.context.RequestScoped;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
 @RequestScoped
-public class FakeStatisticGenerator {
+public class FakeLineStatisticGenerator {
 
     ArrayList<StatisticsData> statistics = new ArrayList<>();
 
