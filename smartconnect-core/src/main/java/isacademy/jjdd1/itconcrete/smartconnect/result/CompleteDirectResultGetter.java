@@ -8,6 +8,7 @@ import isacademy.jjdd1.itconcrete.smartconnect.analyzer_direct.MinutesToBusStops
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
 import isacademy.jjdd1.itconcrete.smartconnect.database.BusLineStatistics;
+import isacademy.jjdd1.itconcrete.smartconnect.database.BusStop;
 import isacademy.jjdd1.itconcrete.smartconnect.database.HomeBusStop;
 import isacademy.jjdd1.itconcrete.smartconnect.database.PromotedLine;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.LinePromoter;
@@ -18,6 +19,7 @@ import isacademy.jjdd1.itconcrete.smartconnect.util.HibernateUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -48,21 +50,36 @@ public class CompleteDirectResultGetter {
             completeDirectResultList.add(new CompleteDirectResult(journeys.get(i).getStartLocation(),
                     journeys.get(i).getEndLocation(), journeys.get(i).getStartBusStop(),
                     journeys.get(i).getEndBusStop(), directResultConnectionList));
-
-
         }
+
         StatisticsCollector statisticsCollector = new StatisticsCollector();
         List<StatisticsData> stats = statisticsCollector.getStatisticsData(completeDirectResultList);
+
         LOGGER.trace("collected statistics {}", stats);
         session = HibernateUtil.getSessionFactory().openSession();
+
+        for (int i = 0; i < journeys.size(); i++) {
+            session.beginTransaction();
+            session.save(new BusStop(journeys.get(i).getStartBusStop()));
+            session.getTransaction().commit();
+        }
+        session.beginTransaction();
+        session.save(new BusStop(journeys.get(journeys.size()-1).getEndBusStop()));
+        session.getTransaction().commit();
+
         session.beginTransaction();
         session.save(new PromotedLine(157));
         session.save(new PromotedLine(116));
+        session.getTransaction().commit();
         for(StatisticsData currentStatisticData: stats) {
+            session.beginTransaction();
             session.save(new BusLineStatistics(currentStatisticData.getLineNumber(), currentStatisticData.getCountedTimes()));
+            session.getTransaction().commit();
         }
+        session.beginTransaction();
         session.save(new HomeBusStop(homeBusStop));
         session.getTransaction().commit();
+
 
         return completeDirectResultList;
     }
