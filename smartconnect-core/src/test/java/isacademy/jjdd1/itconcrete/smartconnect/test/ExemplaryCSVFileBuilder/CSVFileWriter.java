@@ -1,4 +1,4 @@
-package isacademy.jjdd1.itconcrete.smartconnect.schedule.CSVBuilder;
+package isacademy.jjdd1.itconcrete.smartconnect.test.ExemplaryCSVFileBuilder;
 
 
 import java.io.FileOutputStream;
@@ -44,16 +44,16 @@ public class CSVFileWriter {
             outputStreamWriter.append(NEW_LINE_SEPARATOR);
 
 
-            for  (OneLineInCSVWariantyBuilder olicwb : lines) {
-                outputStreamWriter.append(olicwb.getId());
+            for  (OneLineInCSVWariantyBuilder line : lines) {
+                outputStreamWriter.append(line.getId());
                 outputStreamWriter.append(COMMA_DELIMITER);
-                outputStreamWriter.append(olicwb.getFlag());
+                outputStreamWriter.append(line.getFlag());
                 outputStreamWriter.append(COMMA_DELIMITER);
-                outputStreamWriter.append(olicwb.getCommune());
+                outputStreamWriter.append(line.getCommune());
                 outputStreamWriter.append(COMMA_DELIMITER);
-                outputStreamWriter.append(olicwb.getName());
+                outputStreamWriter.append(line.getName());
                 outputStreamWriter.append(COMMA_DELIMITER);
-                outputStreamWriter.append(olicwb.getDelta());
+                outputStreamWriter.append(line.getDelta());
                 outputStreamWriter.append(NEW_LINE_SEPARATOR);
             }
         } catch (Exception e) {

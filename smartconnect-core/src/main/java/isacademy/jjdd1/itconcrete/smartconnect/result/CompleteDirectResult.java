@@ -1,22 +1,21 @@
-package isacademy.jjdd1.itconcrete.smartconnect.analyzer;
+package isacademy.jjdd1.itconcrete.smartconnect.result;
 
-import isacademy.jjdd1.itconcrete.smartconnect.analyzer.ResultConnection;
 import java.util.List;
 
-public class CompleteResult {
+public class CompleteDirectResult {
 
     private String startLocation;
     private String endLocation;
     private String startBusStop;
     private String endBusStop;
-    private List<ResultConnection> resultConnectionList;
+    private List<DirectResultConnection> directResultConnectionList;
 
-    public CompleteResult(String startLocation, String endLocation, String startBusStop, String endBusStop, List<ResultConnection> resultConnectionList) {
+    public CompleteDirectResult(String startLocation, String endLocation, String startBusStop, String endBusStop, List<DirectResultConnection> directResultConnectionList) {
         this.startLocation = startLocation;
         this.endLocation = endLocation;
         this.startBusStop = startBusStop;
         this.endBusStop = endBusStop;
-        this.resultConnectionList = resultConnectionList;
+        this.directResultConnectionList = directResultConnectionList;
     }
 
     public String getStartLocation() {
@@ -35,18 +34,18 @@ public class CompleteResult {
         return endBusStop;
     }
 
-    public List<ResultConnection> getResultConnectionList() {
-        return resultConnectionList;
+    public List<DirectResultConnection> getDirectResultConnectionList() {
+        return directResultConnectionList;
     }
 
     @Override
     public String toString() {
-        return "CompleteResult{" +
+        return "CompleteDirectResult{" +
                 "startLocation='" + startLocation + '\'' +
                 ", endLocation='" + endLocation + '\'' +
                 ", startBusStop='" + startBusStop + '\'' +
                 ", endBusStop='" + endBusStop + '\'' +
-                ", resultConnectionList=" + resultConnectionList +
+                ", directResultConnectionList=" + directResultConnectionList +
                 '}';
     }
 }

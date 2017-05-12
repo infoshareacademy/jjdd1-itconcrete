@@ -1,6 +1,6 @@
 package com.isacademy.jjdd1.itconcrete;
 
-import isacademy.jjdd1.itconcrete.smartconnect.analyzer.BusLineSeeker;
+import isacademy.jjdd1.itconcrete.smartconnect.analyzer_direct.BusLineSeeker;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
@@ -35,13 +35,7 @@ public class FormServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
 
-        try {
-            scheduleParser.loadData();
-            busLinesForSeeking = scheduleParser.getArrayOfBusLines();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        busLinesForSeeking = scheduleParser.getArrayOfBusLines();
 
     }
 

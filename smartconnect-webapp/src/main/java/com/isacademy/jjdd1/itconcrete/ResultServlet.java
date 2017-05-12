@@ -1,8 +1,7 @@
 package com.isacademy.jjdd1.itconcrete;
 
-import isacademy.jjdd1.itconcrete.smartconnect.analyzer.CompleteResult;
-import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultDisplayer;
-import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultGetter;
+import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteDirectResult;
+import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteDirectResultGetter;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
@@ -26,10 +25,10 @@ import java.util.List;
 @WebServlet(urlPatterns = "/smartconnect_results")
 public class ResultServlet extends HttpServlet {
 
-    List<CompleteResult> completeResultList;
+    List<CompleteDirectResult> completeDirectResultList;
 
     @Inject
-    CompleteResultGetter completeResultGetter;
+    CompleteDirectResultGetter completeDirectResultGetter;
 
     @Inject
     ScheduleParser scheduleParser;
@@ -42,19 +41,14 @@ public class ResultServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
 
-        try {
-            scheduleParser.loadData();
-            allBusLines = scheduleParser.getArrayOfBusLines();
+        allBusLines = scheduleParser.getArrayOfBusLines();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setAttribute("completeResultList", completeResultList);
+        request.setAttribute("completeDirectResultList", completeDirectResultList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
         dispatcher.forward(request, response);
     }
@@ -90,13 +84,13 @@ public class ResultServlet extends HttpServlet {
         }
 
         try {
-            completeResultList = completeResultGetter.getCompleteResult(homeBusStop, timeOfLeavingHome, timeOfArrivingHome,
+            completeDirectResultList = completeDirectResultGetter.getCompleteResult(homeBusStop, timeOfLeavingHome, timeOfArrivingHome,
                     Integer.valueOf(maxAmountOfResults), allBusLines);
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
 
-        request.setAttribute("completeResultList", completeResultList);
+        request.setAttribute("completeDirectResultList", completeDirectResultList);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
         dispatcher.forward(request, response);
