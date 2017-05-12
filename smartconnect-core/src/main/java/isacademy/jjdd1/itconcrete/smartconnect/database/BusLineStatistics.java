@@ -11,7 +11,7 @@ public class BusLineStatistics {
 
     @Id
     @GeneratedValue
-    private long number;
+    private long id;
 
     @Column
     private int lineNumber;

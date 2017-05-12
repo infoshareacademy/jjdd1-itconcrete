@@ -49,19 +49,21 @@ public class CompleteDirectResultGetter {
                     journeys.get(i).getEndLocation(), journeys.get(i).getStartBusStop(),
                     journeys.get(i).getEndBusStop(), directResultConnectionList));
 
-            StatisticsCollector statisticsCollector = new StatisticsCollector();
-            List<StatisticsData> stats = statisticsCollector.getStatisticsData(completeDirectResultList);
-            LOGGER.trace("collected statistics {}", stats);
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.save(new PromotedLine(157));
-            session.save(new PromotedLine(116));
-            for(StatisticsData currentStatisticData: stats) {
-                session.save(new BusLineStatistics(currentStatisticData.getLineNumber(), currentStatisticData.getCountedTimes()));
-            }
-            session.save(new HomeBusStop(homeBusStop));
-            session.getTransaction().commit();
+
         }
+        StatisticsCollector statisticsCollector = new StatisticsCollector();
+        List<StatisticsData> stats = statisticsCollector.getStatisticsData(completeDirectResultList);
+        LOGGER.trace("collected statistics {}", stats);
+        session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.save(new PromotedLine(157));
+        session.save(new PromotedLine(116));
+        for(StatisticsData currentStatisticData: stats) {
+            session.save(new BusLineStatistics(currentStatisticData.getLineNumber(), currentStatisticData.getCountedTimes()));
+        }
+        session.save(new HomeBusStop(homeBusStop));
+        session.getTransaction().commit();
+
         return completeDirectResultList;
     }
 }
