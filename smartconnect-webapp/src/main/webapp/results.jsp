@@ -144,7 +144,7 @@
 
 
                         <c:choose>
-                            <c:when test="${completeDirectResultList.get(loop.index).getDirectResultConnectionList().size() == 0 && completeTransferResultList.get(loop.index).getTransferResultConnectionList().size() == 0}">
+                            <c:when test="${completeDirectResultList.get(i.index).getDirectResultConnectionList().size() == 0 && completeTransferResultList.get(i.index).getTransferResultConnectionList().size() == 0}">
                                 <tr>
                                     <td colspan="3" align="center"><span style="color: #5bc0de;">Sorry, there is no connection for this event.</span>
                                     </td>
