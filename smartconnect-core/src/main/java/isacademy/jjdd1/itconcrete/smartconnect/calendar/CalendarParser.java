@@ -4,6 +4,8 @@ import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
 import java.io.*;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -22,9 +24,6 @@ public class CalendarParser {
 
     Util util = new Util();
 
-    private final String TEMP = new String(System.getProperty("java.io.tmpdir"));
-    private final String DIR = new String("smartconnect/calendar.ics");
-
     LocalDateTime eightAm =LocalDateTime.from(parser.parse("20170101T080000"));
 
 
@@ -39,11 +38,15 @@ public class CalendarParser {
         BufferedReader bufferedReader;
 
         try {
-            final String CALENDAR_PATH = new String(TEMP + DIR);
+
+            final Path path = Paths.get(System.getProperty("java.io.tmpdir")).resolve("smartconnect").resolve("calendar.ics");
+
+            final String CALENDAR_PATH = path.toString();
+
             bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(CALENDAR_PATH), Charset.forName("UTF-8")));
         } catch (FileNotFoundException e) {
             bufferedReader = new BufferedReader(new InputStreamReader(this.getClass().
-                    getResourceAsStream("/calendar_examples/busyday.ics"), Charset.forName("UTF-8")));
+                    getResourceAsStream("/calendar_examples/oneevent.ics"), Charset.forName("UTF-8")));
         }
 
         String line;

@@ -4,6 +4,9 @@ import isacademy.jjdd1.itconcrete.smartconnect.analyzer_direct.BusLineSeeker;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
+
+import javax.ejb.Singleton;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -81,13 +84,13 @@ public class FormServlet extends HttpServlet {
             setCorrectParameter(request, "timeOfArrivingHome");
         }
 
-        if (!validateMaxResults(request)) {
-            request.setAttribute("maxResultsError", "Wrong data, try again. ");
-            request.setAttribute("hasError4", "has-error");
-            isError = true;
-        } else {
-            setCorrectParameter(request, "maxAmountOfResults");
-        }
+//        if (!validateMaxResults(request)) {
+//            request.setAttribute("maxResultsError", "Wrong data, try again. ");
+//            request.setAttribute("hasError4", "has-error");
+//            isError = true;
+//        } else {
+//            setCorrectParameter(request, "MAX_RESULTS_AMOUNT");
+//        }
 
         if (!validateCalendarFile(request)) {
             request.setAttribute("calendarFileError", "Wrong file format, try again");
@@ -125,11 +128,11 @@ public class FormServlet extends HttpServlet {
     }
 
 
-    private boolean validateMaxResults(HttpServletRequest request) {
-        String maxAmountOfResults = request.getParameter("maxAmountOfResults");
-        boolean correctMaxAmountOfResults = maxAmountOfResults.matches("(10|[1-9])");
-        return correctMaxAmountOfResults;
-    }
+//    private boolean validateMaxResults(HttpServletRequest request) {
+//        String MAX_RESULTS_AMOUNT = request.getParameter("MAX_RESULTS_AMOUNT");
+//        boolean correctMaxAmountOfResults = MAX_RESULTS_AMOUNT.matches("(10|[1-9])");
+//        return correctMaxAmountOfResults;
+//    }
 
     private boolean validateCalendarFile(HttpServletRequest request) throws IOException, ServletException {
         Part calendarFile = request.getPart("calendarFile");
