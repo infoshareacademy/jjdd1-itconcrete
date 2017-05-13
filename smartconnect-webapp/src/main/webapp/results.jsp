@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/results.css" rel="stylesheet">
     <title>SmartConnect - Results</title>
 </head>
 <body>
@@ -25,71 +26,57 @@
 
 <c:forEach items="${completeTransferResultList}" var="completeTransferResult" varStatus="i">
 
-    <div class="container" style="width: 600px;">
+    <div class="container" style="width: 500px;">
 
         <div class="panel panel-default">
 
             <div class="panel-heading" align="center">
                 <h4 class="panel-title">
 
+                        <c:choose>
+                            <c:when test="${completeTransferResult.getStartLocation().equals('Dom')}">
+                                <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                                ${completeTransferResult.getStartLocation()}
+                                &nbsp;&nbsp;&nbsp;
+                                <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                                &nbsp;&nbsp;&nbsp;
+                                <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                                ${completeTransferResult.getEndLocation()}
+                            </c:when>
+                            <c:otherwise>
+                                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                                ${completeTransferResult.getStartLocation()}
+                                &nbsp;&nbsp;&nbsp;
+                                <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                                &nbsp;&nbsp;&nbsp;
+                                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                                ${completeTransferResult.getEndLocation()}
+                            </c:otherwise>
+                        </c:choose>
 
-                    <c:choose>
-                        <c:when test="${completeTransferResult.getStartLocation().equals('Dom')}">
-                            <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-                            ${completeTransferResult.getStartLocation()}<br/><br/>
-                        </c:when>
-                        <c:otherwise>
-                            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                            ${completeTransferResult.getStartLocation()}<br/><br/>
-                        </c:otherwise>
-                    </c:choose>
-                    <c:choose>
-                        <c:when test="${completeTransferResult.getEndLocation().equals('Dom')}">
-                            <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-                            ${completeTransferResult.getEndLocation()}
-                        </c:when>
-                        <c:otherwise>
-                            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                            ${completeTransferResult.getEndLocation()}
-                        </c:otherwise>
-                    </c:choose>
                 </h4>
             </div>
 
             <table class="table table-hover">
-                <tr align="center" style="background-color: #fefefe">
-                    <td width="20%">
-                        <span class="glyphicon glyphicon-random" aria-hidden="true"></span>
-                    </td>
-                    <td width="30%">
-                        <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                            ${completeTransferResult.getStartBusStop()}
-                    </td>
-                    <td width="30%">
-                        <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                            ${completeTransferResult.getEndBusStop()}
-                    </td>
-                </tr>
-
                 <c:choose>
                     <c:when test="${completeDirectResultList.get(i.index).getDirectResultConnectionList().size() > 0}">
                         <c:forEach items="${completeDirectResultList.get(i.index).getDirectResultConnectionList()}"
                                    var="directResultConnection">
                             <tr>
-
-                                <td align="center" valign="center">
+                                <td width="60%" style="vertical-align: middle">
                                     <a href="#" class="btn btn-default disabled btn-info" role="button"
                                        style="width: 50px;">${directResultConnection.getLineNumber()}</a>
                                 </td>
-
-                                <td align="center" valign="center">
+                                <td width="40%" style="vertical-align: middle">
                                     <a href="#" class="btn btn-default disabled" role="button"
-                                       style="width: 80px;">${directResultConnection.getTravelStartTime()}</a></td>
-
-
-                                <td align="center" valign="center">
+                                       style="width: 80px;">${directResultConnection.getTravelStartTime()}</a>
+                                    <br/>
+                                    <%--<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>--%>
+                                    <br/>
                                     <a href="#" class="btn btn-default disabled" role="button"
-                                       style="width: 80px;">${directResultConnection.getTravelEndTime()}</a></td>
+                                       style="width: 80px;">${directResultConnection.getTravelEndTime()}</a>
+                                    <br/>
+                                </td>
                             </tr>
                         </c:forEach>
                     </c:when>
@@ -101,56 +88,53 @@
                         <c:forEach items="${completeTransferResultList.get(i.index).getTransferResultConnectionList()}"
                                    var="transferResultConnection">
 
-                            <tr align="center">
-                                <td width="20%">
-                                    <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
-                                    <br/>
+                            <tr>
+                                <td style="vertical-align: middle">${transferResultConnection.getStartBusStop()}
+                                    <br/><br/>
                                     <a href="#" class="btn btn-default disabled btn-info" role="button"
                                        style="width: 50px;">${transferResultConnection.getFirstLineNumber()}</a>
                                     <br/><br/>
-                                    <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
-                                    <br/>
+                                        ${transferResultConnection.getMidBusStop()}
+                                    <br/><br/>
                                     <a href="#" class="btn btn-default disabled btn-info" role="button"
                                        style="width: 50px;">${transferResultConnection.getSecondLineNumber()}</a>
+                                    <br/><br/>
+                                        ${transferResultConnection.getEndBusStop()}
+
                                 </td>
-                                <td width="30%">
-                                        ${transferResultConnection.getStartBusStop()}
-                                    <br/>
+                                <td style="vertical-align: middle">
                                     <a href="#" class="btn btn-default disabled" role="button"
                                        style="width: 80px;">${transferResultConnection.getDepartureFirstLine()}</a>
-                                    <br/><br/>
-                                        ${transferResultConnection.getMidBusStop()}
                                     <br/>
-                                    <a href="#" class="btn btn-default disabled" role="button"
-                                       style="width: 80px;">${transferResultConnection.getDepartureSecondLine()}</a>
-                                </td>
-                                <td width="30%">
-                                        ${transferResultConnection.getMidBusStop()}
+                                    <%--<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>--%>
                                     <br/>
                                     <a href="#" class="btn btn-default disabled" role="button"
                                        style="width: 80px;">${transferResultConnection.getArrivalFirstLine()}</a>
-                                    <br/><br/>
-                                        ${transferResultConnection.getEndBusStop()}
+                                    <br/><br/><br/>
+                                    <a href="#" class="btn btn-default disabled" role="button"
+                                       style="width: 80px;">${transferResultConnection.getDepartureSecondLine()}</a>
+                                    <br/>
+                                        <%--<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>--%>
                                     <br/>
                                     <a href="#" class="btn btn-default disabled" role="button"
                                        style="width: 80px;">${transferResultConnection.getArrivalSecondLine()}</a>
+                                    <br/>
                                 </td>
                             </tr>
-
 
                         </c:forEach>
                     </c:when>
                 </c:choose>
 
 
-                        <c:choose>
-                            <c:when test="${completeDirectResultList.get(i.index).getDirectResultConnectionList().size() == 0 && completeTransferResultList.get(i.index).getTransferResultConnectionList().size() == 0}">
-                                <tr>
-                                    <td colspan="3" align="center"><span style="color: #5bc0de;">Sorry, there is no connection for this event.</span>
-                                    </td>
-                                </tr>
-                            </c:when>
-                        </c:choose>
+                <c:choose>
+                    <c:when test="${completeDirectResultList.get(i.index).getDirectResultConnectionList().size() == 0 && completeTransferResultList.get(i.index).getTransferResultConnectionList().size() == 0}">
+                        <tr>
+                            <td colspan="2" align="center"><span style="color: #5bc0de;">Sorry, there is no connection for this event</span>
+                            </td>
+                        </tr>
+                    </c:when>
+                </c:choose>
 
             </table>
         </div>
