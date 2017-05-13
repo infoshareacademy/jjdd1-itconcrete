@@ -48,8 +48,9 @@ public class ConnectionSeeker {
         DirectSorter directSorter = new DirectSorter();
         DirectShrinker directShrinker = new DirectShrinker();
 
-        directResultConnections = directSorter.sortDirectResultsByTravelEnd(directResultConnections);
+        directResultConnections = directSorter.sortDirectResultsByTravelEndDesc(directResultConnections);
         directResultConnections = directShrinker.shrinkDirectResults(directResultConnections, askForMaxAmountOfResults);
+        directResultConnections = directSorter.sortDirectResultsByTravelStartAsc(directResultConnections);
 
 
         return directResultConnections;

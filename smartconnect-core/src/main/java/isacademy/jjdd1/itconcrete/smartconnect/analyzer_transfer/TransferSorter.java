@@ -7,7 +7,7 @@ import java.util.List;
 
 class TransferSorter {
 
-    public List<TransferResultConnection> sortTransferResultsByTravelStart(List<TransferResultConnection> transferResultConnectionList){
+    public List<TransferResultConnection> sortTransferResultsByTravelStartAsc(List<TransferResultConnection> transferResultConnectionList){
 
         transferResultConnectionList.sort((o1, o2) -> o2.getDepartureFirstLine().compareTo(o1.getDepartureFirstLine()));
 
