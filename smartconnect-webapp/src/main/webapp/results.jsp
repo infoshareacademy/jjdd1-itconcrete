@@ -33,26 +33,26 @@
             <div class="panel-heading" align="center">
                 <h4 class="panel-title">
 
-                        <c:choose>
-                            <c:when test="${completeTransferResult.getStartLocation().equals('Dom')}">
-                                <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-                                ${completeTransferResult.getStartLocation()}
-                                &nbsp;&nbsp;&nbsp;
-                                <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-                                &nbsp;&nbsp;&nbsp;
-                                <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-                                ${completeTransferResult.getEndLocation()}
-                            </c:when>
-                            <c:otherwise>
-                                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                                ${completeTransferResult.getStartLocation()}
-                                &nbsp;&nbsp;&nbsp;
-                                <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-                                &nbsp;&nbsp;&nbsp;
-                                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                                ${completeTransferResult.getEndLocation()}
-                            </c:otherwise>
-                        </c:choose>
+                    <c:choose>
+                        <c:when test="${completeTransferResult.getStartLocation().equals('Dom')}">
+                            <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                            ${completeTransferResult.getStartLocation()}
+                            &nbsp;&nbsp;&nbsp;
+                            <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                            &nbsp;&nbsp;&nbsp;
+                            <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                            ${completeTransferResult.getEndLocation()}
+                        </c:when>
+                        <c:otherwise>
+                            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                            ${completeTransferResult.getStartLocation()}
+                            &nbsp;&nbsp;&nbsp;
+                            <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                            &nbsp;&nbsp;&nbsp;
+                            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                            ${completeTransferResult.getEndLocation()}
+                        </c:otherwise>
+                    </c:choose>
 
                 </h4>
             </div>
@@ -64,14 +64,18 @@
                                    var="directResultConnection">
                             <tr>
                                 <td width="60%" style="vertical-align: middle">
+                                        ${completeTransferResult.getStartBusStop()}
+                                    <br/><br/>
                                     <a href="#" class="btn btn-default disabled btn-info" role="button"
                                        style="width: 50px;">${directResultConnection.getLineNumber()}</a>
+                                    <br/><br/>
+                                        ${completeTransferResult.getEndBusStop()}
                                 </td>
                                 <td width="40%" style="vertical-align: middle">
                                     <a href="#" class="btn btn-default disabled" role="button"
                                        style="width: 80px;">${directResultConnection.getTravelStartTime()}</a>
                                     <br/>
-                                    <%--<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>--%>
+                                        <%--<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>--%>
                                     <br/>
                                     <a href="#" class="btn btn-default disabled" role="button"
                                        style="width: 80px;">${directResultConnection.getTravelEndTime()}</a>
@@ -106,7 +110,7 @@
                                     <a href="#" class="btn btn-default disabled" role="button"
                                        style="width: 80px;">${transferResultConnection.getDepartureFirstLine()}</a>
                                     <br/>
-                                    <%--<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>--%>
+                                        <%--<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>--%>
                                     <br/>
                                     <a href="#" class="btn btn-default disabled" role="button"
                                        style="width: 80px;">${transferResultConnection.getArrivalFirstLine()}</a>
