@@ -10,7 +10,7 @@ class DirectShrinker {
 
         int size = directResultConnections.size();
         if (size > maxAmountOfResults) {
-            for (int i = size-maxAmountOfResults-1; i >= 0; i--) {
+            for (int i = size - maxAmountOfResults - 1; i >= 0; i--) {
                 directResultConnections.remove(i);
             }
         }

@@ -32,13 +32,13 @@ public class App {
 
         LOGGER.info("Asking for user input in order to define home location.");
 
-        String homeBusStop = QuestionAsker.askForHome(allBusLines);
-        String timeOfLeavingHome = QuestionAsker.askForTimeOfLeavingHome();
-        String timeOfArrivingHome = QuestionAsker.askForTimeOfArrivingHome();
+        String homeBusStop = "klonowa"; //QuestionAsker.askForHome(allBusLines);
+        String timeOfLeavingHome = "06:00"; //QuestionAsker.askForTimeOfLeavingHome();
+        String timeOfArrivingHome = "23:00"; //QuestionAsker.askForTimeOfArrivingHome();
 
         LOGGER.debug("Home bus stop: " + homeBusStop);
 
-        int maxAmountOfResultsAsInt = 3; //QuestionAsker.askForMaxAmountOfResults();
+        int maxAmountOfResultsAsInt = 5; //QuestionAsker.askForMaxAmountOfResults();
 
         LOGGER.info("Chosen amount of options to show: " + maxAmountOfResultsAsInt);
 
