@@ -143,8 +143,6 @@
                 </c:choose>
 
 
-                <c:forEach items="${completeDirectResultList}">
-                    <c:forEach items="${completeTransferResultList}">
                         <c:choose>
                             <c:when test="${completeDirectResultList.get(loop.index).getDirectResultConnectionList().size() == 0 && completeTransferResultList.get(loop.index).getTransferResultConnectionList().size() == 0}">
                                 <tr>
@@ -153,8 +151,6 @@
                                 </tr>
                             </c:when>
                         </c:choose>
-                    </c:forEach>
-                </c:forEach>
 
             </table>
         </div>
