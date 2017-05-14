@@ -78,7 +78,7 @@
             title:{
                 display: true,
                 fontSize: 20,
-                text: 'BusStops popularity chart'
+                text: 'Bus stops popularity chart'
 //                position: 'top'
             },
             scales: {
@@ -95,7 +95,7 @@
                 xAxes: [{
                     scaleLabel: {
                         display: true,
-                        labelString: 'Bus Stop Name',
+                        labelString: 'Bus stop name',
                         fontSize: 15
                     }
                 }]

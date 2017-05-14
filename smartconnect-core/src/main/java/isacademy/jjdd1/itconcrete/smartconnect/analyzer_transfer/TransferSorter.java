@@ -5,8 +5,6 @@ import isacademy.jjdd1.itconcrete.smartconnect.result.TransferResultConnection;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-import static java.lang.Math.abs;
-
 class TransferSorter {
 
     public List<TransferResultConnection> sortTransferResultsByTravelStartAsc(List<TransferResultConnection> transferResultConnectionList){

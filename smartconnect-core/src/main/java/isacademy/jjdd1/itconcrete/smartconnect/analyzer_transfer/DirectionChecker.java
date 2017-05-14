@@ -1,6 +1,7 @@
 package isacademy.jjdd1.itconcrete.smartconnect.analyzer_transfer;
 
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusStopDeltas;
+
 import java.util.List;
 
 class DirectionChecker {
