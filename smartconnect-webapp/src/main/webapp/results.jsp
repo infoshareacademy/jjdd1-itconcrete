@@ -64,19 +64,19 @@
                                    var="directResultConnection">
                             <tr>
                                 <td width="60%" style="vertical-align: middle">
-                                        ${completeTransferResult.getStartBusStop()}
+                                    <a href="#" class="btn btn-default disabled" role="button">
+                                            ${completeTransferResult.getStartBusStop()}</a>
                                     <br/><br/>
                                     <a href="#" class="btn btn-default disabled btn-info" role="button"
                                        style="width: 50px;">${directResultConnection.getLineNumber()}</a>
                                     <br/><br/>
-                                        ${completeTransferResult.getEndBusStop()}
+                                    <a href="#" class="btn btn-default disabled role="button">
+                                        ${completeTransferResult.getEndBusStop()}</a>
                                 </td>
                                 <td width="40%" style="vertical-align: middle">
                                     <a href="#" class="btn btn-default disabled" role="button"
                                        style="width: 80px;">${directResultConnection.getTravelStartTime()}</a>
-                                    <br/>
-                                        <%--<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>--%>
-                                    <br/>
+                                    <br/><br/>
                                     <a href="#" class="btn btn-default disabled" role="button"
                                        style="width: 80px;">${directResultConnection.getTravelEndTime()}</a>
                                     <br/>
@@ -93,17 +93,21 @@
                                    var="transferResultConnection">
 
                             <tr>
-                                <td style="vertical-align: middle">${transferResultConnection.getStartBusStop()}
+                                <td style="vertical-align: middle">
+                                    <a href="#" class="btn btn-default disabled" role="button">
+                                            ${transferResultConnection.getStartBusStop()}</a>
                                     <br/><br/>
                                     <a href="#" class="btn btn-default disabled btn-info" role="button"
                                        style="width: 50px;">${transferResultConnection.getFirstLineNumber()}</a>
                                     <br/><br/>
-                                        ${transferResultConnection.getMidBusStop()}
+                                    <a href="#" class="btn btn-default disabled" role="button">
+                                            ${transferResultConnection.getMidBusStop()}</a>
                                     <br/><br/>
                                     <a href="#" class="btn btn-default disabled btn-info" role="button"
                                        style="width: 50px;">${transferResultConnection.getSecondLineNumber()}</a>
                                     <br/><br/>
-                                        ${transferResultConnection.getEndBusStop()}
+                                    <a href="#" class="btn btn-default disabled" role="button">
+                                            ${transferResultConnection.getEndBusStop()}</a>
 
                                 </td>
                                 <td style="vertical-align: middle">
