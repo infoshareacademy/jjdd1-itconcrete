@@ -22,7 +22,11 @@
     </nav>
 </div>
 
-<div class="container" style="padding-top: 75px;"></div>
+<div class="container" style="width: 500px; padding-top: 75px" align="center">
+    <h3>Results</h3>
+</div>
+
+<div class="container" style="padding-top: 30px;"></div>
 
 <c:forEach items="${completeTransferResultList}" var="completeTransferResult" varStatus="i">
 
@@ -40,8 +44,6 @@
                             &nbsp;&nbsp;&nbsp;
                             <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
                             &nbsp;&nbsp;&nbsp;
-                            <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-                            ${completeTransferResult.getEndLocation()}
                         </c:when>
                         <c:otherwise>
                             <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
@@ -49,6 +51,14 @@
                             &nbsp;&nbsp;&nbsp;
                             <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
                             &nbsp;&nbsp;&nbsp;
+                        </c:otherwise>
+                    </c:choose>
+                    <c:choose>
+                        <c:when test="${completeTransferResult.getEndLocation().equals('Dom')}">
+                            <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                            ${completeTransferResult.getEndLocation()}
+                        </c:when>
+                        <c:otherwise>
                             <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
                             ${completeTransferResult.getEndLocation()}
                         </c:otherwise>
@@ -64,15 +74,17 @@
                                    var="directResultConnection">
                             <tr>
                                 <td width="70%" style="vertical-align: middle; text-align: left; padding-left: 30px;">
+                                    <br/>
                                     <a href="#" class="btn btn-default disabled btn-info" role="button"
                                        style="width: 50px;">${directResultConnection.getLineNumber()}</a>
                                     <a href="#" class="btn btn-default disabled" role="button">
                                             ${completeTransferResult.getStartBusStop()}</a>
-                                    <a href="#" class="btn btn-default disabled role="button">
+                                    <a href="#" class="btn btn-default disabled role=" button">
                                         ${completeTransferResult.getEndBusStop()}</a>
                                     <br/>
                                 </td>
                                 <td width="30%" style="vertical-align: middle">
+                                    <br/>
                                     <a href="#" class="btn btn-default disabled" role="button"
                                        style="width: 80px;">${directResultConnection.getTravelStartTime()}</a>
                                     <a href="#" class="btn btn-default disabled" role="button"
@@ -91,7 +103,8 @@
                                    var="transferResultConnection">
 
                             <tr>
-                                <td style="vertical-align: middle; text-align: left; padding-left: 30px">
+                                <td width="70%" style="vertical-align: middle; text-align: left; padding-left: 30px;">
+                                    <br/>
                                     <a href="#" class="btn btn-default disabled btn-info" role="button"
                                        style="width: 50px;">${transferResultConnection.getFirstLineNumber()}</a>
                                     <a href="#" class="btn btn-default disabled" role="button">
@@ -105,9 +118,11 @@
                                             ${transferResultConnection.getMidBusStop()}</a>
                                     <a href="#" class="btn btn-default disabled" role="button">
                                             ${transferResultConnection.getEndBusStop()}</a>
+                                    <br/>
 
                                 </td>
-                                <td style="vertical-align: middle">
+                                <td width="30%" style="vertical-align: middle">
+                                    <br/>
                                     <a href="#" class="btn btn-default disabled" role="button"
                                        style="width: 80px;">${transferResultConnection.getDepartureFirstLine()}</a>
                                     <a href="#" class="btn btn-default disabled" role="button"
@@ -141,23 +156,22 @@
     <br/>
 </c:forEach>
 
-
-<div class="container">
-    <nav aria-label="footer">
-        <ul class="pager">
-            <li class="previous"><a href="/smartconnect_form"><span aria-hidden="true">&larr;  </span>Seek again</a>
-            </li>
-        </ul>
-    </nav>
-</div>
-
-<br/><br><br/>
+<div style="padding-top: 100px;"></div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
-        <div class="navbar-header"></div>
+        <div class="navbar-header">
+            <nav aria-label="footer">
+                <ul class="pager">
+                    <li class="previous"><a href="/smartconnect_form"><span aria-hidden="true">&larr;&nbsp;&nbsp;</span>Seek again</a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
     </div>
 </nav>
+
 
 </body>
 </html>
