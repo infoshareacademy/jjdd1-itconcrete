@@ -3,6 +3,8 @@ package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class RouteCollector {
 
@@ -27,9 +29,9 @@ public class RouteCollector {
         BufferedReader br2 = initializeBufferedReader(file);
         BufferedReader br3 = initializeBufferedReader(file);
 
-        ArrayList<String> arrayOfStops = createListOfStops(br1);
-        ArrayList<BusStopDeltas> deltasList = createDeltasList(br2);
-        HashMap<String,String> stopsWithPosts = createStopsWithPostsMap(br3);
+        List<String> arrayOfStops = createListOfStops(br1);
+        List<BusStopDeltas> deltasList = createDeltasList(br2);
+        Map<String,String> stopsWithPosts = createStopsWithPostsMap(br3);
         route = new Route(currentDirection, arrayOfStops, lineNumber, deltasList, stopsWithPosts);
 //        ArrayList<String> variants = getVariants(br);
     }
@@ -40,8 +42,8 @@ public class RouteCollector {
         return new BufferedReader(isr);
     }
 
-    private ArrayList<String> createListOfStops(BufferedReader br) throws IOException {
-        ArrayList<String> arrayOfStops = new ArrayList<>();
+    private List<String> createListOfStops(BufferedReader br) throws IOException {
+        List<String> arrayOfStops = new ArrayList<>();
         String line = "";
         while ((line = br.readLine()) != null) {
             String[] oneRowInCSV = line.split(csvSplitBy);
@@ -58,8 +60,8 @@ public class RouteCollector {
         return arrayOfStops;
     }
 
-    private ArrayList<BusStopDeltas> createDeltasList(BufferedReader br) throws IOException {
-        ArrayList<BusStopDeltas> deltasList = new ArrayList<>();
+    private List<BusStopDeltas> createDeltasList(BufferedReader br) throws IOException {
+        List<BusStopDeltas> deltasList = new ArrayList<>();
         String line = "";
         while ((line = br.readLine()) != null) {
             String[] oneRowInCSV = line.split(csvSplitBy);
@@ -83,8 +85,8 @@ public class RouteCollector {
         return deltasList;
     }
 
-    private HashMap<String,String> createStopsWithPostsMap(BufferedReader br) throws IOException {
-        HashMap<String,String> stopsWithPosts = new HashMap<>();
+    private Map<String,String> createStopsWithPostsMap(BufferedReader br) throws IOException {
+        Map<String,String> stopsWithPosts = new HashMap<>();
         String line = "";
         while ((line = br.readLine()) != null) {
             String[] oneRowInCSV = line.split(csvSplitBy);
@@ -102,11 +104,11 @@ public class RouteCollector {
         return stopsWithPosts;
     }
 
+
     private String getPostSygnature(String string){
         int indexOfOpeningParentheses = string.indexOf("(");
         int indexOfClosingParentheses = string.indexOf(")");
-        String post = string.substring(indexOfOpeningParentheses+1,indexOfClosingParentheses);
-        return post;
+        return string.substring(indexOfOpeningParentheses+1,indexOfClosingParentheses);
     }
 
 

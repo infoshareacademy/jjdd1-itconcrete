@@ -1,20 +1,20 @@
 package isacademy.jjdd1.itconcrete.smartconnect.schedule;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+
 import java.util.List;
+import java.util.Map;
 
 public class Route {
 
     private Direction direction;
-    private ArrayList<String> arrayOfStops;
+    private List<String> arrayOfStops;
     private int lineNumber;
     private List<BusStopDeltas> deltasList; //for X1
-    private HashMap<String,String> stopsWithPosts;
+    private Map<String,String> stopsWithPosts;
     //private List<VariantX> variantXList; //for X1
 
-    public Route(Direction direction, ArrayList<String> arrayOfStops,
-                 int lineNumber, List<BusStopDeltas> deltasList, HashMap<String,String> stopsWithPosts) {
+    public Route(Direction direction, List<String> arrayOfStops,
+                 int lineNumber, List<BusStopDeltas> deltasList, Map<String,String> stopsWithPosts) {
         this.direction = direction;
         this.arrayOfStops = arrayOfStops;
         this.lineNumber = lineNumber;
@@ -27,7 +27,7 @@ public class Route {
         return direction;
     }
 
-    public ArrayList<String> getArrayOfStops() {
+    public List<String> getArrayOfStops() {
         return arrayOfStops;
     }
 
@@ -39,7 +39,7 @@ public class Route {
         return deltasList;
     }
 
-    public HashMap<String, String> getStopsWithPosts() {
+    public Map<String, String> getStopsWithPosts() {
         return stopsWithPosts;
     }
 

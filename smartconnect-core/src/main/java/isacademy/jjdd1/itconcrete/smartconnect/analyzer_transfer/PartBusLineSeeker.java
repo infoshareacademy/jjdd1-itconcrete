@@ -8,7 +8,7 @@ import java.util.List;
 
 class PartBusLineSeeker {
 
-    public List<BusLine> seekPartBusLine(ArrayList<BusLine> busLinesForSeeking, String busStopFromCheckedPart, String busStopFromAnotherPart) {
+    public List<BusLine> seekPartBusLine(List<BusLine> busLinesForSeeking, String busStopFromCheckedPart, String busStopFromAnotherPart) {
 
         List<BusLine> foundPartBusLines = new ArrayList<>();
 

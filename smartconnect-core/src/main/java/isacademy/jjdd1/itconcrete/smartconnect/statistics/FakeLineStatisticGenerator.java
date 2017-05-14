@@ -5,18 +5,19 @@ import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
 import javax.enterprise.context.RequestScoped;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 @RequestScoped
 public class FakeLineStatisticGenerator {
 
-    ArrayList<StatisticsData> statistics = new ArrayList<>();
+    private List<StatisticsData> statistics = new ArrayList<>();
 
     public void loadData() throws IOException {
 
         ScheduleParser scheduleParser = new ScheduleParser();
-        ArrayList<Integer> allBusLineNumbers = scheduleParser.getAllLineNumbers();
-        ArrayList<Integer> listOfAlreadyAddedLines = new ArrayList<>();
+        List<Integer> allBusLineNumbers = scheduleParser.getAllLineNumbers();
+        List<Integer> listOfAlreadyAddedLines = new ArrayList<>();
 
         int upperboundForRandomValues = 100;
         int lowerboundForRandomValues = 1;
@@ -34,7 +35,7 @@ public class FakeLineStatisticGenerator {
 
     }
 
-    public ArrayList<StatisticsData> getStatistics() {
+    public List<StatisticsData> getStatistics() {
         return statistics;
     }
 }

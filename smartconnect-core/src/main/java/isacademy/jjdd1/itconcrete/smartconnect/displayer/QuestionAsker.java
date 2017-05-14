@@ -7,6 +7,7 @@ import org.slf4j.Marker;
 import org.slf4j.MarkerFactory;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class QuestionAsker {
@@ -21,7 +22,7 @@ public class QuestionAsker {
         return info;
     }
 
-    public static String askForHome(ArrayList<BusLine> allBusLines) {
+    public static String askForHome(List<BusLine> allBusLines) {
 
         Util util = new Util();
 

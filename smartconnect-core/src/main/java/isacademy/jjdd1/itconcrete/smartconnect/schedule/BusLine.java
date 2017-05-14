@@ -24,19 +24,19 @@ public class BusLine {
         return route;
     }
 
-    public ArrayList<DepartureWithVariant> getDeparturesWeekdaysWithVariant() {
+    public List<DepartureWithVariant> getDeparturesWeekdaysWithVariant() {
         return departures.getDeparturesWithVariantWeekdays();
     }
 
-    public ArrayList<DepartureWithVariant> getDeparturesSaturdaysWithVariant() {
+    public List<DepartureWithVariant> getDeparturesSaturdaysWithVariant() {
         return departures.getDeparturesWithVariantSaturdays();
     }
 
-    public ArrayList<DepartureWithVariant> getDeparturesSundaysAndHolidaysWithVariant() {
+    public List<DepartureWithVariant> getDeparturesSundaysAndHolidaysWithVariant() {
         return departures.getDeparturesWithVariantSundaysAndHolidays();
     }
 
-    public ArrayList<DepartureWithVariant> getDeparturesSaturdaysSundaysAndHolidaysWithVariant() {
+    public List<DepartureWithVariant> getDeparturesSaturdaysSundaysAndHolidaysWithVariant() {
         return departures.getDeparturesWithVariantSaturdaysSundaysAndHolidays();
     }
 

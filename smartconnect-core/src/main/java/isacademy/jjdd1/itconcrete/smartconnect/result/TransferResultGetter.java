@@ -13,7 +13,7 @@ import java.util.List;
 
 public class TransferResultGetter {
 
-    public List<CompleteTransferResult> getTransfers(String homeBusStop, String timeOfLeavingHome, String timeOfArrivingHome, int maxAmountOfResults, ArrayList<BusLine> allBusLines) throws IllegalAccessException, NoSuchFieldException, IOException, URISyntaxException {
+    public List<CompleteTransferResult> getTransfers(String homeBusStop, String timeOfLeavingHome, String timeOfArrivingHome, int maxAmountOfResults, List<BusLine> allBusLines) throws IllegalAccessException, NoSuchFieldException, IOException, URISyntaxException {
 
 
         CalendarParser calendarParser = new CalendarParser();

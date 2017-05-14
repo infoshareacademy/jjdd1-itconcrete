@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Util {
 
-    public boolean busStopExistence(String busStop, ArrayList<BusLine> busLinesForSeeking) {
+    public boolean busStopExistence(String busStop, List<BusLine> busLinesForSeeking) {
 
         boolean busStopExistence = false;
 

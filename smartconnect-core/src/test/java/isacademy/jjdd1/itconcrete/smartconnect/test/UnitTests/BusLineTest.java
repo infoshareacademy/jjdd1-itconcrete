@@ -8,6 +8,8 @@ import org.junit.Test;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
@@ -17,13 +19,12 @@ public class BusLineTest {
     private static int THE_HIGHEST_LINE_NUMBER;
     private static ScheduleParser scheduleParser;
     private BusLine busLine;
-    private ArrayList<Integer> allLineNumbers;
+    private List<Integer> allLineNumbers;
 
 
     @BeforeClass
     public static void setupScheduleParser() throws IOException {
         scheduleParser = new ScheduleParser();
-        scheduleParser.loadData();
     }
 
     @Before

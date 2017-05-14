@@ -19,7 +19,7 @@ import java.util.List;
 
 public class CompleteDirectResultGetter {
 
-    public List<CompleteDirectResult> getCompleteResult(String homeBusStop, String timeOfLeavingHome, String timeOfArrivingHome, int maxAmountOfResults, ArrayList<BusLine> allBusLines) throws IOException, URISyntaxException {
+    public List<CompleteDirectResult> getCompleteResult(String homeBusStop, String timeOfLeavingHome, String timeOfArrivingHome, int maxAmountOfResults, List<BusLine> allBusLines) throws IOException, URISyntaxException {
 
         MinutesToBusStops minutesToBusStops = new MinutesToBusStops();
         ConnectionSeeker connectionSeeker = new ConnectionSeeker();

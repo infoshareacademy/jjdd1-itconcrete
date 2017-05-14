@@ -8,7 +8,7 @@ import java.util.List;
 
 public class BusLineSeeker {
 
-    public List<BusLine> seekBusLine(Journey journeyForSeeking, ArrayList<BusLine> busLinesForSeeking) {
+    public List<BusLine> seekBusLine(Journey journeyForSeeking, List<BusLine> busLinesForSeeking) {
 
         List<BusLine> foundBusLines = new ArrayList<>();
         String startBusStop = journeyForSeeking.getStartBusStop();

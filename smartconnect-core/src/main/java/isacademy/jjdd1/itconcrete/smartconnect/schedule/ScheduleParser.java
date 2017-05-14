@@ -16,10 +16,10 @@ public class ScheduleParser {
     private static final Path ROOT_PATH = Paths.get(System.getProperty("java.io.tmpdir")).resolve("smartconnect");
     private static final Logger LOGGER = LoggerFactory.getLogger(ScheduleParser.class);
 
-    private ArrayList<BusLine> arrayOfBusLines = new ArrayList<>();
+    private List<BusLine> arrayOfBusLines = new ArrayList<>();
     private InitialDataChecker initialDataChecker = new InitialDataChecker();
-    private ArrayList<Integer> allLineNumbers = new ArrayList<>();
-    private ArrayList<String> allBusStopNames = new ArrayList<>();
+    private List<Integer> allLineNumbers = new ArrayList<>();
+    private List<String> allBusStopNames = new ArrayList<>();
 
     public ScheduleParser() throws IOException {
         LOGGER.debug("Unzipping zip {} to temp folder {}.", ZIP_FILE_PATH, ROOT_PATH);
@@ -57,7 +57,7 @@ public class ScheduleParser {
         return pathsToCSVFiles;
     }
 
-    public void loadData() throws IOException {
+    private void loadData() throws IOException {
         LOGGER.trace("Loading data from schedule resources.");
         List<Path> pathsToScheduleFiles = subdirectories(ROOT_PATH);
         for (Path path : pathsToScheduleFiles) {
@@ -104,20 +104,20 @@ public class ScheduleParser {
         }
     }
 
-    public ArrayList<BusLine> getArrayOfBusLines() {
+    public List<BusLine> getArrayOfBusLines() {
         return arrayOfBusLines;
     }
 
-    public ArrayList<Integer> getAllLineNumbers() {
+    public List<Integer> getAllLineNumbers() {
         Set<Integer> setOfLineNumbers = new HashSet<>(allLineNumbers);
-        ArrayList <Integer> lineNumbers = new ArrayList<>(setOfLineNumbers);
+        List <Integer> lineNumbers = new ArrayList<>(setOfLineNumbers);
         lineNumbers.sort((a,b) -> a.compareTo(b));
         return lineNumbers;
     }
 
-    public ArrayList<String> getAllBusStopNames() {
+    public List<String> getAllBusStopNames() {
         Set<String> setOfStopNames = new HashSet<>(allBusStopNames);
-        ArrayList<String> stopNames = new ArrayList<>(setOfStopNames);
+        List<String> stopNames = new ArrayList<>(setOfStopNames);
         stopNames.sort((a, b) -> a.compareTo(b));
         return stopNames;
     }

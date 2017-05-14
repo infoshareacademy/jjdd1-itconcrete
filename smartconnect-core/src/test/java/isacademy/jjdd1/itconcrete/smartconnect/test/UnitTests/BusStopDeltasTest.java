@@ -8,6 +8,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -16,13 +18,12 @@ public class BusStopDeltasTest {
     private static final int MIN_DELTA_VALUE = -1;
     private static ScheduleParser scheduleParser;
     private BusStopDeltas busStopDelta;
-    private ArrayList<String> busStopNames;
+    private List<String> busStopNames;
 
 
     @BeforeClass
     public static void setupScheduleParser() throws IOException {
         scheduleParser = new ScheduleParser();
-        scheduleParser.loadData();
     }
 
 

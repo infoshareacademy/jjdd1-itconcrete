@@ -10,7 +10,7 @@ import java.util.List;
 
 public class BusLinePairsSeeker {
 
-    public BusLineSetExtended seekBusLinePairs(Journey journey, ArrayList<BusLine> allBusLines) throws IOException {
+    public BusLineSetExtended seekBusLinePairs(Journey journey, List<BusLine> allBusLines) throws IOException {
 
 
         String startBusStop = journey.getStartBusStop();
