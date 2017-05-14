@@ -6,7 +6,7 @@ import java.util.List;
 
 class DirectShrinker {
 
-    final int MAX_RESULTS_AMOUNT = 3;
+    private final int MAX_RESULTS_AMOUNT = 3;
 
     public List<DirectResultConnection> shrinkDirectResults(List<DirectResultConnection> directResultConnections) {
 
