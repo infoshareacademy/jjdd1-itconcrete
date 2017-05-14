@@ -49,8 +49,9 @@ public class TransferSeeker {
 
                         long endFirstLineStartSecondLine = ChronoUnit.MINUTES.between(arrivalFirstLine, departureSecondLine);
                         long finishedEventStartFirstLine = ChronoUnit.MINUTES.between(endOfFinishedEvent, departureFirstLine);
+                        long finishedEventEndFirstLine = ChronoUnit.MINUTES.between(endOfFinishedEvent, arrivalFirstLine);
 
-                        if ((endFirstLineStartSecondLine >= TIME_BEETWEEN_LINES) && (finishedEventStartFirstLine >= 0)) {
+                        if ((endFirstLineStartSecondLine >= TIME_BEETWEEN_LINES) && (finishedEventStartFirstLine >= 0) && (finishedEventEndFirstLine >=0)) {
 
                             String startBusStop = journey.getStartBusStop();
                             String midBusStop = timeDifferenceSet.getMidBusStop();
