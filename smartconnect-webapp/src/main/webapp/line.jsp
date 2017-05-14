@@ -83,10 +83,10 @@
             }]
         },
         options: {
-            title:{
+            title: {
                 display: true,
                 fontSize: 20,
-                text: 'Line popularity chart'
+                text: " Line popularity chart"
             },
             scales: {
                 yAxes: [{
