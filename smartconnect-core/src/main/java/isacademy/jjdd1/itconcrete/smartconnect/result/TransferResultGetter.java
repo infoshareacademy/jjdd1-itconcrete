@@ -13,7 +13,7 @@ import java.util.List;
 
 public class TransferResultGetter {
 
-    public List<CompleteTransferResult> getTransfers(String homeBusStop, String timeOfLeavingHome, String timeOfArrivingHome, int maxAmountOfResults, ArrayList<BusLine> allBusLines) throws IllegalAccessException, NoSuchFieldException, IOException, URISyntaxException {
+    public List<CompleteTransferResult> getTransfers(String homeBusStop, String timeOfLeavingHome, String timeOfArrivingHome, ArrayList<BusLine> allBusLines) throws IllegalAccessException, NoSuchFieldException, IOException, URISyntaxException {
 
 
         CalendarParser calendarParser = new CalendarParser();
@@ -37,7 +37,7 @@ public class TransferResultGetter {
             TransferSeeker transferSeeker = new TransferSeeker();
 
             List<TransferResultConnection> transferResultConnectionList = new ArrayList<>();
-            transferResultConnectionList = transferSeeker.seekTransfer(timeDifferenceSetList, journeys.get(i), maxAmountOfResults);
+            transferResultConnectionList = transferSeeker.seekTransfer(timeDifferenceSetList, journeys.get(i));
 
             completeTransferResultList.add(new CompleteTransferResult(startLocation, endLocation, startBusStop, endBusStop, transferResultConnectionList));
 

@@ -6,11 +6,13 @@ import java.util.List;
 
 class DirectShrinker {
 
-    public List<DirectResultConnection> shrinkDirectResults(List<DirectResultConnection> directResultConnections, int maxAmountOfResults) {
+    private final int MAX_RESULTS_AMOUNT = 3;
+
+    public List<DirectResultConnection> shrinkDirectResults(List<DirectResultConnection> directResultConnections) {
 
         int size = directResultConnections.size();
-        if (size > maxAmountOfResults) {
-            for (int i = size-maxAmountOfResults-1; i >= 0; i--) {
+        if (size > MAX_RESULTS_AMOUNT) {
+            for (int i = size - MAX_RESULTS_AMOUNT - 1; i >= 0; i--) {
                 directResultConnections.remove(i);
             }
         }

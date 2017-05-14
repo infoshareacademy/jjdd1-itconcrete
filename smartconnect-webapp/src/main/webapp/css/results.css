@@ -1,0 +1,10 @@
+td {
+    vertical-align: middle;
+}
+
+br {
+    content: "";
+    margin: 1em;
+    display: block;
+    font-size: 10%;
+}

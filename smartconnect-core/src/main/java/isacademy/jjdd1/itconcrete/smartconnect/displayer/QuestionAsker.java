@@ -62,22 +62,4 @@ public class QuestionAsker {
         }
         return timeOfArrivingHome;
     }
-
-    public static int askForMaxAmountOfResults() {
-
-        LOGGER.trace(QUESTION_ASKER_MARKER,"What is the maximum amount of results you want to see? [1-10]");
-
-        String maxResultsAmount = QuestionAsker.askForInfo();
-
-        while (!maxResultsAmount.matches("(10|[1-9])")) {
-
-            LOGGER.warn(QUESTION_ASKER_MARKER, "Sorry, wrong number, try again");
-
-            maxResultsAmount = QuestionAsker.askForInfo();
-        }
-
-        int maxResultAmountAsInt = Integer.valueOf(maxResultsAmount);
-
-        return maxResultAmountAsInt;
-    }
 }
