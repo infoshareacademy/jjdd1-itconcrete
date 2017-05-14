@@ -3,7 +3,6 @@ package isacademy.jjdd1.itconcrete.smartconnect;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultDisplayer;
-import isacademy.jjdd1.itconcrete.smartconnect.displayer.QuestionAsker;
 import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteDirectResult;
 import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteDirectResultGetter;
 import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteTransferResult;
@@ -38,18 +37,14 @@ public class App {
 
         LOGGER.debug("Home bus stop: " + homeBusStop);
 
-        int maxAmountOfResultsAsInt = 5; //QuestionAsker.askForMaxAmountOfResults();
-
-        LOGGER.info("Chosen amount of options to show: " + maxAmountOfResultsAsInt);
-
         CalendarParser calendarParser = new CalendarParser();
         LinkedList<Journey> journeys = calendarParser.parseFileSortEventsAddHome(homeBusStop, timeOfLeavingHome, timeOfArrivingHome);
 
         CompleteDirectResultGetter completeDirectResultGetter = new CompleteDirectResultGetter();
-        List<CompleteDirectResult> completeDirectResultList = completeDirectResultGetter.getCompleteResult(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, maxAmountOfResultsAsInt, allBusLines);
+        List<CompleteDirectResult> completeDirectResultList = completeDirectResultGetter.getCompleteResult(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, allBusLines);
 
         TransferResultGetter transferResultGetter = new TransferResultGetter();
-        List<CompleteTransferResult> completeTransferResultList = transferResultGetter.getTransfers(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, maxAmountOfResultsAsInt, allBusLines);
+        List<CompleteTransferResult> completeTransferResultList = transferResultGetter.getTransfers(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, allBusLines);
 
 
         CompleteResultDisplayer completeResultDisplayer = new CompleteResultDisplayer();

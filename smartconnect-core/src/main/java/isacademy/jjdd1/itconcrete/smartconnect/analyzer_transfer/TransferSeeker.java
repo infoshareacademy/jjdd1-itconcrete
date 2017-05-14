@@ -11,7 +11,7 @@ import java.util.List;
 
 public class TransferSeeker {
 
-    public List<TransferResultConnection> seekTransfer(List<TimeDifferenceSet> timeDifferenceSetList, Journey journey, int maxAmountOfResults) {
+    public List<TransferResultConnection> seekTransfer(List<TimeDifferenceSet> timeDifferenceSetList, Journey journey) {
 
         List<TransferResultConnection> transferResultConnectionList = new ArrayList<>();
 

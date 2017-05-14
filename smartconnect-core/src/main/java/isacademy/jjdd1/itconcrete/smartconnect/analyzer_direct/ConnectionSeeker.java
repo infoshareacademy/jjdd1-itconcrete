@@ -10,12 +10,10 @@ import java.util.List;
 
 public class ConnectionSeeker {
 
-    public List<DirectResultConnection> seekConnection(List<LineRideTime> lineRideTimes, Journey journey, int askForMaxAmountOfResults) {
+    public List<DirectResultConnection> seekConnection(List<LineRideTime> lineRideTimes, Journey journey) {
 
         List<DirectResultConnection> directResultConnections = new ArrayList<>();
 
-        String startBusStop = journey.getStartBusStop();
-        String endBusStop = journey.getEndBusStop();
         LocalTime startOfDestinedEvent = journey.getStartOfDestinedEvent();
         LocalTime endOfFinishedEvent = journey.getEndOfFinishedEvent();
 
@@ -49,7 +47,7 @@ public class ConnectionSeeker {
         DirectShrinker directShrinker = new DirectShrinker();
 
         directResultConnections = directSorter.sortDirectResultsByTravelEndDesc(directResultConnections);
-        directResultConnections = directShrinker.shrinkDirectResults(directResultConnections, askForMaxAmountOfResults);
+        directResultConnections = directShrinker.shrinkDirectResults(directResultConnections);
         directResultConnections = directSorter.sortDirectResultsByTravelStartAsc(directResultConnections);
 
 

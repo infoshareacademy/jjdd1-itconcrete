@@ -84,14 +84,6 @@ public class FormServlet extends HttpServlet {
             setCorrectParameter(request, "timeOfArrivingHome");
         }
 
-//        if (!validateMaxResults(request)) {
-//            request.setAttribute("maxResultsError", "Wrong data, try again. ");
-//            request.setAttribute("hasError4", "has-error");
-//            isError = true;
-//        } else {
-//            setCorrectParameter(request, "MAX_RESULTS_AMOUNT");
-//        }
-
         if (!validateCalendarFile(request)) {
             request.setAttribute("calendarFileError", "Wrong file format, try again");
             request.setAttribute("hasError5", "has-error");
@@ -113,26 +105,17 @@ public class FormServlet extends HttpServlet {
         return correctHomeBusStop;
     }
 
-
     private boolean validateTimeOfLeavingHome(HttpServletRequest request) {
         String timeOfLeavingHome = request.getParameter("timeOfLeavingHome");
         boolean correctTimeOfLeavingHome = timeOfLeavingHome.matches("^([01][0-9]|2[0-3]):[0-5][0-9]$");
         return correctTimeOfLeavingHome;
     }
 
-
     private boolean validateTimeOfArrivingHome(HttpServletRequest request) {
         String timeOfArrivingHome = request.getParameter("timeOfArrivingHome");
         boolean correctTimeOfArrivingHome = timeOfArrivingHome.matches("^([01][0-9]|2[0-3]):[0-5][0-9]$");
         return correctTimeOfArrivingHome;
     }
-
-
-//    private boolean validateMaxResults(HttpServletRequest request) {
-//        String MAX_RESULTS_AMOUNT = request.getParameter("MAX_RESULTS_AMOUNT");
-//        boolean correctMaxAmountOfResults = MAX_RESULTS_AMOUNT.matches("(10|[1-9])");
-//        return correctMaxAmountOfResults;
-//    }
 
     private boolean validateCalendarFile(HttpServletRequest request) throws IOException, ServletException {
         Part calendarFile = request.getPart("calendarFile");

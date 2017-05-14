@@ -64,17 +64,6 @@
             </div>
         </div>
 
-        <%--<div class="form-group ${hasError4}">--%>
-            <%--<label class="control-label">Maximum amount of results</label>--%>
-            <%--<div class="input-group">--%>
-                <%--<span class="input-group-addon"><span class="glyphicon glyphicon-random" aria-hidden="true"></span></span>--%>
-                <%--<input type="text" class="form-control" id="maxAmountOfResults" name="maxAmountOfResults"--%>
-                       <%--placeholder="${maxResultsError}Enter maximum amount of results (1-10)"--%>
-                       <%--value="${maxAmountOfResults}"--%>
-                       <%--aria-describedby="inputGroupSuccess1Status">--%>
-            <%--</div>--%>
-        <%--</div>--%>
-
         <div class="form-group ${hasError5}">
             <label class="control-label">Upload calendar file</label>
             <div class="input-group">

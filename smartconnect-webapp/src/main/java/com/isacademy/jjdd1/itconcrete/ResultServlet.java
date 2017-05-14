@@ -32,15 +32,11 @@ import java.util.List;
 @WebServlet(urlPatterns = "/smartconnect_results")
 public class ResultServlet extends HttpServlet {
 
-//    LinkedList<Journey> journeys;
-
     ArrayList<BusLine> allBusLines;
 
     List<CompleteDirectResult> completeDirectResultList;
 
     List<CompleteTransferResult> completeTransferResultList;
-
-    final String MAX_RESULTS_AMOUNT = "5";
 
     @Inject
     CalendarParser calendarParser;
@@ -78,8 +74,6 @@ public class ResultServlet extends HttpServlet {
         String homeBusStop = request.getParameter("homeBusStop");
         String timeOfLeavingHome = request.getParameter("timeOfLeavingHome");
         String timeOfArrivingHome = request.getParameter("timeOfArrivingHome");
-//        String MAX_RESULTS_AMOUNT = request.getParameter("MAX_RESULTS_AMOUNT");
-
 
         Part calendarFile = request.getPart("calendarFile");
         InputStream fileContent = calendarFile.getInputStream();
@@ -102,14 +96,13 @@ public class ResultServlet extends HttpServlet {
         }
 
         try {
-            completeDirectResultList = completeDirectResultGetter.getCompleteResult(homeBusStop, timeOfLeavingHome, timeOfArrivingHome,
-                    Integer.valueOf(MAX_RESULTS_AMOUNT), allBusLines);
+            completeDirectResultList = completeDirectResultGetter.getCompleteResult(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, allBusLines);
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
 
         try {
-            completeTransferResultList = transferResultGetter.getTransfers(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, Integer.valueOf(MAX_RESULTS_AMOUNT), allBusLines);
+            completeTransferResultList = transferResultGetter.getTransfers(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, allBusLines);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (NoSuchFieldException e) {
@@ -118,15 +111,8 @@ public class ResultServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-//        try {
-//            journeys = calendarParser.parseFileSortEventsAddHome(homeBusStop, timeOfLeavingHome, timeOfArrivingHome);
-//        } catch (URISyntaxException e) {
-//            e.printStackTrace();
-//        }
-
         request.setAttribute("completeDirectResultList", completeDirectResultList);
         request.setAttribute("completeTransferResultList", completeTransferResultList);
-//        request.setAttribute("journeys", journeys);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/results.jsp");
         dispatcher.forward(request, response);

@@ -19,7 +19,7 @@ import java.util.List;
 
 public class CompleteDirectResultGetter {
 
-    public List<CompleteDirectResult> getCompleteResult(String homeBusStop, String timeOfLeavingHome, String timeOfArrivingHome, int maxAmountOfResults, ArrayList<BusLine> allBusLines) throws IOException, URISyntaxException {
+    public List<CompleteDirectResult> getCompleteResult(String homeBusStop, String timeOfLeavingHome, String timeOfArrivingHome, ArrayList<BusLine> allBusLines) throws IOException, URISyntaxException {
 
         MinutesToBusStops minutesToBusStops = new MinutesToBusStops();
         ConnectionSeeker connectionSeeker = new ConnectionSeeker();
@@ -33,7 +33,7 @@ public class CompleteDirectResultGetter {
 
             List<BusLine> foundBusLines = busLineSeeker.seekBusLine(journeys.get(i), allBusLines);
             List<LineRideTime> lineRideTimes = minutesToBusStops.calculateMinutesToBusStops(foundBusLines, journeys.get(i));
-            List<DirectResultConnection> directResultConnectionList = connectionSeeker.seekConnection(lineRideTimes, journeys.get(i), maxAmountOfResults);
+            List<DirectResultConnection> directResultConnectionList = connectionSeeker.seekConnection(lineRideTimes, journeys.get(i));
             directResultConnectionList = new LinePromoter(directResultConnectionList).putPromotedLinesFirstInAList();
 
             completeDirectResultList.add(new CompleteDirectResult(journeys.get(i).getStartLocation(),

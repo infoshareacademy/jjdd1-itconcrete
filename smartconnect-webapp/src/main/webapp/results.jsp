@@ -79,7 +79,7 @@
                                        style="width: 50px;">${directResultConnection.getLineNumber()}</a>
                                     <a href="#" class="btn btn-default disabled" role="button">
                                             ${completeTransferResult.getStartBusStop()}</a>
-                                    <a href="#" class="btn btn-default disabled role=" button">
+                                    <a href="#" class="btn btn-default disabled" role="button">
                                         ${completeTransferResult.getEndBusStop()}</a>
                                     <br/>
                                 </td>
