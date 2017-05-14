@@ -40,7 +40,7 @@ public class ResultServlet extends HttpServlet {
 
     List<CompleteTransferResult> completeTransferResultList;
 
-    final String MAX_RESULTS_AMOUNT = "3";
+    final String MAX_RESULTS_AMOUNT = "5";
 
     @Inject
     CalendarParser calendarParser;
