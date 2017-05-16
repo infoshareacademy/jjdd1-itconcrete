@@ -1,9 +1,11 @@
 package com.isacademy.jjdd1.itconcrete;
 
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer_direct.BusLineSeeker;
+import isacademy.jjdd1.itconcrete.smartconnect.database.PromotedLine;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
+
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,15 +31,22 @@ public class FormServlet extends HttpServlet {
     @Inject
     Util util;
 
+    @Inject
+    PromotedLine promotedLine;
+
     private ArrayList<BusLine> busLinesForSeeking;
+
+    private ArrayList<PromotedLine> PromotedLines;
 
 
     @Override
     public void init() throws ServletException {
 
         busLinesForSeeking = scheduleParser.getArrayOfBusLines();
-
+        promotedLine.addPromotedLineToDatabase();
     }
+
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -81,14 +90,6 @@ public class FormServlet extends HttpServlet {
             setCorrectParameter(request, "timeOfArrivingHome");
         }
 
-        if (!validateMaxResults(request)) {
-            request.setAttribute("maxResultsError", "Wrong data, try again. ");
-            request.setAttribute("hasError4", "has-error");
-            isError = true;
-        } else {
-            setCorrectParameter(request, "maxAmountOfResults");
-        }
-
         if (!validateCalendarFile(request)) {
             request.setAttribute("calendarFileError", "Wrong file format, try again");
             request.setAttribute("hasError5", "has-error");
@@ -110,25 +111,16 @@ public class FormServlet extends HttpServlet {
         return correctHomeBusStop;
     }
 
-
     private boolean validateTimeOfLeavingHome(HttpServletRequest request) {
         String timeOfLeavingHome = request.getParameter("timeOfLeavingHome");
         boolean correctTimeOfLeavingHome = timeOfLeavingHome.matches("^([01][0-9]|2[0-3]):[0-5][0-9]$");
         return correctTimeOfLeavingHome;
     }
 
-
     private boolean validateTimeOfArrivingHome(HttpServletRequest request) {
         String timeOfArrivingHome = request.getParameter("timeOfArrivingHome");
         boolean correctTimeOfArrivingHome = timeOfArrivingHome.matches("^([01][0-9]|2[0-3]):[0-5][0-9]$");
         return correctTimeOfArrivingHome;
-    }
-
-
-    private boolean validateMaxResults(HttpServletRequest request) {
-        String maxAmountOfResults = request.getParameter("maxAmountOfResults");
-        boolean correctMaxAmountOfResults = maxAmountOfResults.matches("(10|[1-9])");
-        return correctMaxAmountOfResults;
     }
 
     private boolean validateCalendarFile(HttpServletRequest request) throws IOException, ServletException {

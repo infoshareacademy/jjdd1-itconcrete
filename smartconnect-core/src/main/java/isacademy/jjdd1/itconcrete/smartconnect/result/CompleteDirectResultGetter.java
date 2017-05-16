@@ -30,58 +30,56 @@ public class CompleteDirectResultGetter {
     private Logger LOGGER = LoggerFactory.getLogger(App.class);
     private static org.hibernate.Session session;
 
-    public List<CompleteDirectResult> getCompleteResult(String homeBusStop, String timeOfLeavingHome, String timeOfArrivingHome, int maxAmountOfResults, ArrayList<BusLine> allBusLines) throws IOException, URISyntaxException {
 
-        MinutesToBusStops minutesToBusStops = new MinutesToBusStops();
-        ConnectionSeeker connectionSeeker = new ConnectionSeeker();
-        CalendarParser calendarParser = new CalendarParser();
-        BusLineSeeker busLineSeeker = new BusLineSeeker();
-        LinkedList<Journey> journeys = calendarParser.parseFileSortEventsAddHome(homeBusStop, timeOfLeavingHome, timeOfArrivingHome);
+        public List<CompleteDirectResult> getCompleteResult (String homeBusStop, String timeOfLeavingHome, String
+        timeOfArrivingHome, ArrayList < BusLine > allBusLines) throws IOException, URISyntaxException {
 
-        List<CompleteDirectResult> completeDirectResultList = new ArrayList<>();
+            MinutesToBusStops minutesToBusStops = new MinutesToBusStops();
+            ConnectionSeeker connectionSeeker = new ConnectionSeeker();
+            CalendarParser calendarParser = new CalendarParser();
+            BusLineSeeker busLineSeeker = new BusLineSeeker();
+            LinkedList<Journey> journeys = calendarParser.parseFileSortEventsAddHome(homeBusStop, timeOfLeavingHome, timeOfArrivingHome);
 
-        for (int i = 0; i < journeys.size(); i++) {
+            List<CompleteDirectResult> completeDirectResultList = new ArrayList<>();
 
-            List<BusLine> foundBusLines = busLineSeeker.seekBusLine(journeys.get(i), allBusLines);
-            List<LineRideTime> lineRideTimes = minutesToBusStops.calculateMinutesToBusStops(foundBusLines, journeys.get(i));
-            List<DirectResultConnection> directResultConnectionList = connectionSeeker.seekConnection(lineRideTimes, journeys.get(i), maxAmountOfResults);
-            directResultConnectionList = new LinePromoter(directResultConnectionList).putPromotedLinesFirstInAList();
+            for (int i = 0; i < journeys.size(); i++) {
 
-            completeDirectResultList.add(new CompleteDirectResult(journeys.get(i).getStartLocation(),
-                    journeys.get(i).getEndLocation(), journeys.get(i).getStartBusStop(),
-                    journeys.get(i).getEndBusStop(), directResultConnectionList));
-        }
+                List<BusLine> foundBusLines = busLineSeeker.seekBusLine(journeys.get(i), allBusLines);
+                List<LineRideTime> lineRideTimes = minutesToBusStops.calculateMinutesToBusStops(foundBusLines, journeys.get(i));
+                List<DirectResultConnection> directResultConnectionList = connectionSeeker.seekConnection(lineRideTimes, journeys.get(i));
+                directResultConnectionList = new LinePromoter(directResultConnectionList).putPromotedLinesFirstInAList();
 
-        StatisticsCollector statisticsCollector = new StatisticsCollector();
-        List<StatisticsData> stats = statisticsCollector.getStatisticsData(completeDirectResultList);
+                completeDirectResultList.add(new CompleteDirectResult(journeys.get(i).getStartLocation(),
+                        journeys.get(i).getEndLocation(), journeys.get(i).getStartBusStop(),
+                        journeys.get(i).getEndBusStop(), directResultConnectionList));
+            }
 
-        LOGGER.trace("collected statistics {}", stats);
-        session = HibernateUtil.getSessionFactory().openSession();
+            StatisticsCollector statisticsCollector = new StatisticsCollector();
+            List<StatisticsData> stats = statisticsCollector.getStatisticsData(completeDirectResultList);
 
-        for (int i = 0; i < journeys.size(); i++) {
+            LOGGER.trace("collected statistics {}", stats);
+            session = HibernateUtil.getSessionFactory().openSession();
+
+            for (int i = 0; i < journeys.size(); i++) {
+                session.beginTransaction();
+                session.save(new BusStop(journeys.get(i).getStartBusStop()));
+                session.getTransaction().commit();
+            }
             session.beginTransaction();
-            session.save(new BusStop(journeys.get(i).getStartBusStop()));
+            session.save(new BusStop(journeys.get(journeys.size() - 1).getEndBusStop()));
             session.getTransaction().commit();
-        }
-        session.beginTransaction();
-        session.save(new BusStop(journeys.get(journeys.size()-1).getEndBusStop()));
-        session.getTransaction().commit();
 
-        session.beginTransaction();
-        session.save(new PromotedLine(157));
-        session.save(new PromotedLine(116));
-        session.getTransaction().commit();
-        for(StatisticsData currentStatisticData: stats) {
+            for (StatisticsData currentStatisticData : stats) {
+                session.beginTransaction();
+                session.save(new BusLineStatistics(currentStatisticData.getLineNumber(), currentStatisticData.getCountedTimes()));
+                session.getTransaction().commit();
+            }
             session.beginTransaction();
-            session.save(new BusLineStatistics(currentStatisticData.getLineNumber(), currentStatisticData.getCountedTimes()));
+            session.save(new HomeBusStop(homeBusStop));
             session.getTransaction().commit();
+
+
+            return completeDirectResultList;
         }
-        session.beginTransaction();
-        session.save(new HomeBusStop(homeBusStop));
-        session.getTransaction().commit();
-
-
-        return completeDirectResultList;
     }
-}
 

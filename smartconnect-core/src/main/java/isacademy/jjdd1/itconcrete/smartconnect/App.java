@@ -37,18 +37,14 @@ public class App {
 
         LOGGER.debug("Home bus stop: " + homeBusStop);
 
-        int maxAmountOfResultsAsInt = 3; //QuestionAsker.askForMaxAmountOfResults();
-
-        LOGGER.info("Chosen amount of options to show: " + maxAmountOfResultsAsInt);
-
         CalendarParser calendarParser = new CalendarParser();
         LinkedList<Journey> journeys = calendarParser.parseFileSortEventsAddHome(homeBusStop, timeOfLeavingHome, timeOfArrivingHome);
 
         CompleteDirectResultGetter completeDirectResultGetter = new CompleteDirectResultGetter();
-        List<CompleteDirectResult> completeDirectResultList = completeDirectResultGetter.getCompleteResult(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, maxAmountOfResultsAsInt, allBusLines);
+        List<CompleteDirectResult> completeDirectResultList = completeDirectResultGetter.getCompleteResult(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, allBusLines);
 
         TransferResultGetter transferResultGetter = new TransferResultGetter();
-        List<CompleteTransferResult> completeTransferResultList = transferResultGetter.getTransfers(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, maxAmountOfResultsAsInt, allBusLines);
+        List<CompleteTransferResult> completeTransferResultList = transferResultGetter.getTransfers(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, allBusLines);
 
 
         CompleteResultDisplayer completeResultDisplayer = new CompleteResultDisplayer();

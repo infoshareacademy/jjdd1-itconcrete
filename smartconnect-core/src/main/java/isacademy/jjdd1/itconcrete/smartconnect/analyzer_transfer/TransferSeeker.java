@@ -11,7 +11,7 @@ import java.util.List;
 
 public class TransferSeeker {
 
-    public List<TransferResultConnection> seekTransfer(List<TimeDifferenceSet> timeDifferenceSetList, Journey journey, int maxAmountOfResults) {
+    public List<TransferResultConnection> seekTransfer(List<TimeDifferenceSet> timeDifferenceSetList, Journey journey) {
 
         List<TransferResultConnection> transferResultConnectionList = new ArrayList<>();
 
@@ -49,8 +49,9 @@ public class TransferSeeker {
 
                         long endFirstLineStartSecondLine = ChronoUnit.MINUTES.between(arrivalFirstLine, departureSecondLine);
                         long finishedEventStartFirstLine = ChronoUnit.MINUTES.between(endOfFinishedEvent, departureFirstLine);
+                        long finishedEventEndFirstLine = ChronoUnit.MINUTES.between(endOfFinishedEvent, arrivalFirstLine);
 
-                        if ((endFirstLineStartSecondLine >= TIME_BEETWEEN_LINES) && (finishedEventStartFirstLine >= 0)) {
+                        if ((endFirstLineStartSecondLine >= TIME_BEETWEEN_LINES) && (finishedEventStartFirstLine >= 0) && (finishedEventEndFirstLine >=0)) {
 
                             String startBusStop = journey.getStartBusStop();
                             String midBusStop = timeDifferenceSet.getMidBusStop();
@@ -66,9 +67,9 @@ public class TransferSeeker {
         TransferSorter transferSorter = new TransferSorter();
         TransferShrinker transferShrinker = new TransferShrinker();
 
-        transferResultConnectionList = transferSorter.sortTransferResultsByTravelStart(transferResultConnectionList);
-        transferResultConnectionList = transferSorter.sortTransferResultsByTravelEnd(transferResultConnectionList);
-        transferResultConnectionList = transferShrinker.shrinkTransferResults(transferResultConnectionList, maxAmountOfResults);
+        transferResultConnectionList = transferSorter.sortTransferResults(transferResultConnectionList);
+        transferResultConnectionList = transferShrinker.shrinkTransferResults(transferResultConnectionList);
+        transferResultConnectionList = transferSorter.sortTransferResultsByTravelStartAsc(transferResultConnectionList);
 
         return transferResultConnectionList;
     }

@@ -6,11 +6,13 @@ import java.util.List;
 
 class TransferShrinker {
 
-    public List<TransferResultConnection> shrinkTransferResults(List<TransferResultConnection> transferResultConnectionList, int maxAmountOfResults) {
+    private final int MAX_RESULTS_AMOUNT = 3;
+
+    public List<TransferResultConnection> shrinkTransferResults(List<TransferResultConnection> transferResultConnectionList) {
 
         int size = transferResultConnectionList.size();
-        if (size > maxAmountOfResults) {
-            for (int i = size-maxAmountOfResults; i >= 0; i--) {
+        if (size > MAX_RESULTS_AMOUNT) {
+            for (int i = size - 1; i >= MAX_RESULTS_AMOUNT; i--) {
                 transferResultConnectionList.remove(i);
             }
         }

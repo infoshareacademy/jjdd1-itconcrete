@@ -21,7 +21,7 @@
     </nav>
 </div>
 
-<div class="chart" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 25%; height: 25%;">
+<div class="chart" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 75%; height: 75%;">
     <canvas id="myChart2"></canvas>
 </div>
 
@@ -45,7 +45,7 @@
 <script>
     var ctx2 = document.getElementById("myChart2");
     var config = {
-        type: 'polarArea',
+        type: 'bar',
         data: {
             labels: [<c:forEach items="${statistics}" var="statistic">
                 "${statistic.busStopName}" ,
@@ -78,8 +78,27 @@
             title:{
                 display: true,
                 fontSize: 20,
-                text: 'BusStops popularity chart'
+                text: 'Bus stops popularity chart'
 //                position: 'top'
+            },
+            scales: {
+                yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Occurences in search',
+                        fontSize: 15
+                    },
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+                xAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Bus stop name',
+                        fontSize: 15
+                    }
+                }]
             }
 //            legend: {
 //                display: true,
