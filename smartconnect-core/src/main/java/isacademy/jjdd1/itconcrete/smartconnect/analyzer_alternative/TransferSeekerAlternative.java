@@ -16,6 +16,7 @@ public class TransferSeekerAlternative {
 
     private List<RouteAndIndex> starts;
     private List<RouteAndIndex> ends;
+    private List<Transfer> possibleTransfers;
 
     public TransferSeekerAlternative(List<BusLine> allBusLines, String start, String end) {
         this.allBusLines = allBusLines;
@@ -23,6 +24,7 @@ public class TransferSeekerAlternative {
         this.end = end;
         findAllStarts();
         findAllEnds();
+        findTransfer();
 
     }
 
@@ -46,7 +48,15 @@ public class TransferSeekerAlternative {
         }
     }
 
+
+    //TODO START HERE AT HOME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     private void findTransfer(){
+
+        for (int i = 0; i < starts.size() ; i++) {
+            String activeStop = null;
+            starts.get(i).getRoute();
+
+        }
 
     }
 
