@@ -18,9 +18,6 @@ public class TimeDifferenceCounter {
 
         String startBusStop = busLineSetExtended.getStartBusStop();
         String endBusStop = busLineSetExtended.getEndBusStop();
-
-//        List<BusLineSet> busLineSetList = busLineSetExtended.getBusLineSetList();
-
         List<Transfer> transferList = busLineSetExtended.getPossibleTransfers();
 
 
