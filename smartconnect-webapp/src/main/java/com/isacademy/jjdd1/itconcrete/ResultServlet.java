@@ -1,6 +1,7 @@
 package com.isacademy.jjdd1.itconcrete;
 
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
+import isacademy.jjdd1.itconcrete.smartconnect.database.AddToDbFromServlet;
 import isacademy.jjdd1.itconcrete.smartconnect.database.BusStop;
 import isacademy.jjdd1.itconcrete.smartconnect.database.HomeBusStop;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
@@ -57,6 +58,8 @@ public class ResultServlet extends HttpServlet {
     HomeBusStop DBhomeBusStop;
     @Inject
     StatisticsCollector statisticsCollector;
+    @Inject
+    AddToDbFromServlet addToDbFromServlet;
 
     @Override
     public void init() throws ServletException {
@@ -113,7 +116,8 @@ public class ResultServlet extends HttpServlet {
         //db
         List<StatisticsData> stats = statisticsCollector.getStatisticsData(completeDirectResultList);
         statisticsCollector.addLineStatsToDatabase(stats);
-        completeDirectResultGetter.addStopsToDatabase(completeDirectResultList);
+        //db
+        addToDbFromServlet.addStopsToDatabase(completeDirectResultList);
 
         try {
             completeTransferResultList = transferResultGetter.getTransfers(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, allBusLines);
