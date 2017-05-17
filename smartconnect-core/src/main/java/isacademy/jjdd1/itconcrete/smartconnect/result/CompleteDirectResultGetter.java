@@ -58,28 +58,33 @@ public class CompleteDirectResultGetter {
             List<StatisticsData> stats = statisticsCollector.getStatisticsData(completeDirectResultList);
 
             LOGGER.trace("collected statistics {}", stats);
-            session = HibernateUtil.getSessionFactory().openSession();
-
-            for (int i = 0; i < journeys.size(); i++) {
-                session.beginTransaction();
-                session.save(new BusStop(journeys.get(i).getStartBusStop()));
-                session.getTransaction().commit();
-            }
-            session.beginTransaction();
-            session.save(new BusStop(journeys.get(journeys.size() - 1).getEndBusStop()));
-            session.getTransaction().commit();
-
-            for (StatisticsData currentStatisticData : stats) {
-                session.beginTransaction();
-                session.save(new BusLineStatistics(currentStatisticData.getLineNumber(), currentStatisticData.getCountedTimes()));
-                session.getTransaction().commit();
-            }
-            session.beginTransaction();
-            session.save(new HomeBusStop(homeBusStop));
-            session.getTransaction().commit();
-
+//            session = HibernateUtil.getSessionFactory().openSession();
+//
+//            for (int i = 0; i < journeys.size(); i++) {
+//                session.beginTransaction();
+//                session.save(new BusStop(journeys.get(i).getStartBusStop()));
+//                session.getTransaction().commit();
+//            }
+//            session.beginTransaction();
+//            session.save(new BusStop(journeys.get(journeys.size() - 1).getEndBusStop()));
+//            session.getTransaction().commit();
 
             return completeDirectResultList;
+
         }
+
+        public void addStopsToDatabase(List<CompleteDirectResult> completeDirectResultList) {
+            session = HibernateUtil.getSessionFactory().openSession();
+
+                for (int i = 0; i < completeDirectResultList.size(); i++) {
+                    session.beginTransaction();
+                    session.save(new BusStop(completeDirectResultList.get(i).getStartBusStop()));
+                    session.getTransaction().commit();
+                }
+            session.beginTransaction();
+            session.save(new BusStop(completeDirectResultList.get(completeDirectResultList.size() - 1).getEndBusStop()));
+            session.getTransaction().commit();
+        }
+
     }
 

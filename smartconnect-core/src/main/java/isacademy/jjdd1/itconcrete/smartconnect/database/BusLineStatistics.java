@@ -42,4 +42,5 @@ public class BusLineStatistics {
     public void setCountedTimes(int countedTimes) {
         this.countedTimes = countedTimes;
     }
+
 }

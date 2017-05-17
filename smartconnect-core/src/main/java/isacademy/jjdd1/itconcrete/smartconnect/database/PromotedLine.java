@@ -4,9 +4,8 @@ import isacademy.jjdd1.itconcrete.smartconnect.util.HibernateUtil;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.ArrayList;
+
 
 @Entity
 public class PromotedLine {
@@ -15,9 +14,6 @@ public class PromotedLine {
 
 
     @Id
-    @GeneratedValue
-    private long id;
-
     @Column
     private int number;
 
@@ -40,10 +36,8 @@ public class PromotedLine {
 
         session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        session.saveOrUpdate(new PromotedLine(100));
-        session.saveOrUpdate(new PromotedLine(101));
+        session.saveOrUpdate(new PromotedLine(10));
+        session.saveOrUpdate(new PromotedLine(15));
         session.getTransaction().commit();
-
     }
-
 }
