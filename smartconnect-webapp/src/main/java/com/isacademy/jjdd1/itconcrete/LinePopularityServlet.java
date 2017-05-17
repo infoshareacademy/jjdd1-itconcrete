@@ -26,6 +26,7 @@ public class LinePopularityServlet extends HttpServlet {
 
     private ArrayList<StatisticsData> statistics;
 
+
     public void loadStats() {
         try {
             fakeLineStatisticGenerator.loadData();

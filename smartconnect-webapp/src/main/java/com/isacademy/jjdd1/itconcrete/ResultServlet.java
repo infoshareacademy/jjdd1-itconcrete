@@ -1,13 +1,15 @@
 package com.isacademy.jjdd1.itconcrete;
 
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
+import isacademy.jjdd1.itconcrete.smartconnect.database.AddToDbFromServlet;
+import isacademy.jjdd1.itconcrete.smartconnect.database.BusStop;
+import isacademy.jjdd1.itconcrete.smartconnect.database.HomeBusStop;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
-import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteDirectResult;
-import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteDirectResultGetter;
-import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteTransferResult;
-import isacademy.jjdd1.itconcrete.smartconnect.result.TransferResultGetter;
+import isacademy.jjdd1.itconcrete.smartconnect.result.*;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
+import isacademy.jjdd1.itconcrete.smartconnect.statistics.StatisticsCollector;
+import isacademy.jjdd1.itconcrete.smartconnect.statistics.StatisticsData;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -51,6 +53,14 @@ public class ResultServlet extends HttpServlet {
     @Inject
     Util util;
 
+    //db
+    @Inject
+    HomeBusStop DBhomeBusStop;
+    @Inject
+    StatisticsCollector statisticsCollector;
+    @Inject
+    AddToDbFromServlet addToDbFromServlet;
+
     @Override
     public void init() throws ServletException {
 
@@ -63,6 +73,7 @@ public class ResultServlet extends HttpServlet {
         request.setAttribute("completeDirectResultList", completeDirectResultList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/results.jsp");
         dispatcher.forward(request, response);
+
     }
 
 
@@ -70,6 +81,9 @@ public class ResultServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String homeBusStop = request.getParameter("homeBusStop");
+        //db
+        DBhomeBusStop.addHomeBusStopToDatabase(homeBusStop);
+
         String timeOfLeavingHome = request.getParameter("timeOfLeavingHome");
         String timeOfArrivingHome = request.getParameter("timeOfArrivingHome");
 
@@ -99,6 +113,12 @@ public class ResultServlet extends HttpServlet {
             e.printStackTrace();
         }
 
+        //db
+        List<StatisticsData> stats = statisticsCollector.getStatisticsData(completeDirectResultList);
+        statisticsCollector.addLineStatsToDatabase(stats);
+        //db
+        addToDbFromServlet.addStopsToDatabase(completeDirectResultList);
+
         try {
             completeTransferResultList = transferResultGetter.getTransfers(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, allBusLines);
         } catch (IllegalAccessException e) {
@@ -109,11 +129,16 @@ public class ResultServlet extends HttpServlet {
             e.printStackTrace();
         }
 
+        //db
+        transferResultGetter.addStopsToDatabase(completeTransferResultList);
+
+
         request.setAttribute("completeDirectResultList", completeDirectResultList);
         request.setAttribute("completeTransferResultList", completeTransferResultList);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/results.jsp");
         dispatcher.forward(request, response);
+
     }
 
 }

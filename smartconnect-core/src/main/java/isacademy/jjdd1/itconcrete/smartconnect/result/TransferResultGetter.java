@@ -3,7 +3,9 @@ package isacademy.jjdd1.itconcrete.smartconnect.result;
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer_transfer.*;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
+import isacademy.jjdd1.itconcrete.smartconnect.database.BusStop;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
+import isacademy.jjdd1.itconcrete.smartconnect.util.HibernateUtil;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -12,6 +14,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class TransferResultGetter {
+
+    private static org.hibernate.Session session;
 
     public List<CompleteTransferResult> getTransfers(String homeBusStop, String timeOfLeavingHome, String timeOfArrivingHome, ArrayList<BusLine> allBusLines) throws IllegalAccessException, NoSuchFieldException, IOException, URISyntaxException {
 
@@ -44,6 +48,19 @@ public class TransferResultGetter {
         }
 
         return completeTransferResultList;
+    }
+    public void addStopsToDatabase(List<CompleteTransferResult> TransferResultList) {
+
+        session = HibernateUtil.getSessionFactory().openSession();
+
+        for (int i = 0; i < TransferResultList.size(); i++) {
+            session.beginTransaction();
+            session.save(new BusStop(TransferResultList.get(i).getStartBusStop()));
+            session.getTransaction().commit();
+        }
+        session.beginTransaction();
+        session.save(new BusStop(TransferResultList.get(TransferResultList.size() - 1).getEndBusStop()));
+        session.getTransaction().commit();
     }
 
 }
