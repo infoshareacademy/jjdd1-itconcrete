@@ -25,50 +25,32 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-//        LOGGER.info("Starting application.");
-//        LOGGER.trace("Schedules database is initialized.");
-
-        String start = "Klonowa";
-        String end = "Potokowa";
+        LOGGER.info("Starting application.");
+        LOGGER.trace("Schedules database is initialized.");
 
         ScheduleParser scheduleParser = new ScheduleParser();
         ArrayList<BusLine> allBusLines = scheduleParser.getArrayOfBusLines();
 
-        System.out.println("Size of buslines " + allBusLines.size());
+        LOGGER.info("Asking for user input in order to define home location.");
 
-        TransferSeekerAlternative transferSeekerAlternative = new TransferSeekerAlternative(allBusLines, start, end);
-        List<Transfer> possibleTransfers = transferSeekerAlternative.getPossibleTransfers();
+        String homeBusStop = QuestionAsker.askForHome(allBusLines);
+        String timeOfLeavingHome = QuestionAsker.askForTimeOfLeavingHome();
+        String timeOfArrivingHome = QuestionAsker.askForTimeOfArrivingHome();
 
-        for(Transfer transfer : possibleTransfers){
-            System.out.println("Start: " + transfer.getStartLine().getLineNumber()
-                    + transfer.getStartLine().getRoute().getArrayOfStops()
-                    + "\n Stop: " + transfer.getEndLine().getLineNumber() + transfer.getEndLine().getRoute().getArrayOfStops() + "\n");
-        }
+        LOGGER.debug("Home bus stop: " + homeBusStop);
+
+        CalendarParser calendarParser = new CalendarParser();
+        LinkedList<Journey> journeys = calendarParser.parseFileSortEventsAddHome(homeBusStop, timeOfLeavingHome, timeOfArrivingHome);
+
+        CompleteDirectResultGetter completeDirectResultGetter = new CompleteDirectResultGetter();
+        List<CompleteDirectResult> completeDirectResultList = completeDirectResultGetter.getCompleteResult(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, allBusLines);
+
+        TransferResultGetter transferResultGetter = new TransferResultGetter();
+        List<CompleteTransferResult> completeTransferResultList = transferResultGetter.getTransfers(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, allBusLines);
 
 
-
-
-
-//        LOGGER.info("Asking for user input in order to define home location.");
-//
-//        String homeBusStop = QuestionAsker.askForHome(allBusLines);
-//        String timeOfLeavingHome = QuestionAsker.askForTimeOfLeavingHome();
-//        String timeOfArrivingHome = QuestionAsker.askForTimeOfArrivingHome();
-//
-//        LOGGER.debug("Home bus stop: " + homeBusStop);
-//
-//        CalendarParser calendarParser = new CalendarParser();
-//        LinkedList<Journey> journeys = calendarParser.parseFileSortEventsAddHome(homeBusStop, timeOfLeavingHome, timeOfArrivingHome);
-//
-//        CompleteDirectResultGetter completeDirectResultGetter = new CompleteDirectResultGetter();
-//        List<CompleteDirectResult> completeDirectResultList = completeDirectResultGetter.getCompleteResult(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, allBusLines);
-//
-//        TransferResultGetter transferResultGetter = new TransferResultGetter();
-//        List<CompleteTransferResult> completeTransferResultList = transferResultGetter.getTransfers(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, allBusLines);
-//
-//
-//        CompleteResultDisplayer completeResultDisplayer = new CompleteResultDisplayer();
-//        completeResultDisplayer.displayCompleteResult(journeys, completeDirectResultList, completeTransferResultList);
+        CompleteResultDisplayer completeResultDisplayer = new CompleteResultDisplayer();
+        completeResultDisplayer.displayCompleteResult(journeys, completeDirectResultList, completeTransferResultList);
 
     }
 }

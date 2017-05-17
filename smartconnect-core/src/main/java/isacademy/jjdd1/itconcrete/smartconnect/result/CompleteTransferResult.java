@@ -8,7 +8,7 @@ public class CompleteTransferResult {
     private String endLocation;
     private String startBusStop;
     private String endBusStop;
-    List<TransferResultConnection> transferResultConnectionList;
+    private List<TransferResultConnection> transferResultConnectionList;
 
     public CompleteTransferResult(String startLocation, String endLocation, String startBusStop, String endBusStop, List<TransferResultConnection> transferResultConnectionList) {
         this.startLocation = startLocation;

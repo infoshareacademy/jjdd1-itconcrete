@@ -1,27 +1,34 @@
 package isacademy.jjdd1.itconcrete.smartconnect.analyzer_transfer;
 
+import isacademy.jjdd1.itconcrete.smartconnect.analyzer_alternative.Transfer;
+import isacademy.jjdd1.itconcrete.smartconnect.analyzer_alternative.TransferSeekerAlternative;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusStopDeltas;
+import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TimeDifferenceCounter {
 
-    public List<TimeDifferenceSet> calculateTimeDifferenceSet(BusLineSetExtended busLineSetExtended) {
+    public List<TimeDifferenceSet> calculateTimeDifferenceSet(BusLineSetExtended busLineSetExtended) throws IOException {
 
         List<TimeDifferenceSet> timeDifferenceSetList = new ArrayList<>();
 
         String startBusStop = busLineSetExtended.getStartBusStop();
         String endBusStop = busLineSetExtended.getEndBusStop();
 
-        List<BusLineSet> busLineSetList = busLineSetExtended.getBusLineSetList();
+//        List<BusLineSet> busLineSetList = busLineSetExtended.getBusLineSetList();
 
-        for (BusLineSet busLineSet : busLineSetList) {
+        List<Transfer> transferList = busLineSetExtended.getPossibleTransfers();
 
-            BusLine firstBusLine = busLineSet.getFirstBusLine();
-            BusLine secondBusLine = busLineSet.getSecondBusLine();
-            String midBusStop = busLineSet.getMidBusStop();
+
+        for (Transfer transfer : transferList) {
+
+            BusLine firstBusLine = transfer.getStartLine();
+            BusLine secondBusLine = transfer.getEndLine();
+            String midBusStop = transfer.getCommonStops().get(0);
 
             List<BusStopDeltas> firstBusStopDeltas = firstBusLine.getRoute().getDeltasList();
             List<BusStopDeltas> secondBusStopDeltas = secondBusLine.getRoute().getDeltasList();

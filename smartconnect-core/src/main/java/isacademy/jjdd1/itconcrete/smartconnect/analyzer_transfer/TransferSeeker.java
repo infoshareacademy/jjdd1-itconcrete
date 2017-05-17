@@ -57,7 +57,10 @@ public class TransferSeeker {
                             String midBusStop = timeDifferenceSet.getMidBusStop();
                             String endBusStop = journey.getEndBusStop();
 
-                            transferResultConnectionList.add(new TransferResultConnection(startBusStop, firstBusLine.getLineNumber(), departureFirstLine, arrivalFirstLine, midBusStop, secondBusLine.getLineNumber(), departureSecondLine, arrivalSecondLine, endBusStop));
+                            transferResultConnectionList.add(new TransferResultConnection
+                                    (startBusStop, firstBusLine.getLineNumber(), departureFirstLine,
+                                            arrivalFirstLine, midBusStop, secondBusLine.getLineNumber(),
+                                            departureSecondLine, arrivalSecondLine, endBusStop));
                         }
                     }
                 }
