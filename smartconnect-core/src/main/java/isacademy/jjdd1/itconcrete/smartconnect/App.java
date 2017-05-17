@@ -1,5 +1,6 @@
 package isacademy.jjdd1.itconcrete.smartconnect;
 
+import isacademy.jjdd1.itconcrete.smartconnect.analyzer_alternative.Transfer;
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer_alternative.TransferSeekerAlternative;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
@@ -33,7 +34,17 @@ public class App {
         ScheduleParser scheduleParser = new ScheduleParser();
         ArrayList<BusLine> allBusLines = scheduleParser.getArrayOfBusLines();
 
+        System.out.println("Size of buslines " + allBusLines.size());
+
         TransferSeekerAlternative transferSeekerAlternative = new TransferSeekerAlternative(allBusLines, start, end);
+        List<Transfer> possibleTransfers = transferSeekerAlternative.getPossibleTransfers();
+
+        for(Transfer transfer : possibleTransfers){
+            System.out.println("Start: " + transfer.getStartLine().getLineNumber()
+                    + transfer.getStartLine().getRoute().getArrayOfStops()
+                    + "\n Stop: " + transfer.getEndLine().getLineNumber() + transfer.getEndLine().getRoute().getArrayOfStops() + "\n");
+        }
+
 
 
 
