@@ -39,5 +39,4 @@ public class HomeBusStop {
         session.save(new HomeBusStop(homeBusStop));
         session.getTransaction().commit();
     }
-
 }

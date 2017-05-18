@@ -12,7 +12,6 @@ public class PromotedLine {
 
     private static org.hibernate.Session session;
 
-
     @Id
     @Column
     private int number;
@@ -36,8 +35,8 @@ public class PromotedLine {
 
         session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        session.saveOrUpdate(new PromotedLine(10));
-        session.saveOrUpdate(new PromotedLine(15));
+        session.saveOrUpdate(new PromotedLine(110));
+        session.saveOrUpdate(new PromotedLine(9));
         session.getTransaction().commit();
     }
 }

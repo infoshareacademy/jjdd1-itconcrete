@@ -32,17 +32,15 @@ public class FormServlet extends HttpServlet {
     @Inject
     Util util;
 
-    //db
     @Inject
     PromotedLine promotedLine;
 
     private ArrayList<BusLine> busLinesForSeeking;
 
-
     @Override
     public void init() throws ServletException {
         busLinesForSeeking = scheduleParser.getArrayOfBusLines();
-        //db
+
         promotedLine.addPromotedLineToDatabase();
            }
 
@@ -101,9 +99,7 @@ public class FormServlet extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/smartconnect_results");
             dispatcher.forward(request, response);
         }
-
     }
-
 
     private boolean validateHomeBusStop(HttpServletRequest request) {
         String homeBusStop = request.getParameter("homeBusStop");

@@ -53,11 +53,12 @@ public class ResultServlet extends HttpServlet {
     @Inject
     Util util;
 
-    //db
     @Inject
     HomeBusStop DBhomeBusStop;
+
     @Inject
     StatisticsCollector statisticsCollector;
+
     @Inject
     AddToDbFromServlet addToDbFromServlet;
 
@@ -73,15 +74,12 @@ public class ResultServlet extends HttpServlet {
         request.setAttribute("completeDirectResultList", completeDirectResultList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/results.jsp");
         dispatcher.forward(request, response);
-
     }
-
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String homeBusStop = request.getParameter("homeBusStop");
-        //db
         DBhomeBusStop.addHomeBusStopToDatabase(homeBusStop);
 
         String timeOfLeavingHome = request.getParameter("timeOfLeavingHome");
@@ -113,10 +111,10 @@ public class ResultServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        //db
         List<StatisticsData> stats = statisticsCollector.getStatisticsData(completeDirectResultList);
-        statisticsCollector.addLineStatsToDatabase(stats);
-        //db
+
+        addToDbFromServlet.addLineStatsToDatabase(stats);
+
         addToDbFromServlet.addStopsToDatabase(completeDirectResultList);
 
         try {
@@ -129,9 +127,8 @@ public class ResultServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        //db
-        transferResultGetter.addStopsToDatabase(completeTransferResultList);
-
+        List<StatisticsData> stats2 = statisticsCollector.getStatisticsDataTransfer(completeTransferResultList);
+        addToDbFromServlet.addLineStatsToDatabase(stats2);
 
         request.setAttribute("completeDirectResultList", completeDirectResultList);
         request.setAttribute("completeTransferResultList", completeTransferResultList);
