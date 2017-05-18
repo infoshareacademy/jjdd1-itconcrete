@@ -4,7 +4,9 @@ import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.Route;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
@@ -74,6 +76,10 @@ public class TransferSeekerAlternative {
             }
 
         }
+
+        Comparator<Transfer> comparator = Comparator.comparing(a -> a.getStartLine().getLineNumber());
+        comparator = comparator.thenComparing(Comparator.comparing(a -> a.getEndLine().getLineNumber()));
+        possibleTransfers.sort(comparator);
 
     }
 
