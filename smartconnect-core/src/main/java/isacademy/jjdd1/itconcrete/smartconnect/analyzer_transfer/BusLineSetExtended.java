@@ -4,6 +4,7 @@ import isacademy.jjdd1.itconcrete.smartconnect.analyzer_alternative.Transfer;
 
 import java.util.List;
 
+
 public class BusLineSetExtended {
 
     private String startBusStop;
@@ -34,10 +35,6 @@ public class BusLineSetExtended {
 
     public List<Transfer> getPossibleTransfers() {
         return possibleTransfers;
-    }
-
-    public void setPossibleTransfers(List<Transfer> possibleTransfers) {
-        this.possibleTransfers = possibleTransfers;
     }
 
     @Override
