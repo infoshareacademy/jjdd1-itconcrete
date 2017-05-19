@@ -34,28 +34,32 @@ public class BusLinePairsSeeker {
 
                     for (BusStopDeltas busStopDeltaSecondLine : secondLineDeltasList) {
 
-                        String midBusStop = busStopDeltaFirstLine.getBusStopName();
-
-                        boolean firstLineRidesMidStop = (busStopDeltaFirstLine.getTimeDifference() >=0);
-                        boolean secondLineRidesMidStop = (busStopDeltaFirstLine.getTimeDifference() >=0);
-                        boolean bothLinesRideMidBusStop = firstLineRidesMidStop && secondLineRidesMidStop;
-
-                        DirectionChecker directionChecker = new DirectionChecker();
-                        boolean checkedDirection = directionChecker.checkDirection(firstLineDeltasList, secondLineDeltasList, startBusStop, midBusStop, endBusStop);
-
-                        SetExistence setExistence = new SetExistence();
-                        boolean setExists = setExistence.checkSetExists(busLineSets, foundFirstBusLine, foundSecondBusLine);
-
-                        boolean busLinesIdentical = (foundFirstBusLine == foundSecondBusLine);
                         boolean sameBusStop = busStopDeltaFirstLine.getBusStopName().equals(busStopDeltaSecondLine.getBusStopName());
-                        boolean firstLineRidesBusStop = busStopDeltaFirstLine.getTimeDifference() >= 0;
-                        boolean secondLineRidesBusStop = busStopDeltaSecondLine.getTimeDifference() >= 0;
+
+                        if (sameBusStop) {
+
+                            String midBusStop = busStopDeltaFirstLine.getBusStopName();
+
+                            boolean firstLineRidesMidStop = (busStopDeltaFirstLine.getTimeDifference() >= 0);
+                            boolean secondLineRidesMidStop = (busStopDeltaFirstLine.getTimeDifference() >= 0);
+                            boolean bothLinesRideMidBusStop = firstLineRidesMidStop && secondLineRidesMidStop;
+
+                            DirectionChecker directionChecker = new DirectionChecker();
+                            boolean checkedDirection = directionChecker.checkDirection(firstLineDeltasList, secondLineDeltasList, startBusStop, midBusStop, endBusStop);
+
+                            SetExistence setExistence = new SetExistence();
+                            boolean setExists = setExistence.checkSetExists(busLineSets, foundFirstBusLine, foundSecondBusLine);
+
+                            boolean busLinesIdentical = (foundFirstBusLine == foundSecondBusLine);
+                            boolean firstLineRidesBusStop = busStopDeltaFirstLine.getTimeDifference() >= 0;
+                            boolean secondLineRidesBusStop = busStopDeltaSecondLine.getTimeDifference() >= 0;
 
 
-                        if (checkedDirection && !setExists && !busLinesIdentical && sameBusStop
-                                && firstLineRidesBusStop && secondLineRidesBusStop && bothLinesRideMidBusStop) {
+                            if (checkedDirection && !setExists && !busLinesIdentical && sameBusStop
+                                    && firstLineRidesBusStop && secondLineRidesBusStop && bothLinesRideMidBusStop) {
 
-                            busLineSets.add(new BusLineSet(foundFirstBusLine, midBusStop, foundSecondBusLine));
+                                busLineSets.add(new BusLineSet(foundFirstBusLine, midBusStop, foundSecondBusLine));
+                            }
                         }
                     }
                 }
