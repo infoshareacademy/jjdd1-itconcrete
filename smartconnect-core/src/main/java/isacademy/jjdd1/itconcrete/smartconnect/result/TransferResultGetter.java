@@ -49,18 +49,5 @@ public class TransferResultGetter {
 
         return completeTransferResultList;
     }
-    public void addStopsToDatabase(List<CompleteTransferResult> TransferResultList) {
-
-        session = HibernateUtil.getSessionFactory().openSession();
-
-        for (int i = 0; i < TransferResultList.size(); i++) {
-            session.beginTransaction();
-            session.save(new BusStop(TransferResultList.get(i).getStartBusStop()));
-            session.getTransaction().commit();
-        }
-        session.beginTransaction();
-        session.save(new BusStop(TransferResultList.get(TransferResultList.size() - 1).getEndBusStop()));
-        session.getTransaction().commit();
-    }
 
 }
