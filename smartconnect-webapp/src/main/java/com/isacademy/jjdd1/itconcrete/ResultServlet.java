@@ -2,15 +2,15 @@ package com.isacademy.jjdd1.itconcrete;
 
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.database.AddToDbFromServlet;
-import isacademy.jjdd1.itconcrete.smartconnect.database.BusStop;
+
 import isacademy.jjdd1.itconcrete.smartconnect.database.HomeBusStop;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
 import isacademy.jjdd1.itconcrete.smartconnect.result.*;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
+import isacademy.jjdd1.itconcrete.smartconnect.statistics.StatisticCollectorForTransfer;
 import isacademy.jjdd1.itconcrete.smartconnect.statistics.StatisticsCollector;
 import isacademy.jjdd1.itconcrete.smartconnect.statistics.StatisticsData;
-
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -58,6 +58,9 @@ public class ResultServlet extends HttpServlet {
 
     @Inject
     StatisticsCollector statisticsCollector;
+
+    @Inject
+    StatisticCollectorForTransfer statisticCollectorForTransfer;
 
     @Inject
     AddToDbFromServlet addToDbFromServlet;
@@ -127,7 +130,7 @@ public class ResultServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        List<StatisticsData> stats2 = statisticsCollector.getStatisticsDataTransfer(completeTransferResultList);
+        List<StatisticsData> stats2 = statisticCollectorForTransfer.getStatisticsDataTransfer(completeTransferResultList);
         addToDbFromServlet.addLineStatsToDatabase(stats2);
 
         request.setAttribute("completeDirectResultList", completeDirectResultList);
