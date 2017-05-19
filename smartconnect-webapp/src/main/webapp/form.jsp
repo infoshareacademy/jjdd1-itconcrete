@@ -7,26 +7,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/animation.css" rel="stylesheet">
     <title>SmartConnect - Welcome!</title>
 </head>
 <body>
 
-<div class="container">
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header" style="padding-bottom: 10px;">
-                <h2><span class="label label-info">Smartconnect</span></h2>
-            </div>
-        </div>
-    </nav>
-</div>
+<%@include file="header.jsp" %>
 
+<br/>
 <div class="container" style="width: 500px; padding-top: 75px" align="center">
     <h3>Hello! Please enter some journey details</h3>
 </div>
-
-<div id="animation"></div>
+<br/><br/><br/>
 
 <div class="container" style="width: 450px;">
     <form name="askForm" method="post" action="/smartconnect_form" enctype="multipart/form-data">

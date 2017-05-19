@@ -6,26 +6,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-signin-client_id" content="1092866121133-5hu5u791n1op9qanolt6nshutoibja0u.apps.googleusercontent.com">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/animation.css" rel="stylesheet">
     <title>SmartConnect - Welcome!</title>
 </head>
 <body>
 
-<div class="container">
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header" style="padding-bottom: 10px;">
-                <h2><span class="label label-info">Smartconnect</span></h2>
-            </div>
-
-            <div align="right" style="padding-top: 7px; padding-right: 15px">
-                    <button type="button" class="btn btn-default navbar-btn">User <c:if test="${empty oauth.email}"> not </c:if>logged</button>
-            </div>
-        </div>
-    </nav>
-</div>
-
+<%@include file="header.jsp" %>
 
 <div class="container" style="width: 600px; padding-top: 75px" align="center">
 
@@ -37,21 +25,20 @@
     <h3>Please log in to start</h3>
     <br/><br/>
 
-    <form method="post" action="login">
-        <input name="login" type="hidden" value="1">
-        <input type="submit" value="LOG IN" class="btn btn-info btn-lg" align="center">
-    </form>
+    <a href="http://localhost:8080/google/login" class="btn btn-info btn-lg" role="button">LOG IN</a>
+
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+
+    <%--<input type="submit" name="login" value="LOG IN" class="btn btn-info btn-lg" align="center">--%>
+    <%--</form>--%>
     <h5>with Google</h5>
+
+    <%--<script src="https://apis.google.com/js/platform.js" async defer></script>--%>
 
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <nav aria-label="footer"></nav>
-        </div>
-    </div>
-</nav>
+<%@include file="footer.jsp" %>
 
 </body>
 </html>

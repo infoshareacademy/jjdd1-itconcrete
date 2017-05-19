@@ -28,8 +28,10 @@ class PartBusLineSeeker {
 
                     if (sameBusStopName && ridesThroughBusStop) {
                         foundPartBusLines.add(currentlyCheckedBusLine);
+                        continue;
                     }
                 }
+                continue;
             }
         }
         return foundPartBusLines;
