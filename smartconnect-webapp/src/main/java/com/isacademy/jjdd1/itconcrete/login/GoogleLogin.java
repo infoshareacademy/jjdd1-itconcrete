@@ -10,7 +10,6 @@ import com.github.scribejava.core.oauth.OAuth20Service;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
-import javax.ws.rs.HeaderParam;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
@@ -19,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Path("/")
-public class GoogleLoginService {
+public class GoogleLogin {
 
     private static final String GOOGLE_CLIENT_ID = "1092866121133-5hu5u791n1op9qanolt6nshutoibja0u.apps.googleusercontent.com";
     private static final String GOOGLE_CLIENT_SECRET = "yP79txaYKwrHzah_eKuGUwTD";
@@ -41,13 +40,12 @@ public class GoogleLoginService {
 
     @GET
     @Path("/login")
-    public Response login(@HeaderParam("Referer") String referer) {
+    public Response login() {
         final Map<String, String> additionalParams = new HashMap<>();
         additionalParams.put("access_type", "offline");
         additionalParams.put("prompt", "consent");
-        sessionData.setReferer(referer);
         String authorizationUrl = service.getAuthorizationUrl(additionalParams);
-        return Response.seeOther(URI.create(authorizationUrl)).header("MyReferer", referer).build();
+        return Response.seeOther(URI.create(authorizationUrl)).build();
     }
 
     @GET

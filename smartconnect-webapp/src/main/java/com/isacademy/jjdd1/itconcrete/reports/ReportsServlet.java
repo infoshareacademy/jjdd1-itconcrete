@@ -16,7 +16,7 @@ public class ReportsServlet extends HttpServlet {
             response.setCharacterEncoding("UTF-8");
             request.setCharacterEncoding("UTF-8");
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/reports.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("reports/reports.jsp");
             dispatcher.forward(request, response);
         }
 }

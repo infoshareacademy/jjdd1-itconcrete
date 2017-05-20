@@ -4,5 +4,5 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 @ApplicationPath("google")
-public class ApplicationConfig extends Application {
+public class AppPath extends Application {
 }

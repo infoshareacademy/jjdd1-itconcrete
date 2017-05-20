@@ -24,19 +24,19 @@
 
     <br/><br/><br/><br/>
 
-    <a href="/line_popularity" role="button" class="btn btn-info btn-lg" style="width: 350px;">
+    <a href="/reports/line_popularity" role="button" class="btn btn-info btn-lg" style="width: 320px;">
         <%--<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;--%>
         <h4>Line Popularity Report</h4></a>
 
     <br/><br/><br/><br/><br/><br/>
 
-    <a href="/stop_popularity" role="button" class="btn btn-info btn-lg" style="width: 350px">
+    <a href="/reports/stop_popularity" role="button" class="btn btn-info btn-lg" style="width: 320px">
         <%--<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;--%>
         <h4>Bus Stop Popularity Report</h4></a>
 
     <br/><br/><br/><br/><br/><br/>
 
-    <a href="/another_report" role="button" class="btn btn-info btn-lg" style="width: 350px">
+    <a href="/reports/another_report" role="button" class="btn btn-info btn-lg" style="width: 320px">
         <%--<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;--%>
         <h4>Another Report ???</h4></a>
 

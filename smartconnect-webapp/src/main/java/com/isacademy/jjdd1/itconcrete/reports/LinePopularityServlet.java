@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
-@WebServlet(urlPatterns = "/line_popularity")
+@WebServlet(urlPatterns = "/reports/line_popularity")
 @MultipartConfig
 public class LinePopularityServlet extends HttpServlet {
 
@@ -44,7 +44,7 @@ public class LinePopularityServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         this.loadStats();
         request.setAttribute("statistics", statistics);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/line.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("line.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -55,7 +55,7 @@ public class LinePopularityServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 
         request.setAttribute("statistics", statistics);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/line_popularity");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("line_popularity");
         dispatcher.forward(request, response);
 
     }
