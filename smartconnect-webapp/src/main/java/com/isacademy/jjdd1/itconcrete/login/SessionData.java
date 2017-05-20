@@ -9,11 +9,11 @@ import java.io.Serializable;
 public class SessionData implements Serializable {
 
     private boolean logged = false;
-    private GoogleUser user;
+    private GoogleUser googleUser;
     private String referer;
 
     public void logUser(GoogleUser user) {
-        this.user = user;
+        this.googleUser = user;
         this.logged = true;
     }
 
@@ -25,8 +25,8 @@ public class SessionData implements Serializable {
         return logged;
     }
 
-    public GoogleUser getUser() {
-        return user;
+    public GoogleUser getGoogleUser() {
+        return googleUser;
     }
 
     public String getReferer() {
