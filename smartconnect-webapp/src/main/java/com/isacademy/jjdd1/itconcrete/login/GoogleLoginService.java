@@ -25,7 +25,8 @@ public class GoogleLoginService {
     private static final String GOOGLE_CLIENT_SECRET = "yP79txaYKwrHzah_eKuGUwTD";
     private static final String PROTECTED_RESOURCE_URL = "https://www.googleapis.com/oauth2/v2/userinfo";
     private static final String CALLBACK_URL = "http://localhost:8080/google/callback";
-    private static final String INDEX_URL = "http://localhost:8080/smartconnect_form";
+    private static final String FORM_PAGE = "http://localhost:8080/smartconnect_form";
+    private static final String LOGIN_PAGE = "http://localhost:8080/login";
 
     private OAuth20Service service = new ServiceBuilder()
             .apiKey(GOOGLE_CLIENT_ID)
@@ -61,17 +62,17 @@ public class GoogleLoginService {
             String responseBody = service.execute(request).getBody();
             GoogleUser googleUser = new ObjectMapper().readValue(responseBody, GoogleUser.class);
             sessionData.logUser(googleUser);
-            return Response.seeOther(URI.create(sessionData.getReferer())).build();
+            return Response.temporaryRedirect(URI.create(FORM_PAGE)).build();
         } catch (Exception e) {
             e.printStackTrace();
-            return Response.temporaryRedirect(URI.create(INDEX_URL)).build();
+            return Response.temporaryRedirect(URI.create(FORM_PAGE)).build();
         }
     }
 
     @GET
     @Path("/logout")
-    public Response logout(@HeaderParam("Referer") String referer) {
+    public Response logout() {
         sessionData.logout();
-        return Response.temporaryRedirect(URI.create(referer)).build();
+        return Response.temporaryRedirect(URI.create(LOGIN_PAGE)).build();
     }
 }
