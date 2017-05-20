@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<%@include file="header.jsp" %>
+<%@include file="bars/header.jsp" %>
 
 <br/>
 <div class="container" style="width: 500px; padding-top: 75px" align="center">
@@ -68,23 +68,7 @@
     </form>
 </div>
 
-
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <div class="navbar-header navbar-right" style="padding-top: 15px;">
-            <a  href= "/line_popularity" role="button" class="btn btn-info btn-xs">
-                <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
-                Line Popularity Report
-            </a>
-        </div>
-        <div class="navbar-header navbar-right" style="padding-top: 15px; padding-right: 15px;">
-            <a  href= "/stop_popularity" role="button" class="btn btn-info btn-xs">
-                <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
-                BusStop Popularity Report
-            </a>
-        </div>
-    </div>
-</nav>
+<%@include file="bars/footer.jsp" %>
 
 </body>
 </html>

@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<%@include file="header.jsp" %>
+<%@include file="bars/header.jsp" %>
 
 <div class="container" style="width: 600px; padding-top: 75px" align="center">
 
@@ -38,7 +38,7 @@
 
 </div>
 
-<%@include file="footer.jsp" %>
+<%@include file="bars/footer.jsp" %>
 
 </body>
 </html>
