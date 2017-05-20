@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<%@include file="bars/login_header.jsp" %>
+<%@include file="../bars/login_header.jsp" %>
 
 <div class="chart" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 75%; height: 75%;">
     <canvas id="myChart1"></canvas>
@@ -70,7 +70,7 @@
     var myChart1 = new Chart(ctx1, config);
 </script>
 
-<%@include file="bars/back_stats_footer.jsp" %>
+<%@include file="../bars/back_stats_footer.jsp" %>
 
 </body>
 </html>

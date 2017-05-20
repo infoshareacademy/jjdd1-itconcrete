@@ -1,4 +1,4 @@
-package com.isacademy.jjdd1.itconcrete;
+package com.isacademy.jjdd1.itconcrete.reports;
 
 import isacademy.jjdd1.itconcrete.smartconnect.statistics.FakeBusStopStatisticGenerator;
 import isacademy.jjdd1.itconcrete.smartconnect.statistics.StopStatisticsData;

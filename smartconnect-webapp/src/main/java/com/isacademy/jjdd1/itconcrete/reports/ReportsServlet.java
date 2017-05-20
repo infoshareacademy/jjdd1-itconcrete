@@ -1,4 +1,4 @@
-package com.isacademy.jjdd1.itconcrete;
+package com.isacademy.jjdd1.itconcrete.reports;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

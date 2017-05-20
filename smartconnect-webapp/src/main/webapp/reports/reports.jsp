@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<%@include file="bars/login_header.jsp" %>
+<%@include file="../bars/login_header.jsp" %>
 
 <br/>
 <div class="container" style="width: 500px; padding-top: 75px" align="center">
@@ -24,19 +24,19 @@
 
     <br/><br/><br/><br/>
 
-    <a href="/line_popularity" role="button" class="btn btn-info btn-lg" style="width: 400px;">
+    <a href="/line_popularity" role="button" class="btn btn-info btn-lg" style="width: 350px;">
         <%--<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;--%>
         <h4>Line Popularity Report</h4></a>
 
     <br/><br/><br/><br/><br/><br/>
 
-    <a href="/stop_popularity" role="button" class="btn btn-info btn-lg" style="width: 400px">
+    <a href="/stop_popularity" role="button" class="btn btn-info btn-lg" style="width: 350px">
         <%--<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;--%>
         <h4>Bus Stop Popularity Report</h4></a>
 
     <br/><br/><br/><br/><br/><br/>
 
-    <a href="/another_report" role="button" class="btn btn-info btn-lg" style="width: 400px">
+    <a href="/another_report" role="button" class="btn btn-info btn-lg" style="width: 350px">
         <%--<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;--%>
         <h4>Another Report ???</h4></a>
 
@@ -44,7 +44,7 @@
 </div>
 
 
-<%@include file="bars/back_main_footer.jsp" %>
+<%@include file="../bars/back_main_footer.jsp" %>
 
 </body>
 </html>

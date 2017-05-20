@@ -1,4 +1,4 @@
-package com.isacademy.jjdd1.itconcrete;
+package com.isacademy.jjdd1.itconcrete.reports;
 
 import isacademy.jjdd1.itconcrete.smartconnect.statistics.FakeLineStatisticGenerator;
 import isacademy.jjdd1.itconcrete.smartconnect.statistics.StatisticsData;
