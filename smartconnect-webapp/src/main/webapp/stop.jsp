@@ -7,11 +7,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <title>SmartConnect - BusStop Popularity Statistics</title>
+    <title>SmartConnect - Bus Stop Popularity Statistics</title>
 </head>
 <body>
 
-<%@include file="bars/header.jsp" %>
+<%@include file="bars/login_header.jsp" %>
 
 <div class="chart" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 75%; height: 75%;">
     <canvas id="myChart2"></canvas>
@@ -74,7 +74,7 @@
     var myChart2 = new Chart(ctx2, config);
 </script>
 
-<%@include file="bars/backfooter.jsp" %>
+<%@include file="bars/back_stats_footer.jsp" %>
 
 </body>
 </html>

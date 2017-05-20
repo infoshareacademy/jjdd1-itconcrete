@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<%@include file="bars/header.jsp" %>
+<%@include file="bars/login_header.jsp" %>
 
 <div class="container" style="width: 500px; padding-top: 75px" align="center">
     <h3>Results</h3>
@@ -150,7 +150,7 @@
 
 <div style="padding-top: 100px;"></div>
 
-<%@include file="bars/backfooter.jsp" %>
+<%@include file="bars/back_footer.jsp" %>
 
 </body>
 </html>

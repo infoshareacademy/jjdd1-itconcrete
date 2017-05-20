@@ -21,12 +21,12 @@
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><span style="padding-left: 15px; padding-right: 15px">You are logged as:</span></li>
+                                <li><span style="padding-left: 15px; padding-right: 15px"><strong>You are logged as:</strong></span></li>
                                 <li><span
                                         style="padding-left: 15px; padding-right: 15px">${sessionData.googleUser.given_name} ${sessionData.googleUser.family_name}</span>
                                 </li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="http://localhost:8080/report">Report module</a></li>
+                                <li><a href="http://localhost:8080/reports">Statistic reports</a></li>
                                 <li><a href="http://localhost:8080/about">About</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="http://localhost:8080/google/logout">Log out</a></li>

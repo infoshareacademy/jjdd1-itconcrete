@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<%@include file="bars/header.jsp" %>
+<%@include file="bars/login_header.jsp" %>
 
 <br/>
 <div class="container" style="width: 500px; padding-top: 75px" align="center">
@@ -68,7 +68,7 @@
     </form>
 </div>
 
-<%@include file="bars/footer.jsp" %>
+<%@include file="bars/empty_footer.jsp" %>
 
 </body>
 </html>

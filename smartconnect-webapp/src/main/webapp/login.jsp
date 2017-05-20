@@ -9,11 +9,11 @@
     <meta name="google-signin-client_id" content="1092866121133-5hu5u791n1op9qanolt6nshutoibja0u.apps.googleusercontent.com">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/animation.css" rel="stylesheet">
-    <title>SmartConnect - Welcome!</title>
+    <title>SmartConnect - Log in</title>
 </head>
 <body>
 
-<%@include file="bars/header.jsp" %>
+<%@include file="bars/login_header.jsp" %>
 
 <div class="container" style="width: 600px; padding-top: 75px" align="center">
 
@@ -27,18 +27,15 @@
 
     <a href="http://localhost:8080/google/login" class="btn btn-info btn-lg" role="button">LOG IN</a>
 
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <%--<div class="g-signin2" data-onsuccess="onSignIn"></div>--%>
 
-
-    <%--<input type="submit" name="login" value="LOG IN" class="btn btn-info btn-lg" align="center">--%>
-    <%--</form>--%>
     <h5>with Google</h5>
 
     <%--<script src="https://apis.google.com/js/platform.js" async defer></script>--%>
 
 </div>
 
-<%@include file="bars/footer.jsp" %>
+<%@include file="bars/empty_footer.jsp" %>
 
 </body>
 </html>
