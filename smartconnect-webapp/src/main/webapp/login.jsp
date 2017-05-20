@@ -9,6 +9,8 @@
     <meta name="google-signin-client_id" content="1092866121133-5hu5u791n1op9qanolt6nshutoibja0u.apps.googleusercontent.com">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/animation.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <title>SmartConnect - Log in</title>
 </head>
 <body>
@@ -20,7 +22,7 @@
     <br/>
     <h2>Plan your everyday travels. Effective.</h2>
     <br/><br/>
-    <img src="img/temp_logo.png">
+    <img src="img/temp_logo.png" height="220px">
     <br/><br/><br/>
     <h3>Please log in to start</h3>
     <br/><br/>

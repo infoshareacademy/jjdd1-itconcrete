@@ -9,6 +9,8 @@
     <meta name="google-signin-client_id"
           content="1092866121133-5hu5u791n1op9qanolt6nshutoibja0u.apps.googleusercontent.com">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <title>SmartConnect - Reports</title>
 </head>
 <body>
