@@ -25,14 +25,9 @@ public class App {
         LOGGER.info("Starting application.");
         LOGGER.trace("Schedules database is initialized.");
 
-        long scheduleParserStart = System.currentTimeMillis();
-
         ScheduleParser scheduleParser = new ScheduleParser();
         ArrayList<BusLine> allBusLines = scheduleParser.getArrayOfBusLines();
 
-        long scheduleParserEnd = System.currentTimeMillis();
-        long scheduleParserTime = scheduleParserEnd - scheduleParserStart;
-        System.out.println("scheduleParserTime = " + scheduleParserTime);
 
         LOGGER.info("Asking for user input in order to define home location.");
 
@@ -42,40 +37,18 @@ public class App {
 
         LOGGER.debug("Home bus stop: " + homeBusStop);
 
-        long calendarParserStart = System.currentTimeMillis();
-
         CalendarParser calendarParser = new CalendarParser();
         LinkedList<Journey> journeys = calendarParser.parseFileSortEventsAddHome(homeBusStop, timeOfLeavingHome, timeOfArrivingHome);
-
-        long calendarParserEnd = System.currentTimeMillis();
-        long calendarParserTime = calendarParserEnd - calendarParserStart;
-        System.out.println("calendarParserTime = " + calendarParserTime);
-
-        long directStart = System.currentTimeMillis();
 
         CompleteDirectResultGetter completeDirectResultGetter = new CompleteDirectResultGetter();
         List<CompleteDirectResult> completeDirectResultList = completeDirectResultGetter.getCompleteResult(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, allBusLines);
 
-        long directEnd = System.currentTimeMillis();
-        long directTime = directEnd - directStart;
-        System.out.println("directTime = " + directTime);
-
-        long transferStart = System.currentTimeMillis();
-
         TransferResultGetter transferResultGetter = new TransferResultGetter();
         List<CompleteTransferResult> completeTransferResultList = transferResultGetter.getTransfers(homeBusStop, timeOfLeavingHome, timeOfArrivingHome, allBusLines);
 
-        long transferEnd = System.currentTimeMillis();
-        long transferTime = transferEnd - transferStart;
-        System.out.println("transferTime = " + transferTime);
-
-        long displayerStart = System.currentTimeMillis();
 
         CompleteResultDisplayer completeResultDisplayer = new CompleteResultDisplayer();
         completeResultDisplayer.displayCompleteResult(journeys, completeDirectResultList, completeTransferResultList);
 
-        long displayerEnd = System.currentTimeMillis();
-        long displayerTime = displayerEnd - displayerStart;
-        System.out.println("displayerTime = " + displayerTime);
     }
 }
