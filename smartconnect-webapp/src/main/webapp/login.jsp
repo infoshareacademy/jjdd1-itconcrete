@@ -20,7 +20,7 @@
     <br/>
     <h2>Plan your everyday travels. Effective.</h2>
     <br/><br/>
-    <img src="img/Zrzut%20ekranu%202017-05-17%20o%2021.06.31.png">
+    <img src="img/temp_logo.png">
     <br/><br/><br/>
     <h3>Please log in to start</h3>
     <br/><br/>

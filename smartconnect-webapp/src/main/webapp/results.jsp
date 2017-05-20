@@ -150,7 +150,7 @@
 
 <div style="padding-top: 100px;"></div>
 
-<%@include file="bars/back_footer.jsp" %>
+<%@include file="bars/back_main_footer.jsp" %>
 
 </body>
 </html>

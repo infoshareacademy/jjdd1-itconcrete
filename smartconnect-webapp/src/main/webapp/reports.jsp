@@ -44,7 +44,7 @@
 </div>
 
 
-<%@include file="backfooter.jsp" %>
+<%@include file="bars/back_main_footer.jsp" %>
 
 </body>
 </html>
