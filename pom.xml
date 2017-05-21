@@ -18,6 +18,7 @@
     <modules>
         <module>smartconnect-core</module>
         <module>smartconnect-webapp</module>
+        <module>smartconnect-reports</module>
     </modules>
 
     <build>
