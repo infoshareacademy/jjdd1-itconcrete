@@ -9,6 +9,7 @@ public class GoogleUser {
     private String family_name;
     private String link;
     private String picture;
+    private String gender;
 
     public String getId() {
         return id;
@@ -72,6 +73,14 @@ public class GoogleUser {
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     @Override
