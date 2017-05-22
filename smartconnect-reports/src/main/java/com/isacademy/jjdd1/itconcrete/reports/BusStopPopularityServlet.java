@@ -1,7 +1,9 @@
 package com.isacademy.jjdd1.itconcrete.reports;
 
-import isacademy.jjdd1.itconcrete.smartconnect.statistics.FakeBusStopStatisticGenerator;
-import isacademy.jjdd1.itconcrete.smartconnect.statistics.StopStatisticsData;
+
+
+import com.isacademy.jjdd1.itconcrete.reports.statistics.FakeBusStopStatisticGenerator;
+import com.isacademy.jjdd1.itconcrete.reports.statistics.StopStatisticsData;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -12,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 
 
 @WebServlet(urlPatterns = "/reports/stop_popularity")
@@ -23,7 +25,7 @@ public class BusStopPopularityServlet extends HttpServlet {
     @Inject
     FakeBusStopStatisticGenerator fakeBusStopStatisticGenerator;
 
-    private ArrayList<StopStatisticsData> statistics;
+    private List<StopStatisticsData> statistics;
 
     public void loadStats() {
         try {

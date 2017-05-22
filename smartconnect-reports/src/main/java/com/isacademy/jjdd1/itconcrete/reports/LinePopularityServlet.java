@@ -1,8 +1,7 @@
 package com.isacademy.jjdd1.itconcrete.reports;
 
-import isacademy.jjdd1.itconcrete.smartconnect.statistics.FakeLineStatisticGenerator;
-import isacademy.jjdd1.itconcrete.smartconnect.statistics.StatisticsData;
-
+import com.isacademy.jjdd1.itconcrete.reports.statistics.FakeLineStatisticGenerator;
+import com.isacademy.jjdd1.itconcrete.reports.statistics.StatisticsData;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -13,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 
 
 @WebServlet(urlPatterns = "/reports/line_popularity")
@@ -24,7 +23,7 @@ public class LinePopularityServlet extends HttpServlet {
     @Inject
     FakeLineStatisticGenerator fakeLineStatisticGenerator;
 
-    private ArrayList<StatisticsData> statistics;
+    private List<StatisticsData> statistics;
 
     public void loadStats() {
         try {

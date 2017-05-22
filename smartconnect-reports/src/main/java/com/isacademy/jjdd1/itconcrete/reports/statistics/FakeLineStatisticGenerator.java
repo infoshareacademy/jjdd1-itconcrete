@@ -1,4 +1,4 @@
-package isacademy.jjdd1.itconcrete.smartconnect.statistics;
+package com.isacademy.jjdd1.itconcrete.reports.statistics;
 
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
 

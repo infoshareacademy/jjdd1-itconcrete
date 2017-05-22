@@ -1,15 +1,6 @@
 version: '2'
 services:
-#  db:
-#    container_name: "db"
-#    image: mysql:latest
-#    environment:
-#      - MYSQL_DATABASE=teamerror
-#      - MYSQL_USER=mysql
-#      - MYSQL_PASSWORD=mysql
-#      - MYSQL_ROOT_PASSWORD=pass
-#    ports:
-#      - 4444:3306
+
   smartconnect-webapp:
     container_name: "smartconnect-webapp"
     build: .
@@ -19,20 +10,9 @@ services:
 
   smartconnect-reports:
     container_name: "smartconnect-reports"
-    build: reports/
+    build: .
     ports:
       - 8742:8080
-      - 8743:9990
 
     depends_on:
-      - smartconnect-webapp
-
-  smartconnect-login:
-    container_name: "smartconnect-login"
-    build: login/
-    ports:
-      - 8744:8080
-      - 8745:990
-
-      depends_on:
       - smartconnect-webapp
