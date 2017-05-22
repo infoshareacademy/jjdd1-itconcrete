@@ -1,12 +1,8 @@
 package isacademy.jjdd1.itconcrete.smartconnect.result;
 
-import isacademy.jjdd1.itconcrete.smartconnect.database.BusStop;
-
 import java.util.List;
 
 public class CompleteTransferResult {
-
-
 
     private String startLocation;
     private String endLocation;
