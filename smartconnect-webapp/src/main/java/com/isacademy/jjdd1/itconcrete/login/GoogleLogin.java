@@ -24,7 +24,7 @@ public class GoogleLogin {
     private static final String GOOGLE_CLIENT_SECRET = "yP79txaYKwrHzah_eKuGUwTD";
     private static final String PROTECTED_RESOURCE_URL = "https://www.googleapis.com/oauth2/v2/userinfo";
     private static final String CALLBACK_URL = "http://localhost:8080/google/callback";
-    private static final String FORM_PAGE = "http://localhost:8080/smartconnect_form";
+    private static final String FORM_PAGE = "http://localhost:8080/form";
     private static final String LOGIN_PAGE = "http://localhost:8080/login";
 
     private OAuth20Service service = new ServiceBuilder()

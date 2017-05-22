@@ -27,7 +27,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/smartconnect_results")
+@WebServlet(urlPatterns = "/results")
 public class ResultServlet extends HttpServlet {
 
     ArrayList<BusLine> allBusLines;

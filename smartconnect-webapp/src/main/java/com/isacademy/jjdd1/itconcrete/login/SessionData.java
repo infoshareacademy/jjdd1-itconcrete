@@ -10,7 +10,6 @@ public class SessionData implements Serializable {
 
     private boolean logged = false;
     private GoogleUser googleUser;
-    private String referer;
 
     public void logUser(GoogleUser user) {
         this.googleUser = user;
@@ -29,11 +28,4 @@ public class SessionData implements Serializable {
         return googleUser;
     }
 
-    public String getReferer() {
-        return referer;
-    }
-
-    public void setReferer(String referer) {
-        this.referer = referer;
-    }
 }
