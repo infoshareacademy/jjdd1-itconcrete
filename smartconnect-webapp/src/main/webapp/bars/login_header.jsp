@@ -6,8 +6,9 @@
 <div class="container">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
-            <div class="navbar-header" style="padding-top: 7px; padding-bottom: 15px">
-                <h2><span class="label label-info">Smartconnect</span></h2>
+
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/form"><img alt="Smartconnect" src="/img/logo_header.png"></a>
             </div>
 
             <c:choose>
@@ -27,7 +28,6 @@
                                 </li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="http://localhost:8080/reports">Statistic reports</a></li>
-                                <li><a href="http://localhost:8080/about">About</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="http://localhost:8080/google/logout">Log out</a></li>
                             </ul>
@@ -35,10 +35,7 @@
                     </div>
                 </c:when>
                 <c:otherwise>
-                    <div class="navbar-header navbar-right" style="padding-top: 20px">
-                        <a href="http://localhost:8080/login" class="btn btn-default btn-xs" role="button"
-                           style="width: 60px; padding-top: 7px; padding-bottom: 7px;">Log in</a>
-                    </div>
+                    <div class="navbar-header navbar-right" style="height: 65px;"> </div>
                 </c:otherwise>
             </c:choose>
         </div>
