@@ -15,8 +15,6 @@ import java.util.List;
 
 public class TransferResultGetter {
 
-    private static org.hibernate.Session session;
-
     public List<CompleteTransferResult> getTransfers(String homeBusStop, String timeOfLeavingHome, String timeOfArrivingHome, ArrayList<BusLine> allBusLines) throws IllegalAccessException, NoSuchFieldException, IOException, URISyntaxException {
 
 
