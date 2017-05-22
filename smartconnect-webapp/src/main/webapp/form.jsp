@@ -22,7 +22,7 @@
 <br/><br/><br/>
 
 <div class="container" style="width: 450px;">
-    <form name="askForm" method="post" action="/smartconnect_form" enctype="multipart/form-data">
+    <form name="askForm" method="post" action="/form" enctype="multipart/form-data">
 
         <div class="form-group ${hasError1}">
             <label class="control-label">Home bus stop</label>

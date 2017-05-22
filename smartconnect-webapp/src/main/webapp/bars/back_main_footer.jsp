@@ -7,7 +7,7 @@
         <div class="navbar-header">
             <nav aria-label="footer">
                 <ul class="pager">
-                    <li class="previous"><a href="/smartconnect_form"><span aria-hidden="true">&larr;&nbsp;&nbsp;</span>Back to main page</a>
+                    <li class="previous"><a href="/form"><span aria-hidden="true">&larr;&nbsp;&nbsp;</span>Back to main page</a>
                     </li>
                 </ul>
             </nav>

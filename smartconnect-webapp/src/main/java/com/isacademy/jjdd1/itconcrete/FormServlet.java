@@ -17,7 +17,7 @@ import javax.servlet.http.Part;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(urlPatterns = "/smartconnect_form")
+@WebServlet(urlPatterns = "/form")
 @MultipartConfig
 public class FormServlet extends HttpServlet {
 
@@ -92,7 +92,7 @@ public class FormServlet extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/form.jsp");
             dispatcher.forward(request, response);
         } else {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/smartconnect_results");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/results");
             dispatcher.forward(request, response);
         }
     }
