@@ -7,26 +7,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/animation.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <title>SmartConnect - Welcome!</title>
 </head>
 <body>
 
-<div class="container">
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header" style="padding-bottom: 10px;">
-                <h2><span class="label label-info">Smartconnect</span></h2>
-            </div>
-        </div>
-    </nav>
-</div>
+<%@include file="bars/login_header.jsp" %>
 
+<br/>
 <div class="container" style="width: 500px; padding-top: 75px" align="center">
     <h3>Hello! Please enter some journey details</h3>
 </div>
-
-<div id="animation"></div>
+<br/><br/><br/>
 
 <div class="container" style="width: 450px;">
     <form name="askForm" method="post" action="/smartconnect_form" enctype="multipart/form-data">
@@ -77,23 +70,7 @@
     </form>
 </div>
 
-
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <div class="navbar-header navbar-right" style="padding-top: 15px;">
-            <a  href= "/line_popularity" role="button" class="btn btn-info btn-xs">
-                <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
-                Line Popularity Report
-            </a>
-        </div>
-        <div class="navbar-header navbar-right" style="padding-top: 15px; padding-right: 15px;">
-            <a  href= "/stop_popularity" role="button" class="btn btn-info btn-xs">
-                <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
-                BusStop Popularity Report
-            </a>
-        </div>
-    </div>
-</nav>
+<%@include file="bars/empty_footer.jsp" %>
 
 </body>
 </html>

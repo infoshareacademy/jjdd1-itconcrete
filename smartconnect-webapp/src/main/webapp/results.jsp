@@ -8,19 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/results.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <title>SmartConnect - Results</title>
 </head>
 <body>
 
-<div class="container">
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header" style="padding-bottom: 10px;">
-                <h2><span class="label label-info">Smartconnect</span></h2>
-            </div>
-        </div>
-    </nav>
-</div>
+<%@include file="bars/login_header.jsp" %>
 
 <div class="container" style="width: 500px; padding-top: 75px" align="center">
     <h3>Results</h3>
@@ -158,20 +152,7 @@
 
 <div style="padding-top: 100px;"></div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <nav aria-label="footer">
-                <ul class="pager">
-                    <li class="previous"><a href="/smartconnect_form"><span aria-hidden="true">&larr;&nbsp;&nbsp;</span>Seek again</a>
-                    </li>
-                </ul>
-            </nav>
-
-        </div>
-    </div>
-</nav>
-
+<%@include file="bars/back_main_footer.jsp" %>
 
 </body>
 </html>
