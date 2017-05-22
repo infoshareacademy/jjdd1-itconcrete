@@ -3,10 +3,7 @@ package isacademy.jjdd1.itconcrete.smartconnect.result;
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer_transfer.*;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
-import isacademy.jjdd1.itconcrete.smartconnect.database.BusStop;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
-import isacademy.jjdd1.itconcrete.smartconnect.util.HibernateUtil;
-
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
