@@ -27,6 +27,7 @@
                                         style="padding-left: 15px; padding-right: 15px">${sessionData.googleUser.given_name} ${sessionData.googleUser.family_name}</span>
                                 </li>
                                 <li role="separator" class="divider"></li>
+                                <li><a href="http://localhost:8080/map">Bus stop location</a></li>
                                 <li><a href="http://localhost:8080/reports">Statistic reports</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="http://localhost:8080/google/logout">Log out</a></li>
