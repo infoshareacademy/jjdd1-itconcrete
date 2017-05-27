@@ -1,9 +1,12 @@
 package isacademy.jjdd1.itconcrete.smartconnect.database;
 
+import isacademy.jjdd1.itconcrete.smartconnect.statistics.LineStatisticsData;
+
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,6 +45,15 @@ public class BusLineStatisticsSaver {
             }
         }
         return results;
+    }
+
+    public List<LineStatisticsData> getConvertedBusLineStatistics(){
+        Map <Integer,Integer> thisMap = getBusLineStatistics();
+        List<LineStatisticsData> busLineStatistics = new ArrayList<>();
+        for (Integer key : thisMap.keySet()){
+            busLineStatistics.add(new LineStatisticsData(key, thisMap.get(key)));
+        }
+        return busLineStatistics;
     }
 
     public void clearTable() {

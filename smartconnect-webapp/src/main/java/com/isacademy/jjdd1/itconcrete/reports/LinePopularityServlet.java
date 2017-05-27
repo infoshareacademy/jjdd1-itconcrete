@@ -1,6 +1,10 @@
 package com.isacademy.jjdd1.itconcrete.reports;
 
+import isacademy.jjdd1.itconcrete.smartconnect.database.BusLineStatisticsSaver;
+import isacademy.jjdd1.itconcrete.smartconnect.database.BusStopStatisticsSaver;
+import isacademy.jjdd1.itconcrete.smartconnect.database.DBUpdater;
 import isacademy.jjdd1.itconcrete.smartconnect.statistics.FakeLineStatisticGenerator;
+import isacademy.jjdd1.itconcrete.smartconnect.statistics.LineStatisticsData;
 import isacademy.jjdd1.itconcrete.smartconnect.statistics.StatisticsData;
 
 
@@ -14,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 @WebServlet(urlPatterns = "/reports/line_popularity")
@@ -24,7 +29,15 @@ public class LinePopularityServlet extends HttpServlet {
     @Inject
     FakeLineStatisticGenerator fakeLineStatisticGenerator;
 
+    @Inject
+    DBUpdater dbUpdater;
+
+    @Inject
+    BusLineStatisticsSaver busLineStatisticsSaver;
+
+
     private ArrayList<StatisticsData> statistics;
+    private List<LineStatisticsData> statistics2;
 
     public void loadStats() {
         try {
@@ -32,8 +45,11 @@ public class LinePopularityServlet extends HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        statistics2 = busLineStatisticsSaver.getConvertedBusLineStatistics();
         statistics = fakeLineStatisticGenerator.getStatistics();
         statistics.sort((a, b) -> ((Integer)a.getLineNumber()).compareTo(b.getLineNumber()));
+        statistics2.sort((a, b) -> ((Integer)a.getLineNumber()).compareTo(b.getLineNumber()));
 
     }
 
