@@ -1,10 +1,10 @@
 package isacademy.jjdd1.itconcrete.smartconnect.map;
 
-import java.util.Set;
+import java.util.List;
 
 public class LocationExistence {
 
-    public boolean checkLocationExistence(String busStopName, Set<BusStopCoordinate> busStopCoordinates) {
+    public boolean checkLocationExistence(String busStopName, List<BusStopCoordinate> busStopCoordinates) {
 
         boolean exists = false;
 

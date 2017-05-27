@@ -33,7 +33,7 @@
 <div class="container" style="width: 450px;">
 
     <form name="askForm" method="post" action="/map" enctype="text/plain">
-        <div class="input-group">
+        <div class="input-group ${hasError}">
             <input type="text" class="form-control" id="busStop" name="busStop" placeholder="${busStopError}Enter bus stop name">
             <span class="input-group-btn"><button class="btn btn-default" type="submit">Submit</button></span>
         </div>
@@ -42,10 +42,18 @@
 
 <br/><br/>
 
-<c:
+<c:choose>
+    <c:when test="${correctBusStop}">
+        <c:set var = "lat" scope = "session" value = "${coordinates.getLatitude}"/>
+        <c:set var = "lng" scope = "session" value = "${coordinates.getLongitude}"/>
+    </c:when>
+    <c:otherwise>
+        <c:set var = "lat" scope = "session" value = "${54.355254}"/>
+        <c:set var = "lng" scope = "session" value = "${18.644596}"/>
+    </c:otherwise>
+</c:choose>
 
-<c:set var = "lat" scope = "session" value = "${54.355254}"/>
-<c:set var = "lng" scope = "session" value = "${18.644596}"/>
+
 
 <div align="center">
     <div id="map"></div>

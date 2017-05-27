@@ -1,13 +1,13 @@
 package isacademy.jjdd1.itconcrete.smartconnect.map;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CoordinatesSetter {
 
-    public Set<BusStopCoordinate> setCoordinates(){
+    public List<BusStopCoordinate> setCoordinates(){
 
-        Set<BusStopCoordinate> busStopCoordinates = new HashSet<>();
+        List<BusStopCoordinate> busStopCoordinates = new ArrayList<>();
 
         busStopCoordinates.add(new BusStopCoordinate("Klonowa", 54.380526, 18.601262));
         busStopCoordinates.add(new BusStopCoordinate("Miszewskiego", 54.375870, 18.615669));
