@@ -15,7 +15,7 @@ public class BusStopStatisticsSaver {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public void updateBusStopStatistics(String stopName) {
+    public void updateBusStopStatistics(String stopName, int occurences) {
         Map<String, Integer> stops = getBusStopStatistics();
         if (!stops.isEmpty() && stops.containsKey(stopName)) {
             Query query = entityManager.createQuery("UPDATE BusStopStatistics bss SET " +
@@ -23,7 +23,7 @@ public class BusStopStatisticsSaver {
             query.setParameter(1, stopName).executeUpdate();
         }
         else {
-            entityManager.persist(new BusStopStatistics(stopName, 1));
+            entityManager.persist(new BusStopStatistics(stopName, occurences));
         }
     }
 

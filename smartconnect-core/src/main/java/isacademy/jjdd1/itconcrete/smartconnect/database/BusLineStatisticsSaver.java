@@ -15,7 +15,7 @@ public class BusLineStatisticsSaver {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public void updateBusLineStatistics(int lineNumber) {
+    public void updateBusLineStatistics(int lineNumber, int occurences) {
         Map<Integer, Integer> lineNumbers = getBusLineStatistics();
         if (!lineNumbers.isEmpty() && lineNumbers.containsKey(lineNumber)) {
             Query query = entityManager.createQuery("UPDATE BusLineStatistics bls SET " +
@@ -23,7 +23,7 @@ public class BusLineStatisticsSaver {
             query.setParameter(1, lineNumber).executeUpdate();
         }
         else {
-            entityManager.persist(new BusLineStatistics(lineNumber, 1));
+            entityManager.persist(new BusLineStatistics(lineNumber, occurences));
         }
     }
 
