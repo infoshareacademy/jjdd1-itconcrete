@@ -27,38 +27,33 @@
 <br/>
 <div class="container" style="width: 500px; padding-top: 75px" align="center"><h3>Check your bus stop
     location</h3></div>
-<br/>
+<br/><br/>
 
 
 <div class="container" style="width: 450px;">
 
-    <%--<div class="form-group">--%>
-    <%--<div class="input-group">--%>
-    <%--<span class="input-group-addon"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span></span>--%>
-    <%--<input type="text" class="form-control" id="busStop" name="busStop" placeholder="${busStopError}Enter bus stop name"--%>
-    <%--value="${busStop}" aria-describedby="inputGroupSuccess1Status">--%>
-    <%--<button type="submit" class="btn btn-info">Submit</button>--%>
-    <%--</div>--%>
-    <%--</div>--%>
-
-    <form name="askForm" method="post" action="/map" enctype="multipart/form-data">
+    <form name="askForm" method="post" action="/map" enctype="text/plain">
         <div class="input-group">
             <input type="text" class="form-control" id="busStop" name="busStop" placeholder="${busStopError}Enter bus stop name">
-            <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Go!</button>
-      </span>
+            <span class="input-group-btn"><button class="btn btn-default" type="submit">Submit</button></span>
         </div>
     </form>
-
 </div>
+
+<br/><br/>
+
+<c:
+
+<c:set var = "lat" scope = "session" value = "${54.355254}"/>
+<c:set var = "lng" scope = "session" value = "${18.644596}"/>
 
 <div align="center">
     <div id="map"></div>
     <script>
         function initMap() {
-            var uluru = {lat: -25.363, lng: 131.044};
+            var uluru = {lat: ${lat}, lng: ${lng}};
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 4,
+                zoom: 16,
                 center: uluru
             });
             var marker = new google.maps.Marker({
@@ -69,9 +64,6 @@
     </script>
 </div>
 
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbkEbhKKuC0cjdZd0tkz7-qaWxJAvjWZw&callback=initMap">
-</script>
 
 <%--</c:when>--%>
 <%--<c:otherwise>--%>
@@ -80,6 +72,8 @@
 <%--</c:choose>--%>
 
 <%@include file="bars/empty_footer.jsp" %>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbkEbhKKuC0cjdZd0tkz7-qaWxJAvjWZw&callback=initMap"></script>
 
 </body>
 </html>

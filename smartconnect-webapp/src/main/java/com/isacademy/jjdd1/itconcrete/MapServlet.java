@@ -1,9 +1,8 @@
 package com.isacademy.jjdd1.itconcrete;
 
-import isacademy.jjdd1.itconcrete.smartconnect.analyzer_direct.BusLineSeeker;
-import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
-import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
-import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
+import isacademy.jjdd1.itconcrete.smartconnect.map.BusStopCoordinate;
+import isacademy.jjdd1.itconcrete.smartconnect.map.CoordinatesSetter;
+import isacademy.jjdd1.itconcrete.smartconnect.map.LocationExistence;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -13,27 +12,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Set;
 
 @WebServlet(urlPatterns = "/map")
 public class MapServlet extends HttpServlet {
 
     @Inject
-    ScheduleParser scheduleParser;
+    CoordinatesSetter coordinatesSetter;
 
     @Inject
-    BusLineSeeker busLineSeeker;
+    LocationExistence locationExistence;
 
-    @Inject
-    Util util;
-
-    private ArrayList<BusLine> busLinesForSeeking;
-
+    Set<BusStopCoordinate> busStopCoordinates;
 
     @Override
     public void init() throws ServletException {
 
-        busLinesForSeeking = scheduleParser.getArrayOfBusLines();
+        busStopCoordinates = coordinatesSetter.setCoordinates();
 
     }
 
@@ -46,28 +41,19 @@ public class MapServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         response.setCharacterEncoding("UTF-8");
         request.setCharacterEncoding("UTF-8");
 
-        if (!validateBusStop(request)) {
+        String busStop = request.getParameter("busStop");
+        boolean correctBusStop = locationExistence.checkLocationExistence(busStop, busStopCoordinates);
+
+        if (!correctBusStop) {
             request.setAttribute("busStopError", "Wrong data, try again. ");
         } else {
-            setCorrectParameter(request, "busStop");
+            request.setAttribute("busStop", busStop);
         }
-    }
-
-    private boolean validateBusStop(HttpServletRequest request) {
-        String homeBusStop = request.getParameter("busStop");
-        boolean correctBusStop = util.busStopExistence(homeBusStop, busLinesForSeeking);
-        return correctBusStop;
-    }
-
-    private void setCorrectParameter(HttpServletRequest request, String placeholder) {
-        String value = request.getParameter(placeholder);
-        request.setAttribute(placeholder, value);
     }
 
 }
