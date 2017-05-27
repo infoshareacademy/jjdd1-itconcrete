@@ -1,13 +1,15 @@
 package isacademy.jjdd1.itconcrete.smartconnect.map;
 
+import java.io.FileNotFoundException;
 import java.util.HashSet;
 import java.util.Set;
 
 public class StopsFilter {
 
-    public Set<Coordinates> filterStops(Set<Stop> stops){
+    public Set<Coordinates> filterStops() throws FileNotFoundException {
 
-
+        StopsGetter stopsGetter = new StopsGetter();
+        Set<Stop> stops = stopsGetter.getStops();
 
         Set<Coordinates> coordinatesSet = new HashSet<>();
 
