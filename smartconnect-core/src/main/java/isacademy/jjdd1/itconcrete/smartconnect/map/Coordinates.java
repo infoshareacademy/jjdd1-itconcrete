@@ -1,11 +1,11 @@
 package isacademy.jjdd1.itconcrete.smartconnect.map;
 
-public class BusStopCoordinate {
+public class Coordinates {
     private String name;
     private double latitude;
     private double longitude;
 
-    public BusStopCoordinate(String name, double latitude, double longitude) {
+    public Coordinates(String name, double latitude, double longitude) {
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -37,10 +37,10 @@ public class BusStopCoordinate {
 
     @Override
     public String toString() {
-        return "BusStopCoordinate{" +
+        return "Coordinates{" +
                 "name='" + name + '\'' +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
-                '}';
+                '}'+ "\n";
     }
 }

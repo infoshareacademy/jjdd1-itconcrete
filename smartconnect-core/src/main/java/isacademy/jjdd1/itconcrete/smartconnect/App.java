@@ -1,11 +1,13 @@
 package isacademy.jjdd1.itconcrete.smartconnect;
 
+import isacademy.jjdd1.itconcrete.smartconnect.map.Coordinates;
 import isacademy.jjdd1.itconcrete.smartconnect.map.Stop;
+import isacademy.jjdd1.itconcrete.smartconnect.map.StopsFilter;
 import isacademy.jjdd1.itconcrete.smartconnect.map.StopsGetter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
+import java.util.Set;
 
 public class App {
 
@@ -42,8 +44,10 @@ public class App {
 //        completeResultDisplayer.displayCompleteResult(journeys, completeDirectResultList, completeTransferResultList);
 
         StopsGetter stopsGetter = new StopsGetter();
-        List<Stop> stops = stopsGetter.getStops();
-        System.out.println("stops = " + stops);
+        Set<Stop> stops = stopsGetter.getStops();
 
+        StopsFilter stopsFilter = new StopsFilter();
+        Set<Coordinates> coordinatesSet = stopsFilter.filterStops(stops);
+        System.out.println("coordinatesSet = " + coordinatesSet);
     }
 }

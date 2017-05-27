@@ -1,6 +1,6 @@
 package com.isacademy.jjdd1.itconcrete;
 
-import isacademy.jjdd1.itconcrete.smartconnect.map.BusStopCoordinate;
+import isacademy.jjdd1.itconcrete.smartconnect.map.Coordinates;
 import isacademy.jjdd1.itconcrete.smartconnect.map.CoordinatesGetter;
 import isacademy.jjdd1.itconcrete.smartconnect.map.CoordinatesSetter;
 import isacademy.jjdd1.itconcrete.smartconnect.map.LocationExistence;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
+import java.util.Set;
 
 @WebServlet(urlPatterns = "/map")
 public class MapServlet extends HttpServlet {
@@ -27,12 +27,12 @@ public class MapServlet extends HttpServlet {
     @Inject
     CoordinatesGetter coordinatesGetter;
 
-    List<BusStopCoordinate> busStopCoordinates;
+    Set<Coordinates> coordinates;
 
     @Override
     public void init() throws ServletException {
 
-        busStopCoordinates = coordinatesSetter.setCoordinates();
+        coordinates = coordinatesSetter.setCoordinates();
 
     }
 
@@ -51,7 +51,7 @@ public class MapServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 
         String busStopName = request.getParameter("busStop");
-        boolean correctBusStop = locationExistence.checkLocationExistence(busStopName, busStopCoordinates);
+        boolean correctBusStop = locationExistence.checkLocationExistence(busStopName, coordinates);
 
         if (!correctBusStop) {
             request.setAttribute("busStopError", "Wrong data, try again. ");
@@ -60,7 +60,7 @@ public class MapServlet extends HttpServlet {
             dispatcher.forward(request, response);
 
         } else {
-            BusStopCoordinate coordinates = coordinatesGetter.getCoordinates(busStopName, busStopCoordinates);
+            Coordinates coordinates = coordinatesGetter.getCoordinates(busStopName, this.coordinates);
             request.setAttribute("correctBusStop", correctBusStop);
             request.setAttribute("coordinates", coordinates);
             request.setAttribute("busStop", busStopName);

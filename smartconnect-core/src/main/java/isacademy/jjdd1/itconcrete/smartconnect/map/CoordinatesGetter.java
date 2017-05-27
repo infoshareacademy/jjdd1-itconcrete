@@ -1,21 +1,19 @@
 package isacademy.jjdd1.itconcrete.smartconnect.map;
 
-import java.util.List;
+import java.util.Set;
 
 public class CoordinatesGetter {
 
-    public BusStopCoordinate getCoordinates(String busStopName, List<BusStopCoordinate> busStopCoordinates) {
+    public Coordinates getCoordinates(String busStopName, Set<Coordinates> coordinatesSet) {
 
-        BusStopCoordinate validCoordinates = new BusStopCoordinate(busStopName, 0, 0);
+        Coordinates validCoordinates = new Coordinates(busStopName, 0, 0);
 
-        for (int i = 0; i < busStopCoordinates.size(); i++) {
+        for (Coordinates coordinates : coordinatesSet) {
 
-            BusStopCoordinate busStopCoordinate = busStopCoordinates.get(i);
+            if (busStopName.toLowerCase().equals(coordinates.getName().toLowerCase())) {
 
-            if (busStopName.toLowerCase().equals(busStopCoordinate.getName().toLowerCase())) {
-
-                validCoordinates.setLatitude(busStopCoordinate.getLatitude());
-                validCoordinates.setLongitude(busStopCoordinate.getLongitude());
+                validCoordinates.setLatitude(coordinates.getLatitude());
+                validCoordinates.setLongitude(coordinates.getLongitude());
                 break;
             }
         }
