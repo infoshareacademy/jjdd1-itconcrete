@@ -79,7 +79,7 @@
 </c:otherwise>
 </c:choose>
 
-<%@include file="bars/empty_footer.jsp" %>
+<%@include file="bars/back_main_footer.jsp" %>
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbkEbhKKuC0cjdZd0tkz7-qaWxJAvjWZw&callback=initMap"></script>
 
