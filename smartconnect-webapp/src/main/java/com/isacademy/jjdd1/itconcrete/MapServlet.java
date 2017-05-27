@@ -2,8 +2,8 @@ package com.isacademy.jjdd1.itconcrete;
 
 import isacademy.jjdd1.itconcrete.smartconnect.map.Coordinates;
 import isacademy.jjdd1.itconcrete.smartconnect.map.CoordinatesGetter;
-import isacademy.jjdd1.itconcrete.smartconnect.map.CoordinatesSetter;
 import isacademy.jjdd1.itconcrete.smartconnect.map.LocationExistence;
+import isacademy.jjdd1.itconcrete.smartconnect.map.StopsFilter;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Set;
 
@@ -19,7 +20,7 @@ import java.util.Set;
 public class MapServlet extends HttpServlet {
 
     @Inject
-    CoordinatesSetter coordinatesSetter;
+    StopsFilter stopsFilter;
 
     @Inject
     LocationExistence locationExistence;
@@ -27,12 +28,16 @@ public class MapServlet extends HttpServlet {
     @Inject
     CoordinatesGetter coordinatesGetter;
 
-    Set<Coordinates> coordinates;
+    Set<Coordinates> coordinatesSet;
 
     @Override
     public void init() throws ServletException {
 
-        coordinates = coordinatesSetter.setCoordinates();
+        try {
+            coordinatesSet = stopsFilter.filterStops();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -51,7 +56,7 @@ public class MapServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 
         String busStopName = request.getParameter("busStop");
-        boolean correctBusStop = locationExistence.checkLocationExistence(busStopName, coordinates);
+        boolean correctBusStop = locationExistence.checkLocationExistence(busStopName, coordinatesSet);
 
         if (!correctBusStop) {
             request.setAttribute("busStopError", "Wrong data, try again. ");
@@ -60,9 +65,9 @@ public class MapServlet extends HttpServlet {
             dispatcher.forward(request, response);
 
         } else {
-            Coordinates coordinates = coordinatesGetter.getCoordinates(busStopName, this.coordinates);
+            Coordinates coordinates = coordinatesGetter.getCoordinates(busStopName, this.coordinatesSet);
             request.setAttribute("correctBusStop", correctBusStop);
-            request.setAttribute("coordinates", coordinates);
+            request.setAttribute("coordinatesSet", coordinates);
             request.setAttribute("busStop", busStopName);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/map");
             dispatcher.forward(request, response);
