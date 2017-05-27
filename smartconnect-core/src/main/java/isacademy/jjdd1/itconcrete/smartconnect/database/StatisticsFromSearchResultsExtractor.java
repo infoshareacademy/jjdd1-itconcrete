@@ -11,13 +11,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class StatisticsInitializer {
+public class StatisticsFromSearchResultsExtractor {
 
     private List<CompleteDirectResult> completeDirectResultList;
     private List<CompleteTransferResult> completeTransferResultList;
 
-    public StatisticsInitializer(List<CompleteDirectResult> completeDirectResultList,
-                                 List<CompleteTransferResult> completeTransferResultList) {
+    public StatisticsFromSearchResultsExtractor(List<CompleteDirectResult> completeDirectResultList,
+                                                List<CompleteTransferResult> completeTransferResultList) {
         this.completeDirectResultList = completeDirectResultList;
         this.completeTransferResultList = completeTransferResultList;
     }
@@ -40,10 +40,6 @@ public class StatisticsInitializer {
             lineNumbers.addAll(transferResultConnections.stream().map(s -> s.getFirstLineNumber()).collect(Collectors.toList()));
             lineNumbers.addAll(transferResultConnections.stream().map(s -> s.getSecondLineNumber()).collect(Collectors.toList()));
         }
-
-
         return lineNumbers;
     }
-
-
 }
