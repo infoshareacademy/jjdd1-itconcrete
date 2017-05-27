@@ -33,7 +33,7 @@ public class BusStopStatisticsSaver {
                 "FROM BusStopStatistics bss ORDER BY bss.occurences DESC", String.class)
                 .setMaxResults(10).getResultList();
         List<Integer> values = entityManager.createQuery("SELECT bss.occurences " +
-                "FROM BusStopStatistics bls ORDER BY bls.occurences DESC", Integer.class)
+                "FROM BusStopStatistics bss ORDER BY bss.occurences DESC", Integer.class)
                 .setMaxResults(10).getResultList();
         Map<String, Integer> results = new LinkedHashMap<>();
         if (stops != null && values != null) {

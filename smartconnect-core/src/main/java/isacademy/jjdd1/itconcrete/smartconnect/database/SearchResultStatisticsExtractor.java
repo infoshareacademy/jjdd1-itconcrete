@@ -11,24 +11,29 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class StatisticsFromSearchResultsExtractor {
+public class SearchResultStatisticsExtractor {
 
     private List<CompleteDirectResult> completeDirectResultList;
     private List<CompleteTransferResult> completeTransferResultList;
 
-    public StatisticsFromSearchResultsExtractor(List<CompleteDirectResult> completeDirectResultList,
-                                                List<CompleteTransferResult> completeTransferResultList) {
+    private List<String> busStops;
+    private List<Integer> busLines;
+
+    public SearchResultStatisticsExtractor(List<CompleteDirectResult> completeDirectResultList,
+                                           List<CompleteTransferResult> completeTransferResultList) {
         this.completeDirectResultList = completeDirectResultList;
         this.completeTransferResultList = completeTransferResultList;
+        busStops = extraxtListOfFoundStopNames();
+        busLines = extractListOfFoundLineNumbers();
     }
 
-    private List<String> createListOfFoundStopNames (){
+    private List<String> extraxtListOfFoundStopNames(){
         List<String> direct = completeDirectResultList.stream().map(s -> s.getStartBusStop()).collect(Collectors.toList());
         List<String> transfer = completeTransferResultList.stream().map(s -> s.getStartBusStop()).collect(Collectors.toList());
         return Stream.concat(direct.stream(), transfer.stream()).collect(Collectors.toList());
     }
 
-    private List<Integer> createListOfFoundLineNumbers (){
+    private List<Integer> extractListOfFoundLineNumbers(){
         List<Integer> lineNumbers = new ArrayList<>();
         for (int i = 0; i < completeDirectResultList.size(); i++) {
             List<DirectResultConnection> directResultConnections = completeDirectResultList.get(i).getDirectResultConnectionList();
@@ -42,4 +47,14 @@ public class StatisticsFromSearchResultsExtractor {
         }
         return lineNumbers;
     }
+
+    public List<String> getBusStops() {
+        return busStops;
+    }
+
+
+    public List<Integer> getBusLines() {
+        return busLines;
+    }
+
 }

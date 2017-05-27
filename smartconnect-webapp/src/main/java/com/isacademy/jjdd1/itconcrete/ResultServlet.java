@@ -1,6 +1,7 @@
 package com.isacademy.jjdd1.itconcrete;
 
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
+import isacademy.jjdd1.itconcrete.smartconnect.database.ReportsGenerator;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
 import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteDirectResult;
 import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteDirectResultGetter;
@@ -50,6 +51,9 @@ public class ResultServlet extends HttpServlet {
 
     @Inject
     Util util;
+
+    @Inject
+    ReportsGenerator reportsGenerator;
 
     @Override
     public void init() throws ServletException {
@@ -108,6 +112,8 @@ public class ResultServlet extends HttpServlet {
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
+
+        reportsGenerator = new ReportsGenerator(completeDirectResultList, completeTransferResultList);
 
         request.setAttribute("completeDirectResultList", completeDirectResultList);
         request.setAttribute("completeTransferResultList", completeTransferResultList);
