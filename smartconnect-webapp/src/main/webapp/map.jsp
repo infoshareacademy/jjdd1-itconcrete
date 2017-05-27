@@ -21,8 +21,8 @@
 
 <%@include file="bars/login_header.jsp" %>
 
-<%--<c:choose>--%>
-<%--<c:when test="${sessionData.logged}">--%>
+<c:choose>
+<c:when test="${sessionData.logged}">
 
 <br/>
 <div class="container" style="width: 500px; padding-top: 75px" align="center"><h3>Check your bus stop
@@ -32,7 +32,7 @@
 
 <div class="container" style="width: 450px;">
 
-    <form name="askForm" method="post" action="/map.jsp">
+    <form name="askForm" method="post" action="/map">
         <div class="input-group ${hasError}">
             <input type="text" class="form-control" id="busStop" name="busStop" placeholder="${busStopError}Enter bus stop name">
             <span class="input-group-btn"><button class="btn btn-default" type="submit">Submit</button></span>
@@ -73,11 +73,11 @@
 </div>
 
 
-<%--</c:when>--%>
-<%--<c:otherwise>--%>
-<%--<%@include file="/login_body.jsp" %>--%>
-<%--</c:otherwise>--%>
-<%--</c:choose>--%>
+</c:when>
+<c:otherwise>
+<%@include file="/login_body.jsp" %>
+</c:otherwise>
+</c:choose>
 
 <%@include file="bars/empty_footer.jsp" %>
 

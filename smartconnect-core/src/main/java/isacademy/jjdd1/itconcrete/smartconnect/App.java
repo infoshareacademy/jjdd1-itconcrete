@@ -4,8 +4,6 @@ import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultDisplayer;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.QuestionAsker;
-import isacademy.jjdd1.itconcrete.smartconnect.map.Coordinates;
-import isacademy.jjdd1.itconcrete.smartconnect.map.StopsFilter;
 import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteDirectResult;
 import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteDirectResultGetter;
 import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteTransferResult;
@@ -18,7 +16,6 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 public class App {
 
@@ -53,11 +50,6 @@ public class App {
 
         CompleteResultDisplayer completeResultDisplayer = new CompleteResultDisplayer();
         completeResultDisplayer.displayCompleteResult(journeys, completeDirectResultList, completeTransferResultList);
-
-        StopsFilter stopsFilter = new StopsFilter();
-
-        Set<Coordinates> coordinatesSet = stopsFilter.filterStops();
-
 
     }
 }

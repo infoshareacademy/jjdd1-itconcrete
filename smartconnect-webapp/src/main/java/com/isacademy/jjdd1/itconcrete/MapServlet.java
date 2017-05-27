@@ -55,8 +55,8 @@ public class MapServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         request.setCharacterEncoding("UTF-8");
 
-        String busStopName = request.getParameter("busStop");
-        boolean correctBusStop = locationExistence.checkLocationExistence(busStopName, coordinatesSet);
+        String busStop = request.getParameter("busStop");
+        boolean correctBusStop = locationExistence.checkLocationExistence(busStop, coordinatesSet);
 
         if (!correctBusStop) {
             request.setAttribute("busStopError", "Wrong data, try again. ");
@@ -65,15 +65,12 @@ public class MapServlet extends HttpServlet {
             dispatcher.forward(request, response);
 
         } else {
-            Coordinates coordinates = coordinatesGetter.getCoordinates(busStopName, this.coordinatesSet);
+            Coordinates coordinates = coordinatesGetter.getCoordinates(busStop, this.coordinatesSet);
             request.setAttribute("correctBusStop", correctBusStop);
-            request.setAttribute("coordinatesSet", coordinates);
-            request.setAttribute("busStop", busStopName);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/map");
+            request.setAttribute("coordinates", coordinates);
+            request.setAttribute("busStop", busStop);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/map.jsp");
             dispatcher.forward(request, response);
         }
-
-
     }
-
 }
