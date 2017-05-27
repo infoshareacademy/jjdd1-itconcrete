@@ -32,7 +32,7 @@
 
 <div class="container" style="width: 450px;">
 
-    <form name="askForm" method="post" action="/map" enctype="text/plain">
+    <form name="askForm" method="post" action="/map.jsp">
         <div class="input-group ${hasError}">
             <input type="text" class="form-control" id="busStop" name="busStop" placeholder="${busStopError}Enter bus stop name">
             <span class="input-group-btn"><button class="btn btn-default" type="submit">Submit</button></span>
