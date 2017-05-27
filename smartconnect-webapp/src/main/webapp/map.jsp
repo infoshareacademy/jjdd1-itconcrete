@@ -44,8 +44,8 @@
 
 <c:choose>
     <c:when test="${correctBusStop}">
-        <c:set var = "lat" scope = "session" value = "${coordinates.getLatitude}"/>
-        <c:set var = "lng" scope = "session" value = "${coordinates.getLongitude}"/>
+        <c:set var = "lat" scope = "session" value = "${coordinates.getLatitude()}"/>
+        <c:set var = "lng" scope = "session" value = "${coordinates.getLongitude()}"/>
     </c:when>
     <c:otherwise>
         <c:set var = "lat" scope = "session" value = "${54.355254}"/>
