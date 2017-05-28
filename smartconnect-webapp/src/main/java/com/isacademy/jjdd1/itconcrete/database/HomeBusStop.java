@@ -2,9 +2,7 @@ package com.isacademy.jjdd1.itconcrete.database;
 
 import javax.persistence.*;
 
-/**
- * Created by agata on 5/28/17.
- */
+
 @Entity
 public class HomeBusStop {
 

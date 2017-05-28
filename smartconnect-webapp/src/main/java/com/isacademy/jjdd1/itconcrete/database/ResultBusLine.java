@@ -5,9 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-/**
- * Created by agata on 5/28/17.
- */
+
 @Entity
 public class ResultBusLine {
 

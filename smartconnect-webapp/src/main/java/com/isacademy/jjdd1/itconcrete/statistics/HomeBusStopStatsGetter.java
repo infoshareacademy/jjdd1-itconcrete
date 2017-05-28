@@ -28,10 +28,6 @@ public class HomeBusStopStatsGetter {
                     "FROM HomeBusStop hbs ORDER BY hbs.occurences")
                     .setMaxResults(3).getResultList();
 
-            System.out.println("stops" + stops);
-
-            System.out.println("Results are size: " + results.size());
-
             int currentOccurence = 0;
             if(stops != null){
                 for (int i = 0; i < stops.size(); i++) {
