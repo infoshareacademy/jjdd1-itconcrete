@@ -41,9 +41,9 @@
 
             <br/><br/><br/><br/><br/><br/>
 
-            <a href="/reports/another_report" role="button" class="btn btn-info btn-lg" style="width: 320px">
+            <a href="/reports/home_stop_popularity" role="button" class="btn btn-info btn-lg" style="width: 320px">
                     <%--<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;--%>
-                <h4>Another Report ???</h4></a>
+                <h4>Home Bus Stop Report</h4></a>
 
 
         </div>
