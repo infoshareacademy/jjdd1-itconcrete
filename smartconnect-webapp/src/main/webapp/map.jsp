@@ -35,7 +35,7 @@
             <form name="askForm" method="post" action="/map">
                 <div class="input-group ${hasError}">
                     <input type="text" class="form-control" id="busStop" name="busStop"
-                           placeholder="${busStopError}Enter bus stop name" value="${busStop}">>
+                           placeholder="${busStopError}Enter bus stop name" value="${busStop}">
                     <span class="input-group-btn"><button class="btn btn-default" type="submit">Submit</button></span>
                 </div>
             </form>
