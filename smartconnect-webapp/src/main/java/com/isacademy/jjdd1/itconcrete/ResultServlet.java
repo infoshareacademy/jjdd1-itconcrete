@@ -128,9 +128,13 @@ public class ResultServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        homeBusStopUpdater.setHomeBusStop();
-        List<String> test = homeBusStopUpdater.getHomeBusStops();
+        List<String> test = homeBusStopUpdater.getListOfAllHomeBusStops();
         System.out.println(test);
+        homeBusStopUpdater.updateTable("Klonowa");
+        int klonowaOccurences = homeBusStopUpdater.getValuForHomeBusStop("Klonowa");
+        int emausOccurences = homeBusStopUpdater.getValuForHomeBusStop("Emaus");
+        System.out.println("Klonowa wystepuje w bazie: " + klonowaOccurences + " razy");
+        System.out.println("Emaus wystepuje w bazie: " + emausOccurences + " razy");
         System.out.println("tralalalalala");
 
 
