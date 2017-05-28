@@ -14,9 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-/**
- * Created by agata on 5/28/17.
- */
+
 @Singleton
 public class HomeBusStopUpdater {
 

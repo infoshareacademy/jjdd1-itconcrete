@@ -1,9 +1,6 @@
 package com.isacademy.jjdd1.itconcrete;
 
-import com.isacademy.jjdd1.itconcrete.database.HomeBusStop;
-import com.isacademy.jjdd1.itconcrete.database.HomeBusStopUpdater;
-import com.isacademy.jjdd1.itconcrete.database.ResultBusLine;
-import com.isacademy.jjdd1.itconcrete.database.ResultBusStop;
+import com.isacademy.jjdd1.itconcrete.database.*;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
 import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteDirectResult;
@@ -67,6 +64,9 @@ public class ResultServlet extends HttpServlet {
     @Inject
     ResultBusLine resultBusLine;
 
+    @Inject
+    DBUpdater dbUpdater;
+
 
     @Override
     public void init() throws ServletException {
@@ -127,18 +127,7 @@ public class ResultServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        List<String> test = homeBusStopUpdater.getListOfAllHomeBusStops();
-        System.out.println(test);
-        homeBusStopUpdater.updateTable("Klonowa");
-        homeBusStopUpdater.updateTable("Niedźwiednik");
-        int klonowaOccurences = homeBusStopUpdater.getValuForHomeBusStop("Klonowa");
-        int emausOccurences = homeBusStopUpdater.getValuForHomeBusStop("Emaus");
-        int niedzwiednik = homeBusStopUpdater.getValuForHomeBusStop("Niedźwiednik");
-        System.out.println("Klonowa wystepuje w bazie: " + klonowaOccurences + " razy");
-        System.out.println("Emaus wystepuje w bazie: " + emausOccurences + " razy");
-        System.out.println("mis wystepuje w bazie: " + niedzwiednik + " razy");
-        System.out.println("tralalalalala");
-
+        dbUpdater.initialize();
 
         request.setAttribute("completeDirectResultList", completeDirectResultList);
         request.setAttribute("completeTransferResultList", completeTransferResultList);
