@@ -1,5 +1,8 @@
 package com.isacademy.jjdd1.itconcrete.database;
 
+import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteDirectResult;
+import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteTransferResult;
+
 import javax.ejb.Singleton;
 import javax.inject.Inject;
 import java.util.List;
@@ -22,7 +25,8 @@ public class DBUpdater {
     ResultBusLine resultBusLine;
 
 
-    public void initialize(){
+    public void initialize(List<CompleteDirectResult> direct, List<CompleteTransferResult> transfer){
+
 
         List<String> test = homeBusStopUpdater.getListOfAllHomeBusStops();
         System.out.println(test);

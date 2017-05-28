@@ -53,19 +53,9 @@ public class ResultServlet extends HttpServlet {
     Util util;
 
     @Inject
-    HomeBusStop homeBusStop;
-
-    @Inject
-    HomeBusStopUpdater homeBusStopUpdater;
-
-    @Inject
-    ResultBusStop resultBusStop;
-
-    @Inject
-    ResultBusLine resultBusLine;
-
-    @Inject
     DBUpdater dbUpdater;
+
+
 
 
     @Override
@@ -127,7 +117,7 @@ public class ResultServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        dbUpdater.initialize();
+        dbUpdater.initialize(completeDirectResultList,completeTransferResultList);
 
         request.setAttribute("completeDirectResultList", completeDirectResultList);
         request.setAttribute("completeTransferResultList", completeTransferResultList);
