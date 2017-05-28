@@ -117,7 +117,7 @@ public class ResultServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        dbUpdater.initialize(completeDirectResultList,completeTransferResultList);
+        dbUpdater.initialize(homeBusStop, completeDirectResultList,completeTransferResultList);
 
         request.setAttribute("completeDirectResultList", completeDirectResultList);
         request.setAttribute("completeTransferResultList", completeTransferResultList);

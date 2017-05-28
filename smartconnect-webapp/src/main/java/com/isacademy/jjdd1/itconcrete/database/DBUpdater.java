@@ -25,21 +25,21 @@ public class DBUpdater {
     ResultBusLine resultBusLine;
 
 
-    public void initialize(List<CompleteDirectResult> direct, List<CompleteTransferResult> transfer){
+    public void initialize(String home, List<CompleteDirectResult> direct, List<CompleteTransferResult> transfer){
 
 
         List<String> test = homeBusStopUpdater.getListOfAllHomeBusStops();
         System.out.println(test);
-        homeBusStopUpdater.updateTable("Klonowa");
-        homeBusStopUpdater.updateTable("Niedźwiednik");
-        int klonowaOccurences = homeBusStopUpdater.getValuForHomeBusStop("Klonowa");
-        int emausOccurences = homeBusStopUpdater.getValuForHomeBusStop("Emaus");
-        int niedzwiednik = homeBusStopUpdater.getValuForHomeBusStop("Niedźwiednik");
-        System.out.println("Klonowa wystepuje w bazie: " + klonowaOccurences + " razy");
-        System.out.println("Emaus wystepuje w bazie: " + emausOccurences + " razy");
-        System.out.println("mis wystepuje w bazie: " + niedzwiednik + " razy");
+        homeBusStopUpdater.updateTable(home);
+
+        int homeocc = homeBusStopUpdater.getValuForHomeBusStop(home);
+        int bazy = homeBusStopUpdater.getValuForHomeBusStop("Bażyńskiego");
+        int podk = homeBusStopUpdater.getValuForHomeBusStop("Podkarpacka");
+
         System.out.println("tralalalalala");
-        System.out.println("Emaus wystepuje w bazie: " + emausOccurences + " razy");
+        System.out.println(home + " wystepuje w bazie: " + homeocc + " razy");
+        System.out.println("Bazy wystepuje w bazie: " + bazy + " razy");
+        System.out.println("Podk wystepuje w bazie: " + podk + " razy");
 
     }
 }
