@@ -1,6 +1,6 @@
 package isacademy.jjdd1.itconcrete.smartconnect.database;
 
-import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
+
 import isacademy.jjdd1.itconcrete.smartconnect.statistics.LineStatisticsData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,8 +35,8 @@ public class BusLineStatisticsSaver {
             query.setParameter(1, lineNumber).executeUpdate();
         }
         else {
-            LOGGER.info("Inserting new row in database; linenumber and occurences "
-                    + lineNumber +  " " + occurences);
+            LOGGER.info("Inserting new row in database; linenumber {} and occurences {} ",
+                    lineNumber, occurences);
             entityManager.persist(new BusLineStatistics(lineNumber, occurences));
         }
     }
@@ -61,7 +61,7 @@ public class BusLineStatisticsSaver {
                 results.put(lines.get(i), values.get(i));
             }
         }
-        LOGGER.info("results size: " + results.size());
+        LOGGER.info("results size: {} ", results.size());
         return results;
     }
 

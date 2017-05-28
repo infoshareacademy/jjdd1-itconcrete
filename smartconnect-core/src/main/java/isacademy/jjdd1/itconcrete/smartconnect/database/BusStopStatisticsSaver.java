@@ -1,6 +1,9 @@
 package isacademy.jjdd1.itconcrete.smartconnect.database;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,6 +14,8 @@ import java.util.Map;
 
 @Singleton
 public class BusStopStatisticsSaver {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(BusStopStatisticsSaver.class);
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -23,7 +28,7 @@ public class BusStopStatisticsSaver {
             query.setParameter(1, stopName).executeUpdate();
         }
         else {
-            System.out.println(" i am elsing and adding ");
+            LOGGER.info("This bus stop is not present in db yet, adding stop: {}", stopName);
             entityManager.persist(new BusStopStatistics(stopName, occurences));
         }
     }
