@@ -27,11 +27,7 @@ public class DBUpdater {
 
     public void initialize(String home, List<CompleteDirectResult> direct, List<CompleteTransferResult> transfer){
 
-
         homeBusStopUpdater.updateTable(home);
-
-        int homeocc = homeBusStopUpdater.getValuForHomeBusStop(home);
-
 
     }
 }
