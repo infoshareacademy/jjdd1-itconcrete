@@ -15,8 +15,8 @@
 
 <%@include file="../bars/login_header.jsp" %>
 
-<%--<c:choose>--%>
-    <%--<c:when test="${sessionData.logged}">--%>
+<c:choose>
+    <c:when test="${sessionData.logged}">
 
         <div class="chart"
              style="position: fixed; top: 35%; left: 50%; transform: translate(-50%, -50%); width: 40%; height: 40%;">
@@ -52,11 +52,11 @@
             };
             var myChart2 = new Chart(ctx2, config);
         </script>
-    <%--</c:when>--%>
-    <%--<c:otherwise>--%>
-        <%--<%@include file="/login_body.jsp" %>--%>
-    <%--</c:otherwise>--%>
-<%--</c:choose>--%>
+    </c:when>
+    <c:otherwise>
+        <%@include file="/login_body.jsp" %>
+    </c:otherwise>
+</c:choose>
 
 <%@include file="../bars/back_stats_footer.jsp" %>
 
