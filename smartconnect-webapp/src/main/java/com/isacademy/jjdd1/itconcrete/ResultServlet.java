@@ -1,5 +1,6 @@
 package com.isacademy.jjdd1.itconcrete;
 
+import com.isacademy.jjdd1.itconcrete.database.*;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
 import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteDirectResult;
@@ -51,10 +52,17 @@ public class ResultServlet extends HttpServlet {
     @Inject
     Util util;
 
+    @Inject
+    DBUpdater dbUpdater;
+
+
+
+
     @Override
     public void init() throws ServletException {
 
         allBusLines = scheduleParser.getArrayOfBusLines();
+
     }
 
     @Override
@@ -108,6 +116,8 @@ public class ResultServlet extends HttpServlet {
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
+
+        dbUpdater.initialize(homeBusStop, completeDirectResultList,completeTransferResultList);
 
         request.setAttribute("completeDirectResultList", completeDirectResultList);
         request.setAttribute("completeTransferResultList", completeTransferResultList);

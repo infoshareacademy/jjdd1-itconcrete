@@ -30,10 +30,14 @@
             var config = {
                 type: 'doughnut',
                 data: {
-                    labels: ["Klonowa", "Miszewskiego", "Galeria Bałtycka"],
+                    labels: [<c:forEach items="${statistics}" var="statistic">
+                        "${statistic.busStopName}",
+                        </c:forEach>],
                     datasets: [{
                         label: '# of Votes',
-                        data: [15, 8, 3],
+                        data: [<c:forEach items="${statistics}" var="statistic">
+                            ${statistic.countedTimes},
+                            </c:forEach>],
                         backgroundColor: ['#4FBDCC', '#7CFFC6', '#FFBCBC'],
                         borderColor: 'rgba(91, 192, 222, 0.1)',
                         borderWidth: 1
