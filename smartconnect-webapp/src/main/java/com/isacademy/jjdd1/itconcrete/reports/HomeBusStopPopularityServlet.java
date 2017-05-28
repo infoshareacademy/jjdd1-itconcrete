@@ -26,8 +26,6 @@ public class HomeBusStopPopularityServlet extends HttpServlet {
     @Inject
     DBUpdater dbUpdater;
 
-
-
     private List<StopStatsData> statistics = new ArrayList<>();
 
     public void loadStats() {

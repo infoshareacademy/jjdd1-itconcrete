@@ -28,18 +28,10 @@ public class DBUpdater {
     public void initialize(String home, List<CompleteDirectResult> direct, List<CompleteTransferResult> transfer){
 
 
-        List<String> test = homeBusStopUpdater.getListOfAllHomeBusStops();
-        System.out.println(test);
         homeBusStopUpdater.updateTable(home);
 
         int homeocc = homeBusStopUpdater.getValuForHomeBusStop(home);
-        int bazy = homeBusStopUpdater.getValuForHomeBusStop("Bażyńskiego");
-        int podk = homeBusStopUpdater.getValuForHomeBusStop("Podkarpacka");
 
-        System.out.println("tralalalalala");
-        System.out.println(home + " wystepuje w bazie: " + homeocc + " razy");
-        System.out.println("Bazy wystepuje w bazie: " + bazy + " razy");
-        System.out.println("Podk wystepuje w bazie: " + podk + " razy");
 
     }
 }

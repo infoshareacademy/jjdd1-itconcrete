@@ -40,14 +40,9 @@ public class HomeBusStopStatsGetter {
                 }
             }
 
-            System.out.println("stops" + stops);
-
-            System.out.println("Results are size: " + results.size());
             return results;
 
         } catch (NoResultException e) {}
-
-
 
         return results;
     }
