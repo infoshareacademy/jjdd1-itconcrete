@@ -57,11 +57,24 @@
 
   <dependencies>
 
+
       <dependency>
           <groupId>javax</groupId>
           <artifactId>javaee-api</artifactId>
           <version>7.0</version>
           <scope>provided</scope>
+      </dependency>
+      <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-entitymanager</artifactId>
+          <version>3.3.2.GA</version>
+          <scope>provided</scope>
+          <exclusions>
+              <exclusion>
+                  <groupId>javax.transaction</groupId>
+                  <artifactId>jta</artifactId>
+              </exclusion>
+          </exclusions>
       </dependency>
       <dependency>
           <groupId>org.apache.logging.log4j</groupId>

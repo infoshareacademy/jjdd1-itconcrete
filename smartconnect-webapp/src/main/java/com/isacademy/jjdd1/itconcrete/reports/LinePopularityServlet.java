@@ -29,8 +29,6 @@ public class LinePopularityServlet extends HttpServlet {
     @Inject
     FakeLineStatisticGenerator fakeLineStatisticGenerator;
 
-    @Inject
-    DBUpdater dbUpdater;
 
     @Inject
     BusLineStatisticsSaver busLineStatisticsSaver;

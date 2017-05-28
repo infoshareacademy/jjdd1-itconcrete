@@ -2,6 +2,7 @@ package isacademy.jjdd1.itconcrete.smartconnect;
 
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.Journey;
+import isacademy.jjdd1.itconcrete.smartconnect.database.BusLineStatistics;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.CompleteResultDisplayer;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.QuestionAsker;
 import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteDirectResult;
@@ -13,6 +14,7 @@ import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -22,6 +24,9 @@ public class App {
     private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
 
     public static void main(String[] args) throws Exception {
+
+        testEnt t = new testEnt();
+        t.go();
 
         LOGGER.info("Starting application.");
         LOGGER.trace("Schedules database is initialized.");

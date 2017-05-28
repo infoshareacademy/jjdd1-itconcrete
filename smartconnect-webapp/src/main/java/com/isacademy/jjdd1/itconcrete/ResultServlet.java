@@ -1,6 +1,8 @@
 package com.isacademy.jjdd1.itconcrete;
 
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
+import isacademy.jjdd1.itconcrete.smartconnect.database.BusLineStatisticsSaver;
+import isacademy.jjdd1.itconcrete.smartconnect.database.BusStopStatisticsSaver;
 import isacademy.jjdd1.itconcrete.smartconnect.database.DBUpdater;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
 import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteDirectResult;
@@ -10,6 +12,7 @@ import isacademy.jjdd1.itconcrete.smartconnect.result.TransferResultGetter;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
 
+import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,6 +40,8 @@ public class ResultServlet extends HttpServlet {
 
     List<CompleteTransferResult> completeTransferResultList;
 
+
+
     @Inject
     CalendarParser calendarParser;
 
@@ -53,7 +58,15 @@ public class ResultServlet extends HttpServlet {
     Util util;
 
     @Inject
-    DBUpdater DBUpdater;
+    BusStopStatisticsSaver busStopStatisticsSaver;
+
+    @Inject
+    BusLineStatisticsSaver busLineStatisticsSaver;
+
+    @Dependent
+    DBUpdater dbUpdater;
+
+
 
     @Override
     public void init() throws ServletException {
@@ -113,7 +126,13 @@ public class ResultServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        DBUpdater = new DBUpdater(completeDirectResultList, completeTransferResultList);
+        System.out.println("Initializing of dbuUpdater");
+
+        System.out.println(completeTransferResultList.size());
+        System.out.println(completeDirectResultList.size() + "tralalalala");
+
+        dbUpdater = new DBUpdater(completeDirectResultList,completeTransferResultList);
+
 
         request.setAttribute("completeDirectResultList", completeDirectResultList);
         request.setAttribute("completeTransferResultList", completeTransferResultList);

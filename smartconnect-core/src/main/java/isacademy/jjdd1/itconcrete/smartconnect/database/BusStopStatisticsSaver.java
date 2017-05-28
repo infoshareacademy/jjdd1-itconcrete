@@ -23,6 +23,7 @@ public class BusStopStatisticsSaver {
             query.setParameter(1, stopName).executeUpdate();
         }
         else {
+            System.out.println(" i am elsing and adding ");
             entityManager.persist(new BusStopStatistics(stopName, occurences));
         }
     }

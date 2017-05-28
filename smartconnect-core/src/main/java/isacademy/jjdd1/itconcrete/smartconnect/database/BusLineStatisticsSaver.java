@@ -19,33 +19,54 @@ public class BusLineStatisticsSaver {
     private EntityManager entityManager;
 
     public void updateBusLineStatistics(int lineNumber, int occurences) {
+        System.out.println("starting to collect line statistics..........");
         Map<Integer, Integer> lineNumbers = getBusLineStatistics();
+        System.out.println("mapping line numbers");
         if (!lineNumbers.isEmpty() && lineNumbers.containsKey(lineNumber)) {
             Query query = entityManager.createQuery("UPDATE BusLineStatistics bls SET " +
                     "bls.occurences = bls.occurences + 1 WHERE bls.lineNumber = ?1");
             query.setParameter(1, lineNumber).executeUpdate();
         }
         else {
-            entityManager.persist(new BusLineStatistics(lineNumber, occurences));
+            System.out.println("i am elsing in busline stats saver");
+            System.out.println("linenumber and occurences " + lineNumber +  " " + occurences);
+            BusLineStatistics blr = new BusLineStatistics(3,1);
+            System.out.println("line nuuuuuuuuu" + blr.getLineNumber());
+//            entityManager.merge(blr);
+//            entityManager.flush();
+            System.out.println("flushed");
         }
     }
 
 
     public Map<Integer, Integer> getBusLineStatistics(){
-        List<Integer> lines = entityManager.createQuery("SELECT bls.lineNumber " +
-                "FROM BusLineStatistics bls ORDER BY bls.occurences DESC", Integer.class)
-                .setMaxResults(10).getResultList();
-        List<Integer> values = entityManager.createQuery("SELECT bls.occurences " +
-                "FROM BusLineStatistics bls ORDER BY bls.occurences DESC", Integer.class)
-                .setMaxResults(10).getResultList();
+        System.out.println("Get busline stats");
+
+        List<Integer> lines = new ArrayList<>();
+        try {
+            lines = entityManager.createQuery("SELECT bls.lineNumber " +
+                    "FROM BusLineStatistics bls ORDER BY bls.occurences DESC", Integer.class)
+                    .setMaxResults(10).getResultList();
+        } catch (NullPointerException e){}
+        System.out.println("1....");
+
+        List<Integer> values = new ArrayList<>();
+        try {
+            values = entityManager.createQuery("SELECT bls.occurences " +
+                    "FROM BusLineStatistics bls ORDER BY bls.occurences DESC", Integer.class)
+                    .setMaxResults(10).getResultList();
+        } catch (NullPointerException e) {}
+        System.out.println("2,,,,");
         Map<Integer, Integer> results = new LinkedHashMap<>();
         if (lines != null && values != null) {
             for (int i = 0; i < lines.size(); i++) {
                 results.put(lines.get(i), values.get(i));
             }
         }
+        System.out.println("results size" + results.size());
         return results;
     }
+
 
     public List<LineStatisticsData> getConvertedBusLineStatistics(){
         Map <Integer,Integer> thisMap = getBusLineStatistics();
