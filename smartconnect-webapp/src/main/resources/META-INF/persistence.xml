@@ -4,6 +4,9 @@
              version="2.0">
     <persistence-unit name="example" transaction-type="JTA">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <class>com.isacademy.jjdd1.itconcrete.database.HomeBusStop</class>
+        <class>com.isacademy.jjdd1.itconcrete.database.ResultBusLine</class>
+        <class>com.isacademy.jjdd1.itconcrete.database.ResultBusStop</class>
         <properties>
             <property name="connection.driver_class" value="com.mysql.jdbc.Driver"/>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/itconcrete"/>
