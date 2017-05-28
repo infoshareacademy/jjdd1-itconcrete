@@ -1,6 +1,9 @@
 package isacademy.jjdd1.itconcrete.smartconnect.database;
 
+import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
 import isacademy.jjdd1.itconcrete.smartconnect.statistics.LineStatisticsData;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
@@ -15,26 +18,26 @@ import java.util.Map;
 @Singleton
 public class BusLineStatisticsSaver {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(BusLineStatisticsSaver.class);
+
     @PersistenceContext
     private EntityManager entityManager;
 
     public void updateBusLineStatistics(int lineNumber, int occurences) {
-        System.out.println("starting to collect line statistics..........");
+        LOGGER.info("Starting to collect line statistics.");
+
         Map<Integer, Integer> lineNumbers = getBusLineStatistics();
-        System.out.println("mapping line numbers");
+        LOGGER.info("Mapping line numbers.");
+
         if (!lineNumbers.isEmpty() && lineNumbers.containsKey(lineNumber)) {
             Query query = entityManager.createQuery("UPDATE BusLineStatistics bls SET " +
                     "bls.occurences = bls.occurences + 1 WHERE bls.lineNumber = ?1");
             query.setParameter(1, lineNumber).executeUpdate();
         }
         else {
-            System.out.println("i am elsing in busline stats saver");
-            System.out.println("linenumber and occurences " + lineNumber +  " " + occurences);
-            BusLineStatistics blr = new BusLineStatistics(3,1);
-            System.out.println("line nuuuuuuuuu" + blr.getLineNumber());
-//            entityManager.merge(blr);
-//            entityManager.flush();
-            System.out.println("flushed");
+            LOGGER.info("Inserting new row in database; linenumber and occurences "
+                    + lineNumber +  " " + occurences);
+            entityManager.persist(new BusLineStatistics(lineNumber, occurences));
         }
     }
 

@@ -1,9 +1,7 @@
 package com.isacademy.jjdd1.itconcrete;
 
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
-import isacademy.jjdd1.itconcrete.smartconnect.database.BusLineStatisticsSaver;
-import isacademy.jjdd1.itconcrete.smartconnect.database.BusStopStatisticsSaver;
-import isacademy.jjdd1.itconcrete.smartconnect.database.DBUpdater;
+import isacademy.jjdd1.itconcrete.smartconnect.database.*;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
 import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteDirectResult;
 import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteDirectResultGetter;
@@ -62,6 +60,12 @@ public class ResultServlet extends HttpServlet {
 
     @Inject
     BusLineStatisticsSaver busLineStatisticsSaver;
+
+    @Inject
+    BusLineStatistics busLineStatistics;
+
+    @Inject
+    BusStopStatistics busStopStatistics;
 
     @Dependent
     DBUpdater dbUpdater;
@@ -126,10 +130,7 @@ public class ResultServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        System.out.println("Initializing of dbuUpdater");
-
-        System.out.println(completeTransferResultList.size());
-        System.out.println(completeDirectResultList.size() + "tralalalala");
+        System.out.println("Initializing of dbUpdater");
 
         dbUpdater = new DBUpdater(completeDirectResultList,completeTransferResultList);
 
