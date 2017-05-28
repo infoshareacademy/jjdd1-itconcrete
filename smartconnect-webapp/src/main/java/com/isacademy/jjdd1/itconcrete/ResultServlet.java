@@ -72,8 +72,7 @@ public class ResultServlet extends HttpServlet {
     public void init() throws ServletException {
 
         allBusLines = scheduleParser.getArrayOfBusLines();
-//        HomeBusStopUpdater homeBusStopUpdater = new HomeBusStopUpdater();
-//        homeBusStopUpdater.setCountries();
+
     }
 
     @Override
@@ -131,10 +130,13 @@ public class ResultServlet extends HttpServlet {
         List<String> test = homeBusStopUpdater.getListOfAllHomeBusStops();
         System.out.println(test);
         homeBusStopUpdater.updateTable("Klonowa");
+        homeBusStopUpdater.updateTable("Niedźwiednik");
         int klonowaOccurences = homeBusStopUpdater.getValuForHomeBusStop("Klonowa");
         int emausOccurences = homeBusStopUpdater.getValuForHomeBusStop("Emaus");
+        int niedzwiednik = homeBusStopUpdater.getValuForHomeBusStop("Niedźwiednik");
         System.out.println("Klonowa wystepuje w bazie: " + klonowaOccurences + " razy");
         System.out.println("Emaus wystepuje w bazie: " + emausOccurences + " razy");
+        System.out.println("mis wystepuje w bazie: " + niedzwiednik + " razy");
         System.out.println("tralalalalala");
 
 

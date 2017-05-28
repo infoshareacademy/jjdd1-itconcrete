@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.LinkedHashMap;
@@ -36,15 +37,18 @@ public class HomeBusStopUpdater {
     }
 
     private boolean checkIfRecordAlreadyExist(String homeBusStopName){
-        Query query = entityManager.createQuery("SELECT  hbs.occurences FROM HomeBusStop hbs  " +
-                " WHERE hbs.homeBusStopName = ?1");
-        int occurences = (int) query.setParameter(1, homeBusStopName).getSingleResult();
-        Optional<Integer> integerOptional = Optional.ofNullable(occurences);
-        if (integerOptional.isPresent()){
-            return true;
-        } else {
-            return false;
-        }
+        try{
+            Query query = entityManager.createQuery("SELECT  hbs.occurences FROM HomeBusStop hbs  " +
+                    " WHERE hbs.homeBusStopName = ?1");
+            int occurences = (int) query.setParameter(1, homeBusStopName).getSingleResult();
+            Optional<Integer> integerOptional = Optional.ofNullable(occurences);
+            if (integerOptional.isPresent()){
+                return true;
+            } else {
+                return false;
+            }
+        } catch (NoResultException e){}
+        return false;
     }
 
     private void incrementOccurences(String name){
