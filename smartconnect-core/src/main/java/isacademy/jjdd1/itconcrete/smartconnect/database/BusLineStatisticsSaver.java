@@ -43,30 +43,25 @@ public class BusLineStatisticsSaver {
 
 
     public Map<Integer, Integer> getBusLineStatistics(){
-        System.out.println("Get busline stats");
+       LOGGER.info("Get busline stats");
 
-        List<Integer> lines = new ArrayList<>();
-        try {
-            lines = entityManager.createQuery("SELECT bls.lineNumber " +
+        List<Integer> lines = entityManager.createQuery("SELECT bls.lineNumber " +
                     "FROM BusLineStatistics bls ORDER BY bls.occurences DESC", Integer.class)
                     .setMaxResults(10).getResultList();
-        } catch (NullPointerException e){}
-        System.out.println("1....");
 
-        List<Integer> values = new ArrayList<>();
-        try {
-            values = entityManager.createQuery("SELECT bls.occurences " +
+
+
+        List<Integer> values  = entityManager.createQuery("SELECT bls.occurences " +
                     "FROM BusLineStatistics bls ORDER BY bls.occurences DESC", Integer.class)
                     .setMaxResults(10).getResultList();
-        } catch (NullPointerException e) {}
-        System.out.println("2,,,,");
+
         Map<Integer, Integer> results = new LinkedHashMap<>();
         if (lines != null && values != null) {
             for (int i = 0; i < lines.size(); i++) {
                 results.put(lines.get(i), values.get(i));
             }
         }
-        System.out.println("results size" + results.size());
+        LOGGER.info("results size: " + results.size());
         return results;
     }
 
