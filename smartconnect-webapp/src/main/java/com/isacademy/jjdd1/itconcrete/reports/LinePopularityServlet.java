@@ -20,7 +20,6 @@ import java.util.ArrayList;
 @MultipartConfig
 public class LinePopularityServlet extends HttpServlet {
 
-
     @Inject
     FakeLineStatisticGenerator fakeLineStatisticGenerator;
 

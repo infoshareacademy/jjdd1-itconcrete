@@ -68,4 +68,5 @@ public class CompleteTransferResult {
                 ", transferResultConnectionList=" + transferResultConnectionList +
                 '}';
     }
+
 }

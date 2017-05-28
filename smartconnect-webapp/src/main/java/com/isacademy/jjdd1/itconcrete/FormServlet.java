@@ -1,6 +1,8 @@
 package com.isacademy.jjdd1.itconcrete;
 
 import isacademy.jjdd1.itconcrete.smartconnect.analyzer_direct.BusLineSeeker;
+import isacademy.jjdd1.itconcrete.smartconnect.database.HomeBusStop;
+import isacademy.jjdd1.itconcrete.smartconnect.database.PromotedLine;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.BusLine;
 import isacademy.jjdd1.itconcrete.smartconnect.schedule.ScheduleParser;
@@ -30,14 +32,16 @@ public class FormServlet extends HttpServlet {
     @Inject
     Util util;
 
-    private ArrayList<BusLine> busLinesForSeeking;
+    @Inject
+    PromotedLine promotedLine;
 
+    private ArrayList<BusLine> busLinesForSeeking;
 
     @Override
     public void init() throws ServletException {
 
         busLinesForSeeking = scheduleParser.getArrayOfBusLines();
-
+        promotedLine.addPromotedLineToDatabase();
     }
 
     @Override
