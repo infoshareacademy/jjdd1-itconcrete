@@ -23,6 +23,8 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
+
+
         LOGGER.info("Starting application.");
         LOGGER.trace("Schedules database is initialized.");
 

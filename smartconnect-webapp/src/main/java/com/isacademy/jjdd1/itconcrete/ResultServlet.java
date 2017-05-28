@@ -1,5 +1,9 @@
 package com.isacademy.jjdd1.itconcrete;
 
+import com.isacademy.jjdd1.itconcrete.database.HomeBusStop;
+import com.isacademy.jjdd1.itconcrete.database.HomeBusStopUpdater;
+import com.isacademy.jjdd1.itconcrete.database.ResultBusLine;
+import com.isacademy.jjdd1.itconcrete.database.ResultBusStop;
 import isacademy.jjdd1.itconcrete.smartconnect.calendar.CalendarParser;
 import isacademy.jjdd1.itconcrete.smartconnect.displayer.Util;
 import isacademy.jjdd1.itconcrete.smartconnect.result.CompleteDirectResult;
@@ -51,10 +55,25 @@ public class ResultServlet extends HttpServlet {
     @Inject
     Util util;
 
+    @Inject
+    HomeBusStop homeBusStop;
+
+    @Inject
+    HomeBusStopUpdater homeBusStopUpdater;
+
+    @Inject
+    ResultBusStop resultBusStop;
+
+    @Inject
+    ResultBusLine resultBusLine;
+
+
     @Override
     public void init() throws ServletException {
 
         allBusLines = scheduleParser.getArrayOfBusLines();
+//        HomeBusStopUpdater homeBusStopUpdater = new HomeBusStopUpdater();
+//        homeBusStopUpdater.setCountries();
     }
 
     @Override
@@ -108,6 +127,12 @@ public class ResultServlet extends HttpServlet {
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
+
+        homeBusStopUpdater.setHomeBusStop();
+        List<String> test = homeBusStopUpdater.getHomeBusStops();
+        System.out.println(test);
+        System.out.println("tralalalalala");
+
 
         request.setAttribute("completeDirectResultList", completeDirectResultList);
         request.setAttribute("completeTransferResultList", completeTransferResultList);
