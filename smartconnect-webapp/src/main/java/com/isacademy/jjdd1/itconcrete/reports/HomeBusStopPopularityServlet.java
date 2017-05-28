@@ -31,7 +31,6 @@ public class HomeBusStopPopularityServlet extends HttpServlet {
     public void loadStats() {
 
         statistics = homeBusStopStatsGetter.getStatistics();
-//        statistics.sort((a, b) -> (a.getBusStopName()).compareTo(b.getBusStopName()));
     }
 
     @Override
